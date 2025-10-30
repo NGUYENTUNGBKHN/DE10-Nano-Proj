@@ -1,0 +1,222 @@
+MK:=mkdir
+RM:=rm -rf
+PRETTY := 0
+
+DEBUG ?= 0
+
+ifneq ($(DEBUG),1)
+NO_ECHO=@
+else
+NO_ECHO=
+endif
+
+ifneq (,$(filter clean, $(MAKECMDGOALS)))  # clean existed
+OTHERS=$(filter-out clean, $(MAKECMDGOALS))
+ifeq (,$(OTHERS))
+.PHONY: clean
+clean:
+	$(NO_ECHO)echo Clean $(BUILD_DIR)
+	$(NO_ECHO)$(RM) $(BUILD_DIR)
+else
+$(info Cannot make anything in parallel with "clean".)
+$(info Execute "$(MAKE) clean \
+  $(foreach goal, $(OTHER_GOALS),&& $(MAKE) $(goal))" instead.)
+$(error Cannot continue)
+endif # end OTHER
+
+else # not clean
+ifndef PROGRESS
+ifeq ($(PRETTY),1)
+    X     := @
+    EMPTY :=
+    SPACE := $(EMPTY) $(EMPTY)
+    TOTAL := $(subst $(SPACE),,$(filter $(X), \
+               $(shell "$(MAKE)" $(MAKECMDGOALS) --dry-run \
+                 --no-print-directory PROGRESS=$(X))))
+
+    5   := $(X)$(X)$(X)$(X)$(X)
+    25  := $(5)$(5)$(5)$(5)$(5)
+    100 := $(25)$(25)$(25)$(25)
+
+    C       :=
+    COUNTER  = $(eval C := $(C)$(100))$(C)
+    P       :=
+    count    = $(if $(filter $1%,$2),$(eval \
+                 P += 1)$(call count,$1,$(2:$1%=%)),$(eval \
+                 C := $2))
+    print    = [$(if $(word 99,$1),99,$(if $(word 10,$1),, )$(words $1))%]
+    PROGRESS = $(call count,$(TOTAL),$(COUNTER))$(call print,$(P)) $1
+else
+    PROGRESS = $1
+endif # ifeq ($(PRETTY),1)
+endif # ifndef PROGRESS
+# # # # # # # # TOOLCHAIN # # # # # # # # # #
+
+PLATFORM_SUFFIX := $(if $(filter Windows%,$(OS)),windows,posix)
+TOOLCHAIN_CONFIG_FILE := $(MAKE_COMMON)/Makefile.$(PLATFORM_SUFFIX)
+include $(TOOLCHAIN_CONFIG_FILE)
+
+# $1 path
+define quote
+'$(subst ','\'',$(1))'
+endef
+
+# Toolchain commands
+CC      := $(call quote,$(GNU_INSTALL_ROOT)$(GNU_PREFIX)-gcc)
+CXX     := $(call quote,$(GNU_INSTALL_ROOT)$(GNU_PREFIX)-c++)
+AS      := $(call quote,$(GNU_INSTALL_ROOT)$(GNU_PREFIX)-as)
+AR      := $(call quote,$(GNU_INSTALL_ROOT)$(GNU_PREFIX)-ar) -r
+LD      := $(call quote,$(GNU_INSTALL_ROOT)$(GNU_PREFIX)-ld)
+NM      := $(call quote,$(GNU_INSTALL_ROOT)$(GNU_PREFIX)-nm)
+OBJDUMP := $(call quote,$(GNU_INSTALL_ROOT)$(GNU_PREFIX)-objdump)
+OBJCOPY := $(call quote,$(GNU_INSTALL_ROOT)$(GNU_PREFIX)-objcopy)
+SIZE    := $(call quote,$(GNU_INSTALL_ROOT)$(GNU_PREFIX)-size)
+$(if $(shell $(CC) --version),,$(info Cannot find: $(CC).) \
+  $(info Please set values in: "$(abspath $(TOOLCHAIN_CONFIG_FILE))") \
+  $(info according to the actual configuration of your system.) \
+  $(error Cannot continue))
+
+
+# # # # # # # # # # # # # # # # # # # # # # #
+
+# $1 : type of item 
+# $2 : items paths to check
+define ensure_exists_each
+$(foreach item, $(2), \
+    $(if $(wildcard $(item)),, $(warning Cannot find $(1) : $(item))))
+endef
+
+
+# $1 : target name
+# $2 : source file
+# $3 : object file
+define bind_object_with_src
+$(eval $(3)     :=  $(2))\
+$(eval $(3)_TGT :=  $(1))\
+$(eval $(3)     : Makefile | $(dir $(3)).)
+endef
+
+# $1 : target name
+# $2 : source file
+define get_object_file_name
+$(BUILD_DIR)/$(strip $(1))/$(notdir $(2:%.s=%.s.o)).o
+endef
+
+# $1 : target name
+# $2 : source file
+define get_object_file
+$(call ensure_exists_each, source file, $(2))\
+$(foreach src_file, $(2),\
+    $(eval obj_file:=$(call get_object_file_name, $(1), $(src_file)))\
+    $(eval DEPENDENCIES += $(obj_file:%.o=%.d))\
+    $(call bind_object_with_src, $(1), $(src_file), $(obj_file))\
+    $(obj_file)\
+    )
+endef
+
+# $1 : target name
+# $2 : inc folder
+define get_inc_path
+$(foreach inc, $(2), -I$(inc))
+endef
+
+
+# $1 : target name
+# $2 : flag
+define target_specifies
+$($(addsuffix _$(strip $(1)), $(2)))
+endef
+
+INC_PATHS=$(call target_specifies, $($@_TGT), INC_PATHS)
+
+
+# $1 : include folder
+# 
+define get_inc_paths
+$(call ensure_exists_each, include folder, $(1))\
+$(foreach inc, $(1), -I$(inc))
+endef
+
+
+# $1 : target name
+# $2 : output file
+define prepare_build
+$(eval DEPENDENCIES:=)\
+$(eval $(2) : $(call get_object_file, $(1),\
+    $(SRC_FILES) $(call target_specifies, $(1), SRC_FILES)))\
+$(eval -include $(DEPENDENCIES))\
+$(eval INC_PATHS_$(strip $(1)) := \
+	$(call get_inc_paths, \
+    	$(INC_FOLDERS) $(call target_specific, INC_FOLDERS, $(1))))
+endef
+
+# This is the main target
+# To build executable file
+# $1 : target name
+define define_target
+$(eval OUTPUT_FILE:=$(BUILD_DIR)/$(strip $(1)))\
+$(eval $(1) : $(OUTPUT_FILE).out $(OUTPUT_FILE).hex $(OUTPUT_FILE).bin\
+        ; @echo DONE $(1).)\
+$(call prepare_build, $(1), $(OUTPUT_FILE).out)
+endef
+
+# $1 : target name
+# $2 : library file name
+define define_library
+$(eval OUTPUT_FILE:=$(BUILD_DIR)/$(strip $(1)))\
+$(eval $(1) := $(2))\
+$(call prepare_build, $(1), $(1))
+endef
+
+
+.PHONY: $(TARGET_NAME) all re
+
+all: $(TARGET_NAME)
+
+clean:
+	$(NO_ECHO)$(RM) $(BUILD_DIR)
+
+re: clean $(TARGET_NAME)
+
+$(BUILD_DIR):
+	$(MK) $@
+$(BUILD_DIR)/%/.: | $(BUILD_DIR)
+	cd $(BUILD_DIR) && $(MK) $*
+
+
+# $1 : compiler
+# $2 : flag
+# $3 : script
+define run
+$(info $(call PROGRESS, $(3) file : $(notdir $($@))))\
+$(NO_ECHO) $(1) -MD -MP -c -o $@ $(2) $($@) $(INC_PATHS)
+endef
+
+%.c.o:
+	$(call run, $(CC), $(CCFLAGS), Compiling)
+
+%.s.o.o %.S.o:
+	$(call run, $(CC), $(ASMFLAG), Assembling)
+
+%.cpp.o:
+	$(call run, $(CC), $(CCFLAGS) $(CXFLAGS), Compiling)
+
+
+%.out:
+	$(info Link target : $@)
+	$(NO_ECHO)$(CC) $(LDFLAGS) $^ $(LIBS) -Wl,-Map=$(@:.out=.map) -o $@
+	$(NO_ECHO)$(SIZE) $@
+
+%.bin: %.out
+	$(info Preparing: $@)
+	$(NO_ECHO)$(OBJCOPY) -O binary $< $@
+
+%.hex: %.out
+	$(info Preparing: $@)	
+	$(NO_ECHO)$(OBJCOPY) -O ihex $< $@
+
+
+endif
+
+
+

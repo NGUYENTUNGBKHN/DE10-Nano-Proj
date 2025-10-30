@@ -1,0 +1,6 @@
+# Setting TOOLCHAIN_TUNG to environment variable your PC
+GNU_INSTALL_ROOT := $(TOOLCHAIN_TUNG)
+GNU_VERSION := 9.3.1
+GNU_PREFIX := arm-none-eabi
+
+
