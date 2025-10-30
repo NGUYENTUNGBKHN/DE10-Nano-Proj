@@ -1,0 +1,53 @@
+************************************************************************************************
+
+                    GR-USB/HOST# Host Controller modules for CycloneV
+                                         Release Notes
+                               Version 1.00     April 26, 2019
+
+************************************************************************************************
+[CONTENTS]
+
+------------------------------------------------------------------------------------------------
+File                        Version     Description
+------------------------------------------------------------------------------------------------
+relnote.txt
+
+\bus
+  grp_bus.c                 1.00        BUS I/O interface( not used )
+  grp_bus.h                 1.00        BUS I/O interface header file( not used )
+\cmem
+  grp_cmem.c                1.00        Common memory module
+  grp_cmem.h                1.00        Common memory module header file
+  grp_sys_mem.h             1.00        Definition file for GR-USB
+  grp_sys_mem_tbl.h         1.00        Local definition file for GR-USB
+  grp_usr_mem.h             1.00        Definition file for User application
+  grp_usr_mem_tbl.h         1.00        Local definition file for User application
+\ctr
+  grp_ctr.h                 1.00        Controller dependent function header file
+  grp_cyclonevh_com.c       1.00        Controller common function
+\hcd
+  grp_hcd_index.h           1.00        GR-USB Host controller index file
+  grp_hcdi.c                1.00        GR-USB Host controller driver initialize function
+  grp_cyclonevh.h           1.00        Controller common function header file
+  grp_cyclonevh_config.h    1.00        Driver configuration file
+  grp_cyclonevh_ctr.c       1.00        Host Controller Driver control module
+  grp_cyclonevh_debug.h     1.00        DBG_LOG module header file
+  grp_cyclonevh_hcd.c       1.00        Host Controller Driver function
+  grp_cyclonevh_mng.c       1.00        Host Controller Driver management module
+  grp_cyclonevh_rhb.c       1.00        Host Controller Driver RHUB module
+\target
+  ( No file in this folder )
+------------------------------------------------------------------------------------------------
+
+************************************************************************************************
+[HISTORY]
+
+------------------------------------------------------------------------------------------------
+Ver.1.00                                                                          April 26, 2019
+------------------------------------------------------------------------------------------------
+    - Created 1st release version. (based on GR-USB/HOST# for STM32Fx(OTG_HS) V1.01)
+
+
+************************************************************************************************
+                Copyright (c) 2019 GRAPE SYSTEMS INC. ALL RIGHTS RESERVED.
+************************************************************************************************

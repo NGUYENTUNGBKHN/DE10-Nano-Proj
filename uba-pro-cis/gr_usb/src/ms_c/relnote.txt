@@ -1,0 +1,87 @@
+************************************************************************************************
+
+                            GR-USB/HOST# Mass Storage Class Driver
+                                         Release Notes
+                               Version 1.02    December 7, 2015
+
+************************************************************************************************
+[CONTENTS]
+
+------------------------------------------------------------------------------------------------
+File                        Version     Description
+------------------------------------------------------------------------------------------------
+GR-USB HOST# MSC ユーザーズガイド.pdf
+
+\doc
+  GR-USB HOST# MSC API仕様書.pdf
+
+\src
+  \com
+    grp_msc.h               1.00        GR-USB/HOST# Mass Storage Class driver header file
+    grp_msc_config.h        1.02        GR-USB/HOST# Mass Storage Class driver configuration file
+    grp_msc_debug.h         1.00        header file for debug
+    grp_msc_drv.c           1.01        GR-USB/HOST# Mass Storage Class driver core module
+    grp_msc_drv.h           1.01        GR-USB/HOST# Mass Storage Class driver core module header file
+    grp_msc_local.h         1.00        local header file for MSC
+    grp_msc_wrap.c          1.00        GR-USB/HOST# Mass Storage Class driver wrapper module
+  \bot
+    grp_msc_bot.c           1.02        BOT protocol driver
+    grp_msc_bot.h           1.00        BOT protocol driver header file
+  \cbi
+    grp_msc_cbi.c           1.01        CBI protocol driver
+    grp_msc_cbi.h           1.00        CBI protocol driver header file
+  \atapi
+    grp_msc_atapi.c         1.00        ATAPI module
+    grp_msc_atapi.h         1.00        ATAPI module header file
+    grp_atapi_local.h       1.00        ATAPI module local header file
+  \scsi
+    grp_msc_scsi.c          1.00        SCSI module
+    grp_msc_scsi.h          1.00        SCSI module header file
+    grp_scsi_local.h        1.00        SCSI module local header file
+  \sff8070i
+    grp_msc_sff8070i.c      1.00        SFF8070i module
+    grp_msc_sff8070i.h      1.00        SFF8070i module header file
+    grp_sff8070i_local.h    1.00        SFF8070i module local header file
+  \ufi
+    grp_msc_ufi.c           1.00        UFI module
+    grp_msc_ufi.h           1.00        UFI module header file
+    grp_ufi_local.h         1.00        UFI module local header file
+
+\msctest
+  msctest.c                 ----        Sample program
+  msctest.h                 ----        Sample program header file
+------------------------------------------------------------------------------------------------
+
+************************************************************************************************
+[HISTORY]
+
+------------------------------------------------------------------------------------------------
+Ver.1.02                                                                       December  7, 2015
+------------------------------------------------------------------------------------------------
+    - Following files were updated.
+        - grp_msc_bot.c
+        - grp_msc_config.h
+
+------------------------------------------------------------------------------------------------
+Ver.1.01                                                                       October  31, 2008
+------------------------------------------------------------------------------------------------
+    - Following files were updated.
+        - grp_msc_drv.c
+        - grp_msc_drv.h
+        - grp_msc_bot.c
+        - grp_msc_cbi.c
+
+------------------------------------------------------------------------------------------------
+Ver.1.00                                                                          July  31, 2008
+------------------------------------------------------------------------------------------------
+    - Created 1st release version.
+
+------------------------------------------------------------------------------------------------
+Ver.0.90                                                                      December  28, 2007
+------------------------------------------------------------------------------------------------
+    - Created beta version.
+
+
+************************************************************************************************
+                Copyright (c) 2006-2015 GRAPE SYSTEMS INC. ALL RIGHTS RESERVED.
+************************************************************************************************

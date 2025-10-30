@@ -1,0 +1,121 @@
+************************************************************************************************
+
+                                   GR-USB/HOST# USB modules
+                                         Release Notes
+                              Version 1.08      January 19, 2018
+
+************************************************************************************************
+[CONTENTS]
+
+------------------------------------------------------------------------------------------------
+File                        Version     Description
+------------------------------------------------------------------------------------------------
+relnote.txt
+
+\common
+  grp_hcd.h                 1.01        GR-USB/HOST# host controller interface's header file
+  grp_mdl_id.h              1.08        GR-USB/HOST# module identifier file
+  grp_usbc.h                1.08        GR-USB/HOST# common header file
+  grp_usbc_anmly.c          1.08        GR-USB/HOST# anomaly function
+  grp_usbc_anmly.h          1.08        GR-USB/HOST# anomaly function header file
+  grp_usbc_cfg.h            1.08        GR-USB/HOST# configuration file
+  grp_usbc_dbg.c            1.08        GR-USB/HOST# debug module
+  grp_usbc_dbg.h            1.08        GR-USB/HOST# debug module header file
+  grp_usbc_drv.c            1.08        GR-USB/HOST# common function
+  grp_usbc_types.h          1.08        GR-USB/HOST# common type conversion definition file
+\cnf_sft
+  grp_cnfsft.c              1.08        GR-USB/HOST# configuring software module
+  grp_cnfsft.h              1.08        GR-USB/HOST# configuring software module header file
+  grp_cnfsft_cfg.c          1.08        GR-USB/HOST# configuring software module configuration file
+  grp_cnfsft_local.h        1.08        GR-USB/HOST# configuring software module local file
+\usbd
+  grp_usbd.c                1.08        GR-USB/HOST# USB driver
+  grp_usbd.h                1.08        GR-USB/HOST# USB driver header file
+  grp_usbd_local.h          1.08        GR-USB/HOST# USB driver local file
+------------------------------------------------------------------------------------------------
+
+************************************************************************************************
+[HISTORY]
+
+------------------------------------------------------------------------------------------------
+Ver.1.08                                                                        January 19, 2018
+------------------------------------------------------------------------------------------------
+    - Following files were updated.
+        - grp_mdl_id.h
+        - grp_usbc.h
+        - grp_usbc_anmly.c
+        - grp_usbc_anmly.h
+        - grp_usbc_cfg.h
+        - grp_usbc_dbg.c
+        - grp_usbc_dbg.h
+        - grp_usbc_drv.c
+        - grp_usbc_types.h
+        - grp_cnfsft.c
+        - grp_cnfsft.h
+        - grp_cnfsft_cfg.c
+        - grp_cnfsft_local.h
+        - grp_usbd.c
+        - grp_usbd.h
+        - grp_usbd_local.h
+
+------------------------------------------------------------------------------------------------
+Ver.1.07                                                                        December 7, 2015
+------------------------------------------------------------------------------------------------
+    - Following files were updated.
+        - grp_usbc_cfg.h
+
+------------------------------------------------------------------------------------------------
+Ver.1.06                                                                          March  7, 2014
+------------------------------------------------------------------------------------------------
+    - Following files were updated.
+        - grp_usbc_anmly.h
+
+------------------------------------------------------------------------------------------------
+Ver.1.05                                                                          July  12, 2013
+------------------------------------------------------------------------------------------------
+    - Following files were updated.
+        - grp_cnfsft.c
+
+------------------------------------------------------------------------------------------------
+Ver.1.04                                                                         April  19, 2013
+------------------------------------------------------------------------------------------------
+    - Following files were updated.
+        - grp_usbd.c
+
+------------------------------------------------------------------------------------------------
+Ver.1.03                                                                           May  17, 2011
+------------------------------------------------------------------------------------------------
+    - Following files were updated.
+        - grp_mdl_id.h
+
+------------------------------------------------------------------------------------------------
+Ver.1.02                                                                         April   2, 2009
+------------------------------------------------------------------------------------------------
+    - Following files were updated.
+        - grp_cnfsft.c
+        - grp_usbd.h
+
+------------------------------------------------------------------------------------------------
+Ver.1.01                                                                       October  31, 2008
+------------------------------------------------------------------------------------------------
+    - Following files were updated.
+        - grp_hcd.h
+        - grp_usbc_cfg.h
+        - grp_cnfsft.c
+        - grp_usbd.c
+        - grp_usbd.h
+
+------------------------------------------------------------------------------------------------
+Ver.1.00                                                                          July  29, 2008
+------------------------------------------------------------------------------------------------
+    - Created 1st release version.
+
+------------------------------------------------------------------------------------------------
+Ver.0.90                                                                      December  28, 2007
+------------------------------------------------------------------------------------------------
+    - Created beta version.
+
+
+************************************************************************************************
+                Copyright (c) 2006-2018 GRAPE SYSTEMS INC. ALL RIGHTS RESERVED.
+************************************************************************************************

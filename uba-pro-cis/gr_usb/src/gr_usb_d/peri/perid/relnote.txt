@@ -1,0 +1,205 @@
+*********************************************************************
+
+                   GR-USB/DEVICE Peripheral Driver
+                            Release Notes
+                     Version 1.43  June 24, 2014
+
+*********************************************************************
+[CONTENTS]
+
+---------------------------------------------------------------------
+File                Version     Description
+---------------------------------------------------------------------
+perid.c             1.42        User interface module
+perid.h             1.42        User interface module
+peri_ctl.c          1.42        Control transfer module
+peri_ctl.h          1.42        Control transfer module
+peri_cyc.c          1.42        Cyclic buffer module
+peri_cyc.h          1.42        Cyclic buffer module
+peri_prm.c          1.43        Parameter management module
+peri_prm.h          1.42        Parameter management module
+peri_sts.c          1.42        State control module
+peri_sts.h          1.42        State control module
+peri_trs.c          1.42        Transfer management module
+peri_trs.h          1.42        Transfer management module
+peri_hal.h          1.42        Hardware abstraction layer module
+---------------------------------------------------------------------
+
+*********************************************************************
+[HISTORY]
+---------------------------------------------------------------------
+Ver.1.43                                                June 24, 2014
+---------------------------------------------------------------------
+    - added check for NULL pointer when overriding Configuration Descriptor.
+
+Following file are updated.
+    peri_prm.c  - added check for NULL pointer when overriding 
+                  Configuration Descriptor.
+
+---------------------------------------------------------------------
+Ver.1.42                                                 Jan 21, 2008
+---------------------------------------------------------------------
+    - change of the condition for 0-len addition on reply to device request.
+
+Following file are updated.
+    peri_ctl.c  - change of the condition for 0-len addition
+                  on reply to device request.
+    the othres  - version was updated.
+
+---------------------------------------------------------------------
+Ver.1.41                                                June 12, 2007
+---------------------------------------------------------------------
+    - bmAttributes update timing was changed.
+
+Following file are updated.
+    peri_prm.c  - add the check for configuration descriptor number.
+    peri_ctl.c  - changed update process for internal state of bmAttributes.
+    the othres  - version was updated.
+
+---------------------------------------------------------------------
+Ver.1.40                                                 Mar 12, 2007
+---------------------------------------------------------------------
+    - added selector for fixed full-speed.
+
+Following file are updated.
+    perid.h     - added selector define
+    peri_ctl.c  - added the process of stall on FS for
+                     DEVICE_QUALIFIER_DESCRIPTOR
+                     OTHER_SPEED_CONFIGURATION_DESCRIPTOR
+    the othres  - version was updated.
+
+---------------------------------------------------------------------
+Ver.1.30                                                 Jan 24, 2007
+---------------------------------------------------------------------
+    - added code to support Media Transfer Protocol(MTP)
+    - added function for getting a Max Packet Size of specified Endpoint
+
+Following file are updated.
+    perid.c     - added two APIs
+    perid.h     - added prototypes of new APIs
+    peri_ctl.c  - added the process of the Microsoft OS Descriptor
+    peri_prm.c  - added the process of the Microsoft OS Descriptor
+    the othres  - version was updated.
+
+---------------------------------------------------------------------
+Ver.1.20                                                 Dec 27, 2006
+---------------------------------------------------------------------
+    - deleted state check for some illegal host
+
+Following file are updated.
+    perid.c     - deleted state check for some illegal host.
+    the othres  - version was updated.
+
+---------------------------------------------------------------------
+Ver.1.16                                                July 27, 2006
+---------------------------------------------------------------------
+    - modified alignment in stack variable
+
+Following file are updated.
+    peri_ctl.c  - modified alignment in stack variable
+
+---------------------------------------------------------------------
+Ver.1.15                                                 Nov 10, 2005
+---------------------------------------------------------------------
+    - Soume Bugfix
+
+Following file are updated.
+    perid.c     - Changed disconnection flow
+    peri_prm.c  - updated illegal comment
+    peri_prm.h  - chaged default value GRUSB_PRM_ORCDBS
+    peri_ctl.c  - bugfix for no process on non-OTG
+
+---------------------------------------------------------------------
+Ver.1.13                                                June 30, 2005
+---------------------------------------------------------------------
+    - Version Control
+
+All files are updated.
+
+---------------------------------------------------------------------
+Ver.1.12                                                April 8, 2005
+---------------------------------------------------------------------
+    - Support TEST MODE
+
+Following file are updated.
+    peri_ctl.c
+    peri_prm.c
+
+---------------------------------------------------------------------
+Ver.1.11h                                              March 18, 2005
+---------------------------------------------------------------------
+    - Support hybrid (Full/High-Speed).
+
+Following file are updated.
+    perid.h
+    peri_prm.c
+    peri_prm.h
+
+---------------------------------------------------------------------
+Ver.1.11                                               March 18, 2005
+---------------------------------------------------------------------
+    - Support below descriptors.
+        Device Qualifier Descriptor
+        Other Speed Configuration Descriptor
+
+Following file are updated.
+    perid.h
+    peri_ctl.c
+    peri_prm.c
+    peri_prm.h
+
+---------------------------------------------------------------------
+Ver.1.10                                                 May 12, 2004
+---------------------------------------------------------------------
+    - Add logging routine.
+
+Following file are updated.
+    perid.c
+    peri_ctl.c
+    peri_cyc.c
+    peri_prm.c
+    peri_sts.c
+    peri_trs.c
+    peri_sts.h
+
+---------------------------------------------------------------------
+Ver.1.03                                               April 23, 2004
+---------------------------------------------------------------------
+    - Process to the String descriptor is modified.
+
+Following file are updated.
+    peri_prm.c
+
+---------------------------------------------------------------------
+Ver.1.02                                                April 9, 2004
+---------------------------------------------------------------------
+    - New Functions are added.
+
+Following file are updated.
+    perid.c
+    peri_sts.c
+    peri_sts.h
+    peri_hal.h
+
+---------------------------------------------------------------------
+Ver.1.01                                            February 27, 2004
+---------------------------------------------------------------------
+    - To check null pointer is added.
+
+Following file are updated.
+    peri_ctl.c
+
+---------------------------------------------------------------------
+Ver.1.00                                                July 25, 2003
+---------------------------------------------------------------------
+    - Version 1.00.
+
+---------------------------------------------------------------------
+Ver.0.90                                               April 18, 2003
+---------------------------------------------------------------------
+    - Beta version.
+
+*********************************************************************
+   Copyright (c) 2002-2008 GRAPE SYSTEMS INC. ALL RIGHTS RESERVED.
+*********************************************************************
+

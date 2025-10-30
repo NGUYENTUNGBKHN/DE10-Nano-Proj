@@ -1,0 +1,120 @@
+/****************************************************************************/
+/*                                                                          */
+/*                   Copyright(C) 2021 Grape Systems, Inc.                  */
+/*                            All Rights Reserved                           */
+/*                                                                          */
+/* This software is furnished under a license and may be used and copied    */
+/* only in accordance with the terms of such license and with the inclusion */
+/* of the above copyright notice. No title to and ownership of the software */
+/* is transferred.                                                          */
+/* Grape Systems Inc. makes no representation or warranties with respect to */
+/* the performance of this computer program, and specifically disclaims any */
+/* responsibility for any damages, special or consequential, connected with */
+/* the use of this program.                                                 */
+/*                                                                          */
+/****************************************************************************/
+/****************************************************************************/
+/*                                                                          */
+/* FILE NAME                                                    VERSION     */
+/*                                                                          */
+/*      com_custom_cnf.h                                          1.00      */
+/*                                                                          */
+/* DESCRIPTION:                                                             */
+/*                                                                          */
+/*      This file performs Abstract Control Model of Communication Device   */
+/*      Class. (Custom version with multiple COM ports.)                    */
+/*      Based on GR-USB/DEVICE Communication Function Driver V1.42.         */
+/*      (User dependence)                                                   */
+/*                                                                          */
+/* HISTORY                                                                  */
+/*                                                                          */
+/*   NAME        DATE        REMARKS                                        */
+/*                                                                          */
+/*   T.Yamaguchi 2021/09/08  V1.00                                          */
+/*                           Created initial version                        */
+/*                                                                          */
+/****************************************************************************/
+#ifndef     _COM_CUSTOM_CNF_H_
+#define     _COM_CUSTOM_CNF_H_
+
+/**** INTERNAL DATA DEFINES *************************************************/
+/*----- Device Descriptor informations -----*/
+/* The release number of USB specification */
+#define GRCOMD_CUSTOM_CNF_USB_MSB           (0x02)  /* bcdUSB               */
+#define GRCOMD_CUSTOM_CNF_USB_LSB           (0x00)  /* Version 2.00         */
+/* Vender ID */
+#define GRCOMD_CUSTOM_CNF_VID_MSB           (0x24)  /* idVendor             */
+#define GRCOMD_CUSTOM_CNF_VID_LSB           (0x75)  /* vendor ID 0x2475     */
+#if 0
+/* Product ID(USB:0) */
+#define GRCOMD_CUSTOM_CNF_PID_MSB           (0x01)  /* idProduct            */
+#define GRCOMD_CUSTOM_CNF_PID_LSB           (0x17)  /* product ID 0x0117    */
+/* Product ID(USB:1) */
+#define GRCOMD_CUSTOM_CNF_PID_MSB2          (0x01)  /* idProduct            */
+#define GRCOMD_CUSTOM_CNF_PID_LSB2          (0x18)  /* product ID 0x0118    */
+/* Product ID(USB:0) */
+#define GRCOMD_CUSTOM_CNF_PID_MSB           (0x01)  /* idProduct            */
+#define GRCOMD_CUSTOM_CNF_PID_LSB           (0x19)  /* product ID 0x0119    */
+/* Product ID(USB:1) */
+#define GRCOMD_CUSTOM_CNF_PID_MSB2          (0x01)  /* idProduct            */
+#define GRCOMD_CUSTOM_CNF_PID_LSB2          (0x1A)  /* product ID 0x011A    */
+#endif
+/* The release number of a device */
+#define GRCOMD_CUSTOM_CNF_DEV_MSB           (0x01)  /* bcdDevice            */
+#define GRCOMD_CUSTOM_CNF_DEV_LSB           (0x00)  /* version 1.00         */
+/* Index of String Descriptor */
+#define GRCOMD_CUSTOM_CNF_MANUFACTURER      (0x01)  /* iManufactuer         */
+#define GRCOMD_CUSTOM_CNF_PRODUCT           (0x02)  /* iProduct             */
+#define GRCOMD_CUSTOM_CNF_SERIALNUMBER      (0x03)  /* iSerialNumber        */
+
+/*----- Configuration Descriptor informations -----*/
+/* Configuration of attributes */
+#define GRCOMD_CUSTOM_CNF_ATTRIBUTES        (0xC0)      /* bmAttributes     */
+/* Maximum bus power consumption */
+#define GRCOMD_CUSTOM_CNF_MAXPOWER          (0x32)      /* bMaxPower        */
+
+/*----- Endpoint Descriptor informations -----*/
+/* Polling interval (for Interrupt In Endpoint) */
+/* for Full Speed */
+#define GRCOMD_CUSTOM_CNF_INTERVAL_INTERRUPT_FS    (0x20)  /* bInterval */
+/* for High Speed */
+#define GRCOMD_CUSTOM_CNF_INTERVAL_INTERRUPT_HS    (0x09)  /* bInterval */
+/* Interrupt In Endpoint maxpacket size */
+/* for Full Speed */
+#define GRCOMD_CUSTOM_CNF_INT_IN_MAXPKTSIZE_L_FS   (0x08)  /* wMaxPacketSize(Low-Byte)  */  /* V1.22 */
+#define GRCOMD_CUSTOM_CNF_INT_IN_MAXPKTSIZE_H_FS   (0x00)  /* wMaxPacketSize(High-Byte) */
+/* for High Speed */
+#define GRCOMD_CUSTOM_CNF_INT_IN_MAXPKTSIZE_L_HS   (0x20)  /* wMaxPacketSize(Low-Byte)  */
+#define GRCOMD_CUSTOM_CNF_INT_IN_MAXPKTSIZE_H_HS   (0x00)  /* wMaxPacketSize(High-Byte) */
+/* Bulk Out Endpoint maxpacket size */
+/* for Full Speed */
+#define GRCOMD_CUSTOM_CNF_OUT_MAXPKTSIZE_L_FS      (0x40)  /* wMaxPacketSize(Low-Byte)  */
+#define GRCOMD_CUSTOM_CNF_OUT_MAXPKTSIZE_H_FS      (0x00)  /* wMaxPacketSize(High-Byte) */
+/* for High Speed */
+#define GRCOMD_CUSTOM_CNF_OUT_MAXPKTSIZE_L_HS      (0x00)  /* wMaxPacketSize(Low-Byte)  */
+#define GRCOMD_CUSTOM_CNF_OUT_MAXPKTSIZE_H_HS      (0x02)  /* wMaxPacketSize(High-Byte) */
+/* Bulk In Endpoint maxpacket size */
+/* for Full Speed */
+#define GRCOMD_CUSTOM_CNF_IN_MAXPKTSIZE_L_FS       (0x40)  /* wMaxPacketSize(Low-Byte)  */
+#define GRCOMD_CUSTOM_CNF_IN_MAXPKTSIZE_H_FS       (0x00)  /* wMaxPacketSize(High-Byte) */
+/* for High Speed */
+#define GRCOMD_CUSTOM_CNF_IN_MAXPKTSIZE_L_HS       (0x00)  /* wMaxPacketSize(Low-Byte)  */
+#define GRCOMD_CUSTOM_CNF_IN_MAXPKTSIZE_H_HS       (0x02)  /* wMaxPacketSize(High-Byte) */
+
+/*----- Header Functional Descriptor informations -----*/
+/* USB Class Definitions for Communication Devices Specification release number */
+#define GRCOMD_CUSTOM_CNF_HF_CDC_MSB           (0x01)      /* bcdCDC               */
+#define GRCOMD_CUSTOM_CNF_HF_CDC_LSB           (0x10)      /* version 1.10         */
+
+/*----- Call Management Functional Descriptor informations -----*/
+/* Capabilities that this configuration supports */
+#define GRCOMD_CUSTOM_CNF_CMF_CAPABILITIES     (0x03)      /* bmCapabilities       */
+/* Interface number of Data Class interface */
+#define GRCOMD_CUSTOM_CNF_CMF_DATAIF           (0x01)      /* bDataInterface       */
+#define GRCOMD_CUSTOM_CNF_CMF_DATAIF3          (0x03)      /* bDataInterface       */
+
+/*----- Abstract Control Management Functional Descriptor informations -----*/
+/* Capabilities that this configuration supports */
+#define GRCOMD_CUSTOM_CNF_ACMF_CAPABILITIES    (0x0F)      /* bmCapabilities       */
+
+#endif  /* _COM_CUSTOM_CNF_H_ */

@@ -1,0 +1,296 @@
+　GR-FILE Version 1.11h から Version 1.20 へのバージョンアップについて
+
+　本書は、GR-FILEの Version 1.11h から Version 1.20 へのバージョンアップに
+よる、機能の改善点、不具合の修正点を記述します。
+
+１：機能の改善
+　　　GR-FILEの機能のうち、改善を行った部分の内容と修正点を説明します。
+
+　　（１）リードオンリーマウント時のフリークラスタ検索の簡易化
+　　　　　GR-FILEは、マウント時に空きクラスタ数を算出する為に、FATのフリー
+　　　　クラスタを検索します。
+　　　　　その為、メディアの状態によっては、FATの全領域を読み込む事になり、
+　　　　時間が掛かっていました。
+　　　　　特にFAT32では、FATのサイズが大きくなる為、マウントに要する時間が
+　　　　長くなっていました。
+　　　　
+　　　　　そこで、リードオンリーマウント時に下記条件に当たる場合は、FSINFO
+　　　　のフリークラスタ数情報を用いる事とし、フリークラスタの検索を行わな
+　　　　いように改善しています。
+　　　　　
+　　　　　条件：
+　　　　　　・FAT32ファイルシステム
+　　　　　　・マウント方法が、リードオンリー
+　　　　　　・FSINFOに含まれる、Free cluster count、および、Next free
+　　　　　　　cluster情報が使用可能
+　　　　　
+　　　　　修正箇所：
+　　　　　　ファイル名：fat.c
+　　　　　　関数名　　：_fat_get_free_cache()
+　　　　　　　★の行を追加
+　　　　　
+              /****************************************************/
+              /* if free block count is less than or equal 0, and */
+              /* full free check has been made, do nothing        */
+              /****************************************************/
+              ptBPB = ptFs->pvFsInfo;                          /* BPB information */
+              if (ptFs->uiFsFreeBlk <= 0                       /* no free block left */
+                  && (ptBPB->uiStatus & FAT_STAT_FREE_CHKED))  /* fully checked */
+                  return(0);                                   /* do nothing */
+
+          ★  /****************************************************/
+          ★  /* if mount mode is GRP_FS_STAT_RONLY and succeed   */
+          ★  /* in reading of FSINFO then return                 */
+          ★  /****************************************************/
+          ★  if( (GRP_FS_STAT_RONLY == ptFs->usStatus) &&     /* read only mount */
+          ★      (FAT_TYPE_32 == ptBPB->iFsType) &&           /* FAT32 file system */
+          ★      (FAT_FI_NOHINT != ptFs->uiFsFreeBlk) &&      /* free block info valid */
+          ★      (FAT_FI_NOHINT != ptBPB->uiNextFree) ){      /* next free info valid */
+          ★      return(0);                                   /* do nothing */
+          ★  }
+
+              /****************************************************/
+              /* allocate special I/O buffer in case of no hint   */
+              /* at mount if possible                             */
+              /****************************************************/
+
+　　（２）リードオンリーマウント時の強制マウントフラグ以外のフラグクリア
+　　　　　GR-FILEでは、マウント時にキャッシュの反映方法などのマウントモード
+　　　　を指定できます。
+　　　　　マウントモードに、リードオンリーを指定した場合は、一切の書き込みが
+　　　　出来なくなりますので、書き込みに関する設定は必要なくなります。
+　　　　　ですが、マウントモードで指定された機能は、内部的に呼び出され、資源
+　　　　を使用していました。
+　　　　　マウント時にリードオンリーが指定されていた場合には、強制マウント
+　　　　以外のマウントモードをクリアすることで、不要な処理を行わなくする様に
+　　　　改善しました。
+　　　　　
+　　　　　修正箇所：
+　　　　　　ファイル名：grp_fs.c
+　　　　　　関数名　　：grp_fs_mount()
+　　　　　　　★の行を追加
+　　　　　
+              /****************************************************/
+              /* check free FS information                        */
+              /****************************************************/
+              if (ptFsCtl->ptFsFree == NULL) {                          /* no free FS info */
+                  iRet = GRP_FS_ERR_TOO_MANY;                           /* too many */
+                  goto err_out;                                         /* return error */
+              }
+              ptFs = ptFsCtl->ptFsFree;                                 /* get free FS info */
+              ptFsCtl->ptFsFree = ptFs->ptFsOtherFwd;                   /* remove from free list */
+              ptFs->iDev = iDev;                                        /* set device number */
+          ★  if (iMode & GRP_FS_RONLY) {                               /* read only mount */
+          ★      iMode &= (GRP_FS_RONLY | GRP_FS_FORCE_MOUNT);         /* reset flags */
+          ★  }
+              ptFs->usStatus = (grp_ushort_t)((iMode & GRP_FS_RONLY)?
+                                                GRP_FS_STAT_RONLY: 0);  /* set status */
+
+　　（３）ボリュームラベルのNULL終端処理
+　　　　　GR-FILEでは、メディアをフォーマットする際のパラメータとして、
+　　　　ボリュームラベルを指定出来ます。
+　　　　　ボリュームラベルの指定方法として、11バイトの文字列を指定する事が
+　　　　出来ますが、従来まではNULL終端が出来ませんでした。
+　　　　　更に、11バイトに満たない場合は、スペースで埋める必要がありました。
+　　　　　そこで、11バイト中にNULL文字('\0')を見つけた場合は、以降の領域に
+　　　　スペースを埋める処理を追加しました。
+　　　　　ただし、ボリュームラベルの領域は、11バイトのままですので、11文字の
+　　　　ボリュームラベルを指定する際は、NULL終端が出来ない事に注意下さい。
+　　　　　
+　　　　　修正箇所：
+　　　　　　ファイル名：grp_fat_format.c
+　　　　　　関数名　　：_fat_conv_vol_label()
+　　　　　　　★の行を追加
+　　　　　　
+              for (pc = " .$%'-_@~`!(){}^#&"; *pc && *pc != (char)iChar; pc++);
+          ★  if (*pc == 0) {                         /* not found */
+          ★      if ('\0' == iChar) {                /* null terminate found */
+          ★          for (; pucChar < pucEnd; pucChar++) {
+          ★              *pucChar = ' ';             /* fill space */
+          ★          }
+          ★          break;
+          ★      } else {
+          ★          return(GRP_FS_ERR_BAD_PARAM);   /* return error */
+          ★      }
+          ★  }
+
+　　（４）FAT32のFATの上位4ビットを無視
+　　　　　FAT32の仕様では、FATの上位4ビットは予約領域として無視する必要が
+　　　　ありました。
+　　　　　また、上位4ビットは元の状態を維持する必要がありました。
+　　　　　これまでは、FATの上位4ビットも含め、FATとして扱っていた為、上位
+　　　　4ビットがセットされていた場合にエラーとなっていました。
+　　　　　そこで、FATの読み込み時に上位4ビットをマスクし、書き込み時は元の
+　　　　上位4ビットとマージをするように処理を追加しました。
+　　　　　また、フリークラスタの検索時も、FATの上位4ビットを無視するように
+　　　　変更しました。
+
+　　　　　修正箇所：
+　　　　　　ファイル名：fat.c
+　　　　　　関数名　　：_fat_get_fat
+　　　　　　　★の行を追加
+　　　　　　　
+              if (ptBPB->iFsType != FAT_TYPE_12) {              /* FAT16/32 */
+                  pucFat = &pucStFat[(ptBPB->iFsType == FAT_TYPE_32)? 3: 1]; /* end FAT */
+                  uiFatVal = 0;                                 /* set initial value */
+                  while (pucFat >= pucStFat)                    /* loop by FAT size */
+                      uiFatVal = (uiFatVal << 8) + *pucFat--;   /* compute value */
+          ★      if ((ptBPB->iFsType == FAT_TYPE_32)           /* FAT32 */
+          ★          && (2 <= uiCluster))                      /* cluster more than 2 */
+          ★          uiFatVal &= 0x0fffffff;                   /* mask reserve 4bits */
+
+　　　　　　ファイル名：fat.c
+　　　　　　関数名　　：_fat_set_fatn
+　　　　　　　★の行を追加
+　　　　　　　
+              if (ptBPB->iFsType != FAT_TYPE_12) {              /* FAT16/32 */
+                  pucEndFat = &pucStFat[(ptBPB->iFsType == FAT_TYPE_32)? 3: 1];
+                                                                /* end FAT */
+                  uiPrevVal = 0;                                /* set initial value */
+                  for (pucFat = pucEndFat; pucFat >= pucStFat; )
+                      uiPrevVal = (uiPrevVal << 8) + *pucFat--; /* get previous value */
+          ★      if ((ptBPB->iFsType == FAT_TYPE_32)           /* FAT32 */
+          ★          && (2 <= uiCluster)){                     /* cluster more than 2 */
+          ★          grp_uint32_t uiWorkVal = uiPrevVal;
+          ★          uiFatVal  &= 0x0fffffff;                  /* mask reserve 4 bits */
+          ★          uiWorkVal &= 0xf0000000;                  /* mask fat 28 bits */
+          ★          uiFatVal  |= uiWorkVal;                   /* merge reserve 4bits */
+          ★          uiPrevVal &= 0x0fffffff;                  /* mask reserve 4bits */
+          ★      }
+                  for (pucFat = pucStFat; pucFat <= pucEndFat; ) {
+                      *pucFat++ = (grp_uchar_t)(uiFatVal & 0xff); /* set new value */
+                      uiFatVal >>= 8;                           /* shift 1 byte */
+                  }
+
+　　　　　　ファイル名：fat.c
+　　　　　　関数名　　：_fat_get_free_cache
+　　　　　　　★の行を追加
+　　　　　　　
+              default:                                          /* FAT32 */
+                  uiFat = (((grp_uint32_t)pucBp[3] << 24)
+                          | ((grp_uint32_t)pucBp[2] << 16)
+                          | ((grp_uint32_t)pucBp[1] << 8)
+                          | pucBp[0]);                          /* get 32 bits FAT */
+          ★      uiFat &= 0x0fffffff;                          /* mask reserve 4bits */
+                  pucBp += 4;                                   /* advance to next */
+                  break;
+              }
+
+
+２：バグ修正
+　　　GR-FILE Version 1.11h で発見されたバグの修正を行いました。
+
+　　（１）フリークラスタ検索時の物理セクタ長≠論理セクタ長による不具合
+　　　　　GR-FILEは、マウント時にフリークラスタのキャッシュリストを作成する
+　　　　ために、FATを読み込みます。
+　　　　　その際に、メディアの物理セクタ長とBPBに書かれている論理セクタ長が
+　　　　異なる場合に、正しいデータへアクセスできませんでした。
+　　　　　これを修正しています。
+　　　　　
+　　　　　修正箇所：
+　　　　　　ファイル名：fat.c
+　　　　　　関数名　　：_fat_get_free_cache()
+　　　　　　　★の行を追加/修正
+　　　　　　
+              /****************************************************/
+              /* search free FATs, and set them in cache           */
+              /****************************************************/
+              for (uiSchCnt = 2; uiSchCnt < uiMaxClst; ) {
+                  if (pucBp >= pucEndp) {                     /* end of buffer */
+                      if (tBio.ptBuf)                         /* cache buffer exists */
+                          grp_fs_unref_buf(&tBio);            /* release cached buffer */
+                          if (pucBuf) {                       /* exist special I/O buffer */
+                              iSec = (grp_int32_t)(uiEndSec - uiNextSec);
+          ★                                                  /* # of logical setors to end */
+                              if (iSec > iBufSec)             /* over buffer */
+                                        iSec = iBufSec;       /* adjust to buffer size */
+          ★                  iSec <<= (ptBPB->iByteSecShift - (int)ptFs->ucDevBlkShift);
+          ★                                                  /* convert to device sectors */
+                              iIoCnt = grp_fs_exec_dev_io(ptFs, uiFBlk, pucBuf, iSec,
+                                                          GRP_FS_IO_READ, GRP_FS_BUF_FILE);
+                              if (iIoCnt != iSec) {           /* read error */
+                                  if (iIoCnt >= 0)            /* not error number */
+                                      iRet = GRP_FS_ERR_IO;   /* set I/O error */
+                                  else                        /* error number */
+                                      iRet = (int)iIoCnt;     /* use it as return value */
+                                  goto out;                   /* return error */
+                              }
+          ★                  iIoCnt >>= (ptBPB->iByteSecShift - (int)ptFs->ucDevBlkShift);
+          ★                                                  /* convert to logical sectors */
+                              pucBp = &pucBuf[uiOff];         /* set buffer pointer */
+
+　　（２）親クラスタがクラスタループ時の無限ループバグ
+　　　　　GR-FILEは、サブディレクトリ内より、親ディレクトリを参照する際に、
+　　　　ディレクトリエントリ中の「..」エントリを参照し、親ディレクトリの
+　　　　クラスタ番号を取得します。
+　　　　　その後、親ディレクトリより、自分のディレクトリエントリを検索し
+　　　　ます。
+　　　　　この時、親ディレクトリがクラスタループを構成していた場合に、自分
+　　　　のエントリを見つけられない場合は、無限ループを起こしていました。
+　　　　　これを修正しています。
+　　　　　
+　　　　　修正箇所：
+　　　　　　ファイル名：fat.c
+　　　　　　関数名　　：_fat_lookup_dotdot()
+　　　　　　　★の行を追加
+　　　　　　
+                    iLong = 0;                                  /* not in long entry */
+          ★        /****************************************************/
+          ★        /* check max offset                                 */
+          ★        /****************************************************/
+          ★        if( (0x80000000 <= uiOff) ||
+          ★            (ptBPB->uiBadC <= FAT_CLST(ptBPB, uiOff)) ){
+          ★            goto fs_err_out;
+          ★        }
+          ★        /****************************************************/
+          ★        /* check interrupt request                          */
+          ★        /****************************************************/
+          ★        if(fat_interrupt_lookup &&
+          ★            (0 != (iRet = fat_interrupt_lookup(
+          ★                          ptFs->iDev, uiParentFid, uiOff))) ){
+          ★            goto err_out;
+          ★        }
+                }
+                _fat_clean_unref_buf(&tBio);                    /* release buffer */
+
+　　（３）同一メディアチェックでセクタ長が異なるデバイスの挿抜による不具合
+　　　　　誤挿抜時のデバイス同一チェックにおいて、先に挿入されていた
+　　　　デバイスの物理セクタ長より大きなデバイスを挿入すると、リードバッファ
+　　　　以上のデータを読み込み、メモリ破壊を起こしていました。
+　　　　　これは、誤挿抜時は先に挿入されていたデバイスのセクタ長を保持して
+　　　　おり、このセクタ長を使用してバッファを確保していました。
+　　　　　その為、後から挿入されたデバイスのセクタ長が大きい場合、バッファ
+　　　　サイズ以上のデータを読み込み、メモリ破壊を起こしていました。
+　　　　　これを修正しています。
+　　　　　
+　　　　　修正箇所：
+　　　　　　ファイル名：fat.c
+　　　　　　関数名　　：_fat_check_volume()
+　　　　　　　★の行を追加
+　　　　　　
+                /****************************************************/
+                /* open device if necessary                         */
+                /****************************************************/
+                if (ptFs == NULL) {                         /* not opened */
+                    iRet = ptDev->ptOp->pfnOpen(iDev, 0,
+                                        &iDevHdl, &uiDevOff,
+                                        &uiDevSize, &iBlkShift);/* open device */
+                    if (iRet < 0)                           /* open error */
+                        return(iRet);                       /* return error */
+                } else {                                    /* already opened */
+          ★        iRet = ptDev->ptOp->pfnOpen(iDev, 0,
+          ★                            &iDevHdl, &uiDevOff,
+          ★                            &uiDevSize, &iBlkShift);/* open device */
+          ★        if (iRet < 0)                           /* open error */
+          ★            return(iRet);                       /* return error */
+          ★        ptDevOp->pfnClose(iDevHdl, iDev);       /* close device */
+          ★        if ( (uiDevOff  != ptFs->uiDevOff ) ||  /* check parameter */
+          ★             (uiDevSize != ptFs->uiDevSize) ||
+          ★             (iBlkShift != (int)ptFs->ucDevBlkShift) )
+          ★            return(GRP_FS_ERR_BAD_DEV);         /* return error */
+                    iDevHdl = ptFs->iDevHandle;             /* device handle */
+                    uiDevOff = ptFs->uiDevOff,              /* start offset */
+                    iBlkShift = (int)ptFs->ucDevBlkShift;   /* block shift */
+                }
+
+以上

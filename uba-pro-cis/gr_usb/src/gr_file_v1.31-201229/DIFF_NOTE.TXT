@@ -1,0 +1,780 @@
+Version 1.00a
+2003/12/19      fat.c                   - Deleted debug option code
+2003/12/19      grp_fs_if.h             - Deleted backspace miss-inserted at making
+                                          release file
+2003/12/19      grp_mem_vl_pool.c       - Deleted debug option code
+2003/12/19      grp_mem_vl_pool.c       - Added missing new line in a comment
+
+Version 1.10
+2004/06/14      grp_fs_disk_part.c      - Changed partition-less judgement from BootSIG
+                                          to jump instruction of BPB
+                grp_fs_disk_part.h      - Added partition-less judgement macro by
+                                          jump instruction of BPB
+2004/06/14      grp_fs.[ch]             - Added file name cache function
+                fat.[ch]                - Added iPurge parameter for match_comp function
+                                        - Optimized file creation sequence
+                grp_fs_cfg.[ch]         - Added config value for fine name cache
+2004/07/25      grp_fs.c                - Changed grp_fs_lookup_dev to support sub-
+                                          device id and partition
+                                        - Added grp_fs_check_dev_busy and _grp_fs_check_
+                                          mnt_dev_busy
+                                        - Added lock/unlock media at mount/umount
+                                        - Added GRP_FS_NO_UPD_ACCTIME processing
+                                        - Added GRP_FS_NO_MNT_FLAG processing
+                                        - Changed constant GRP_FS_MAX_DEV to a variable
+                                          grp_fs_dev_tbl_cnt
+                                        - Added GRP_FS_NO_CRT_ACCTIME processing
+                grp_fs.h                - Added grp_fs_check_dev_busy
+                                        - Added GRP_FS_STAT_NO_UPD_ACCTIME
+                                        - Added GRP_FS_STAT_NO_MNT_FLAG
+                                        - Added GRP_FS_STAT_NO_CRT_ACCTIME
+                grp_fs_if.h             - Added GRP_FS_NO_UPD_ACCTIME
+                                        - Added GRP_FS_NO_MNT_FLAG
+                                        - Added GRP_FS_NO_CRT_ACCTIME
+                fat.c                   - Added GRP_FS_NO_MNT_FLAG processing
+                                        - Added GRP_FS_NO_UPD_ACCTIME processing
+                                        - Added GRP_FS_NO_CRT_ACCTIME processing
+                                        - Added init at mount to fix non init
+                                          sequence at create without lookup
+                                        - Added purge data cache at mount not to get
+                                          data for previous device
+                                        - Fixed read error in _fat_check_volume for
+                                          sector size bigger than 512
+                                        - Added GRP_FS_FAT_CACHE_BY_GET_DIRENT option
+                                          for name lookup caching
+                fat.h                   - Added FAT_MEDIA_2HD/2DD macros
+                                        - Added GRP_FS_FAT_CACHE_BY_GET_DIRENT option
+                                          for name lookup caching
+                grp_fs_cfg.c            - Added grp_fs_dev_tbl_cnt variable
+                grp_fs_cfg.h            - Added device ioctl function
+                                        - Added sub_id/partition for device id
+                                        - Moved device number macros to grp_fs_dev_io
+                                          _if.h
+                                        - Changed default value for caching parameters
+                                          GRP_FS_FBLK_SHIFT, GRP_FS_DBLK_SHIFT, 
+                                          GRP_FS_DBLK_CNT
+                                        - Deleted GRP_FS_MAX_DEV and added grp_fs_dev_
+                                          tbl_cnt instead
+                grp_fs_dev_io_if.[ch]   - Created for direct device I/O
+                grp_fs_io_disk_part.c   - Created for read/write partition table
+                grp_fs_set_disk_part.c  - Created for set partition table
+                grp_fs_get_disk_part.c  - Renamed from grp_fs_disk_part.c
+                grp_fs_disk_part.h      - Added grp_fs_set/read/write_part
+                                        - Added grp_fs_default_part_type
+                                        - Moved to grp_include directory
+                grp_fat_format.[ch]     - Created for format media function
+                fat_format_def.h        - Created for format media function
+                grp_fat_format_sd.[ch]  - Created for format SD card
+                grp_fs_dev_io_ram.[ch]  - Created for RAM disk support
+                grp_fs_readdir.[ch]     - Created for opendir/readdir/closedir support
+                grp_fs_dev_io_tk.c      - Added sub-device id and raw partition handling
+                                        - Changed GRP_FS_MAX_DEV to grp_fs_dev_tbl_cnt
+                grp_fs_dev_io_grusb.c   - Added sub-device id and raw partition
+                                          handling
+
+Version 1.10a
+2004/10/29	fat.c			- Fixed bug not updating directory entry
+					  cache at close time for GRP_FS_FAT_CACHE_
+					  BY_GET_DIRENT option
+		grp_fat_format.c	- Fixed bug returning 0 instead of FAT type
+					  type number by grp_fat_format
+		grp_fat_format_sd.c	- Fixed bug incorrectly checking return value
+					  value from grp_fat_format
+2004/11/12	grp_fat_format.c	- Fixed clearing over to reserved area
+					  in setting backup boot sector number
+		fat.c			- Fixed matching volume label and 0 length
+					  string by mistake by GRP_FS_FAT_CACHE_BY_
+					  GET_DIRENT option
+
+Version 1.11
+2004/11/28	fat.c			- Fixed a bug in case of file cache block size
+					  is greater than data offset
+		grp_fat_format.h	- Changed counts GRP_FAT_12_ROOT_CNT and
+					  GRP_FAT_16_ROOT_CNT	
+2004/11/30	fat.c			- Fixed bug for improperly handling error from
+					  _fat_alloc_open_info at _fat_get_dirent
+					- Changed free list of open information	from
+					  mount private to global
+		fat.h			- Deleted FAT_MAX_OPEN and ptOpenFree field of
+					  fat_BPB_t
+		grp_fs.c		- Fixed bug not checking invalid current
+					  directory at grp_fs_chdir
+2004/12/07	fat.c			- Changed implementation of _fat_get_free_cache
+					  for fast FAT lookup
+					- Added grp_fs_fat_cnt_buf_sz for fast free FAT
+					  lookup at mount time
+					- Added buffer kind parameter to grp_fs_exec_dev_io
+					  for new _fat_get_free_cache
+					- Added GRP_FS_FAT_NO_DIR_SIZE_INFO option
+					  not to set size information by _fat_get_dirent
+		fat.h			- Added FAT_CNT_BUF_SZ for fast counting of free
+			 		  FATs at mount
+		grp_fs.c		- Added buffer kind parameter to grp_fs_exec_dev_io						  
+		grp_fs.h		- Added buffer kind parameter to grp_fs_exec_dev_io							  
+		grp_mem_vl_pool.c	- Fixed bug setting initial semaphore value with
+					  pool id
+		grp_sem.c		- Fixed bug no cast for pcName parameter of
+					  tx_semaphore_create
+					- Fixed spell miss of THREADX ifdef
+2004/12/20	fat.c			- Fixed bug for infinite loop with a file name
+					  with space
+
+Version 1.11a
+2004/12/24	fat.c			- Fixed bug of not complying treatment of size 0
+					  file; this bug fix needed wide-range of
+					  additions and modifications:
+					    <added functions>
+					      _fat_lookup_size0_file, _fat_deque_size0_list,
+					      _fat_set_1st_cluster, _fat_free_1st_cluster,
+					      _fat_update_fname_cache, _fat_update_attr  
+					    <added variables>
+					      grp_fs_fat_open_ctl
+					    <modified functions>
+					      _fat_init_free_open_info, _fat_alloc_open_info,
+					      _fat_free_open_info, _fat_phys_cluster,
+					      _fat_get_free_cluster, _fat_count_cont_blk,
+					      _fat_direct_io, _fat_write, _fat_get_next_dir_ent,
+					      _fat_open_root, _fat_match_comp, _fat_close,
+					      _fat_write_directory, _fat_create_rename_file,
+					      _fat_unlink, _fat get_attr, _fat_truncate,
+					      _fat_get_dirent
+					- Added and exported init function grp_fs_fat_init
+		fat.h			- Added fat_open_info_ctl structure, some fields
+					  to fat_open_info structure, some macros for
+					  treating size 0 files, and modified FAT_EOF_CLST
+					  constant to fix bug of not complying treatment of
+					  size 0 file
+		grp_fs.c		- Added grp_fs_change_fid and grp_fs_block/unblock_
+					  file_op_by_id, and modified grp_fs_block_file_op
+					  to fix bug of not complying treatment of size 0 file
+		grp_fs.h		- Added grp_fs_change_fid, grp_fs_block/unblock_
+					  file_op_by_id, and GRP_FS_STAT_BUSY_FID/
+					  GRP_FS_STAT_WAIT_BUSY_FID to fix bug of not
+					  complying treatment of size 0 file
+
+Version 1.11b
+2005/02/10	fat.c			- Added type casts and changed variable return
+					  types of some functions for 16 bit CPU support
+					- Changed type of valid character table for 16
+					  bit CPU support
+		fat.h			- Added type casts for 16 bit CPU support
+					- Changed macros to check valid character for
+					  16 bit CPU support
+		grp_fs.c		- Changed return types of grp_fs_read,
+					  grp_fs_write, grp_fs_get_error,
+					  grp_fs_read_buf and grp_fs_write_buf for
+					  16 bit CPU support
+					- Added type casts and changed types of some
+					  variables for 16 bit CPU support
+		grp_fs.h		- Changed return types of grp_fs_read_buf and
+					  grp_fs_write_buf for 16 bit CPU
+		grp_fs_mdep_if[_xxx].c	- Changed return type of grp_fs_copyin and
+					  grp_fs_copyout for 16 bit CPU
+		grp_fs_mdep_if.h	- Changed return type of grp_fs_copyin and
+					  grp_fs_copyout for 16 bit CPU
+		grp_fs_cfg.h		- Changed return type of grp_fs_read_t and
+					  grp_fs_write_t for 16 bit CPU
+		grp_fs_get_disk_part.c	- Added type casts for 16 bit CPU support
+		grp_fs_io_disk_part.c	- Added type casts for 16 bit CPU support
+		grp_fs_set_disk_part.c	- Added type casts for 16 bit CPU support
+		grp_fat_format.c	- Added type casts for 16 bit CPU support
+		grp_fat_format_sd.c	- Added type casts for 16 bit CPU support
+		fat_format_def.h	- Added type casts to macros for 16 bit CPU
+					  support
+		grp_include/grm_mem.h	- Changed type of iSize parameter of
+					  grp_mem_alloc from grp_int32 to grp_isize_t
+		grp_include/grp_fs_if.h	- Changed return types of grp_fs_read,
+					  grp_fs_write and grp_fs_get_error for
+					  16 bit CPU support
+		grp_include/grp_fs_dev_io_if.h	- Added type casts for 16 bit CPU support
+						- Fixed return type of grp_fs_read_dev
+		grp_stdio/grp_stdio_fwrite.c	- Fixed return type of grp_stdio_fwrite
+		grp_mem/grp_mem_vl_pool.h	- Changed type cast for 16 bit CPU
+		grp_time_lib/grp_time_lib.c	- Added type cast for 16 bit CPU
+		grp_char/grp_char_sjis_conv.c	- Changed variable types for 16 bit CPU
+		grp_mdep/grp_mem.c	- Changed type of iAllocSize of grp_mem_alloc
+					  from grp_int32_t to grp_isize_t
+
+Version 1.11b1
+2005/04/18	fat.c			- Fixed bug in setting file name cache for
+					  created short file name directory
+
+Version 1.11c
+2005/03/24  	grp_mdep/grp_sem.c	- Added id initialization at THREADX semaphore
+                                  	  create for undocumented feature of THREADX
+2005/05/09	grp_mdep/grp_itron_id.h	- Changed define values with apparently
+					  to be defined one
+2005/05/09	grp_mdep/grp_threadx_resource.h - added to release file
+2005/06/21	grp_fs.c		- Fixed bug not properly handling file handle
+					  in _grp_fs_invalidate_fhdl invalidated by
+					  force unmount
+2005/07/01	grp_char/grp_char_sjis_conv.c - Fixed bug miscalculating user
+					  defiled area code in grp_char_unicode_sjis
+2005/10/03	fat.c			- Fixed bug not read block in some case of
+					  patial block write
+
+Version 1.11d
+2005/11/04	grp_fs.c		- Fixed dead lock by ".." access from multiple
+					  tasks at grp_fs_lookup_fname_cache
+					- Changed close operation to wait instead of
+					  of returning BUSY when the file is busy */
+		fat.c			- Fixed dead lock by ".." access from multiple
+					  tasks at _fat_match_comp and _fat_get_dirent
+2005/11/05	grp_fs_mdep_vos_if.c	- Fixed GRP_FS_SEM_TIMEOUT value
+		grp_fs_mdep_*_if.c	- Fixed function comment of grp_fs_char_to_
+					  unicode and grp_fs_unicode_to_char
+					- Fixed return value of grp_fs_get_current_time
+2005/11/18	fat.c			- Fixed unexpected unsigned comparison by
+					  sizeof at _fat_get_next_dir_ent
+2005/11/25	grp_fs.c		- Changed to always clear buffer pointer in
+					  error case at grp_fs_lookup_buf for safety
+					- Added grp_fs_purge_fname_cache for simple
+					  purge case
+					- Added grp_fs_block_file_write and grp_fs_
+					  unblock_file_write
+					- Changed to wait BUSY at _grp_fs_close_fhdl
+		fat.c			- Fixed to cleanup partially written directory
+					  entry
+					- Fixed uninitialized buffer reference at
+					  at _fat_write_file_internal and _fat_mount
+					  in some error case, and clear buffer pointer
+					  at _fat_write and _fat_alloc_clear_cluster
+					  for safety
+					- Fixed to delete duplicated free at _fat_write_
+					  directory for error case
+					- Fixed deadlock by mutiple accesses at
+					  _fat_set_1st_cluster, _fat_free_1st_cluster,
+					  _fat_get_free_cluster, and _fat_create_
+					  rename_file
+					- Added write lock operation at _fat_write,
+					  _fat_create_rename_file, and _fat_truncate
+					  for deadlock elimination
+					- Fixed to purge stale ".." file name cache by
+					  renaming directory
+		grp_fs.h		- Added grp_fs_purge_fname_cache for simple
+					  purge case
+					- Added grp_fs_block_file_write and grp_fs_
+					  unblock_file_write, and GRP_FS_FSTAT_WR_LOCK
+					  and GRP_FS_FSTAT_WR_WAIT bits
+2005/12/16	grp_fs.c		- Fixed to reject O_TRUNC and write mode open
+					  open with O_CREATE without write permission
+
+Version 1.11e
+2006/1/31	fat.c			- Fixed to purge state size 0 file name
+					  cache at _fat_free_open_info
+					- Fixed to reset directory entry buffer size
+					  not to corrupt with bad file system
+		grp_fs.c		- Exported grp_fs_purge_fname_cache_entry
+		grp_fs.h		- Exported grp_fs_purge_fname_cache_entry
+2006/2/17	grp_fs.c		- Fixed _grp_fs_return_mnt_info to return
+					  correct device partition name
+2006/2/23	grp_fs.c		- Fixed variable name mistake for write
+					  mode open fix with O_CREAT
+		grp_include/grp_fs_disk_part.h
+					- Changed GRP_FS_PART_IS_BPB macro to
+					  accept BPB like information at MBR
+					  with both FAT12/16 and FAT32 size 0
+
+Version 1.11f
+2006/07/04	grp_mdep/grp_sem.c	- Fixed to change ifdef name from T_KERNEL to
+					  GRP_VOS in grp_sem_release
+2006/08/10	grp_fs.c		- Fixed misupdate iFsRef by grp_fs_open
+					  with O_TRUNC for cross mount point path
+2006/08/28	grp_fs_proc_event.c	- Fixed missing parameter to _grp_fs_get
+					  _response at _grp_fs_exec_unmount
+2006/09/12	fat.c			- Fixed to set real file cache for ".."
+					  instead of ".." one, and not to set
+					  file name cache for ".." in order to
+					  avoid alias problem and miss-reference
+					  to removed file with ".." cache
+2006/10/18	fat.c			- Release cache buffer at _fat_get_free_cluster
+					  and _fat_get_dirent not to dead-lock in cache
+					  buffer shortage
+		grp_fs_proc_event.c	- Make retrieval of error data in ifdef	option
+					  GRP_FS_SAVE_ERROR_DATA
+2006/10/31	fat.c			- Added _fat_sync interface and grp_fs_sync_hint
+					  variable to write back FAT32 free cluster hint
+					  information at other than unmount
+					- Added write back operation of updated file
+					  attribute in _fat_write and _fat_truncate for 
+					  GRP_FS_STAT_SYNC_ALL case
+					- Fixed to write back with both SYNC and TSYNC
+					  bits set at _fat_clean_unref_buf
+					- Fixed to support logical sector size different
+					  from physical one even in direct I/O
+					- Modified to return error number from device
+					  driver instead of GRP_FS_ERR_IO
+		fat.h			- Added uiFreeHint to fat_BPB
+		grp_fs.c		- Added FS dependent sync function call
+					  to cache write back, and make/merged
+					  the cache write back processing to
+					  _grp_fs_sync_fs & _grp_fs_sync_dep_info
+					- Fixed to write back with both SYNC and TSYNC
+					  bits set at grp_fs_unref_buf
+					- Modified to match both '/' and '\' as
+					  root regardless of mounted as '/' or '\'
+					- Modified to return error number from device
+					  driver instead of GRP_FS_ERR_IO
+		grp_fs_cfg.h		- Added FS dependent sync function to grp_fs_op
+		grp_include/grp_fs_if.h - Added GRP_FS_SYNC_HINT option to
+					  grp_fs_sync call
+2006/11/10	grp_fs.c		- Set file size limit to 2GB at write
+		fat.c			- Adjusted file size for over 2GB file
+2006/11/17	fat.c			- Update execute attribute bits at rename case
+					  in _fat_write_directory
+2006/11/29	grp_fs.c		- Check with timezone consideration for date
+					  only access time update
+
+Version 1.11g
+2007/01/16	fat.c			- Fixed to add missing grp_fs_block/
+					  unblock_fs_mod calls at _fat_free_cluster_list
+2007/02/10	grp_char_sjis_conv.c,	- Added type casts and some type chagnes for 
+		fat.c, grp_fat_format.c,  16 bit CPU support
+		grp_fs.c, grp_fs_dev_io_if.c
+		grp_fs_get_cwd_lib.c,
+		grp_fs_io_disk_part.c,
+		grp_mem/grp_mem_vl_pool.c,
+		grp_stdio/grp_stdio_fflush.c,
+		grp_stdio/grp_stdio_fill.c,
+		grp_stdio/grp_stdio_fread.c,
+		grp_stdio/grp_stdio_fseek.c,
+		grp_stdio/grp_stdio_ftell.c,
+		grp_stdio/grp_stdio_fwrite.c,
+		grp_stdio/grp_stdio_getc.c,
+		grp_stdio/grp_stdio_putc.c,
+		grp_time_lib/grp_time_lib.c
+		grp_include/grp_types.h	- Added grp_size_t, and fixed comment for grp_int16_t
+		grp_mdep/grp_mem.c	- Fixed to change get_mpl to pget_mpl used in
+					   grp_mem_alloc implementation for ITRON
+2007/03/23	fat.c			- Fixed lock loop with broken directory information
+					  at _fat_get_dirent
+2007/06/01	grp_fat_format.c	- Fixed bug setting bad EOC data for FAT32 root
+					  directory
+2007/06/11	grp_fat_format.c	- Fixed incorrect bad character check in
+					  _fat_conv_vol_label
+2007/09/18	grp_fat_format.c	- Fixed bug setting incorrect EOC data for FAT32 FAT0
+2007/09/21	grp_fs.h		- Added iFsWaitCnt to grp_fs_ctl
+		grp_fs.c		- Block unmount operation by iFsWaitCnt
+					- Deleted incorrect _grp_fs_wakeup_wait_mount
+					  call at grp_fs_sync
+					  
+
+Version 1.11h
+2007/10/26	fat.c			- Added check for invalid block read 
+					  request with invalid file system at
+					  _fat_get_blk
+					- Added duplicated cluster check to
+					  _fat_get_free_cluster to avoid deadlock
+					- Added check of root FAT at mount
+					  without force option
+					- Added check 1st cluster of file at open
+					  according to flag fat_check_cluster_at_
+					  open (default=1)
+					- Added max offset check and interrupt
+					  hook function to directory search and
+					  directory size computation in case of
+					  cluster loop
+		fat.h			- Added fat_interrupt_lookup
+					- Fixed FAT_CLST macro used in new fix
+2007/10/29	grp_fs_mdep_if_vos.c	- create semaphore name fix
+		(grp_fs_mdep_if.c)
+2007/11/01	grp_fs_get_cwd_lib.c	- Changed copy size in grp_fs_get_cwd
+					  function
+2007/11/16	fat.c			- Fixed miscomputation of file making
+					  time information
+2007/11/16	grp_time_lib/grp_time_lib.c - Fixed miscomputation of February day in
+					  leap year, and that of day of the week
+					  due to cast-miss in the computation at
+					  grp_fs_localtime
+					- Fixed spell miss of leap year
+2008/01/09	fat.c			- Cleared *pptFile in case of cluster
+					  check error at _fat_match_comp
+					- Deleted unnecessary new line in an
+					  error message of _fat_free_cluster
+2008/01/11	fat.c			- Added check file system version of BPB
+		fat.h			- Added macro to check file system version
+					  of BPB
+		grp_fs.c		- Change buffer size of aucComp in
+					  grp_fs_get_dirent function
+2008/01/25	fat.c			- Fixed overwrite of return value with
+					  that of _fat_clean_unref_buf in case
+					  of an error at _fat_get_free_cluster
+					- Changed to return GRP_FS_ERR_FS if
+					  file system error is detected at
+					  _fat_free_cluster_list_n
+					- Moved to call grp_fs_buf_fill_end
+					  before _fat_free_cluster_list at
+					  _fat_write for copyin error case
+
+Version 1.20
+(src/grp_fs)
+2008/03/05	fat.c			- Include multi language support function
+2008/03/05	grp_fs.c		- Include multi language support function, and added
+					  grp_fs_get_dirent_common()
+2008/03/05	grp_fs_cfg.h		- Added FS dependent multi language support function
+2008/03/05	grp_fs_if.h		- Include multi language support function call
+2008/04/04	fat.c			- Fixed I/O processing in _fat_get_free_cache to
+					  handle logical/physical sector mismatch case
+2008/05/12	grp_fat_format.c	- Changed if volume label is NULL terminal then
+					  fill volume label in space in _fat_conv_vol_label
+2008/05/12	fat.h			- Moved parameters to grp_fat_param.h
+					  (FAT_BLK_SHIFT,FAT_MAP_CNT,FAT_FREE_TBL,
+					   FAT_COMP_SZ,FAT_COMP_CHCNT)
+2008/05/12	grp_fs_cfg.h		- Moved file system management parameter define to
+					  grp_fs_param.h
+2008/05/12	grp_fs_param.h		- Moved file system management parameter define from
+					  grp_fs_cfg.h
+2008/05/12	grp_fat_param.h		- Created inital version 1.0
+2008/05/21	grp_fs_sysdef.h		- Created inital version 1.0
+2008/05/21	grp_fs_cfg.c		- Deleted TEST_FS, T_KERNEL, M32R #ifdef block
+					- Added mdep device switch table
+2008/05/21	fat.c, grp_fat_format.c	- Added include grp_fs_sysdef.h
+		grp_fs.c, grp_fs_cfg.c
+		grp_fs_conv_lib.c
+		grp_fs_dev_io_if.c
+		grp_fs_error.c
+		grp_fs_get_cwd_lib.c
+		grp_fs_get_disk_part.c
+		grp_fs_io_disk_part.c
+		grp_fs_readdir.c
+		grp_fs_set_disk_part.c
+		grp_fs_trace.c
+		grp_fs_conv.h
+		grp_fs_if.h
+		grp_fs_readdir.h
+		grp_stdio.h
+		grp_char_sjis_conv.c
+		grp_mem_vl_pool.c
+		grp_mem_vl_pool.h
+		grp_stdio_default_io.c
+		grp_stdio_fclose.c
+		grp_stdio_fflush.c
+		grp_stdio_fill.c
+		grp_stdio_fopen.c
+		grp_stdio_fprintf.c
+		grp_stdio_fread.c
+		grp_stdio_fseek.c
+		grp_stdio_ftell.c
+		grp_stdio_fwrite.c
+		grp_stdio_getc.c
+		grp_stdio_gets.c
+		grp_stdio_putc.c
+		grp_stdio_vfprintf.c
+		grp_time_lib.c
+2008/06/03	grp_fs_cfg.c		- Divide device switch table to
+					  mdep_xxx/base/grp_fs_dev_sw_tbl.c
+(src/mdep_itron)
+2008/05/21	grp_fs_dev_io.c		- Created inital version 1.0
+2008/05/21	grp_fs_mdep_if.c	- Deleted processing M32R in grp_fs_printf function
+					- Added include grp_fs_sysdef.h
+2008/05/21	grp_fs_mdep_types.h	- Deleted #ifdef except ITRON
+		grp_mdep_sem.h
+2008/05/21	grp_mem.c, grp_sem.c	- Deleted processing except ITRON
+					- Added include grp_fs_sysdef.h
+2008/05/21	grp_time_get.c		- Deleted Platform dependent code
+		grp_time_set.c		- Added processing image
+					- Added include grp_fs_sysdef.h
+2008/06/03	grp_fs_dev_sw_tbl.c	- Create initial version 1.0
+(src/mdep_vos)
+2008/05/21	grp_fs_dev_io.c		- Created inital version 1.0
+2008/05/21	grp_fs_mdep_if.c	- Deleted processing M32R in grp_fs_printf function
+					- Added include grp_fs_sysdef.h
+2008/05/21	grp_fs_mdep_types.h	- Deleted #ifdef except VOS
+		grp_mdep_sem.h
+2008/05/21	grp_mem.c, grp_sem.c	- Deleted processing except VOS
+					- Added include grp_fs_sysdef.h
+2008/05/21	grp_time_get.c		- Deleted Platform dependent code
+		grp_time_set.c		- Added processing image
+					- Added include grp_fs_sysdef.h
+2008/06/03	grp_fs_dev_sw_tbl.c	- Create initial version 1.0
+(src/sample)
+2008/05/21	grp_fat_format_sd.c	- Added include grp_fs_sysdef.h
+		grp_fs_dev_io_ram.c
+		grp_fs_proc_event.c
+2008/07/02	fat.c			- Added ignore msb 4 bits of FAT
+					- Added read over sector length again at
+					  _fat_check_volume
+
+Version 1.21
+(src/grp_fs)
+2010/10/15	fat.c, grp_fs.c		- Added GRP_FS_MINIMIZE_LEVEL option for
+		grp_fs_conv_lib.c	  GR-FILE minimize level
+		grp_fs_error.c
+		grp_fs_get_cwd_lib.c
+		grp_fs_io_disk_part.c
+		grp_fs_mdep_if.h
+		grp_fs_readdir.c
+		grp_char_conv.h
+		grp_fs_conv.h
+		grp_fs_disk_part.h
+		grp_fs_if.h
+		grp_fs_readdir.h
+		grp_fs_sysdef.h
+		grp_stdio.h
+		grp_char_sjis_conv.c
+		grp_stdio_default_io.c
+		grp_stdio_fclose.c
+		grp_stdio_fflush.c
+		grp_stdio_fill.c
+		grp_stdio_fopen.c
+		grp_stdio_fprintf.c
+		grp_stdio_fread.c
+		grp_stdio_fseek.c
+		grp_stdio_ftell.c
+		grp_stdio_fwrite.c
+		grp_stdio_getc.c
+		grp_stdio_gets.c
+		grp_stdio_putc.c
+		grp_stdio_vfprintf.c
+2010/10/15	grp_fs_error.c		- Fixed spell miss at _grp_fs_err_msg
+(src/mdep_itron)
+2010/10/15	grp_fs_mdep_if.c	- Added GRP_FS_MINIMIZE_LEVEL option for
+					  GR-FILE minimize level
+(src/mdep_vos)
+2010/10/15	grp_fs_mdep_if.c	- Added GRP_FS_MINIMIZE_LEVEL option for
+					  GR-FILE minimize level
+
+Version 1.22
+(src/grp_fs)
+2010/11/16	fat.c			- Improved next free hint in FSINFO
+					- Fixed to report an error for EOC in the 
+					  middle of FAT chain in DIRECT I/O
+					- Added _fat_get_short_after_long and
+					  changed processing method to get short
+					  entry after long one to process orphan
+					  long entry more correctly
+					- Fixed to correctly create a file with
+					  file name starting with E5
+					- Added GRP_FS_FAT_TRY_NO_NUM_SHORT
+					  option, and not to try no number short
+					  name associated for a long name as
+					  default
+					- Fixed to add purge operation before
+					  setup new file name cache not to left
+					  old one by mistake in case of previous
+					  short cache setup error
+					- Changed to return volume label as it is
+					- Made the use of local stack buffer in
+					  _fat_check_volume as GRP_FAT_USE_LOCAL
+					  _BUF option
+					- Restore directory entry in case of no
+					  open cache in _fat_write_directory
+					- Fixed to make no extra close in case of
+					  _fat_write_directory error by rename
+					- Added check and roll back of directory
+					  expansion error to _fat_clear_cluster,
+					  _fat_alloc_clear_cluster, and _fat_free
+					  _cluster_list
+					- Fixed to restore open information in
+					  case of _fat_change_dir_link error in
+					  _fat_write_directory
+					- Fixed to restore to not EOF entry but
+					  free entry in case of directory write
+					  error in _fat_write_directory
+					- Restored directory entry in case of
+					  update failure in _fat_set_1st_cluster
+					- Restored back to free cluster in case
+					  error in _fat_get_free_cluster
+					- Fixed to add open information count
+					  in _fat_init_free_open_info by
+					  grp_fs_param.sTasks not to exhaust with
+					  accesses from multiple tasks
+2010/11/16	fat.h			- Fixed spell miss at comment
+2010/11/16	fat_format_def.h	- Adjusted max/min cluster count para-
+					  meters to set gap only min side
+					- Added iLogToDevShift field to fat_io_
+					  buf_t to support logical sector
+					- Changed FAT_XX_NEED_SEC macros to call
+					  _fat_need_sec
+2010/11/16	grp_fat_format.c	- Changed boot sector count of FAT32 to 3
+					  and copy FSINFO to backup area for SDHC
+					- Made strict character check for volume label
+					- Added a layer to get more optimal FAT
+					  sector count value for grp_fat_find_type
+					- Supported logical sector format
+					- Added _fat_need_sec and check of
+					  request FAT type at _fat_check_fat_type
+					  to make consistent FAT type by
+					  increasing total sector count with
+					  default parameter
+					- Fixed overflow in computing FAT sector
+					  count of FAT32 with near 4G sectors
+					  at _fat_check_fat_type
+					- Fixed logical sector format in partition
+2010/11/16	grp_fs.c		- Fixed to release task environment in
+					  grp_fs_close
+					- Changed to use iMode parameter in
+					  _grp_fs_check_fhdl_common
+					- Deleted an unused variable ptTask in
+					  grp_fs_get_dirent_common
+					- Fixed to return GRP_FS_ERR_PERMIT error
+					  for grp_fs_set_attr call to read-only
+					  file system
+					- Added grp_fs_check_io_status call to
+					  grp_fs_truncate
+					- Fixed to set ptBuf before call to grp_
+					  fs_unblock_buf_mod from grp_fs_unref_
+					  buf (Note: Since grp_fs_unref_buf is
+					  not called with GRP_FS_BSTAT_MOD
+					  status, call to grp_fs_unblock_buf_mod
+					  will not happen, and this bug fix is
+					  not critical)
+					- Added to return mount option flags not
+					  returned by _grp_fs_return_mnt_info
+					- Added open count check to reduce file
+					  handle check loop in _grp_fs_task_free
+					  _env_by_task
+					- Made recovery processing in case of
+					  detection of internal error in grp_fs_
+					  close_file
+					- Re-checked buffer list again in case
+					  of write failure considering parallel
+					  I/O during waiting write in _grp_fs_
+					  wait_buf_io
+					- Changed I/O error message in grp_fs_
+					  write_buf and grp_fs_exec_dev_io
+					- Fixed to execute file system dependent
+					  sync function of sub-layer file system
+					  even if the upper layer does not have
+					  sync function in _grp_fs_sync_dep_info
+					- Added null check to grp_fs_lseek function
+2010/10/15	grp_fs_get_cwd_lib.c	- Fixed spell miss at comment
+2010/11/16	grp_fs_trace.c		- Fixed include position to grp_fs_sysdef.h
+2010/11/16	grp_fat_format.h	- Added GRP_FAT_BOOT_SEC_CNT for SDHC
+					- Changed GRP_FAT_SAFETY_GAP parameter
+					  to match with bit increasing point of
+					  cluster count like 0x1001 for FAT12->FAT16
+2010/11/16	grp_fs_if.h		- Added mount option flags not returned
+					  in grp_fs_mnt_info_t
+2010/11/16	grp_fs_sysdef.h		- Added GRP_FS_FAT_TRY_NO_NUM_SHORT option
+2010/11/16	grp_mem_vl_pool.c	- Checked iPoolSize before memset in
+					  grp_mem_add_vl_pool
+2010/11/16	grp_mem_vl_pool.h	- Delete include grp_mem_vl_pool.h
+2010/11/16	grp_stdio_fprintf.c	- Added vsnprintf error check
+2010/11/16	grp_stdio_vfprintf.c	- Added vsnprintf error check
+2010/11/17	grp_fs_proc_event.c	- Added GRP_FS_MINIMIZE_LEVEL option for
+					  GR-FILE minimize level
+(src/mdep_vos)
+2010/11/16	grp_sem.c		- Added a type cast to the initial count
+					  parameter of GRP_VOS_CreateSemaphore
+					  called from grp_sem_create
+					- Added a type cast to the timeout
+					  parameter of GRP_VOS_GetSemaphore
+					  called from grp_sem_get
+(src/sample)
+2010/11/16	grp_fat_format_sd.c	- Added SDHC support
+					- Fixed wrong size paramter to call _sd_
+					  find_clst_tbl from grp_fat_format_sd
+					  for protected area
+					- Fixed wrong return value from grp_fat_
+					  format_sd in case of device open error
+					- Fixed max sector comparison to exclude
+					  limit value at grp_fat_format_sd
+					- Made grp_fat_format_sd return correct
+					  unused sector count
+
+Version 1.23
+(src/grp_fs)
+2011/05/23	fat.c			- Added to upper case name in _fat_match
+					  _comp and _fat_create_rename_file
+2011/05/23	grp_fs.c		- Added ptFs parameter to grp_fs_task_wait
+					  to allow unmount not waited FS
+					- Changed to update ptFs->iFsRef instead
+					  of ptFsCtl->iFsWaitCnt during wait in
+					  order to allow unmount not waited FS
+					- Added under close check at _grp_fs_
+					  _close_fhdl to allow unmount not waited FS
+2011/05/23	grp_fs.h		- Added ptFs parameter to grp_fs_task_wait
+					  toallow unmount not waited FS
+					- Deleted iFsWaitCnt of grp_fs_ctl by
+					  changing to update ptFs->iFsRef to allow
+					  unmount not waited FS
+					- Added GRP_FS_OPEN_UNDER_CLOSE/GRP_FS_OPEN
+					  _WAIT_CLOSE for under close check to allow
+					  unmount not waited FS
+2011/05/23	grp_fs_mdep_if.h	- Added to upper case name function
+2011/05/23	grp_char_conv.h		- Added to upper case name function and
+					  file name compare function
+2011/05/23	grp_fs_sysdef.h		- Added GRP_FS_ASYNC_UNMOUNT and GRP_FS_UPDATE
+					  _ARCHIVE and GRP_FS_FAST_MAKE_SNAME options
+2011/05/23	grp_char_sjis_conv.c	- Added to upper case name function and file
+					  name compare function
+2011/05/25	fat.c			- Added set archive attribute in _fat_write
+					  and _fat_create_rename_file
+2011/05/30	fat.c			- Added make short name function ofanother
+					  method
+2011/05/30	grp_fs_mdep_if.h	- Added make short name function of another
+					  method
+2011/05/31	grp_fs_dev_io_if.h	- Added define GRP_FS_DEV_CTL_GET_WRITE_PROTECT
+
+(src/mdep_itron, src/mdep_vos)
+2011/05/23	grp_fs_mdep_if.c	- Added to upper case name function
+2011/05/30	grp_fs_mdep_if.c	- Added make short name function of another
+					  method
+
+Version 1.23a
+(src/grp_fs)
+2011/08/11	fat.c			- Fixed type casts of _fat_make_short_ent_name
+					  function and _fat_match_comp function
+
+(src/mdep_itron)
+2011/08/11	grp_fs_mdep_if.c	- Fixed return type of grp_fs_cmp_fname function
+
+Version 1.23b
+(src/grp_fs)
+2011/10/03	fat.c			- Fixed loop condition when the value of next free
+					  hint is 3 in _fat_get_free_cache
+					- Fixed judgment way of readonly mount in
+					  _fat_get_free_cache
+
+(src/grp_fs/lib/grp_char)
+2011/10/03	grp_char_sjis_conv.c	- Fixed file which does inclusion in
+					  GRP_FS_MINIMIZE_LEVEL use
+
+Version 1.23c
+(src/mdep_vos2.xx)
+2012/01/23	mdep_vos2.xx all files	- Added GR-VOS 2.xx dependence files
+
+Version 1.24
+(src/grp_fs/base)
+2012/06/13	grp_fat_format.c	- Fixed bug returning uiClst value in
+					  grp_fat_find_type
+
+Version 1.30
+(src/grp_fs/base)
+2016/03/17	fat.c			- Supported compile option GRP_FS_ENABLE_OVER_2G
+		fat.h
+		grp_fs.h
+		grp_fs_conv_lib.c
+		grp_fs_readdir.c
+2016/03/17	grp_fs.c		- Supported compile option GRP_FS_ENABLE_OVER_2G
+					  Added finction grp_fs_lseek4G
+
+(src/grp_fs/include)
+2016/03/17	grp_fs_conv.h		- Supported compile option GRP_FS_ENABLE_OVER_2G
+					  Added definition lseek4G
+					  Added definition grp_fs_stat_t
+					  Modified definition stat
+2016/03/17	grp_fs_if.h		- Supported compile option GRP_FS_ENABLE_OVER_2G
+					- Added definition GRP_FS_SEEK_MINUS
+2016/03/17	grp_fs_readdir.h	- Supported compile option GRP_FS_ENABLE_OVER_2G
+		grp_fs_sysdef.h
+2016/03/17	grp_stdio.h		- Supported compile option GRP_FS_ENABLE_OVER_2G
+					- Added function fseek4G and ftell4G
+2016/03/17	grp_types.h		- Added type grp_uioffset_t
+
+(src/grp_fs/grp_stdio)
+2016/03/16	grp_stdio_fseek4G.c	- Created inital version 1.0
+2016/03/16	grp_stdio_ftell4G.c	- Created inital version 1.0
+2016/03/17	grp_stdio_fflush.c	- Supported compile option GRP_FS_ENABLE_OVER_2G
+		grp_stdio_fopen.c
+
+Version 1.31
+(src/grp_fs/base)
+2020/12/09	fat.c			- Fixed the mistake of "," in the _fat_check_volume
+					  function to ";".
+
+(src/mdep_itron, src/mdep_vos, src/mdep_vos2.xx)
+2020/12/09	grp_fs_mdep_if.c	- Fixed a warning that there is no prototype
+					  declaration when GRP_FS_MINIMIZE_LEVEL is set
+					  to 2.
