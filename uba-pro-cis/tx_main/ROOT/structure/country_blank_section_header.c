@@ -1,0 +1,32 @@
+﻿/******************************************************************************/
+/*! @addtogroup Main
+    @file       country_blank_section_header.c
+    @brief      COUNTRY BLANKセクションヘッダーデータ。
+    @date       2018/01/26
+    @author     suzuki-hiroyuki
+    @par        Revision
+    @par        Copyright (C)
+    2018 Japan CashMachine Co, Limited. All rights reserved.
+*******************************************************************************/
+#include "common.h"
+#include "memorymap.h"
+
+/************************** EXTERNAL FUNCTIONS *************************/
+
+/***********************************************************************/
+
+const BA_SectionHeader ex_country_blank_header     __attribute__ ((section ("COUNTRTY_DATA_SECTION_HEADER"),used))  =
+{
+	BA_SYMBOL,                		/* File Header						*/
+	0x00000000,						/* CRC-32							*/
+	0x0000,							/* CRC-16		 					*/
+	0xFFFF,							/* section no( 0xffff == last section)	*/
+	SWAP_ENDIAN(0x01000000 - DDR_START_ADDRESS),		/* Program start address			*/
+	SWAP_ENDIAN(0x010FFFFD - DDR_START_ADDRESS),		/*    	  end address				*/
+	0x00000000,						/* Program size						*/
+	"CTBL",							/* section name						*/
+	0x00000000,						/* reserve							*/
+	0x00000000,						/* reserve							*/
+};
+
+/* EOF */

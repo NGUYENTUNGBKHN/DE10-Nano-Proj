@@ -1,0 +1,381 @@
+;/**************************************************************************/
+;/*                                                                        */
+;/*            Copyright (c) 1996-2018 by Express Logic Inc.               */
+;/*                                                                        */
+;/*  This software is copyrighted by and is the sole property of Express   */
+;/*  Logic, Inc.  All rights, title, ownership, or other interests         */
+;/*  in the software remain the property of Express Logic, Inc.  This      */
+;/*  software may only be used in accordance with the corresponding        */
+;/*  license agreement.  Any unauthorized use, duplication, transmission,  */
+;/*  distribution, or disclosure of this software is expressly forbidden.  */
+;/*                                                                        */
+;/*  This Copyright notice may not be removed or modified without prior    */
+;/*  written consent of Express Logic, Inc.                                */
+;/*                                                                        */
+;/*  Express Logic, Inc. reserves the right to modify this software        */
+;/*  without notice.                                                       */
+;/*                                                                        */
+;/*  Express Logic, Inc.                     info@expresslogic.com         */
+;/*  11423 West Bernardo Court               http:;//www.expresslogic.com   */
+;/*  San Diego, CA  92127                                                  */
+;/*                                                                        */
+;/**************************************************************************/
+
+
+;/**************************************************************************/
+;/**************************************************************************/
+;/**                                                                       */
+;/** ThreadX SMP Component                                                 */
+;/**                                                                       */
+;/**   Altera Cyclone V bootstrap for GCC toolchain                        */
+;/**                                                                       */
+;/**************************************************************************/
+;/**************************************************************************/
+
+
+	REQUIRE8	{TRUE}						; 8バイト境界スタック要求, 19/11/20
+	PRESERVE8	{TRUE}						; 8バイト境界スタック保持, 19/11/20
+
+
+;/*
+; *  Vector table
+; */
+
+	AREA	|.cs3.interrupt_vector|, CODE, ALIGN=3
+	EXPORT	__cs3_interrupt_vector_arm
+	EXPORT	__tx_interrupt_vector
+__cs3_interrupt_vector_arm
+__tx_interrupt_vector
+	LDR		pc, STARTUP						; Reset goes to startup function
+	LDR		pc, UNDEFINED					; Undefined handler
+	LDR		pc, SWI							; Software interrupt handler
+	LDR		pc, PREFETCH					; Prefetch exception handler
+	LDR		pc, ABORT						; Abort exception handler
+	NOP										; Reserved exception handler
+	LDR		pc, IRQ							; IRQ interrupt handler
+	LDR		pc, FIQ							; FIQ interrupt handler
+
+STARTUP
+	DCD		__cs3_reset						; Reset goes to C startup function
+UNDEFINED
+	DCD		__tx_undefined					; Undefined handler
+SWI
+	DCD		__tx_swi_interrupt				; Software interrupt handler
+PREFETCH
+	DCD		__tx_prefetch_handler			; Prefetch exception handler
+ABORT
+	DCD		__tx_abort_handler				; Abort exception handler
+IRQ
+	DCD		__tx_irq_handler				; IRQ interrupt handler
+FIQ
+	DCD		__tx_fiq_handler				; FIQ interrupt handler
+
+
+	EXPORT	__tx_irq_handler
+	EXPORT	__tx_irq_processing_return
+	IMPORT	_tx_thread_context_save
+	IMPORT	_tx_thread_irq_nesting_start
+	IMPORT	alt_int_handler_irq
+	IMPORT	txi_inh_entry
+	IMPORT	_tx_thread_irq_nesting_end
+	IMPORT	_tx_thread_context_restore
+INTC_ICCIAR
+	DCD		0xFFFEC10C
+
+__tx_irq_handler
+
+	;/* Call ThreadX Context Save function, which will save the initial context  */
+
+	B		_tx_thread_context_save
+__tx_irq_processing_return
+
+	;;// 多重割込み前処理
+	LDR		r2, INTC_ICCIAR		;// 割込み応答レジスタを読出し、割込み要求ビット(Pending Bit)をクリアする, 19/05/29
+	LDR		r2, [r2]
+	
+	BL		_tx_thread_irq_nesting_start		;// 多重割込み処理, 19/05/29
+
+	;/* call IRQ interrupt handler */
+
+;//	BL		alt_int_handler_irq		// HWLILB割込みハンドラ
+	MOV		r0, r2		;// 割込み要求ID, 19/05/29
+	BL		txi_inh_entry		;// TXI割込みハンドラ, 19/05/29
+
+	;;// 多重割込み後処理
+	BL		_tx_thread_irq_nesting_end		;// 多重割込み処理, 19/05/29
+    
+	;/* Call ThreadX Context Restore function, which will preempt or return to the
+	; point of interrupt, depending on what thread(s) if any were made ready by
+	; the ISR processing.  */
+
+	B		_tx_thread_context_restore
+
+
+	EXPORT	__tx_fiq_handler
+__tx_fiq_handler
+
+    IF  :DEF:TX_ENABLE_FIQ_SUPPORT_
+	EXPORT	__tx_fiq_processing_return
+	IMPORT	alt_int_handler_fiq
+
+	;/* Jump to fiq context save to save system context.  */
+
+	B		_tx_thread_fiq_context_save
+__tx_fiq_processing_return
+
+	;/* call FIQ interrupt handler */
+
+	BL		alt_int_handler_fiq
+
+	;/* Jump to fiq context restore to restore system context.  */
+
+	B		_tx_thread_fiq_context_restore
+
+	ELSE
+
+	;/* FIQ interrupts are not supported */
+	B		__tx_fiq_handler
+
+	ENDIF
+
+
+	EXPORT	__tx_undefined
+__tx_undefined
+	B		__tx_undefined
+
+	EXPORT	__tx_swi_interrupt
+__tx_swi_interrupt
+	B		__tx_swi_interrupt
+
+	EXPORT	__tx_prefetch_handler
+__tx_prefetch_handler
+	B		__tx_prefetch_handler
+
+	EXPORT	__tx_abort_handler
+__tx_abort_handler
+	B		__tx_abort_handler
+
+
+;/*
+; *  Startup code
+; */
+	AREA	|.cs3.reset|, CODE, ALIGN=3
+
+	EXPORT	__cs3_reset
+	;EXPORT  Reset_Handler
+	IMPORT	|Image$$ARM_LIB_STACK$$ZI$$Limit|
+	IMPORT	|Image$$IRQ_STACK$$ZI$$Limit|
+	IMPORT	|Image$$SYS_STACK$$ZI$$Limit|
+	IMPORT	|Image$$ABT_STACK$$ZI$$Limit|
+	IMPORT	|Image$$FIQ_STACK$$ZI$$Limit|
+	IMPORT	|Image$$UND_STACK$$ZI$$Limit|
+	IMPORT	|Image$$SVC_STACK1$$ZI$$Limit|
+	IMPORT	|Image$$IRQ_STACK1$$ZI$$Limit|
+	IMPORT	|Image$$SYS_STACK1$$ZI$$Limit|
+	IMPORT	|Image$$ABT_STACK1$$ZI$$Limit|
+	IMPORT	|Image$$FIQ_STACK1$$ZI$$Limit|
+	IMPORT	|Image$$UND_STACK1$$ZI$$Limit|
+	IMPORT	bif_main		; __mainをbif_mainに変更, 21/06/22
+	;IMPORT  __main		; __cs3_start_cを__mainに変更, 19/11/18
+	IMPORT	_tx_alt_smp_initialize_low_level
+	IMPORT	_tx_thread_smp_initialize_wait
+	;IMPORT	__cs3_interrupt_vector
+	EXPORT	__cs3_interrupt_vector
+
+__cs3_interrupt_vector
+	DCD		__cs3_interrupt_vector_arm
+__cs3_stack
+	DCD		|Image$$ARM_LIB_STACK$$ZI$$Limit|
+__irq_stack
+	DCD		|Image$$IRQ_STACK$$ZI$$Limit|
+__sys_stack
+	DCD		|Image$$SYS_STACK$$ZI$$Limit|
+__abort_stack
+	DCD		|Image$$ABT_STACK$$ZI$$Limit|
+__fiq_stack
+	DCD		|Image$$FIQ_STACK$$ZI$$Limit|
+__undef_stack
+	DCD		|Image$$UND_STACK$$ZI$$Limit|
+__stack_cpu1
+	DCD		|Image$$SVC_STACK1$$ZI$$Limit|
+__irq_stack_cpu1
+	DCD		|Image$$IRQ_STACK1$$ZI$$Limit|
+__sys_stack_cpu1
+	DCD		|Image$$SYS_STACK1$$ZI$$Limit|
+__abort_stack_cpu1
+	DCD		|Image$$ABT_STACK1$$ZI$$Limit|
+__fiq_stack_cpu1
+	DCD		|Image$$FIQ_STACK1$$ZI$$Limit|
+__undef_stack_cpu1
+	DCD		|Image$$UND_STACK1$$ZI$$Limit|
+
+__cs3_reset 
+;Reset_Handler
+	;/* get CPU id in r8 */
+	MRC		p15, 0, r8, c0, c0, 5
+	AND		r8, r8, #0xf
+
+	;;// MMU無効化, 19/04/19
+	mrc		p15, 0, r2, c1, c0, 0
+	bic		r2, r2, #0x00000002		;//; Disable Unaligned Check
+	bic		r2, r2, #0x00000001		;//; Clear MMU Control
+	bic		r2, r2, #0x00001000		;//; Clear I-Cache Control
+	bic		r2, r2, #0x00000004		;//; Clear D-Cache Control
+	mcr		p15, 0, r2, c1, c0, 0
+	dsb
+	isb
+
+	;;// エラッタ対応, 19/04/19
+	mrc		p15, 0, r0, c15, c0, 1
+	orr		r0, r0, #0x00000010		;//; bit[4]  errata #794072 (FIX ....)
+	orr		r0, r0, #0x00200000		;//; bit[21] errata #761320 (FIX r4p0)
+	orr		r0, r0, #0x00400000		;//; bit[22] errata #845369
+	mcr		p15, 0, r0, c15, c0, 1
+
+;	/* set SYS stack pointer */
+;;//	MRS		r0, cpsr
+;;//	MVN		r1, #0x1f
+;;//	AND		r2, r1, r0
+;;//	ORR		r2, r2, #0x1F
+;;//	MSR		cpsr, r2
+	cps     #0x1f
+	MRC		p15, 0, r8, c0, c0, 5		;// r8にCPU idを読出し(cpsを変更するとr8の変化することがあるため都度idを読出す)
+	AND		r8, r8, #0xf
+	CMP		r8, #0
+	LDREQ	r13, __sys_stack		;// __cs3_stackを__sys_stackに変更, 19/07/23
+	LDRNE	r13, __sys_stack_cpu1		;// __stack_cpu1を__sys_stack_cpu1に変更, 19/07/23
+
+;	/* set FIQ stack pointer */
+;;//	MRS		r0, cpsr
+;;//	MVN		r1, #0x1f
+;;//	AND		r2, r1, r0
+;;//	ORR		r2, r2, #0x11
+;;//	MSR		cpsr, r2
+	cps     #0x11
+	MRC		p15, 0, r8, c0, c0, 5		;// r8にCPU idを読出し
+	AND		r8, r8, #0xf
+	CMP		r8, #0
+	LDREQ	r13, __fiq_stack
+	LDRNE	r13, __fiq_stack_cpu1
+
+;	/* set IRQ stack pointer */
+;;//	MRS		r0, cpsr
+;;//	MVN		r1, #0x1f
+;;//	AND		r2, r1, r0
+;;//	ORR		r2, r2, #0x12
+;;//	MSR		cpsr, r2
+	cps     #0x12
+	MRC		p15, 0, r8, c0, c0, 5		;// r8にCPU idを読出し
+	AND		r8, r8, #0xf
+	CMP		r8, #0
+	LDREQ	r13, __irq_stack
+	LDRNE	r13, __irq_stack_cpu1
+
+;	/* set Abort stack pointer */
+;;//	MRS		r0, cpsr
+;;//	MVN		r1, #0x1f
+;;//	AND		r2, r1, r0
+;;//	ORR		r2, r2, #0x17
+;;//	MSR		cpsr, r2
+	cps     #0x17
+	MRC		p15, 0, r8, c0, c0, 5		;// r8にCPU idを読出し
+	AND		r8, r8, #0xf
+	CMP		r8, #0
+	LDREQ	r13, __abort_stack
+	LDRNE	r13, __abort_stack_cpu1
+
+;	/* set Undefine stack pointer */
+;;//	MRS		r0, cpsr
+;;//	MVN		r1, #0x1f
+;;//	AND		r2, r1, r0
+;;//	ORR		r2, r2, #0x1b
+;;//	MSR		cpsr, r2
+	cps     #0x1b
+	MRC		p15, 0, r8, c0, c0, 5		;// r8にCPU idを読出し
+	AND		r8, r8, #0xf
+	CMP		r8, #0
+	LDREQ	r13, __undef_stack
+	LDRNE	r13, __undef_stack_cpu1
+
+;	/* set SVC stack pointer (same as SYS stack) */
+;;//	MRS		r0, cpsr
+;;//	MVN		r1, #0x1f
+;;//	AND		r2, r1, r0
+;;//	ORR		r2, r2, #0x13
+;;//	MSR		cpsr, r2
+	cps     #0x13
+	MRC		p15, 0, r8, c0, c0, 5		;// r8にCPU idを読出し
+	AND		r8, r8, #0xf
+	CMP		r8, #0
+	LDREQ	r13, __cs3_stack
+	LDRNE	r13, __stack_cpu1
+
+; #if __ARM_FP != 0, 19/11/14
+;#ifdef __ARM_NEON__
+    IF  :DEF:__ARM_NEON__
+;	/* enable full access for p10 & p11 */
+	MRC		p15, 0, r1, c1, c0, 2
+	ORR		r1, r1, #(0xf << 20)
+	MCR		p15, 0, r1, c1, c0, 2
+	ISB
+;	/* enable VFP */
+	FMRX	r1, FPEXC
+	ORR		r1, r1, #0x40000000
+	FMXR	FPEXC, r1
+;#endif
+	ENDIF
+
+;	/* set VBAR to the vector table address */
+	LDR	 	r0, =__cs3_interrupt_vector
+	MCR	 	p15, 0, r0, c12, c0, 0
+    ;LDR    r0, =Vectors
+    ;MCR    p15, 0, r0, c12, c0, 0 ; Write Secure or Non-secure Vector Base Address
+
+	MRC		p15, 0, r8, c0, c0, 5		;// r8にCPU idを読出し
+	AND		r8, r8, #0xf
+	CMP		r8, #0
+	BNE		cpu1_start
+
+;	/* continue to C library initialization */
+	B		bif_main		; __mainをmainに変更, 21/06/22
+;	B		__main		; __cs3_start_cを__mainに変更, 19/11/18
+	NOP
+    EXPORT  cpu1_start
+cpu1_start
+;	/* low-level initialization for cpu 1 */
+	LDR		r0, =_tx_alt_smp_initialize_low_level
+	MOV		lr, pc
+	BX		r0
+
+;	/* continue to threadx smp initialization */
+	B		_tx_thread_smp_initialize_wait
+	
+
+;/********************************************
+;        Data Synchronization Barrier        *
+; ********************************************
+; *      void _kernel_synch_cache(void);
+; */
+
+	EXPORT	_kernel_synch_cache
+        ;.globl  _kernel_synch_cache
+        ;.type   _kernel_synch_cache, %function
+
+_kernel_synch_cache
+        dsb
+        bx      lr
+
+
+;/********************************************
+;        Data Memory Barrier                 *
+; ********************************************
+; *      void _kernel_memory_barrier(void);
+; */
+	EXPORT	_kernel_memory_barrier
+        ;.globl  _kernel_memory_barrier
+        ;.type   _kernel_memory_barrier, %function
+
+_kernel_memory_barrier
+        dmb
+        bx      lr
+	END

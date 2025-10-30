@@ -1,0 +1,220 @@
+;/**************************************************************************/
+;/*                                                                        */
+;/*            Copyright (c) 1996-2018 by Express Logic Inc.               */
+;/*                                                                        */
+;/*  This software is copyrighted by and is the sole property of Express   */
+;/*  Logic, Inc.  All rights, title, ownership, or other interests         */
+;/*  in the software remain the property of Express Logic, Inc.  This      */
+;/*  software may only be used in accordance with the corresponding        */
+;/*  license agreement.  Any unauthorized use, duplication, transmission,  */
+;/*  distribution, or disclosure of this software is expressly forbidden.  */
+;/*                                                                        */
+;/*  This Copyright notice may not be removed or modified without prior    */
+;/*  written consent of Express Logic, Inc.                                */
+;/*                                                                        */
+;/*  Express Logic, Inc. reserves the right to modify this software        */
+;/*  without notice.                                                       */
+;/*                                                                        */
+;/*  Express Logic, Inc.                     info@expresslogic.com         */
+;/*  11423 West Bernardo Court               http:;//www.expresslogic.com   */
+;/*  San Diego, CA  92127                                                  */
+;/*                                                                        */
+;/**************************************************************************/
+
+
+;/**************************************************************************/
+;/**************************************************************************/
+;/**                                                                       */
+;/** ThreadX SMP Component                                                 */
+;/**                                                                       */
+;/**   Altera Cyclone V bootstrap for GCC toolchain                        */
+;/**                                                                       */
+;/**************************************************************************/
+;/**************************************************************************/
+
+
+	REQUIRE8	{TRUE}						; 8バイト境界スタック要求, 19/11/20
+	PRESERVE8	{TRUE}						; 8バイト境界スタック保持, 19/11/20
+
+;/*
+; *  Download Entry code
+; */
+	AREA	|.cs3.reset|, CODE, ALIGN=3
+
+	EXPORT	__bif_subline_usb_download_entry
+	;EXPORT  Reset_Handler
+	IMPORT	|Image$$ARM_LIB_STACK$$ZI$$Limit|
+	IMPORT	|Image$$IRQ_STACK$$ZI$$Limit|
+	IMPORT	|Image$$SYS_STACK$$ZI$$Limit|
+	IMPORT	|Image$$ABT_STACK$$ZI$$Limit|
+	IMPORT	|Image$$FIQ_STACK$$ZI$$Limit|
+	IMPORT	|Image$$UND_STACK$$ZI$$Limit|
+	IMPORT	|Image$$SVC_STACK1$$ZI$$Limit|
+	IMPORT	|Image$$IRQ_STACK1$$ZI$$Limit|
+	IMPORT	|Image$$SYS_STACK1$$ZI$$Limit|
+	IMPORT	|Image$$ABT_STACK1$$ZI$$Limit|
+	IMPORT	|Image$$FIQ_STACK1$$ZI$$Limit|
+	IMPORT	|Image$$UND_STACK1$$ZI$$Limit|
+	IMPORT	_bif_subline_usb_download		; __mainを__bif_subline_usb_downloadに変更
+	IMPORT	cpu1_start
+	;IMPORT  __main		; __cs3_start_cを__mainに変更, 19/11/18
+	IMPORT	_tx_alt_smp_initialize_low_level
+	IMPORT	_tx_thread_smp_initialize_wait
+	IMPORT	__cs3_interrupt_vector
+
+__cs3_stack
+    DCD     |Image$$ARM_LIB_STACK$$ZI$$Limit|
+__irq_stack
+    DCD     |Image$$IRQ_STACK$$ZI$$Limit|
+__sys_stack
+    DCD     |Image$$SYS_STACK$$ZI$$Limit|
+__abort_stack
+    DCD     |Image$$ABT_STACK$$ZI$$Limit|
+__fiq_stack
+    DCD     |Image$$FIQ_STACK$$ZI$$Limit|
+__undef_stack
+    DCD     |Image$$UND_STACK$$ZI$$Limit|
+__stack_cpu1
+    DCD     |Image$$SVC_STACK1$$ZI$$Limit|
+__irq_stack_cpu1
+    DCD     |Image$$IRQ_STACK1$$ZI$$Limit|
+__sys_stack_cpu1
+    DCD     |Image$$SYS_STACK1$$ZI$$Limit|
+__abort_stack_cpu1
+    DCD     |Image$$ABT_STACK1$$ZI$$Limit|
+__fiq_stack_cpu1
+    DCD     |Image$$FIQ_STACK1$$ZI$$Limit|
+__undef_stack_cpu1
+    DCD     |Image$$UND_STACK1$$ZI$$Limit|
+
+__bif_subline_usb_download_entry
+	;/* get CPU id in r8 */
+	MRC		p15, 0, r8, c0, c0, 5
+	AND		r8, r8, #0xf
+
+	;;// MMU無効化, 19/04/19
+	mrc		p15, 0, r2, c1, c0, 0
+	bic		r2, r2, #0x00000002		;//; Disable Unaligned Check
+	bic		r2, r2, #0x00000001		;//; Clear MMU Control
+	bic		r2, r2, #0x00001000		;//; Clear I-Cache Control
+	bic		r2, r2, #0x00000004		;//; Clear D-Cache Control
+	mcr		p15, 0, r2, c1, c0, 0
+	dsb
+	isb
+
+	;;// エラッタ対応, 19/04/19
+	mrc		p15, 0, r0, c15, c0, 1
+	orr		r0, r0, #0x00000010		;//; bit[4]  errata #794072 (FIX ....)
+	orr		r0, r0, #0x00200000		;//; bit[21] errata #761320 (FIX r4p0)
+	orr		r0, r0, #0x00400000		;//; bit[22] errata #845369
+	mcr		p15, 0, r0, c15, c0, 1
+
+;	/* set SYS stack pointer */
+;;//	MRS		r0, cpsr
+;;//	MVN		r1, #0x1f
+;;//	AND		r2, r1, r0
+;;//	ORR		r2, r2, #0x1F
+;;//	MSR		cpsr, r2
+	cps     #0x1f
+	MRC		p15, 0, r8, c0, c0, 5		;// r8にCPU idを読出し(cpsを変更するとr8の変化することがあるため都度idを読出す)
+	AND		r8, r8, #0xf
+	CMP		r8, #0
+	LDREQ	r13, __sys_stack		;// __cs3_stackを__sys_stackに変更, 19/07/23
+	LDRNE	r13, __sys_stack_cpu1		;// __stack_cpu1を__sys_stack_cpu1に変更, 19/07/23
+
+;	/* set FIQ stack pointer */
+;;//	MRS		r0, cpsr
+;;//	MVN		r1, #0x1f
+;;//	AND		r2, r1, r0
+;;//	ORR		r2, r2, #0x11
+;;//	MSR		cpsr, r2
+	cps     #0x11
+	MRC		p15, 0, r8, c0, c0, 5		;// r8にCPU idを読出し
+	AND		r8, r8, #0xf
+	CMP		r8, #0
+	LDREQ	r13, __fiq_stack
+	LDRNE	r13, __fiq_stack_cpu1
+
+;	/* set IRQ stack pointer */
+;;//	MRS		r0, cpsr
+;;//	MVN		r1, #0x1f
+;;//	AND		r2, r1, r0
+;;//	ORR		r2, r2, #0x12
+;;//	MSR		cpsr, r2
+	cps     #0x12
+	MRC		p15, 0, r8, c0, c0, 5		;// r8にCPU idを読出し
+	AND		r8, r8, #0xf
+	CMP		r8, #0
+	LDREQ	r13, __irq_stack
+	LDRNE	r13, __irq_stack_cpu1
+
+;	/* set Abort stack pointer */
+;;//	MRS		r0, cpsr
+;;//	MVN		r1, #0x1f
+;;//	AND		r2, r1, r0
+;;//	ORR		r2, r2, #0x17
+;;//	MSR		cpsr, r2
+	cps     #0x17
+	MRC		p15, 0, r8, c0, c0, 5		;// r8にCPU idを読出し
+	AND		r8, r8, #0xf
+	CMP		r8, #0
+	LDREQ	r13, __abort_stack
+	LDRNE	r13, __abort_stack_cpu1
+
+;	/* set Undefine stack pointer */
+;;//	MRS		r0, cpsr
+;;//	MVN		r1, #0x1f
+;;//	AND		r2, r1, r0
+;;//	ORR		r2, r2, #0x1b
+;;//	MSR		cpsr, r2
+	cps     #0x1b
+	MRC		p15, 0, r8, c0, c0, 5		;// r8にCPU idを読出し
+	AND		r8, r8, #0xf
+	CMP		r8, #0
+	LDREQ	r13, __undef_stack
+	LDRNE	r13, __undef_stack_cpu1
+
+;	/* set SVC stack pointer (same as SYS stack) */
+;;//	MRS		r0, cpsr
+;;//	MVN		r1, #0x1f
+;;//	AND		r2, r1, r0
+;;//	ORR		r2, r2, #0x13
+;;//	MSR		cpsr, r2
+	cps     #0x13
+	MRC		p15, 0, r8, c0, c0, 5		;// r8にCPU idを読出し
+	AND		r8, r8, #0xf
+	CMP		r8, #0
+	LDREQ	r13, __cs3_stack
+	LDRNE	r13, __stack_cpu1
+
+; #if __ARM_FP != 0, 19/11/14
+;#ifdef __ARM_NEON__
+    IF  :DEF:__ARM_NEON__
+;	/* enable full access for p10 & p11 */
+	MRC		p15, 0, r1, c1, c0, 2
+	ORR		r1, r1, #(0xf << 20)
+	MCR		p15, 0, r1, c1, c0, 2
+	ISB
+;	/* enable VFP */
+	FMRX	r1, FPEXC
+	ORR		r1, r1, #0x40000000
+	FMXR	FPEXC, r1
+;#endif
+	ENDIF
+
+;	/* set VBAR to the vector table address */
+	LDR	 	r0, =__cs3_interrupt_vector
+	MCR	 	p15, 0, r0, c12, c0, 0
+    ;LDR    r0, =Vectors
+    ;MCR    p15, 0, r0, c12, c0, 0 ; Write Secure or Non-secure Vector Base Address
+
+	MRC		p15, 0, r8, c0, c0, 5		;// r8にCPU idを読出し
+	AND		r8, r8, #0xf
+	CMP		r8, #0
+	BNE		cpu1_start
+
+;	/* continue to C library initialization */
+	B		_bif_subline_usb_download		; __mainを_bif_subline_usb_downloadに変更
+;	B		__main		; __cs3_start_cを__mainに変更, 19/11/18
+	NOP	
+	END

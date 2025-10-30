@@ -1,0 +1,12 @@
+﻿
+#define USB_DOWNLOAD_BWDX 1
+#define FIX_FRONT_USB_USE 1
+#define HAL_STATUS_ENABLE 1
+
+// 20211215 ThreadX System Timer MPU →　OSC
+/* use OSC0 timer */
+#define SYS_TIMER_INT ALT_INT_INTERRUPT_TIMER_OSC1_0_IRQ
+#define SYS_TIMER ALT_GPT_OSC1_TMR0
+
+#define USB_REAR_USE
+

@@ -1,0 +1,57 @@
+﻿/*==============================================================================*/
+/* Copyright (C) 2014 JSL Technology. All right reserved.						*/
+/* Tittle: CLK Manager Register													*/
+/* Comment:																		*/
+/*==============================================================================*/
+
+#ifndef __J_CLKMGR_REG__
+#define __J_CLKMGR_REG__
+
+
+#define CLKMGR_CTRL							0x00
+#define CLKMGR_BYPASS						0x04
+#define CLKMGR_INTER						0x08
+#define CLKMGR_INTREN						0x0C
+#define CLKMGR_DBCTRL						0x10
+#define CLKMGR_STAT							0x14
+#define CLKMGR_MAINPLLGRP_VCO				0x40
+#define CLKMGR_MAINPLLGRP_MISC				0x44
+#define CLKMGR_MAINPLLGRP_MPUCLK			0x48
+#define CLKMGR_MAINPLLGRP_MAINCLK			0x4C
+#define CLKMGR_MAINPLLGRP_DBGATCLK			0x50
+#define CLKMGR_MAINPLLGRP_MAINQSPICLK		0x54
+#define CLKMGR_MAINPLLGRP_MAINNANDSDCLK		0x58
+#define CLKMGR_MAINPLLGRP_CFGS2FUSER0CLK	0x5C
+#define CLKMGR_MAINPLLGRP_EN				0x60
+#define CLKMGR_MAINPLLGRP_MAINDIV			0x64
+#define CLKMGR_MAINPLLGRP_DBGDIV			0x68
+#define CLKMGR_MAINPLLGRP_TRACEDIV			0x6C
+#define CLKMGR_MAINPLLGRP_L4SRC				0x70
+#define CLKMGR_MAINPLLGRP_STAT				0x74
+#define CLKMGR_PERPLLGRP_VCO				0x80
+#define CLKMGR_PERPLLGRP_MISC				0x84
+#define CLKMGR_PERPLLGRP_EMAC0CLK			0x88
+#define CLKMGR_PERPLLGRP_EMAC1CLK			0x8C
+#define CLKMGR_PERPLLGRP_PERQSPICLK			0x90
+#define CLKMGR_PERPLLGRP_PERNANDSDCLK		0x94
+#define CLKMGR_PERPLLGRP_BASECLK			0x98
+#define CLKMGR_PERPLLGRP_S2FUSER1CLK		0x9C
+#define CLKMGR_PERPLLGRP_EN					0xA0
+#define CLKMGR_PERPLLGRP_DIV				0xA4
+#define CLKMGR_PERPLLGRP_GPIODIV			0xA8
+#define CLKMGR_PERPLLGRP_SRC				0xAC
+#define CLKMGR_PERPLLGRP_STAT				0xB0
+#define CLKMGR_SDRPLLGRP_VCO				0xC0
+#define CLKMGR_SDRPLLGRP_CTRL				0xC4
+#define CLKMGR_SDRPLLGRP_DDRDQSCLK			0xC8
+#define CLKMGR_SDRPLLGRP_DDR2XDQSCLK		0xCC
+#define CLKMGR_SDRPLLGRP_DDRDQCLK			0xD0
+#define CLKMGR_SDRPLLGRP_S2FUSER2CLK		0xD4
+#define CLKMGR_SDRPLLGRP_EN					0xD8
+#define CLKMGR_SDRPLLGRP_STAT				0xDC
+
+
+#endif /* __J_CLKMGR_REG__ */
+
+
+

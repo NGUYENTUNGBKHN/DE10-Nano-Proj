@@ -1,0 +1,76 @@
+#ifndef _CIR_2COLOR_CHECK_H_
+#define _CIR_2COLOR_CHECK_H_
+
+//テーブル引き用配列
+static enum P_Plane_tbl cir2_plane_tbl1[] = { UP_R_R, DOWN_R_R, UP_R_R, DOWN_R_R, UP_R_R, DOWN_R_R, UP_R_R, DOWN_R_R, UP_R_R, DOWN_R_R,
+			  								  UP_R_G, DOWN_R_G, UP_R_G, DOWN_R_G, UP_R_G, DOWN_R_G, UP_R_G, DOWN_R_G,
+								 			  UP_R_B, DOWN_R_B, UP_R_B, DOWN_R_B, UP_R_B, DOWN_R_B,
+											  UP_R_IR1, DOWN_R_IR1, UP_R_IR1, DOWN_R_IR1,
+											  UP_R_IR2, DOWN_R_IR2,
+											   };
+
+static enum P_Plane_tbl cir2_plane_tbl2[] =  {UP_R_G, DOWN_R_G, UP_R_B, DOWN_R_B, UP_R_IR1, DOWN_R_IR1, UP_R_IR2, DOWN_R_IR2, UP_R_FL, DOWN_R_FL,
+											  UP_R_B, DOWN_R_B, UP_R_IR1, DOWN_R_IR1, UP_R_IR2, DOWN_R_IR2, UP_R_FL, DOWN_R_FL,
+											  UP_R_IR1, DOWN_R_IR1, UP_R_IR2, DOWN_R_IR2, UP_R_FL, DOWN_R_FL,
+											  UP_R_IR2, DOWN_R_IR2, UP_R_FL, DOWN_R_FL,
+											  UP_R_FL, DOWN_R_FL,
+											  };
+	
+#define CIR_2COLOR_CHECK_COUNT 30
+#define CIR2_THERSHOLD 10	//閾値
+
+//組み合わせ表
+enum CIR_2COLOR_CHECK
+{
+	CIR_2COLOR_RED_GREEN_UP = 0,
+	CIR_2COLOR_RED_GREEN_DOWN,
+	CIR_2COLOR_RED_BLUE_UP,
+	CIR_2COLOR_RED_BLUE_DOWN,
+	CIR_2COLOR_RED_IR1_UP,
+	CIR_2COLOR_RED_IR1_DOWN,
+	CIR_2COLOR_RED_IR2_UP,
+	CIR_2COLOR_RED_IR2_DOWN,
+	CIR_2COLOR_RED_UV_UP,
+	CIR_2COLOR_RED_UV_DOWN,
+	CIR_2COLOR_GREEN_BLUE_UP,
+	CIR_2COLOR_GREEN_BLUE_DOWN,
+	CIR_2COLOR_GREEN_IR1_UP,
+	CIR_2COLOR_GREEN_IR1_DOWN,
+	CIR_2COLOR_GREEN_IR2_UP,
+	CIR_2COLOR_GREEN_IR2_DOWN,
+	CIR_2COLOR_GREEN_UV_UP,
+	CIR_2COLOR_GREEN_UV_DOWN,
+	CIR_2COLOR_BLUE_IR1_UP,
+	CIR_2COLOR_BLUE_IR1_DOWN,
+	CIR_2COLOR_BLUE_IR2_UP,
+	CIR_2COLOR_BLUE_IR2_DOWN,
+	CIR_2COLOR_BLUE_UV_UP,
+	CIR_2COLOR_BLUE_UV_DOWN,
+	CIR_2COLOR_IR1_IR2_UP,
+	CIR_2COLOR_IR1_IR2_DOWN,
+	CIR_2COLOR_IR1_UV_UP,
+	CIR_2COLOR_IR1_UV_DOWN,
+	CIR_2COLOR_IR2_UV_UP,
+	CIR_2COLOR_IR2_UV_DOWN,
+};
+
+//2CIR用の配列
+typedef struct
+{
+	u8 cal_mode[CIR_2COLOR_CHECK_COUNT];			//計算モード
+	u8 blank[2];
+	ST_CIR_MODES mode[MAX_DENOMI][4][CIR_2COLOR_CHECK_COUNT];	//各モードの配列
+	
+} ST_2CIR;
+
+#ifdef __cplusplus
+extern "C" {
+#endif /* __cplusplus */
+
+int get_cir_2color_invalid_count(void);
+
+#ifdef __cplusplus
+}
+#endif /* __cplusplus */
+
+#endif

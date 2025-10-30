@@ -1,0 +1,140 @@
+﻿/*""FILE COMMENT""************************************************************
+ *	File Name	: ID0G8.def
+ *	Version		: 1.00
+ *	Contents	: Macro Definitions for GSA-USB Processes.
+ *	Customer	: GSA
+ *	Model		: Full Speed USB M6629x
+ *	Order		: 
+ *	CPU			: 
+ *	Compiler	: 
+ *	OS			: None
+ *	Programmer	: 
+ *	Notes		: 
+ *****************************************************************************
+ * Copyright(c) 2006-. JCM Corporation, All rights reserved.
+ *****************************************************************************
+ *	History		: 2006.02.01 : Ver.1.00  ; Release for GSA. 
+ *""FILE COMMENT END""*******************************************************/
+
+/****************/
+/***** 定数 *****/
+/****************/
+
+/***** Program Mode *****//* DucDfuProgramModeFlag(HIDかDFUかを識別するフラグ)	*/
+/* ディスクリプタセット時にセットする											*/
+#define PROGRAM_MODE_APPLICATION 	0	/* Program Mode : Application Program Mode */
+#define PROGRAM_MODE_DFU 			1	/* Program Mode : DFU Program Mode */
+#define PROGRAM_MODE_DFU_INI 		2   /* HIDモードでDetachコマンド受信*/
+
+/***** USBコマンド番号 *****/	/* DucUsbCmdNo(USBコマンド番号)	*/
+#define CMD_NUM_NONE						0	/* USBコマンド番号なし 								*/
+
+#define CMD_NUM_DFU_DETACH					1	/* DFU_DETACHリクエスト用USBコマンド番号			*/
+//iwasaki#define CMD_NUM_DFU_DNLOAD_START			2	/* DFU_DNLOADリクエスト受信開始用USBコマンド番号 	*//* not use *//* 0x21 0x01 XXXX *//* DFU_DNLOAD *//* iPROは ダウンロードデータのデータステージ *//*これをUBA500で使用するのは難しいので廃止にするかも */
+#define CMD_NUM_DFU_DNLOAD_END				3	/* DFU_DNLOADリクエスト受信完了用USBコマンド番号 	*//* iPROはその後のステータスステージで	*/
+#define CMD_NUM_DFU_UPLOAD					4	/* DFU_UPLOADリクエスト用USBコマンド番号 			*/
+#define CMD_NUM_DFU_GETSTATUS				5	/* DFU_GETSTATUSリクエスト用USBコマンド番号 		*//* 0x21 0x03 XXXX *//*Get Status */
+#define CMD_NUM_DFU_CLRSTATUS				6	/* DFU_CLRSTATUSリクエスト用USBコマンド番号 		*/
+#define CMD_NUM_DFU_ABORT					7	/* DFU_ABORTリクエスト用USBコマンド番号 			*/
+#define CMD_NUM_SET_CONFIGURATION			253	/* SET_CONFIGURATIONリクエスト用USBコマンド番号 				*/
+#define CMD_NUM_UNSUPPORTED					254	/* 未サポートリクエスト用USBコマンド番号 						*/
+#define CMD_NUM_USB_BUS_RESET				255	/* USB Bus Reset用USBコマンド番号(一般的) 						*/
+
+
+/***** DFU I/F内部ステート *****/				/* EXTERN  UB DucDfuCurState に保持(DFU I/F現内部ステート)	*//* use */
+
+#define DFU_ISTATE_APP_NORMAL_ENUMERATING	0x00	/* AppNormal-Enumerating state 		*/
+#define DFU_ISTATE_APP_IDLE_NOT_DETACHABLE	0x01	/* AppIdle-Not-Detachable state	 	*//* not use iPROも使用していない */
+#define DFU_ISTATE_APP_IDLE_DETACHABLE		0x02	/* AppIdle-Detachable state 		*//* HID mode時	と セルフテスト前	*/
+#define DFU_ISTATE_APP_DETACH_IDLE			0x03	/* AppDetach-Idle state 			*//* Detach受信からの処理	*/
+#define DFU_ISTATE_APP_DETACH_RESET			0x04	/* AppDetach-Reset state 			*//* Detach受信からの処理	*/
+#define DFU_ISTATE_DFU_NORMAL_ENUMERATING	0x05	/* DfuNormal-Enumerating state 		*//* stop	*//* ここでSet conf待ち	*/
+#define DFU_ISTATE_DFU_IDLE					0x06	/* DfuIdle state 					*//* DFU mode時	2			*/
+//#define DFU_ISTATE_DFU_FIRST_BK_BUFFERING	0x07	/* DfuFirstBk-Buffering state 		*//* not use DFU_DNLOADリクエスト受信開始コマンド受信時	*//* UBA500は、0x06から0x08に遷移させる為、これは使用しない */
+#define DFU_ISTATE_DFU_WAIT_GETSTATUS1		0x08	/* DfuWait-GetStatus1 state 		*//* DFU_ISTATE_DFU_WRITING_BUFFERINGでDFU_DNLOADリクエスト受信完了コマンド受信時	*/
+#define DFU_ISTATE_DFU_WAIT_POLL_TIMEOUT	0x09	/* DfuWait-PollTimeout state 		*//* DFU_ISTATE_DFU_WAIT_GETSTATUS1でDFU_GETSTATUSリクエスト受信時	*/
+#define DFU_ISTATE_DFU_WAIT_GETSTATUS2		0x0A	/* DfuWait-GetStatus2 state 		*//* DFU_ISTATE_DFU_WAIT_POLL_TIMEOUTでダウンロードのブロック完了時	*/
+#define DFU_ISTATE_DFU_DNLOAD_IDLE			0x0B	/* DfuDnload-Idle state 			*//* DFU_ISTATE_DFU_WAIT_GETSTATUS2でDFU_GETSTATUSリクエスト受信時	*/
+#define DFU_ISTATE_DFU_WRITING_BUFFERING	0x0C	/* DfuWriting-Buffering state 		*//* DFU_ISTATE_DFU_DNLOAD_IDLEでダウンロードブロックサイズが0以上の場合	*/
+#define DFU_ISTATE_DFU_LAST_BK_WRITING		0x0D	/* DfuLastBk-Writing state 			*//* DFU_ISTATE_DFU_DNLOAD_IDLEでダウンロードブロックサイズが0の場合		*/
+#define DFU_ISTATE_DFU_MANIFEST_SYNC		0x0E	/* DfuManifest-Sync state 			*//* DFU_ISTATE_DFU_LAST_BK_WRITINGから無条件で	*/
+#define DFU_ISTATE_DFU_MANIFEST				0x0F	/* DfuManifest state 				*//* DFU_ISTATE_DFU_MANIFEST_SYNCでDFU_GETSTATUSリクエスト受信時	*/
+#define DFU_ISTATE_DFU_MANIFEST_WAIT_RESET	0x10	/* DfuManifest-Wait-Reset state 	*/
+#define DFU_ISTATE_DFU_UPLOAD_IDLE			0x11	/* DfuUplaod-Idle state 			*//* DFU_ISTATE_DFU_IDLEでDFU_UPLOADリクエスト受信時, DFU_ISTATE_DFU_UPLOAD_IDLEでDFU_GETSTATUSリクエスト受信時	*/
+#define DFU_ISTATE_DFU_ERROR				0x12	/* DfuError state 					*/
+#define DFU_ISTATE_DFU_ERROR_ENUMERATING	0x13	/* DfuError-Enumerating state 		*/
+
+
+/***** DFU I/F外部ステート *****/	/* DFUのステータスレスポンス関係に使用	*/
+
+#define DFU_OSTATE_APP_IDLE					0x00	/* appIDLE state 				*/
+#define DFU_OSTATE_APP_DETACH				0x01	/* appDETACH state 				*/
+#define DFU_OSTATE_DFU_IDLE					0x02	/* dfuIDLE state 				*/
+#define DFU_OSTATE_DFU_DNLOAD_SYNC			0x03	/* dfuDNLOAD-SYNC state 		*/
+#define DFU_OSTATE_DFU_DNBUSY				0x04	/* dfuDNBUSY state 				*/
+#define DFU_OSTATE_DFU_DNLOAD_IDLE			0x05	/* dfuDNLOAD-IDLE state 		*/
+#define DFU_OSTATE_DFU_MANIFEST_SYNC		0x06	/* dfuMANIFEST-SYNC state 		*/
+#define DFU_OSTATE_DFU_MANIFEST				0x07	/* dfuMANIFEST state 			*/
+#define DFU_OSTATE_DFU_MANIFEST_WAIT_RESET	0x08	/* dfuMANIFEST-WAIT-RESET state */
+#define DFU_OSTATE_DFU_UPLOAD_IDLE			0x09	/* dfuUPLOAD-IDLE state 		*/
+#define DFU_OSTATE_DFU_ERROR				0x0A	/* dfuERROR state 				*/
+
+
+
+/***** チェック結果 *****/
+/* チェック結果 : OK */
+#define CHECK_OK	0
+/* チェック結果 : NG */
+#define CHECK_NG	1
+/* チェック結果 : ID不一致 */
+#define CHECK_ID_MISMATCH		2	/* use */
+
+
+
+/***** Length of GAT Data Report *****/
+/* Length of GAT DATA Report(Not Last Segment) : 0x3D */
+#define GAT_DATA_REPORT_LEN			0x3D	/* use */
+/* Length of GAT DATA Report(Last Segment) : 0x3C */
+#define GAT_DATA_REPORT_LEN_LAST	0x3C	/* use */
+
+
+/***** Number of GAT Data Reports *****/
+/* Number of GAT Data Reports : 2 */
+#define NUM_OF_GAT_DATA_REPORTS	2	/* use */
+
+/***** Total Size of GAT Data Reports *****/
+/* Number of GAT Data Reports : 2 x 0x3D */
+#define TOTAL_SIZE_OF_GAT_DATA_REPORTS	(GAT_DATA_REPORT_LEN * NUM_OF_GAT_DATA_REPORTS)		/* use */
+
+#define SIG_CHECK_OFF			0		/* Not Done : 0 			*/
+#define SIG_CHECK_ON			1		/* Done : 1 				*/
+
+/***** Maximun Download File Size *****/
+#define	MAX_DOWNLOAD_FILE_LENGTH		0xFC0000
+
+
+/***** GAT用文字 *****/
+/* GAT用文字 : NULL */
+#define GAT_CHAR_NULL				0
+
+/* ダウンロードファイル バージョンサイズ定義 */	
+#define DOWNLOADFILE_VER_SIZE	15
+
+/***** DFU Status Event *****/
+/* OK: 0x00 */
+#define DFU_STATUS_OK				0x00
+/* errTARGET : 0x01 */
+#define DFU_STATUS_ERR_TARGET		0x01
+/* errVERIFY : 0x07 */
+#define DFU_STATUS_ERR_VERIFY		0x07
+/* errADDRESS : 0x08 */
+#define DFU_STATUS_ERR_ADDRESS		0x08
+/* errNOTDONE : 0x09 */
+#define DFU_STATUS_ERR_NOTDONE		0x09
+/* errFIRMWARE : 0x0A */
+#define DFU_STATUS_ERR_FIRMWARE		0x0A
+
+
+
+
+/* End of File */

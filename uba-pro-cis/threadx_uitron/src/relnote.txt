@@ -1,0 +1,385 @@
+                      Release note of ThreadX-uITRON library
+                                                             Grape Systems Inc.
+
+Release note
+-------------------------------------------------------------------------------
+2006/08/31 Initial version 2.0
+-------------------------------------------------------------------------------
+2007/03/05 version 2.1
+
+itron.h
+txi_data.h
+    Prototype declaration was added.
+
+_txi_exc_handler_entry:
+    The processing which clears _kernel_loc_cpu
+    and _tx_thread_preempt_disable was added at
+    the time of the end of handler processing.
+
+_txi_inh_handler_entry:
+    The processing which clears _kernel_loc_cpu
+    and _tx_thread_preempt_disable was added at
+    the time of the end of handler processing.
+
+iloc_cpu:
+    Lock processing was changed.
+
+loc_cpu:
+    TX_RESTORE is deleted.
+
+iunl_cpu
+    The processing which checks lock status was added.
+
+-------------------------------------------------------------------------------
+2009/07/10 version 2.2
+
+txi_syst.c
+loc_cpu.c
+    TX_INTERRUPT_SAVE_AREA and TX_DISABLE which do not have a meaning in using it were deleted.
+
+acre_alm.c
+acre_cyc.c
+acre_dtq.c
+acre_flg.c
+acre_mbf.c
+acre_mbx.c
+acre_mpf.c
+acre_mpl.c
+acre_mtx.c
+acre_por.c
+acre_sem.c
+cre_alm.c
+cre_dtq.c
+cre_flg.c
+cre_mbx.c
+cre_mpf.c
+cre_mpl.c
+cre_mtx.c
+cre_por.c
+cre_sem.c
+cre_tsk.c
+cre_mbf.c
+_kernel_release_mutex
+trcv_dtq.c
+tsnd_dtq.c
+_kernel_task_cleanup
+_kernel_suspend_by_api
+_kernel_resume_task
+rpl_rdv.c
+sig_sem.c
+snd_mbx.c
+fsnd_dtq.c
+rel_mpl.c
+rel_wai.c
+irel_wai.c
+iwup_tsk.c
+rel_mpf.c
+fwd_por.c
+    The preemption control method was arranged.
+
+chg_pri.c
+act_tsk.c
+ter_tsk.c
+frsm_tsk.c
+rsm_tsk.c
+set_tim.c
+sta_alm.c
+sta_cyc.c
+stp_alm.c
+stp_cyc.c
+del_tsk.c
+sta_tsk.c
+get_tim.c
+wup_tsk.c
+_kernel_task_entry
+del_dtq.c
+trcv_mbf.c
+del_mpf.c
+del_sem.c
+del_mpl.c
+del_mtx.c
+del_por.c
+del_flg.c
+del_mbf.c
+del_mbx.c
+    Before using ThreadX API, it changed so that interruption might be enabled.
+
+def_exc.c
+def_inh.c
+    It changed so that handler number might be received from 0.
+    Recovery processing was corrected so that it could change by a macro definition.
+
+sns_tex.c
+ref_tsk.c
+ref_tst.c
+get_tid.c
+iget_tid.c
+ena_tex.c
+dis_tex.c
+txi_knl.h
+_kernel_task_tcb
+ras_tex
+    Current task information is acquired directly.
+
+tslp_tsk.c
+sus_tsk.c
+rot_rdq.c
+slp_tsk.c
+ext_tsk.c
+dly_tsk.c
+exd_tsk.c
+unl_mtx.c
+twai_flg.c
+trcv_mbx.c
+tloc_mtx.c
+tget_mpf.c
+tget_mpl.c
+tacp_por.c
+tsnd_mbf.c
+tcal_por.c
+    Current task information is acquired directly.
+    Before using ThreadX API, it changed so that interruption might be enabled.
+
+__kernel_copy_to_mbf
+__kernel_copy_from_mbf
+_kernel_enque_task_pri
+    The data type was corrected.
+
+_kernel_task_exception_entry
+    Current task information is acquired directly.
+    Before calling a scheduler, the processing which clears a current task was added.
+
+-------------------------------------------------------------------------------
+2017/10/11 version 2.3
+
+acre_mbf.c
+cre_mbf.c
+    Fixed problem caused by mbfsz error check size being small.
+    
+acre_mbx.c
+    Delete unnecessary code.
+    
+del_mtx.c
+    A means to go into a waiting state was changed into the form which uses 
+    ThreadX API directly.
+    Since specification of internal function changed from ThreadX v.5.5, 
+    correspondence code was added.
+    Fixed an issue that could not be restored if the base priority of the task 
+    was changed low when the mutex was unlocked.
+    Fixed a problem that changes in internal priority are suspended and are not 
+    reflected immediately if the current priority has been increased by another task.
+
+act_tsk.c
+    A means to go into a waiting state was changed into the form which uses 
+    ThreadX API directly.
+    When this function is called in dispatch disabled state, it fixes a problem 
+    that it may switch to other task.
+    It changes so that it may restart directly.
+
+chg_pri.c
+    Fixed a problem that change of internal priority is suspended and not immediately 
+    reflected when the priority is set low by the invoking task.
+
+cre_cyc.c
+dly_tsk.c
+    There was a problem that the actual time was shorter than the specified time. This
+    problem has been corrected.
+
+exd_tsk.c
+    Fixed an issue where switching to another task will be made before the management 
+    information is cleared when an interrupt occurs at the same time as exd_tsk () 
+    terminates the task.
+
+def_exc.c
+    Fixed an issue where processing was incorrect when NULL pointer was specified.
+
+get_tim.c
+    Delete unused variables.
+
+iact_tsk.c
+    It changes so that it may restart directly.
+
+ref_alm.c
+    The time until the start-up time has been changed to return 1 tick less.
+
+ref_cyc.c
+    Add a computation expression of pk_rcyc->lefttim.
+
+ref_tsk.c
+    Add the status setting process if the task has become a waiting state by ThreadX of the API.
+    Timer change the method of calculating the elapsed time from the start.
+
+ref_tst
+    Add the status setting process if the task has become a waiting state by ThreadX of the API.
+
+rot_rdq.c
+    Since specification of internal function changed from ThreadX v.5.5, 
+    correspondence code was added.
+
+rsm_tsk.c
+    The task is a state waiting by ThreadX of the API to suspend state, fix the problem
+    that is released also waiting state of ThreadX of the API when they resume.
+
+set_tim.c
+    Added time correction processing.
+
+slp_tsk.c
+    Fixed an issue where interrupts occurred in the dispatch enabled state and can not 
+    be canceled normally when trying to cancel the wait state from a task with a higher priority.
+
+sta_alm.c
+    In the alarm handler, fixed the problem that the time until the handler is activated is max 
+    1 time tick.
+    The task is a state waiting by ThreadX of the API to suspend state, fix the problem
+    that is released also waiting state of ThreadX of the API when they resume.
+
+sta_cyc.c
+    In the cyclic handler, fixed the problem that the time until the handler is activated is max 
+    1 time tick.
+
+sus_tsk.c
+    Fixed an issue where interrupts occurred in the dispatch enabled state and can not 
+    be canceled normally when trying to cancel the wait state from a task with a higher priority.
+    
+
+tacp_por.c
+    Changed suspend method of each API to reduce code amount.
+    Delete common processing.
+    Delete unnecessary error check.
+    Fixed a problem that FIFO wait will be made even if TA_TPRI is 
+    specified and created.
+
+tcal_por.c
+    A means to go into a waiting state was changed into the form which uses 
+    ThreadX API directly.
+    When a priority is lower than the cal side's of rendezvous receptionist side,
+    the call side corrects the problem which may not be waiting-canceled normally.
+    If there is a waiting for the task, add the process to clear the pTcb->wait_pri.
+    Fix pointer assignment to BOOL type variable.
+
+fsnd_dtq.c
+irel_wai.c
+iwup_tsk.c
+tget_mpf.c
+tget_mpl.c
+tloc_mtx.c
+twai_sem.c
+wup_tsk.c
+    A means to go into a waiting state was changed into the form which uses 
+    ThreadX API directly.
+    
+irot_rdq.c
+    Fixed an issue where task rotation was not executed if TX_TIMER_PROCESS_IN_ISR was defined.
+
+ter_tsk.c
+    When called in the state of dispatch disable, the problem which cannot continue operation was corrected.
+    In the SMP version, it changes so that a task may certainly become TTS_DMT at the time of the end of ter_tsk.
+
+trcv_dtq.c
+    A means to go into a waiting state was changed into the form which uses 
+    ThreadX API directly.
+    Add a branch process of switching the waiting way depending on the pDtq->cdtq.dtqatr.
+    When they release the waiting waiting for transmission of the task, adding a process
+    to clear the pTcb->wait_pri.
+    Fix pointer assignment to BOOL type variable.
+    
+trcv_mbf.c
+    A means to go into a waiting state was changed into the form which uses ThreadX API
+    directly.
+    Processing in case buffer size is 0 was added.
+    If there is a waiting for the task, add the process to clear the pTcb->wait_pri.
+    Fix pointer assignment to BOOL type variable.
+    
+trcv_mbx.c
+    A means to go into a waiting state was changed into the form which uses ThreadX API
+    directly.
+    Modify the waiting how the branch condition by mbxatr.
+    Modify the assignment expression to wait_pri.
+    
+del_dtq.c
+del_flg.c
+del_mbf.c
+del_mbx.c
+del_mpf.c
+del_mpl.c
+del_por.c
+del_sem.c
+fwd_por.c
+rel_mpf.c
+rel_wai.c
+rpl_rdv.c
+sig_sem.c
+tsnd_dtq.c
+    A means to go into a waiting state was changed into the form which uses ThreadX API
+    directly.
+    If there is a waiting for the task, add the process to clear the pTcb->wait_pri.
+    Fix pointer assignment to BOOL type variable.
+    
+tsnd_mbf.c
+    A means to go into a waiting state was changed into the form which uses ThreadX API
+    directly.
+    Fixed the problem that the size check at the time of transmission was wrong.
+    If there is a waiting for the task, add the process to clear the pTcb->wait_pri.
+    Fix pointer assignment to BOOL type variable.
+    
+twai_flg.c
+    A means to go into a waiting state was changed into the form which uses ThreadX API
+    directly.
+    Modify the waiting how the branch condition by flgatr.
+    Modify the assignment expression to wait_pri.
+    
+rel_mpl.c
+    A means to go into a waiting state was changed into the form which uses ThreadX API
+    directly.
+    Fixed the problem that endless loop occurs when irel_wai() is called by interrupt 
+    processing during processing of this function.
+    If there is a waiting for the task, add the process to clear the pTcb->wait_pri.
+    Fix pointer assignment to BOOL type variable.
+    
+set_flg.c
+    A means to go into a waiting state was changed into the form which uses ThreadX API
+    directly.
+    Fixed the problem that endless loop occurs when iset_flg() is called by interrupt 
+    processing during processing of this function.
+    If there is a waiting for the task, add the process to clear the pTcb->wait_pri.
+    Fix pointer assignment to BOOL type variable.
+    
+snd_mbx.c
+    A means to go into a waiting state was changed into the form which uses ThreadX API
+    directly.
+    Since the pointer operation at the time of a TA_MPRI attribute was wrong, it corrected.
+    If there is a waiting for the task, add the process to clear the pTcb->wait_pri.
+    Fix pointer assignment to BOOL type variable.
+    
+txi_obj.c
+    A means to go into a waiting state was changed into the form which uses ThreadX API
+    directly.
+    Fixed a problem that unnecessary code remained even if the system memory size was set to 0.
+    If there is a waiting for the task, add the process to clear the pTcb->wait_pri.
+    Added argument to correspond to ThreadX 5.8 or later.
+    
+txi_tsk.c
+    A means to go into a waiting state was changed into the form which uses ThreadX API
+    directly.
+    Fixed a problem that the mutex held is not released when an interrupt occurs at the 
+    same time as the task returns from the task entry function.
+    Since specification of internal function changed from ThreadX v.5.5, 
+    correspondence code was added.
+    Fixed an issue that could not be restored if the base priority of the task 
+    was changed low when the mutex was unlocked.
+    Fixed an issue where interrupts occurred in the dispatch enabled state and can not 
+    be canceled normally when trying to cancel the wait state from a task with a higher priority.
+    At the time of an end of task, a problem may arise by interruption.
+    The TX_DISABLE was added.
+    
+unl_mtx.c
+    Since specification of internal function changed from ThreadX v.5.5, 
+    correspondence code was added.
+    Fixed an issue that could not be restored if the base priority of the task 
+    was changed low when the mutex was unlocked.
+    Fixed a problem that changes in internal priority are suspended and are not 
+    reflected immediately if the current priority has been increased by another task.
+    
+    
+-------------------------------------------------------------------------------
+

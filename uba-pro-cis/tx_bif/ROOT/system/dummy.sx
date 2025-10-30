@@ -1,0 +1,103 @@
+;/**************************************************************************/
+;/*                                                                        */
+;/*            Copyright (c) 1996-2018 by Express Logic Inc.               */
+;/*                                                                        */
+;/*  This software is copyrighted by and is the sole property of Express   */
+;/*  Logic, Inc.  All rights, title, ownership, or other interests         */
+;/*  in the software remain the property of Express Logic, Inc.  This      */
+;/*  software may only be used in accordance with the corresponding        */
+;/*  license agreement.  Any unauthorized use, duplication, transmission,  */
+;/*  distribution, or disclosure of this software is expressly forbidden.  */
+;/*                                                                        */
+;/*  This Copyright notice may not be removed or modified without prior    */
+;/*  written consent of Express Logic, Inc.                                */
+;/*                                                                        */
+;/*  Express Logic, Inc. reserves the right to modify this software        */
+;/*  without notice.                                                       */
+;/*                                                                        */
+;/*  Express Logic, Inc.                     info@expresslogic.com         */
+;/*  11423 West Bernardo Court               http:;//www.expresslogic.com   */
+;/*  San Diego, CA  92127                                                  */
+;/*                                                                        */
+;/**************************************************************************/
+
+
+;/**************************************************************************/
+;/**************************************************************************/
+;/**                                                                       */
+;/** ThreadX SMP Component                                                 */
+;/**                                                                       */
+;/**   Altera Cyclone V bootstrap for GCC toolchain                        */
+;/**                                                                       */
+;/**************************************************************************/
+;/**************************************************************************/
+
+
+	REQUIRE8	{TRUE}						; 8バイト境界スタック要求, 19/11/20
+	PRESERVE8	{TRUE}						; 8バイト境界スタック保持, 19/11/20
+
+
+;/*
+; *  Vector table
+; */
+
+	AREA	|.dummy.interrupt_vector|, CODE, ALIGN=3
+	EXPORT	__dummy_interrupt_vector
+__dummy_interrupt_vector
+	LDR		pc, __dummy_handler						; Reset goes to startup function
+	LDR		pc, __dummy_handler					; Undefined handler
+	LDR		pc, __dummy_handler							; Software interrupt handler
+	LDR		pc, __dummy_handler					; Prefetch exception handler
+	LDR		pc, __dummy_handler						; Abort exception handler
+	NOP										; Reserved exception handler
+	LDR		pc, __dummy_handler							; IRQ interrupt handler
+	LDR		pc, __dummy_handler							; FIQ interrupt handler
+
+	EXPORT	__dummy_handler
+__dummy_handler
+	B		__dummy_handler
+
+
+;/*
+; *  Startup code
+; */
+	AREA	|.cs3.reset|, CODE, ALIGN=3
+
+	EXPORT	__dummy_reset
+	;EXPORT  Reset_Handler
+	IMPORT  __cs3_reset
+	IMPORT	|Image$$ARM_LIB_STACK$$ZI$$Limit|
+	IMPORT	|Image$$IRQ_STACK$$ZI$$Limit|
+	IMPORT	|Image$$SYS_STACK$$ZI$$Limit|
+	IMPORT	|Image$$ABT_STACK$$ZI$$Limit|
+	IMPORT	|Image$$FIQ_STACK$$ZI$$Limit|
+	IMPORT	|Image$$UND_STACK$$ZI$$Limit|
+	IMPORT	|Image$$SVC_STACK1$$ZI$$Limit|
+	IMPORT	|Image$$IRQ_STACK1$$ZI$$Limit|
+	IMPORT	|Image$$SYS_STACK1$$ZI$$Limit|
+	IMPORT	|Image$$ABT_STACK1$$ZI$$Limit|
+	IMPORT	|Image$$FIQ_STACK1$$ZI$$Limit|
+	IMPORT	|Image$$UND_STACK1$$ZI$$Limit|
+	IMPORT  main		; __cs3_start_cを__mainに変更, 19/11/18
+	IMPORT  __main		; __cs3_start_cを__mainに変更, 19/11/18
+	IMPORT	_tx_alt_smp_initialize_low_level
+	IMPORT	_tx_thread_smp_initialize_wait
+
+__dummy_main
+	;/* get CPU id in r8 */
+	MRC		p15, 0, r8, c0, c0, 5
+	AND		r8, r8, #0xf
+
+;	/* continue to C library initialization */
+	B		main		; __cs3_start_cを__mainに変更, 19/11/18
+	NOP
+	
+__dummy_reset
+	;/* get CPU id in r8 */
+	MRC		p15, 0, r8, c0, c0, 5
+	AND		r8, r8, #0xf
+
+;	/* continue to C library initialization */
+	B		__cs3_reset		; __cs3_start_cを__mainに変更, 19/11/18
+	NOP
+END

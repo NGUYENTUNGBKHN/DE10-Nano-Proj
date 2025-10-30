@@ -1,0 +1,36 @@
+﻿/******************************************************************************/
+/*! @addtogroup Group1
+    @file       hal_i2c_tmp.h
+    @brief      I2C Digital Potentiometer
+    @date       2018/03/14
+    @author     H.Suzuki
+    @par        Revision
+    $Id$
+    @par        Copyright (C)
+    2018 Japan CashMachine Co, Limited. All rights reserved.
+*******************************************************************************
+    @par        History
+    - 2021/06/01 Development Dept at Tokyo
+      -# Initial Version
+      -# TMP112/TMP102/S5851AT with Temperature sensor
+******************************************************************************/
+
+
+
+/* Public Definitions ----------------------------------------------------------- */
+/* return value */
+#define E_I2C_SEND    -4096          /* 0xE000: I2C送信失敗エラー                   */
+#define E_I2C_PARM    -8192          /* 0xF000: 引数エラー                   */
+/* slave address */
+
+/* Public Functions ----------------------------------------------------------- */
+
+/* I2C 3 */
+ER _hal_tmp_read_cisa(u16 *bin, s16 *cel);
+ER _hal_tmp_read_cisb(u16 *bin, s16 *cel);
+ER _hal_tmp_read_out(u16 *bin, s16 *cel);
+ER _hal_tmp_read_hmot(u16 *bin, s16 *cel);
+ER _hal_tmp_read_smot(u16 *bin, s16 *cel);
+
+
+/* EOF */
