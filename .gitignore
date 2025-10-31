@@ -1,3 +1,66 @@
 **/doc
 **/.metadata
 **/_build
+# FPGA file common
+**/*.rpt   
+**/*.log   
+**/*.jou   
+**/*.str   
+**/*.bit   
+**/*.mcs   
+**/*.bin   
+**/*.svf   
+**/*.cfg   
+**/*.json  
+# Simulation File
+**/*.vcd  
+**/*.wlf  
+**/*.shm  
+**/*.fsdb 
+**/*.ucdb 
+transcript
+vsim.ini  
+
+**/*_out/
+**/work/
+**/compile/
+**/sim/
+**/temp/
+**/generated/
+**/db/         
+**/fft_temp/   
+**/ip/         
+#------------------------------------------------------------------------------------------------------------------
+# INTEL QUARTUS / ALTIUM / MODELSIM
+#------------------------------------------------------------------------------------------------------------------
+# Quartus
+**/output_files/
+**/incremental_db/
+**/prj_name.qws
+**/*.bak
+**/*.cmp
+**/*.cof
+**/*.done
+**/*.fit
+**/*.hdb
+**/*.ocp
+**/*.pin
+**/*.pof
+**/*.qsf.bak
+**/*.qpf.bak
+**/*.qdb
+**/*.sld
+**/*.sft
+**/*.sta
+**/*.sdo
+**/*.sof
+**/*.vt
+**/*.vwf
+**/*.qxp
+
+# ModelSim/QuestaSim
+vsim.wlf
+vsim.ini
+modelsim.ini
+\_temp/
+\_i2f/
