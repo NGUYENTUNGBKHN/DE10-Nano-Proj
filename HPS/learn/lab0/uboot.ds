@@ -1,0 +1,31 @@
+############################################################
+#
+# Copyright Altera 2013
+# All Rights Reserved
+# File: uboot.ds
+#
+############################################################
+
+#
+# This is an ARM DS5 debugger script that is intended to help folks run and
+# debug uboot.  It loads the preloader (a.k.a. spl) into onchip ram, runs it 
+# to setup DDR, then loads uboot, lets uboot run a bit to calculate relocation
+# offset, and finally reloads symbol table with calculated offset in the 
+# relocated code.
+#
+
+#
+# load and run the preloader
+#
+source -v "$sdir/preloader.ds"
+
+
+#
+# now load unrelocated uboot into ddr
+#
+loadfile "$sdir/Debug/lab0.axf"
+
+# set pc to start of uboot
+start
+
+pause 1s

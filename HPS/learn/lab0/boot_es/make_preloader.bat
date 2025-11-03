@@ -1,0 +1,1 @@
+mkpimage --header-version 0 -o preloader-mkpimage.bin u-boot-spl.bin u-boot-spl.bin u-boot-spl.bin u-boot-spl.bin
