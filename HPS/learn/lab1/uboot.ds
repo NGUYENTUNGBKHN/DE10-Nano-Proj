@@ -13,19 +13,7 @@
 # offset, and finally reloads symbol table with calculated offset in the 
 # relocated code.
 #
+reset
+wait 5s
 
-#
-# load and run the preloader
-#
-source -v "$sdir/preloader.ds"
-
-
-#
-# now load unrelocated uboot into ddr
-#
-loadfile "$sdir/Debug/lab0.axf"
-
-# set pc to start of uboot
-start
-
-pause 1s
+loadfile "$sdir/boot_es/u-boot-spl(semi).axf"

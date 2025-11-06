@@ -232,7 +232,7 @@ Discarded input sections
  .text.rw_mgr_incr_vfifo
                 0x00000000       0x10 board/altera/socfpga/sdram/libsocfpga-sdram.o
  .text.rw_mgr_mem_calibrate_wlevel
-                0x00000000      0x140 board/altera/socfpga/sdram/libsocfpga-sdram.o
+                0x00000000      0x144 board/altera/socfpga/sdram/libsocfpga-sdram.o
  .text.rw_mgr_mem_calibrate_eye_diag_aid
                 0x00000000        0x2 board/altera/socfpga/sdram/libsocfpga-sdram.o
  .text.rw_mgr_mem_calibrate_full_test
@@ -589,26 +589,26 @@ Discarded input sections
                 0x00000000        0x4 lib/libgeneric.o
  .bss.local.6327
                 0x00000000       0x16 lib/libgeneric.o
- .text          0x00000000        0x0 /cygdrive/d/SJ/nightly/17.0std/595/w64/acds/embedded/examples/hardware/av_soc_devkit_ghrd/software/preloader/uboot-socfpga/spl/arch/arm/lib/eabi_compat.o
- .data          0x00000000        0x0 /cygdrive/d/SJ/nightly/17.0std/595/w64/acds/embedded/examples/hardware/av_soc_devkit_ghrd/software/preloader/uboot-socfpga/spl/arch/arm/lib/eabi_compat.o
- .bss           0x00000000        0x0 /cygdrive/d/SJ/nightly/17.0std/595/w64/acds/embedded/examples/hardware/av_soc_devkit_ghrd/software/preloader/uboot-socfpga/spl/arch/arm/lib/eabi_compat.o
- .text.raise    0x00000000        0x4 /cygdrive/d/SJ/nightly/17.0std/595/w64/acds/embedded/examples/hardware/av_soc_devkit_ghrd/software/preloader/uboot-socfpga/spl/arch/arm/lib/eabi_compat.o
+ .text          0x00000000        0x0 /cygdrive/d/SJ/nightly/17.0std/595/w64/acds/embedded/examples/hardware/cv_soc_devkit_ghrd/software/preloader/uboot-socfpga/spl/arch/arm/lib/eabi_compat.o
+ .data          0x00000000        0x0 /cygdrive/d/SJ/nightly/17.0std/595/w64/acds/embedded/examples/hardware/cv_soc_devkit_ghrd/software/preloader/uboot-socfpga/spl/arch/arm/lib/eabi_compat.o
+ .bss           0x00000000        0x0 /cygdrive/d/SJ/nightly/17.0std/595/w64/acds/embedded/examples/hardware/cv_soc_devkit_ghrd/software/preloader/uboot-socfpga/spl/arch/arm/lib/eabi_compat.o
+ .text.raise    0x00000000        0x4 /cygdrive/d/SJ/nightly/17.0std/595/w64/acds/embedded/examples/hardware/cv_soc_devkit_ghrd/software/preloader/uboot-socfpga/spl/arch/arm/lib/eabi_compat.o
  .text.__aeabi_unwind_cpp_pr0
-                0x00000000        0x2 /cygdrive/d/SJ/nightly/17.0std/595/w64/acds/embedded/examples/hardware/av_soc_devkit_ghrd/software/preloader/uboot-socfpga/spl/arch/arm/lib/eabi_compat.o
+                0x00000000        0x2 /cygdrive/d/SJ/nightly/17.0std/595/w64/acds/embedded/examples/hardware/cv_soc_devkit_ghrd/software/preloader/uboot-socfpga/spl/arch/arm/lib/eabi_compat.o
  .text.__aeabi_unwind_cpp_pr1
-                0x00000000        0x2 /cygdrive/d/SJ/nightly/17.0std/595/w64/acds/embedded/examples/hardware/av_soc_devkit_ghrd/software/preloader/uboot-socfpga/spl/arch/arm/lib/eabi_compat.o
- .debug_info    0x00000000      0x2d4 /cygdrive/d/SJ/nightly/17.0std/595/w64/acds/embedded/examples/hardware/av_soc_devkit_ghrd/software/preloader/uboot-socfpga/spl/arch/arm/lib/eabi_compat.o
- .debug_abbrev  0x00000000      0x127 /cygdrive/d/SJ/nightly/17.0std/595/w64/acds/embedded/examples/hardware/av_soc_devkit_ghrd/software/preloader/uboot-socfpga/spl/arch/arm/lib/eabi_compat.o
- .debug_loc     0x00000000       0x21 /cygdrive/d/SJ/nightly/17.0std/595/w64/acds/embedded/examples/hardware/av_soc_devkit_ghrd/software/preloader/uboot-socfpga/spl/arch/arm/lib/eabi_compat.o
+                0x00000000        0x2 /cygdrive/d/SJ/nightly/17.0std/595/w64/acds/embedded/examples/hardware/cv_soc_devkit_ghrd/software/preloader/uboot-socfpga/spl/arch/arm/lib/eabi_compat.o
+ .debug_info    0x00000000      0x2d4 /cygdrive/d/SJ/nightly/17.0std/595/w64/acds/embedded/examples/hardware/cv_soc_devkit_ghrd/software/preloader/uboot-socfpga/spl/arch/arm/lib/eabi_compat.o
+ .debug_abbrev  0x00000000      0x127 /cygdrive/d/SJ/nightly/17.0std/595/w64/acds/embedded/examples/hardware/cv_soc_devkit_ghrd/software/preloader/uboot-socfpga/spl/arch/arm/lib/eabi_compat.o
+ .debug_loc     0x00000000       0x21 /cygdrive/d/SJ/nightly/17.0std/595/w64/acds/embedded/examples/hardware/cv_soc_devkit_ghrd/software/preloader/uboot-socfpga/spl/arch/arm/lib/eabi_compat.o
  .debug_aranges
-                0x00000000       0x28 /cygdrive/d/SJ/nightly/17.0std/595/w64/acds/embedded/examples/hardware/av_soc_devkit_ghrd/software/preloader/uboot-socfpga/spl/arch/arm/lib/eabi_compat.o
- .debug_ranges  0x00000000       0x18 /cygdrive/d/SJ/nightly/17.0std/595/w64/acds/embedded/examples/hardware/av_soc_devkit_ghrd/software/preloader/uboot-socfpga/spl/arch/arm/lib/eabi_compat.o
- .debug_line    0x00000000      0x1ee /cygdrive/d/SJ/nightly/17.0std/595/w64/acds/embedded/examples/hardware/av_soc_devkit_ghrd/software/preloader/uboot-socfpga/spl/arch/arm/lib/eabi_compat.o
- .debug_str     0x00000000      0x36e /cygdrive/d/SJ/nightly/17.0std/595/w64/acds/embedded/examples/hardware/av_soc_devkit_ghrd/software/preloader/uboot-socfpga/spl/arch/arm/lib/eabi_compat.o
- .comment       0x00000000       0x31 /cygdrive/d/SJ/nightly/17.0std/595/w64/acds/embedded/examples/hardware/av_soc_devkit_ghrd/software/preloader/uboot-socfpga/spl/arch/arm/lib/eabi_compat.o
- .debug_frame   0x00000000       0x40 /cygdrive/d/SJ/nightly/17.0std/595/w64/acds/embedded/examples/hardware/av_soc_devkit_ghrd/software/preloader/uboot-socfpga/spl/arch/arm/lib/eabi_compat.o
+                0x00000000       0x28 /cygdrive/d/SJ/nightly/17.0std/595/w64/acds/embedded/examples/hardware/cv_soc_devkit_ghrd/software/preloader/uboot-socfpga/spl/arch/arm/lib/eabi_compat.o
+ .debug_ranges  0x00000000       0x18 /cygdrive/d/SJ/nightly/17.0std/595/w64/acds/embedded/examples/hardware/cv_soc_devkit_ghrd/software/preloader/uboot-socfpga/spl/arch/arm/lib/eabi_compat.o
+ .debug_line    0x00000000      0x1ee /cygdrive/d/SJ/nightly/17.0std/595/w64/acds/embedded/examples/hardware/cv_soc_devkit_ghrd/software/preloader/uboot-socfpga/spl/arch/arm/lib/eabi_compat.o
+ .debug_str     0x00000000      0x36e /cygdrive/d/SJ/nightly/17.0std/595/w64/acds/embedded/examples/hardware/cv_soc_devkit_ghrd/software/preloader/uboot-socfpga/spl/arch/arm/lib/eabi_compat.o
+ .comment       0x00000000       0x31 /cygdrive/d/SJ/nightly/17.0std/595/w64/acds/embedded/examples/hardware/cv_soc_devkit_ghrd/software/preloader/uboot-socfpga/spl/arch/arm/lib/eabi_compat.o
+ .debug_frame   0x00000000       0x40 /cygdrive/d/SJ/nightly/17.0std/595/w64/acds/embedded/examples/hardware/cv_soc_devkit_ghrd/software/preloader/uboot-socfpga/spl/arch/arm/lib/eabi_compat.o
  .ARM.attributes
-                0x00000000       0x2d /cygdrive/d/SJ/nightly/17.0std/595/w64/acds/embedded/examples/hardware/av_soc_devkit_ghrd/software/preloader/uboot-socfpga/spl/arch/arm/lib/eabi_compat.o
+                0x00000000       0x2d /cygdrive/d/SJ/nightly/17.0std/595/w64/acds/embedded/examples/hardware/cv_soc_devkit_ghrd/software/preloader/uboot-socfpga/spl/arch/arm/lib/eabi_compat.o
  .data          0x00000000        0x0 d:/sj/nightly/17.0std/595/w64/acds/embedded/host_tools/mentor/gnu/arm/baremetal/bin/../lib/gcc/arm-altera-eabi/5.2.0\libgcc.a(_udivsi3.o)
  .bss           0x00000000        0x0 d:/sj/nightly/17.0std/595/w64/acds/embedded/host_tools/mentor/gnu/arm/baremetal/bin/../lib/gcc/arm-altera-eabi/5.2.0\libgcc.a(_udivsi3.o)
  .data          0x00000000        0x0 d:/sj/nightly/17.0std/595/w64/acds/embedded/host_tools/mentor/gnu/arm/baremetal/bin/../lib/gcc/arm-altera-eabi/5.2.0\libgcc.a(_dvmd_tls.o)
@@ -869,65 +869,65 @@ Linker script and memory map
                 0xffff1d0c       0x8c board/altera/socfpga/sdram/libsocfpga-sdram.o
                 0xffff1d0c                scc_mgr_set_dqdqs_output_phase_all_ranks
  .text.scc_mgr_set_dqs_en_delay_all_ranks
-                0xffff1d98       0x90 board/altera/socfpga/sdram/libsocfpga-sdram.o
+                0xffff1d98       0x8c board/altera/socfpga/sdram/libsocfpga-sdram.o
                 0xffff1d98                scc_mgr_set_dqs_en_delay_all_ranks
  .text.scc_mgr_zero_all
-                0xffff1e28       0x78 board/altera/socfpga/sdram/libsocfpga-sdram.o
-                0xffff1e28                scc_mgr_zero_all
+                0xffff1e24       0x74 board/altera/socfpga/sdram/libsocfpga-sdram.o
+                0xffff1e24                scc_mgr_zero_all
  .text.scc_set_bypass_mode
-                0xffff1ea0       0x28 board/altera/socfpga/sdram/libsocfpga-sdram.o
-                0xffff1ea0                scc_set_bypass_mode
+                0xffff1e98       0x28 board/altera/socfpga/sdram/libsocfpga-sdram.o
+                0xffff1e98                scc_set_bypass_mode
  .text.scc_mgr_load_dqs_for_write_group
-                0xffff1ec8       0x2c board/altera/socfpga/sdram/libsocfpga-sdram.o
-                0xffff1ec8                scc_mgr_load_dqs_for_write_group
+                0xffff1ec0       0x2c board/altera/socfpga/sdram/libsocfpga-sdram.o
+                0xffff1ec0                scc_mgr_load_dqs_for_write_group
  .text.scc_mgr_zero_group
-                0xffff1ef4       0x88 board/altera/socfpga/sdram/libsocfpga-sdram.o
-                0xffff1ef4                scc_mgr_zero_group
+                0xffff1eec       0x88 board/altera/socfpga/sdram/libsocfpga-sdram.o
+                0xffff1eec                scc_mgr_zero_group
  .text.scc_mgr_apply_group_dq_in_delay
-                0xffff1f7c       0x94 board/altera/socfpga/sdram/libsocfpga-sdram.o
-                0xffff1f7c                scc_mgr_apply_group_dq_in_delay
+                0xffff1f74       0x94 board/altera/socfpga/sdram/libsocfpga-sdram.o
+                0xffff1f74                scc_mgr_apply_group_dq_in_delay
  .text.scc_mgr_apply_group_dq_out1_delay
-                0xffff2010       0x28 board/altera/socfpga/sdram/libsocfpga-sdram.o
-                0xffff2010                scc_mgr_apply_group_dq_out1_delay
+                0xffff2008       0x28 board/altera/socfpga/sdram/libsocfpga-sdram.o
+                0xffff2008                scc_mgr_apply_group_dq_out1_delay
  .text.scc_mgr_apply_group_dm_out1_delay
-                0xffff2038       0x10 board/altera/socfpga/sdram/libsocfpga-sdram.o
-                0xffff2038                scc_mgr_apply_group_dm_out1_delay
+                0xffff2030       0x10 board/altera/socfpga/sdram/libsocfpga-sdram.o
+                0xffff2030                scc_mgr_apply_group_dm_out1_delay
  .text.scc_mgr_apply_group_dqs_io_and_oct_out1
-                0xffff2048       0x20 board/altera/socfpga/sdram/libsocfpga-sdram.o
-                0xffff2048                scc_mgr_apply_group_dqs_io_and_oct_out1
+                0xffff2040       0x20 board/altera/socfpga/sdram/libsocfpga-sdram.o
+                0xffff2040                scc_mgr_apply_group_dqs_io_and_oct_out1
  .text.scc_mgr_apply_group_all_out_delay_add
-                0xffff2068       0x44 board/altera/socfpga/sdram/libsocfpga-sdram.o
-                0xffff2068                scc_mgr_apply_group_all_out_delay_add
+                0xffff2060       0x44 board/altera/socfpga/sdram/libsocfpga-sdram.o
+                0xffff2060                scc_mgr_apply_group_all_out_delay_add
  .text.scc_mgr_apply_group_all_out_delay_add_all_ranks
-                0xffff20ac       0x14 board/altera/socfpga/sdram/libsocfpga-sdram.o
-                0xffff20ac                scc_mgr_apply_group_all_out_delay_add_all_ranks
+                0xffff20a4       0x14 board/altera/socfpga/sdram/libsocfpga-sdram.o
+                0xffff20a4                scc_mgr_apply_group_all_out_delay_add_all_ranks
  .text.set_jump_as_return
-                0xffff20c0       0x14 board/altera/socfpga/sdram/libsocfpga-sdram.o
-                0xffff20c0                set_jump_as_return
+                0xffff20b8       0x14 board/altera/socfpga/sdram/libsocfpga-sdram.o
+                0xffff20b8                set_jump_as_return
  .text.rw_mgr_mem_initialize
-                0xffff20d4      0x128 board/altera/socfpga/sdram/libsocfpga-sdram.o
-                0xffff20d4                rw_mgr_mem_initialize
+                0xffff20cc      0x128 board/altera/socfpga/sdram/libsocfpga-sdram.o
+                0xffff20cc                rw_mgr_mem_initialize
  .text.rw_mgr_mem_handoff
-                0xffff21fc       0x7c board/altera/socfpga/sdram/libsocfpga-sdram.o
-                0xffff21fc                rw_mgr_mem_handoff
+                0xffff21f4       0x7c board/altera/socfpga/sdram/libsocfpga-sdram.o
+                0xffff21f4                rw_mgr_mem_handoff
  .text.rw_mgr_mem_calibrate_read_test_patterns
-                0xffff2278      0x188 board/altera/socfpga/sdram/libsocfpga-sdram.o
-                0xffff2278                rw_mgr_mem_calibrate_read_test_patterns
+                0xffff2270      0x188 board/altera/socfpga/sdram/libsocfpga-sdram.o
+                0xffff2270                rw_mgr_mem_calibrate_read_test_patterns
  .text.rw_mgr_mem_calibrate_read_test_patterns_all_ranks
-                0xffff2400       0x48 board/altera/socfpga/sdram/libsocfpga-sdram.o
-                0xffff2400                rw_mgr_mem_calibrate_read_test_patterns_all_ranks
+                0xffff23f8       0x48 board/altera/socfpga/sdram/libsocfpga-sdram.o
+                0xffff23f8                rw_mgr_mem_calibrate_read_test_patterns_all_ranks
  .text.rw_mgr_mem_calibrate_read_load_patterns
-                0xffff2448       0x88 board/altera/socfpga/sdram/libsocfpga-sdram.o
-                0xffff2448                rw_mgr_mem_calibrate_read_load_patterns
+                0xffff2440       0x88 board/altera/socfpga/sdram/libsocfpga-sdram.o
+                0xffff2440                rw_mgr_mem_calibrate_read_load_patterns
  .text.rw_mgr_mem_calibrate_read_test
-                0xffff24d0      0x228 board/altera/socfpga/sdram/libsocfpga-sdram.o
-                0xffff24d0                rw_mgr_mem_calibrate_read_test
+                0xffff24c8      0x228 board/altera/socfpga/sdram/libsocfpga-sdram.o
+                0xffff24c8                rw_mgr_mem_calibrate_read_test
  .text.rw_mgr_decr_vfifo
-                0xffff26f8       0x1c board/altera/socfpga/sdram/libsocfpga-sdram.o
-                0xffff26f8                rw_mgr_decr_vfifo
+                0xffff26f0       0x1c board/altera/socfpga/sdram/libsocfpga-sdram.o
+                0xffff26f0                rw_mgr_decr_vfifo
  .text.rw_mgr_mem_calibrate_vfifo_find_dqs_en_phase
-                0xffff2714      0x37c board/altera/socfpga/sdram/libsocfpga-sdram.o
-                0xffff2714                rw_mgr_mem_calibrate_vfifo_find_dqs_en_phase
+                0xffff270c      0x384 board/altera/socfpga/sdram/libsocfpga-sdram.o
+                0xffff270c                rw_mgr_mem_calibrate_vfifo_find_dqs_en_phase
  .text.rw_mgr_mem_calibrate_lfifo
                 0xffff2a90       0xa8 board/altera/socfpga/sdram/libsocfpga-sdram.o
                 0xffff2a90                rw_mgr_mem_calibrate_lfifo
@@ -1221,7 +1221,7 @@ Linker script and memory map
  .iplt          0xffff6ff4        0x0 arch/arm/cpu/armv7/start.o
                 0xffff6ff4                . = ALIGN (0x4)
 
-.rodata         0xffff6ff4     0x1eca
+.rodata         0xffff6ff4     0x1e3c
  *(SORT(.rodata*))
  .rodata        0xffff6ff4       0x68 arch/arm/cpu/armv7/socfpga/libsocfpga.o
  .rodata.ac_rom_init
@@ -1244,172 +1244,172 @@ Linker script and memory map
                 0xffff7714        0x4 board/altera/socfpga/sdram/libsocfpga-sdram.o
                 0xffff7714                inst_rom_init_size
  .rodata.iocsr_scan_chain0_table
-                0xffff7718       0xa8 board/altera/socfpga/libsocfpga.o
+                0xffff7718       0x60 board/altera/socfpga/libsocfpga.o
                 0xffff7718                iocsr_scan_chain0_table
  .rodata.iocsr_scan_chain1_table
-                0xffff77c0       0xd8 board/altera/socfpga/libsocfpga.o
-                0xffff77c0                iocsr_scan_chain1_table
+                0xffff7778       0xd8 board/altera/socfpga/libsocfpga.o
+                0xffff7778                iocsr_scan_chain1_table
  .rodata.iocsr_scan_chain2_table
-                0xffff7898       0xc0 board/altera/socfpga/libsocfpga.o
-                0xffff7898                iocsr_scan_chain2_table
+                0xffff7850       0x78 board/altera/socfpga/libsocfpga.o
+                0xffff7850                iocsr_scan_chain2_table
  .rodata.iocsr_scan_chain3_table
-                0xffff7958      0x830 board/altera/socfpga/libsocfpga.o
-                0xffff7958                iocsr_scan_chain3_table
+                0xffff78c8      0x830 board/altera/socfpga/libsocfpga.o
+                0xffff78c8                iocsr_scan_chain3_table
  .rodata.multipliers
-                0xffff8188       0x40 drivers/mmc/libmmc.o
+                0xffff80f8       0x40 drivers/mmc/libmmc.o
  .rodata.serial_ports
-                0xffff81c8       0x18 drivers/serial/libserial.o
+                0xffff8138       0x18 drivers/serial/libserial.o
  .rodata.widths.6562
-                0xffff81e0        0xc drivers/mmc/libmmc.o
+                0xffff8150        0xc drivers/mmc/libmmc.o
  .rodata.CSWTCH.71
-                0xffff81ec       0x20 drivers/dma/libdma.o
+                0xffff815c       0x20 drivers/dma/libdma.o
  .rodata._ctype
-                0xffff820c      0x100 lib/libgeneric.o
-                0xffff820c                _ctype
+                0xffff817c      0x100 lib/libgeneric.o
+                0xffff817c                _ctype
  .rodata.digits.6148
-                0xffff830c       0x10 lib/libgeneric.o
+                0xffff827c       0x10 lib/libgeneric.o
  .rodata.hex_asc
-                0xffff831c       0x11 lib/libgeneric.o
+                0xffff828c       0x11 lib/libgeneric.o
  .rodata.str1.1
-                0xffff832d      0x598 arch/arm/cpu/armv7/socfpga/libsocfpga.o
+                0xffff829d      0x598 arch/arm/cpu/armv7/socfpga/libsocfpga.o
  .rodata.str1.1
-                0xffff88c5       0x86 board/altera/socfpga/libsocfpga.o
+                0xffff8835       0x88 board/altera/socfpga/libsocfpga.o
  .rodata.str1.1
-                0xffff894b       0x64 board/altera/socfpga/sdram/libsocfpga-sdram.o
+                0xffff88bd       0x64 board/altera/socfpga/sdram/libsocfpga-sdram.o
  .rodata.str1.1
-                0xffff89af       0x81 common/spl/libspl.o
+                0xffff8921       0x81 common/spl/libspl.o
  .rodata.str1.1
-                0xffff8a30      0x1b4 drivers/dma/libdma.o
+                0xffff89a2      0x1b4 drivers/dma/libdma.o
  .rodata.str1.1
-                0xffff8be4      0x29c drivers/mmc/libmmc.o
+                0xffff8b56      0x29c drivers/mmc/libmmc.o
                                 0x29e (size before relaxing)
  .rodata.str1.1
-                0xffff8e80       0x15 drivers/serial/libserial.o
+                0xffff8df2       0x15 drivers/serial/libserial.o
  .rodata.str1.1
-                0xffff8e95       0x29 lib/libgeneric.o
+                0xffff8e07       0x29 lib/libgeneric.o
 
-.rel.dyn        0xffff8ec0        0x0
- .rel.iplt      0xffff8ec0        0x0 arch/arm/cpu/armv7/start.o
-                0xffff8ec0                . = ALIGN (0x4)
+.rel.dyn        0xffff8e30        0x0
+ .rel.iplt      0xffff8e30        0x0 arch/arm/cpu/armv7/start.o
+                0xffff8e30                . = ALIGN (0x4)
 
-.data           0xffff8ec0      0xed4
+.data           0xffff8e30      0xed4
  *(SORT(.data*))
- .data          0xffff8ec0       0x80 arch/arm/lib/libarm.o
-                0xffff8ec0                gdata
- .data          0xffff8f40       0x14 arch/arm/cpu/armv7/socfpga/libsocfpga.o
-                0xffff8f40                cm_l4_sp_clock
-                0xffff8f44                cm_sdmmc_clock
-                0xffff8f48                cm_qspi_clock
-                0xffff8f4c                rst_mgr_status
-                0xffff8f50                debug_memory_write_addr
+ .data          0xffff8e30       0x80 arch/arm/lib/libarm.o
+                0xffff8e30                gdata
+ .data          0xffff8eb0       0x14 arch/arm/cpu/armv7/socfpga/libsocfpga.o
+                0xffff8eb0                cm_l4_sp_clock
+                0xffff8eb4                cm_sdmmc_clock
+                0xffff8eb8                cm_qspi_clock
+                0xffff8ebc                rst_mgr_status
+                0xffff8ec0                debug_memory_write_addr
  .data.interrupt_vectors
-                0xffff8f54      0x6a0 arch/arm/cpu/armv7/socfpga/libsocfpga.o
-                0xffff8f54                interrupt_vectors
+                0xffff8ec4      0x6a0 arch/arm/cpu/armv7/socfpga/libsocfpga.o
+                0xffff8ec4                interrupt_vectors
  .data.sys_mgr_init_table
-                0xffff95f4      0x33c board/altera/socfpga/libsocfpga.o
-                0xffff95f4                sys_mgr_init_table
- .data.av_      0xffff9930      0x408 common/libcommon.o
+                0xffff9564      0x33c board/altera/socfpga/libsocfpga.o
+                0xffff9564                sys_mgr_init_table
+ .data.av_      0xffff98a0      0x408 common/libcommon.o
  .data.sbrk_base
-                0xffff9d38        0x4 common/libcommon.o
+                0xffff9ca8        0x4 common/libcommon.o
  .data.trim_threshold
-                0xffff9d3c        0x4 common/libcommon.o
- .data          0xffff9d40       0x20 common/spl/libspl.o
+                0xffff9cac        0x4 common/libcommon.o
+ .data          0xffff9cb0       0x20 common/spl/libspl.o
  .data.cur_dev_num
-                0xffff9d60        0x4 drivers/mmc/libmmc.o
+                0xffff9cd0        0x4 drivers/mmc/libmmc.o
  .data.eserial1_device
-                0xffff9d64       0x30 drivers/serial/libserial.o
-                0xffff9d64                eserial1_device
-                0xffff9d94                __ecc_padding_start = .
+                0xffff9cd4       0x30 drivers/serial/libserial.o
+                0xffff9cd4                eserial1_device
+                0xffff9d04                __ecc_padding_start = .
 
-.igot.plt       0xffff9d94        0x0
- .igot.plt      0xffff9d94        0x0 arch/arm/cpu/armv7/start.o
-                0xffff9d94                . = ALIGN (0x4)
-                0xffff9d94                __image_copy_end = .
-                0xffff9d94                _end = .
+.igot.plt       0xffff9d04        0x0
+ .igot.plt      0xffff9d04        0x0 arch/arm/cpu/armv7/start.o
+                0xffff9d04                . = ALIGN (0x4)
+                0xffff9d04                __image_copy_end = .
+                0xffff9d04                _end = .
 
-.bss            0xffff9d94      0xa6c
-                0xffff9d94                . = ALIGN (0x4)
-                0xffff9d94                __bss_start = .
+.bss            0xffff9d04      0xa6c
+                0xffff9d04                . = ALIGN (0x4)
+                0xffff9d04                __bss_start = .
  *(.bss*)
  .bss.pl330_buf
-                0xffff9d94      0x9c4 arch/arm/cpu/armv7/socfpga/libsocfpga.o
-                0xffff9d94                pl330_buf
+                0xffff9d04      0x9c4 arch/arm/cpu/armv7/socfpga/libsocfpga.o
+                0xffff9d04                pl330_buf
  .bss.irq_cnt_ecc_sdram
-                0xffffa758        0x4 arch/arm/cpu/armv7/socfpga/libsocfpga.o
-                0xffffa758                irq_cnt_ecc_sdram
+                0xffffa6c8        0x4 arch/arm/cpu/armv7/socfpga/libsocfpga.o
+                0xffffa6c8                irq_cnt_ecc_sdram
  .bss.frzctrl_channel_freeze
-                0xffffa75c       0x10 arch/arm/cpu/armv7/socfpga/libsocfpga.o
+                0xffffa6cc       0x10 arch/arm/cpu/armv7/socfpga/libsocfpga.o
  .bss.irq_cnt_ecc_ocram_corrected
-                0xffffa76c        0x4 arch/arm/cpu/armv7/socfpga/libsocfpga.o
-                0xffffa76c                irq_cnt_ecc_ocram_corrected
+                0xffffa6dc        0x4 arch/arm/cpu/armv7/socfpga/libsocfpga.o
+                0xffffa6dc                irq_cnt_ecc_ocram_corrected
  .bss.irq_cnt_ecc_ocram_uncorrected
-                0xffffa770        0x4 arch/arm/cpu/armv7/socfpga/libsocfpga.o
-                0xffffa770                irq_cnt_ecc_ocram_uncorrected
+                0xffffa6e0        0x4 arch/arm/cpu/armv7/socfpga/libsocfpga.o
+                0xffffa6e0                irq_cnt_ecc_ocram_uncorrected
  .bss.skip_delay_mask
-                0xffffa774        0x2 board/altera/socfpga/sdram/libsocfpga-sdram.o
-                0xffffa774                skip_delay_mask
- *fill*         0xffffa776        0x2 
- .bss.param     0xffffa778        0x4 board/altera/socfpga/sdram/libsocfpga-sdram.o
-                0xffffa778                param
+                0xffffa6e4        0x2 board/altera/socfpga/sdram/libsocfpga-sdram.o
+                0xffffa6e4                skip_delay_mask
+ *fill*         0xffffa6e6        0x2 
+ .bss.param     0xffffa6e8        0x4 board/altera/socfpga/sdram/libsocfpga-sdram.o
+                0xffffa6e8                param
  .bss.dyn_calib_steps
-                0xffffa77c        0x2 board/altera/socfpga/sdram/libsocfpga-sdram.o
-                0xffffa77c                dyn_calib_steps
- *fill*         0xffffa77e        0x2 
- .bss.gbl       0xffffa780        0x4 board/altera/socfpga/sdram/libsocfpga-sdram.o
-                0xffffa780                gbl
+                0xffffa6ec        0x2 board/altera/socfpga/sdram/libsocfpga-sdram.o
+                0xffffa6ec                dyn_calib_steps
+ *fill*         0xffffa6ee        0x2 
+ .bss.gbl       0xffffa6f0        0x4 board/altera/socfpga/sdram/libsocfpga-sdram.o
+                0xffffa6f0                gbl
  .bss.max_total_mem
-                0xffffa784        0x4 common/libcommon.o
+                0xffffa6f4        0x4 common/libcommon.o
  .bss.mem_malloc_brk
-                0xffffa788        0x4 common/libcommon.o
-                0xffffa788                mem_malloc_brk
+                0xffffa6f8        0x4 common/libcommon.o
+                0xffffa6f8                mem_malloc_brk
  .bss.max_sbrked_mem
-                0xffffa78c        0x4 common/libcommon.o
+                0xffffa6fc        0x4 common/libcommon.o
  .bss.current_mallinfo
-                0xffffa790       0x28 common/libcommon.o
+                0xffffa700       0x28 common/libcommon.o
  .bss.mem_malloc_end
-                0xffffa7b8        0x4 common/libcommon.o
-                0xffffa7b8                mem_malloc_end
- .bss.top_pad   0xffffa7bc        0x4 common/libcommon.o
+                0xffffa728        0x4 common/libcommon.o
+                0xffffa728                mem_malloc_end
+ .bss.top_pad   0xffffa72c        0x4 common/libcommon.o
  .bss.mem_malloc_start
-                0xffffa7c0        0x4 common/libcommon.o
-                0xffffa7c0                mem_malloc_start
+                0xffffa730        0x4 common/libcommon.o
+                0xffffa730                mem_malloc_start
  .bss.stdio_devices
-                0xffffa7c4        0xc common/libcommon.o
-                0xffffa7c4                stdio_devices
+                0xffffa734        0xc common/libcommon.o
+                0xffffa734                stdio_devices
  .bss.spl_image
-                0xffffa7d0       0x20 common/spl/libspl.o
-                0xffffa7d0                spl_image
+                0xffffa740       0x20 common/spl/libspl.o
+                0xffffa740                spl_image
  .bss.boot_params_ptr
-                0xffffa7f0        0x4 common/spl/libspl.o
-                0xffffa7f0                boot_params_ptr
+                0xffffa760        0x4 common/spl/libspl.o
+                0xffffa760                boot_params_ptr
  .bss.mmc_devices
-                0xffffa7f4        0x8 drivers/mmc/libmmc.o
+                0xffffa764        0x8 drivers/mmc/libmmc.o
  .bss.serial_current
-                0xffffa7fc        0x4 drivers/serial/libserial.o
-                0xffffa800                . = ALIGN (0x4)
-                0xffffa800                __bss_end__ = .
+                0xffffa76c        0x4 drivers/serial/libserial.o
+                0xffffa770                . = ALIGN (0x4)
+                0xffffa770                __bss_end__ = .
 
-.malloc         0xffffa800     0x1400
-                0xffffa800                . = ALIGN (0x8)
-                0xffffa800                __malloc_start = .
-                0xffffbc00                . = (. + 0x1400)
- *fill*         0xffffa800     0x1400 
-                0xffffbc00                __malloc_end = .
+.malloc         0xffffa770     0x1400
+                0xffffa770                . = ALIGN (0x8)
+                0xffffa770                __malloc_start = .
+                0xffffbb70                . = (. + 0x1400)
+ *fill*         0xffffa770     0x1400 
+                0xffffbb70                __malloc_end = .
 
-.stack          0xffffbc00     0x1000
-                0xffffcc00                . = (. + 0x1000)
- *fill*         0xffffbc00     0x1000 
-                0xffffcc00                . = ALIGN (0x8)
-                0xffffcc00                __stack_start = .
+.stack          0xffffbb70     0x1000
+                0xffffcb70                . = (. + 0x1000)
+ *fill*         0xffffbb70     0x1000 
+                0xffffcb70                . = ALIGN (0x8)
+                0xffffcb70                __stack_start = .
 
-.spl_irq_stack  0xffffcc00      0x408
-                0xffffd000                . = (. + 0x400)
- *fill*         0xffffcc00      0x400 
-                0xffffd000                . = ALIGN (0x8)
-                0xffffd000                __irq_stack_start = .
-                0xffffd008                . = (. + 0x8)
- *fill*         0xffffd000        0x8 
-                0xffffd008                __ecc_padding_end = .
+.spl_irq_stack  0xffffcb70      0x408
+                0xffffcf70                . = (. + 0x400)
+ *fill*         0xffffcb70      0x400 
+                0xffffcf70                . = ALIGN (0x8)
+                0xffffcf70                __irq_stack_start = .
+                0xffffcf78                . = (. + 0x8)
+ *fill*         0xffffcf70        0x8 
+                0xffffcf78                __ecc_padding_end = .
 Address of section .text set to 0xffff0000
 LOAD arch/arm/cpu/armv7/start.o
 START GROUP
@@ -1425,7 +1425,7 @@ LOAD drivers/mmc/libmmc.o
 LOAD drivers/serial/libserial.o
 LOAD lib/libgeneric.o
 END GROUP
-LOAD /cygdrive/d/SJ/nightly/17.0std/595/w64/acds/embedded/examples/hardware/av_soc_devkit_ghrd/software/preloader/uboot-socfpga/spl/arch/arm/lib/eabi_compat.o
+LOAD /cygdrive/d/SJ/nightly/17.0std/595/w64/acds/embedded/examples/hardware/cv_soc_devkit_ghrd/software/preloader/uboot-socfpga/spl/arch/arm/lib/eabi_compat.o
 LOAD d:/sj/nightly/17.0std/595/w64/acds/embedded/host_tools/mentor/gnu/arm/baremetal/bin/../lib/gcc/arm-altera-eabi/5.2.0\libgcc.a
 OUTPUT(u-boot-spl elf32-littlearm)
 
@@ -1478,33 +1478,33 @@ OUTPUT(u-boot-spl elf32-littlearm)
  .comment       0x00000030       0x93 drivers/serial/libserial.o
  .comment       0x00000030      0x157 lib/libgeneric.o
 
-.debug_line     0x00000000     0xc73f
+.debug_line     0x00000000     0xc73d
  .debug_line    0x00000000       0x84 arch/arm/cpu/armv7/start.o
  .debug_line    0x00000084      0x678 arch/arm/cpu/armv7/libarmv7.o
  .debug_line    0x000006fc     0x3a56 arch/arm/cpu/armv7/socfpga/libsocfpga.o
  .debug_line    0x00004152      0xcc7 arch/arm/lib/libarm.o
- .debug_line    0x00004e19      0x59d board/altera/socfpga/libsocfpga.o
- .debug_line    0x000053b6     0x1999 board/altera/socfpga/sdram/libsocfpga-sdram.o
- .debug_line    0x00006d4f     0x1d23 common/libcommon.o
- .debug_line    0x00008a72      0x473 common/spl/libspl.o
- .debug_line    0x00008ee5      0x6c8 drivers/dma/libdma.o
- .debug_line    0x000095ad     0x124a drivers/mmc/libmmc.o
- .debug_line    0x0000a7f7      0xbd7 drivers/serial/libserial.o
- .debug_line    0x0000b3ce     0x1371 lib/libgeneric.o
+ .debug_line    0x00004e19      0x5a3 board/altera/socfpga/libsocfpga.o
+ .debug_line    0x000053bc     0x1991 board/altera/socfpga/sdram/libsocfpga-sdram.o
+ .debug_line    0x00006d4d     0x1d23 common/libcommon.o
+ .debug_line    0x00008a70      0x473 common/spl/libspl.o
+ .debug_line    0x00008ee3      0x6c8 drivers/dma/libdma.o
+ .debug_line    0x000095ab     0x124a drivers/mmc/libmmc.o
+ .debug_line    0x0000a7f5      0xbd7 drivers/serial/libserial.o
+ .debug_line    0x0000b3cc     0x1371 lib/libgeneric.o
 
-.debug_info     0x00000000    0x27d9f
+.debug_info     0x00000000    0x27d9c
  .debug_info    0x00000000       0xb6 arch/arm/cpu/armv7/start.o
  .debug_info    0x000000b6      0xb2e arch/arm/cpu/armv7/libarmv7.o
  .debug_info    0x00000be4     0xad2a arch/arm/cpu/armv7/socfpga/libsocfpga.o
  .debug_info    0x0000b90e     0x1d05 arch/arm/lib/libarm.o
  .debug_info    0x0000d613      0xbd8 board/altera/socfpga/libsocfpga.o
- .debug_info    0x0000e1eb     0x6abd board/altera/socfpga/sdram/libsocfpga-sdram.o
- .debug_info    0x00014ca8     0x688e common/libcommon.o
- .debug_info    0x0001b536      0x9b3 common/spl/libspl.o
- .debug_info    0x0001bee9     0x1b38 drivers/dma/libdma.o
- .debug_info    0x0001da21     0x5440 drivers/mmc/libmmc.o
- .debug_info    0x00022e61     0x25a9 drivers/serial/libserial.o
- .debug_info    0x0002540a     0x2995 lib/libgeneric.o
+ .debug_info    0x0000e1eb     0x6aba board/altera/socfpga/sdram/libsocfpga-sdram.o
+ .debug_info    0x00014ca5     0x688e common/libcommon.o
+ .debug_info    0x0001b533      0x9b3 common/spl/libspl.o
+ .debug_info    0x0001bee6     0x1b38 drivers/dma/libdma.o
+ .debug_info    0x0001da1e     0x5440 drivers/mmc/libmmc.o
+ .debug_info    0x00022e5e     0x25a9 drivers/serial/libserial.o
+ .debug_info    0x00025407     0x2995 lib/libgeneric.o
 
 .debug_abbrev   0x00000000     0x79e7
  .debug_abbrev  0x00000000       0x14 arch/arm/cpu/armv7/start.o
@@ -1560,52 +1560,52 @@ OUTPUT(u-boot-spl elf32-littlearm)
  .debug_frame   0x000028b8      0x598 lib/libgeneric.o
  .debug_frame   0x00002e50       0x20 d:/sj/nightly/17.0std/595/w64/acds/embedded/host_tools/mentor/gnu/arm/baremetal/bin/../lib/gcc/arm-altera-eabi/5.2.0\libgcc.a(_udivsi3.o)
 
-.debug_str      0x00000000     0x6448
+.debug_str      0x00000000     0x644e
  .debug_str     0x00000000      0x411 arch/arm/cpu/armv7/libarmv7.o
                                 0xb3f (size before relaxing)
  .debug_str     0x00000411     0x1892 arch/arm/cpu/armv7/socfpga/libsocfpga.o
                                0x6080 (size before relaxing)
  .debug_str     0x00001ca3      0x341 arch/arm/lib/libarm.o
                                0x16bf (size before relaxing)
- .debug_str     0x00001fe4      0x19f board/altera/socfpga/libsocfpga.o
-                                0xd4c (size before relaxing)
- .debug_str     0x00002183     0x10c6 board/altera/socfpga/sdram/libsocfpga-sdram.o
+ .debug_str     0x00001fe4      0x1a5 board/altera/socfpga/libsocfpga.o
+                                0xd52 (size before relaxing)
+ .debug_str     0x00002189     0x10c6 board/altera/socfpga/sdram/libsocfpga-sdram.o
                                0x1a52 (size before relaxing)
- .debug_str     0x00003249     0x1d21 common/libcommon.o
+ .debug_str     0x0000324f     0x1d21 common/libcommon.o
                                0x3b69 (size before relaxing)
- .debug_str     0x00004f6a      0x183 common/spl/libspl.o
+ .debug_str     0x00004f70      0x183 common/spl/libspl.o
                                 0x6e0 (size before relaxing)
- .debug_str     0x000050ed      0x3d5 drivers/dma/libdma.o
+ .debug_str     0x000050f3      0x3d5 drivers/dma/libdma.o
                                 0x79b (size before relaxing)
- .debug_str     0x000054c2      0x6ac drivers/mmc/libmmc.o
+ .debug_str     0x000054c8      0x6ac drivers/mmc/libmmc.o
                                0x1da3 (size before relaxing)
- .debug_str     0x00005b6e      0x5f5 drivers/serial/libserial.o
+ .debug_str     0x00005b74      0x5f5 drivers/serial/libserial.o
                                0x12dc (size before relaxing)
- .debug_str     0x00006163      0x2e5 lib/libgeneric.o
+ .debug_str     0x00006169      0x2e5 lib/libgeneric.o
                                0x162b (size before relaxing)
 
-.debug_loc      0x00000000    0x18253
+.debug_loc      0x00000000    0x18235
  .debug_loc     0x00000000      0x181 arch/arm/cpu/armv7/libarmv7.o
  .debug_loc     0x00000181     0x5b8b arch/arm/cpu/armv7/socfpga/libsocfpga.o
  .debug_loc     0x00005d0c      0x325 arch/arm/lib/libarm.o
  .debug_loc     0x00006031       0xa7 board/altera/socfpga/libsocfpga.o
- .debug_loc     0x000060d8     0x5798 board/altera/socfpga/sdram/libsocfpga-sdram.o
- .debug_loc     0x0000b870     0x40bf common/libcommon.o
- .debug_loc     0x0000f92f       0xb3 common/spl/libspl.o
- .debug_loc     0x0000f9e2     0x2873 drivers/dma/libdma.o
- .debug_loc     0x00012255     0x28d1 drivers/mmc/libmmc.o
- .debug_loc     0x00014b26      0x76e drivers/serial/libserial.o
- .debug_loc     0x00015294     0x2fbf lib/libgeneric.o
+ .debug_loc     0x000060d8     0x577a board/altera/socfpga/sdram/libsocfpga-sdram.o
+ .debug_loc     0x0000b852     0x40bf common/libcommon.o
+ .debug_loc     0x0000f911       0xb3 common/spl/libspl.o
+ .debug_loc     0x0000f9c4     0x2873 drivers/dma/libdma.o
+ .debug_loc     0x00012237     0x28d1 drivers/mmc/libmmc.o
+ .debug_loc     0x00014b08      0x76e drivers/serial/libserial.o
+ .debug_loc     0x00015276     0x2fbf lib/libgeneric.o
 
-.debug_ranges   0x00000000     0x2980
+.debug_ranges   0x00000000     0x2978
  .debug_ranges  0x00000000       0x60 arch/arm/cpu/armv7/libarmv7.o
  .debug_ranges  0x00000060      0xa00 arch/arm/cpu/armv7/socfpga/libsocfpga.o
  .debug_ranges  0x00000a60       0xf0 arch/arm/lib/libarm.o
  .debug_ranges  0x00000b50       0x58 board/altera/socfpga/libsocfpga.o
- .debug_ranges  0x00000ba8      0xd90 board/altera/socfpga/sdram/libsocfpga-sdram.o
- .debug_ranges  0x00001938      0x418 common/libcommon.o
- .debug_ranges  0x00001d50       0x38 common/spl/libspl.o
- .debug_ranges  0x00001d88      0x4f8 drivers/dma/libdma.o
- .debug_ranges  0x00002280      0x250 drivers/mmc/libmmc.o
- .debug_ranges  0x000024d0      0x230 drivers/serial/libserial.o
- .debug_ranges  0x00002700      0x280 lib/libgeneric.o
+ .debug_ranges  0x00000ba8      0xd88 board/altera/socfpga/sdram/libsocfpga-sdram.o
+ .debug_ranges  0x00001930      0x418 common/libcommon.o
+ .debug_ranges  0x00001d48       0x38 common/spl/libspl.o
+ .debug_ranges  0x00001d80      0x4f8 drivers/dma/libdma.o
+ .debug_ranges  0x00002278      0x250 drivers/mmc/libmmc.o
+ .debug_ranges  0x000024c8      0x230 drivers/serial/libserial.o
+ .debug_ranges  0x000026f8      0x280 lib/libgeneric.o

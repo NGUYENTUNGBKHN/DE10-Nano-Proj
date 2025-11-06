@@ -1,58 +1,58 @@
-############################################################
 #
 # Copyright Altera 2013
 # All Rights Reserved
-# File: preloader.ds
+# File: semihost_setup.ds
 #
-############################################################
 
 #
-# stop processor if running
+# Reset and stop the system.
 #
+#reset system
+#wait 30s
+#stop
+#wait 30s
+#set var $Core::$R0 = 0
+
+#
+# Reset and stop the system.
 #
 reset
 wait 5s
-#set semihosting enabled 0
+#stop
+#wait 5s
+#set var $Core::$R0 = 0
+
 
 #
-# load the preloader (a.k.a the spl from our uboot dist)
+# Disable semihosting.
 #
-#loadfile "boot_es/u-boot-spl(semi).axf"
-loadfile "$sdir/uboot-socfpga/spl/u-boot-spl" 0x0
+set semihosting enabled false
 
 #
-# set pc to entry point
+# Load the SPL preloader into memory.
 #
-set debug-from *$entrypoint     # Set start-at setting to address of $entrypoint
-start 
+loadfile "$sdir/boot_es/u-boot-spl(semi).axf"
+#loadfile "$sdir/boot_es/bk/u-boot-spl" 0x0
+#loadfile "$sdir/u-boot-spl.axf" 0x0
+#loadfile "$sdir/uboot/u-boot-spl" 0x0
 
 #
-# delete any breakpoints
+# Enable semihosting.
+#
+set semihosting enabled true
+
+#
+# Delete any existing breakpoints.
 #
 delete
 
 #
-# set hw breakpoint in spl in function, spl_boot_device,
-# The function, spl_boot_device, is called right before the spl tries
-# to load.  We stop here so we don't have to change any spl.
+# Set a breakpoint in the SPL function spl_boot_device(). This function is
+# called right before the SPL tries to load the next stage in the preloader.
 #
 tbreak spl_boot_device
 
-# tell target to continue executing spl
-cont
+run
 
-wait 10s
-
-stop
-
-loadfile "$sdir/Debug/lab1.axf" 0x0
-
-pause 1s
-
-delete
-tbreak main
-set $pc = $entrypoint
-
-cont
-
+wait 
 

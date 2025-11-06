@@ -58,7 +58,7 @@ int _mutex_initialize(mutex_t *m)
 // Called by the C library to obtain a lock on the mutex.
 void _mutex_acquire(mutex_t *m)
 {
-  //lockMutex(m);
+  lockMutex(m);
 }
 
 // Called by the C library to release the lock on the mutex previously acquired
