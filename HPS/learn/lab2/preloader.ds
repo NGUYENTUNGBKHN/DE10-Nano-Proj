@@ -17,7 +17,8 @@ wait 5s
 #
 # load the preloader (a.k.a the spl from our uboot dist)
 #
-loadfile "$sdir/uboot-socfpga/spl/u-boot-spl" 0x0
+# loadfile "$sdir/uboot-socfpga/spl/u-boot-spl" 0x0
+loadfile "$sdir/uboot/u-boot-spl" 0x0
 
 #
 # set pc to entry point
@@ -41,6 +42,6 @@ tbreak spl_boot_device
 cont
 
 # wait for breakpoint
-wait 60s
+wait
 
 
