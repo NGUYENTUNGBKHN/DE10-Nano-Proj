@@ -31,9 +31,10 @@ set semihosting enabled false
 #
 # Load the SPL preloader into memory.
 #
-loadfile "$sdir/boot_es/u-boot-spl(semi).axf"
+#loadfile "$sdir/boot_es/u-boot-spl(semi).axf"
 #loadfile "$sdir/uboot-socfpga/spl/u-boot-spl" 0x0
 #loadfile "$sdir/u-boot-spl.axf" 0x0
+loadfile "$sdir/uboot_2/u-boot-spl" 0x0
 
 #
 # Enable semihosting.

@@ -16,4 +16,11 @@
 reset
 wait 5s
 
-loadfile "$sdir/boot_es/u-boot-spl(semi).axf"
+
+loadfile "$sdir/uboot_2/u-boot-spl" 0x0
+restore "$sdir/uboot_2/u-boot-spl.dtb" binary 0xFFFFE2FC
+
+break spl_gen5.c:153
+break spl_gen5.c:154
+tbreak spl_boot_device
+

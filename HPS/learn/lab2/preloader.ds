@@ -18,7 +18,8 @@ wait 5s
 # load the preloader (a.k.a the spl from our uboot dist)
 #
 # loadfile "$sdir/uboot-socfpga/spl/u-boot-spl" 0x0
-loadfile "$sdir/uboot/u-boot-spl" 0x0
+loadfile "$sdir/uboot_2/u-boot-spl" 0x0
+restore "$sdir/uboot_2/u-boot-spl.dtb" binary 0xFFFFE2FC
 
 #
 # set pc to entry point
