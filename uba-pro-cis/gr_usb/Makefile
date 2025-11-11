@@ -1,5 +1,5 @@
 # Makefile created library project
-TARGET_NAME:=fatfs
+TARGET_NAME:=gr_usb
 BUILD_DIR:=_build
 MAKE_COMMON:=../common
 LIB_OUTPUT_PATH = $(BUILD_DIR)/$(TARGET_NAME).a
@@ -15,6 +15,7 @@ FPU=-mfloat-abi=hard -mfpu=vfpv3-fp16
 OPT=-O0 -g
 CCFLAGS+= $(CPU) $(FPU) $(FLOAT) $(OPT)
 CCFLAGS+= -mno-unaligned-access -std=c99 -MD -MMD
+CCFLAGS+= -DPRJ_OS_THREADX_UITRON -DGRP_USBC_DBG_MDL
 
 ASMFLAG=$(CCFLAGS)
 
@@ -93,6 +94,11 @@ INC_FOLDERS=\
 	$(ROOT_PROJ)/src/ms_c/src/scsi\
 	$(ROOT_PROJ)/src/ms_c/src/sff8070i\
 	$(ROOT_PROJ)/src/ms_c/src/ufi\
+	$(ROOT_PROJ)/../tx_bif/ROOT/system\
+	$(ROOT_PROJ)/../JSLWare/inc\
+	$(ROOT_PROJ)/../threadx/inc\
+	$(ROOT_PROJ)/../threadx_drv/inc\
+	$(ROOT_PROJ)/../threadx_uitron/inc\
 	
 
 .PHONY:	default help

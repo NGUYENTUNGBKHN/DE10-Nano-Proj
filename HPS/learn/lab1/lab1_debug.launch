@@ -2,52 +2,52 @@
 <launchConfiguration type="com.arm.debugger.launcher2">
     <booleanAttribute key="ADAPTIVE_CLOCK" value="false"/>
     <mapAttribute key="AverageDurationTracker">
-        <mapEntry key="*Fetching Data Model" value="298046"/>
-        <mapEntry key="*list global low level symbols" value="693070"/>
+        <mapEntry key="*Fetching Data Model" value="1100812"/>
+        <mapEntry key="*list global low level symbols" value="4669093"/>
         <mapEntry key="*loading memory from target" value="2295641"/>
         <mapEntry key="*loading values from target" value="12657304"/>
-        <mapEntry key="*updating local_variables" value="308300"/>
+        <mapEntry key="*updating local_variables" value="2099850"/>
         <mapEntry key="*updating registers" value="47568212"/>
         <mapEntry key="*updating variables" value="698725"/>
-        <mapEntry key="AddEventObserver" value="3875982"/>
-        <mapEntry key="Evaluate" value="1588856"/>
+        <mapEntry key="AddEventObserver" value="5902970"/>
+        <mapEntry key="Evaluate" value="1521428"/>
         <mapEntry key="Retrieving globals list" value="40295050"/>
         <mapEntry key="add-symbol-file" value="7187850"/>
         <mapEntry key="areCachesAvailable" value="339491"/>
-        <mapEntry key="backtrace" value="7075700"/>
+        <mapEntry key="backtrace" value="6784900"/>
         <mapEntry key="break" value="12869649"/>
-        <mapEntry key="compute execution mode" value="5645064"/>
-        <mapEntry key="continue" value="7035313"/>
+        <mapEntry key="compute execution mode" value="6437642"/>
+        <mapEntry key="continue" value="16044987"/>
         <mapEntry key="disassemble" value="25378825"/>
-        <mapEntry key="evaluate address" value="554138"/>
-        <mapEntry key="file" value="152203300"/>
+        <mapEntry key="evaluate address" value="5684991"/>
+        <mapEntry key="file" value="26077953"/>
         <mapEntry key="get byte order" value="248958"/>
-        <mapEntry key="get capabilities" value="450256"/>
-        <mapEntry key="get execution addresss" value="225222"/>
-        <mapEntry key="get source lines" value="259615"/>
+        <mapEntry key="get capabilities" value="197090"/>
+        <mapEntry key="get execution addresss" value="442325"/>
+        <mapEntry key="get source lines" value="800628"/>
         <mapEntry key="get substitute paths" value="658500"/>
         <mapEntry key="getValidEncodings" value="3016907"/>
-        <mapEntry key="initialize command help" value="46890124"/>
-        <mapEntry key="interrupt" value="11722729"/>
-        <mapEntry key="list breakpoint options" value="263016"/>
-        <mapEntry key="list breakpoints" value="577174"/>
-        <mapEntry key="list instruction sets" value="306968"/>
-        <mapEntry key="list signals" value="456266"/>
+        <mapEntry key="initialize command help" value="75513449"/>
+        <mapEntry key="interrupt" value="50745466"/>
+        <mapEntry key="list breakpoint options" value="717493"/>
+        <mapEntry key="list breakpoints" value="966069"/>
+        <mapEntry key="list instruction sets" value="698256"/>
+        <mapEntry key="list signals" value="1299547"/>
         <mapEntry key="list source files" value="598800"/>
-        <mapEntry key="list watchpoint options" value="3987066"/>
-        <mapEntry key="list watchpoints" value="3100183"/>
+        <mapEntry key="list watchpoint options" value="1327524"/>
+        <mapEntry key="list watchpoints" value="492647"/>
         <mapEntry key="loadfile" value="45530675"/>
         <mapEntry key="next" value="5807250"/>
         <mapEntry key="remove" value="2543975"/>
-        <mapEntry key="set CWD" value="2447755"/>
+        <mapEntry key="set CWD" value="4358413"/>
         <mapEntry key="set breakpoint properties" value="20108450"/>
-        <mapEntry key="set debug-from" value="412829"/>
-        <mapEntry key="source altera_target_check.py" value="1094427630"/>
-        <mapEntry key="source preloader.ds" value="233071626817"/>
-        <mapEntry key="start" value="17944997"/>
+        <mapEntry key="set debug-from" value="876029"/>
+        <mapEntry key="source altera_target_check.py" value="2654823778"/>
+        <mapEntry key="source preloader.ds" value="3513902591"/>
+        <mapEntry key="start" value="53273382"/>
         <mapEntry key="step" value="4575075"/>
         <mapEntry key="toggleBreakpoint" value="14282299"/>
-        <mapEntry key="waitForTargetToStop" value="1373679875"/>
+        <mapEntry key="waitForTargetToStop" value="58577617"/>
     </mapAttribute>
     <stringAttribute key="CLOCK_SPEED" value="1MHz"/>
     <intAttribute key="DEBUG_TAB..RESOURCES.COUNT" value="0"/>
@@ -66,11 +66,11 @@
     <listAttribute key="FILES.DOWNLOAD_AND_DEBUG"/>
     <stringAttribute key="FILES.DOWNLOAD_AND_DEBUG.RESOURCES.0.OPTION.ALSO_LOAD_SYMBOLS" value="true"/>
     <stringAttribute key="FILES.DOWNLOAD_AND_DEBUG.RESOURCES.0.OPTION.ON_DEMAND_LOAD" value="true"/>
-    <stringAttribute key="FILES.DOWNLOAD_AND_DEBUG.RESOURCES.0.TYPE" value="TARGET_DOWNLOAD_DIR"/>
+    <stringAttribute key="FILES.DOWNLOAD_AND_DEBUG.RESOURCES.0.TYPE" value="APP_ON_HOST_TO_DOWNLOAD"/>
     <stringAttribute key="FILES.DOWNLOAD_AND_DEBUG.RESOURCES.0.VALUE" value=""/>
     <stringAttribute key="FILES.DOWNLOAD_AND_DEBUG.RESOURCES.1.OPTION.ALSO_LOAD_SYMBOLS" value="true"/>
     <stringAttribute key="FILES.DOWNLOAD_AND_DEBUG.RESOURCES.1.OPTION.ON_DEMAND_LOAD" value="true"/>
-    <stringAttribute key="FILES.DOWNLOAD_AND_DEBUG.RESOURCES.1.TYPE" value="APP_ON_HOST_TO_DOWNLOAD"/>
+    <stringAttribute key="FILES.DOWNLOAD_AND_DEBUG.RESOURCES.1.TYPE" value="TARGET_DOWNLOAD_DIR"/>
     <stringAttribute key="FILES.DOWNLOAD_AND_DEBUG.RESOURCES.1.VALUE" value=""/>
     <stringAttribute key="FILES.DOWNLOAD_AND_DEBUG.RESOURCES.2.OPTION.ALSO_LOAD_SYMBOLS" value="true"/>
     <stringAttribute key="FILES.DOWNLOAD_AND_DEBUG.RESOURCES.2.OPTION.ON_DEMAND_LOAD" value="true"/>
@@ -80,11 +80,11 @@
     <listAttribute key="FILES.DOWNLOAD_DEBUG"/>
     <stringAttribute key="FILES.DOWNLOAD_DEBUG.RESOURCES.0.OPTION.ALSO_LOAD_SYMBOLS" value="true"/>
     <stringAttribute key="FILES.DOWNLOAD_DEBUG.RESOURCES.0.OPTION.ON_DEMAND_LOAD" value="true"/>
-    <stringAttribute key="FILES.DOWNLOAD_DEBUG.RESOURCES.0.TYPE" value="TARGET_DOWNLOAD_DIR"/>
+    <stringAttribute key="FILES.DOWNLOAD_DEBUG.RESOURCES.0.TYPE" value="APP_ON_HOST_TO_DOWNLOAD"/>
     <stringAttribute key="FILES.DOWNLOAD_DEBUG.RESOURCES.0.VALUE" value=""/>
     <stringAttribute key="FILES.DOWNLOAD_DEBUG.RESOURCES.1.OPTION.ALSO_LOAD_SYMBOLS" value="true"/>
     <stringAttribute key="FILES.DOWNLOAD_DEBUG.RESOURCES.1.OPTION.ON_DEMAND_LOAD" value="true"/>
-    <stringAttribute key="FILES.DOWNLOAD_DEBUG.RESOURCES.1.TYPE" value="APP_ON_HOST_TO_DOWNLOAD"/>
+    <stringAttribute key="FILES.DOWNLOAD_DEBUG.RESOURCES.1.TYPE" value="TARGET_DOWNLOAD_DIR"/>
     <stringAttribute key="FILES.DOWNLOAD_DEBUG.RESOURCES.1.VALUE" value=""/>
     <stringAttribute key="FILES.DOWNLOAD_DEBUG.RESOURCES.2.OPTION.ALSO_LOAD_SYMBOLS" value="true"/>
     <stringAttribute key="FILES.DOWNLOAD_DEBUG.RESOURCES.2.OPTION.ON_DEMAND_LOAD" value="true"/>
@@ -140,13 +140,13 @@
     <stringAttribute key="VFS_REMOTE_MOUNT" value="/writeable"/>
     <stringAttribute key="breakpoints" value="&lt;?xml version=&quot;1.0&quot; encoding=&quot;UTF-8&quot;?&gt;&#10;&lt;breakpoints order=&quot;ALPHA&quot;&gt;&#10;&lt;/breakpoints&gt;&#10;"/>
     <listAttribute key="com.arm.debug.views.common.AddressTracker.debugger.view.DisassemblyView.addresses">
-        <listEntry value="&lt;Next Instruction&gt;"/>
         <listEntry value=""/>
+        <listEntry value="&lt;Next Instruction&gt;"/>
         <listEntry value="&lt;次の命令&gt;"/>
     </listAttribute>
     <listAttribute key="com.arm.debug.views.common.AddressTracker.debugger.view.DisassemblyView.ranges">
-        <listEntry value="100"/>
         <listEntry value=""/>
+        <listEntry value="100"/>
         <listEntry value="100"/>
     </listAttribute>
     <listAttribute key="com.arm.debug.views.common.AddressTracker.debugger.view.MemoryView.addresses">
@@ -176,7 +176,7 @@
     <stringAttribute key="config_db_taxonomy_id" value="/platform/intelsocfpga/cyclonevsoc_dualcore_"/>
     <stringAttribute key="config_file" value="CDB://../Arria V SoC/Altera_DEV5XS1.rvc"/>
     <booleanAttribute key="connectOnly" value="false"/>
-    <stringAttribute key="connection_type" value="USB-Blaster"/>
+    <stringAttribute key="connection_type" value="Intel FPGA Download Cable"/>
     <stringAttribute key="dapLogfileLocation" value="${workspace_loc}\lab1"/>
     <stringAttribute key="dapLoggingEnabled" value="false"/>
     <listAttribute key="debugger.view.DisassemblyView:current">
@@ -191,7 +191,7 @@
     <stringAttribute key="debugger.view.NewRegisterView:DebugOutlineColumnState" value="OutlineConfig1&#9;8&#9;0&#9;true&#9;true&#9;49&#9;-1&#9;true&#9;1&#9;false&#9;true&#9;90&#9;-1&#9;true&#9;2&#9;true&#9;true&#9;45&#9;-1&#9;true&#9;3&#9;false&#9;true&#9;42&#9;-1&#9;true&#9;4&#9;false&#9;true&#9;50&#9;-1&#9;true&#9;5&#9;true&#9;true&#9;37&#9;-1&#9;true&#9;6&#9;false&#9;true&#9;62&#9;-1&#9;true&#9;7&#9;true&#9;true&#9;53&#9;-1&#9;true"/>
     <stringAttribute key="debugger.view.NewRegisterView:_selectedRegisterSet" value="All registers"/>
     <mapAttribute key="debugger.view.NewRegisterView_registerSets"/>
-    <stringAttribute key="debugger.view.StackView:DebugOutlineColumnState" value="OutlineConfig1&#9;8&#9;0&#9;true&#9;true&#9;49&#9;-1&#9;true&#9;1&#9;false&#9;true&#9;90&#9;-1&#9;true&#9;2&#9;true&#9;true&#9;45&#9;-1&#9;true&#9;3&#9;true&#9;true&#9;42&#9;-1&#9;true&#9;4&#9;true&#9;true&#9;50&#9;-1&#9;true&#9;5&#9;true&#9;true&#9;37&#9;-1&#9;true&#9;6&#9;true&#9;true&#9;62&#9;-1&#9;true&#9;7&#9;true&#9;true&#9;53&#9;-1&#9;true"/>
+    <stringAttribute key="debugger.view.StackView:DebugOutlineColumnState" value="OutlineConfig1&#9;8&#9;0&#9;true&#9;true&#9;40&#9;-1&#9;true&#9;1&#9;false&#9;true&#9;90&#9;-1&#9;true&#9;2&#9;true&#9;true&#9;28&#9;-1&#9;true&#9;3&#9;true&#9;true&#9;28&#9;-1&#9;true&#9;4&#9;true&#9;true&#9;52&#9;-1&#9;true&#9;5&#9;true&#9;true&#9;40&#9;-1&#9;true&#9;6&#9;true&#9;true&#9;40&#9;-1&#9;true&#9;7&#9;true&#9;true&#9;54&#9;-1&#9;true"/>
     <stringAttribute key="debugger.view.VariableTreeView:DebugOutlineColumnState" value="OutlineConfig1&#9;8&#9;0&#9;true&#9;true&#9;149&#9;-1&#9;true&#9;1&#9;false&#9;true&#9;90&#9;-1&#9;true&#9;2&#9;true&#9;true&#9;95&#9;-1&#9;true&#9;3&#9;true&#9;true&#9;42&#9;-1&#9;true&#9;4&#9;true&#9;true&#9;50&#9;-1&#9;true&#9;5&#9;true&#9;true&#9;37&#9;-1&#9;true&#9;6&#9;true&#9;true&#9;62&#9;-1&#9;true&#9;7&#9;true&#9;true&#9;53&#9;-1&#9;true"/>
     <listAttribute key="debugger.view.VariableTreeView:USER_ADDED_FILE_STATICS"/>
     <listAttribute key="debugger.view.VariableTreeView:USER_ADDED_GLOBALS"/>
@@ -219,7 +219,7 @@
         <listEntry value="CDB://rddi-dap_cfg-altera.txt rddi-dap_altera"/>
     </listAttribute>
     <booleanAttribute key="single_platform" value="true"/>
-    <stringAttribute key="stopAtExpression" value="*$ENTRYPOINT"/>
+    <stringAttribute key="stopAtExpression" value="main"/>
     <stringAttribute key="target_initialization_script" value="CDB://../../../Scripts/altera_target_check.py"/>
     <stringAttribute key="watchpoints" value="&lt;?xml version=&quot;1.0&quot; encoding=&quot;UTF-8&quot;?&gt;&#10;&lt;watchpoints&gt;&#10;&lt;/watchpoints&gt;&#10;"/>
 </launchConfiguration>
