@@ -220,7 +220,7 @@ __attribute__((noreturn)) void main_app(void)
     if (CORE0 == id)
     {
     	/* Wait for all the CPUs to finish */
-    	while ((0 == sync_1) || (0 == sync_2) || (0 == sync_3));
+    	while (0 == sync_1);
 
     	printf("Total Time for each CPU:\n");
     	printf("Total Time for CPU0: %d clock ticks\n", total_time_CPU0);
