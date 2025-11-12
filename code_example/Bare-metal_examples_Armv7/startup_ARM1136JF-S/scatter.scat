@@ -1,0 +1,65 @@
+;**************************************************
+; Copyright (c) 2011 Arm Limited (or its affiliates). All rights reserved.
+; Use, modification and redistribution of this file is subject to your possession of a
+; valid End User License Agreement for the Arm Product of which these examples are part of 
+; and your compliance with all applicable terms and conditions of such licence agreement.
+;**************************************************
+
+; This scatter-file places application code, data, stack and heap at suitable addresses in the memory map.
+
+; i.MX35 has 128kB of internal RAM (0x10000000 to 0x1001FFFF), which this scatter-file uses.
+
+; i.MX35 has a fixed ROM vector table at 0x00000000 that remaps the handlers as follow:
+
+; Reset_Handler     : 0xA0000000  = NOR FLASH
+; Undefined_Handler : 0x1001FFC4  = iRAM
+; SVC_Handler       : 0x1001FFC8  = iRAM
+; Prefetch_Handler  : 0x1001FFCC  = iRAM
+; Abort_Handler     : 0x1001FFD0  = iRAM
+; IRQ_Handler       : 0x1001FFD8  = iRAM
+; FIQ_Handler       : 0x1001FFDC  = iRAM
+
+; For demo purposes, and to avoid reprograming the NOR FLASH, a phony Reset_Handler has been placed at 0x10000010.
+
+; If needed, refer to Board Manual to reprogram the NOR FLASH with a suitable Reset Handler.
+
+HANDLERS 0x1001FFC4
+{
+	HAND +0
+	{
+		* (HAND, +FIRST)
+	}
+}
+
+SDRAM 0x10000010 0x20000-0x10   ; Deliberately offset for demo purposes
+{       
+	VECTORS +0
+	{
+		* (RESET, +FIRST)       ; Vector table and other (assembler) startup code
+		* (InRoot$$Sections)    ; All (library) code that must be in a root region
+	}
+
+	RO_CODE +0
+	{ * (+RO-CODE) }            ; Application RO code (.text)
+
+	RO_DATA +0
+	{ * (+RO-DATA) }            ; Application RO data (.constdata)
+
+	RW_DATA +0
+	{ * (+RW) }                 ; Application RW data (.data)
+
+	ZI_DATA +0
+	{ * (+ZI) }                 ; Application ZI data (.bss)
+
+	ARM_LIB_HEAP  0x10004000 EMPTY  0x00004000 ; Application heap
+	{ }
+
+	ARM_LIB_STACK 0x10009000 EMPTY -0x00001000 ; Application (SVC mode) stack
+	{ }
+
+	IRQ_STACK     0x1000A000 EMPTY -0x00001000 ; IRQ mode stack
+	{ }
+
+	TTB     0x10010000 EMPTY 0x4000            ; Level-1 Translation Table for MMU
+	{ }
+}

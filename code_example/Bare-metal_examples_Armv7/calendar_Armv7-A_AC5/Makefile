@@ -1,0 +1,50 @@
+# Calendar Example Makefile
+#
+# Copyright (c) 2009-2018 Arm Limited (or its affiliates). All rights reserved.
+# Use, modification and redistribution of this file is subject to your possession of a
+# valid End User License Agreement for the Arm Product of which these examples are part of 
+# and your compliance with all applicable terms and conditions of such licence agreement.
+#
+# This makefile is intended for use with GNU make
+# This example is intended to be built with Arm Compiler 5
+
+TARGET=calendar_Armv7-A_AC5.axf
+
+
+CC=armcc
+AS=armasm
+LD=armlink
+AR=armar
+FE=fromelf
+
+# Select build rules based on Windows or Unix
+ifdef WINDIR
+DONE=@if exist $(1) echo Build completed.
+RM=if exist $(1) del /q $(1)
+SHELL=$(WINDIR)\system32\cmd.exe
+else
+ifdef windir
+DONE=@if exist $(1) echo Build completed.
+RM=if exist $(1) del /q $(1)
+SHELL=$(windir)\system32\cmd.exe
+else
+DONE=@if [ -f $(1) ]; then echo Build completed.; fi
+RM=rm -f $(1)
+endif
+endif
+
+all: $(TARGET)
+	$(call DONE,$(TARGET))
+	
+rebuild: clean all
+
+clean:
+	$(call RM,*.o)
+	$(call RM,$(TARGET))
+
+calendar.o: calendar.c
+	$(CC) -c --cpu=Cortex-A9 --fpu=none -g -O1 $^ -o $@
+
+$(TARGET): calendar.o
+# Link with specific base address to suit VE model memory layout
+	$(LD) --ro-base=0x80000000 $^ -o $@

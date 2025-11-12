@@ -1,0 +1,371 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<?fileVersion 4.0.0?><cproject storage_type_id="org.eclipse.cdt.core.XmlProjectDescriptionStorage">
+	<storageModule moduleId="org.eclipse.cdt.core.settings">
+		<cconfiguration id="com.arm.eclipse.build.config.baremetal.exe.debug.321420486.1313368445">
+			<storageModule buildSystemId="org.eclipse.cdt.managedbuilder.core.configurationDataProvider" id="com.arm.eclipse.build.config.baremetal.exe.debug.321420486.1313368445" moduleId="org.eclipse.cdt.core.settings" name="STM32F10x_512">
+				<externalSettings/>
+				<extensions>
+					<extension id="org.eclipse.cdt.core.GmakeErrorParser" point="org.eclipse.cdt.core.ErrorParser"/>
+					<extension id="org.eclipse.cdt.core.CWDLocator" point="org.eclipse.cdt.core.ErrorParser"/>
+					<extension id="com.arm.eclipse.builder.armcc.error" point="org.eclipse.cdt.core.ErrorParser"/>
+				</extensions>
+			</storageModule>
+			<storageModule moduleId="cdtBuildSystem" version="4.0.0">
+				<configuration artifactExtension="FLM" artifactName="STM32F10x_512" buildArtefactType="org.eclipse.cdt.build.core.buildArtefactType.exe" buildProperties="org.eclipse.cdt.build.core.buildArtefactType=org.eclipse.cdt.build.core.buildArtefactType.exe,org.eclipse.cdt.build.core.buildType=org.eclipse.cdt.build.core.buildType.debug" cleanCommand="clean" description="" errorParsers="org.eclipse.cdt.core.GmakeErrorParser;org.eclipse.cdt.core.CWDLocator;com.arm.eclipse.builder.armcc.error" id="com.arm.eclipse.build.config.baremetal.exe.debug.321420486.1313368445" name="STM32F10x_512" postannouncebuildStep="" postbuildStep="" preannouncebuildStep="" prebuildStep="">
+					<folderInfo id="com.arm.eclipse.build.config.baremetal.exe.debug.321420486.1313368445." name="/" resourcePath="">
+						<toolChain id="com.arm.toolchain.baremetal.exe.debug.base.var.arm_compiler_5-5.1854523820" name="Arm Compiler 5" superClass="com.arm.toolchain.baremetal.exe.debug.base.var.arm_compiler_5-5">
+							<targetPlatform id="com.arm.toolchain.baremetal.exe.debug.base.var.arm_compiler_5-5.1854523820.1883777940" name=""/>
+							<builder autoBuildTarget="all" buildPath="${workspace_loc:/flash_algo-STM32F10x}/STM32F10x_512" cleanBuildTarget="clean" enableAutoBuild="false" enableCleanBuild="true" enabledIncrementalBuild="true" id="com.arm.toolchain.baremetal.builder.1022073123" incrementalBuildTarget="all" keepEnvironmentInBuildfile="false" managedBuildOn="true" name="Gnu Make Builder.STM32F10x_512" parallelBuildOn="false" superClass="com.arm.toolchain.baremetal.builder"/>
+							<tool id="com.arm.tool.c.compiler.baremetal.exe.debug.base.var.arm_compiler_5-5.409615818" name="Arm C Compiler 5" superClass="com.arm.tool.c.compiler.baremetal.exe.debug.base.var.arm_compiler_5-5">
+								<option id="com.arm.tool.c.compiler.option.targetcpu.1375975976" superClass="com.arm.tool.c.compiler.option.targetcpu" value="Cortex-M3" valueType="string"/>
+								<option id="com.arm.tool.c.compiler.option.inter.794318272" superClass="com.arm.tool.c.compiler.option.inter" value="true" valueType="boolean"/>
+								<option id="com.arm.tool.c.compiler.option.defmac.2013479269" superClass="com.arm.tool.c.compiler.option.defmac" valueType="definedSymbols">
+									<listOptionValue builtIn="false" value="FLASH_MEM"/>
+									<listOptionValue builtIn="false" value="STM32F10x_512"/>
+								</option>
+								<option id="com.arm.tool.c.compiler.option.optlevel.1221300691" superClass="com.arm.tool.c.compiler.option.optlevel"/>
+								<option id="com.arm.tool.c.compiler.option.flags.48910167" superClass="com.arm.tool.c.compiler.option.flags" valueType="stringList">
+									<listOptionValue builtIn="false" value="--apcs /ropi/rwpi"/>
+								</option>
+								<inputType id="com.arm.tool.c.compiler.input.473775417" superClass="com.arm.tool.c.compiler.input"/>
+								<inputType id="com.arm.tool.cpp.compiler.input.379927653" superClass="com.arm.tool.cpp.compiler.input"/>
+							</tool>
+							<tool id="com.arm.tool.cpp.compiler.baremetal.exe.debug.base.var.arm_compiler_5-5.319428891" name="Arm C++ Compiler 5" superClass="com.arm.tool.cpp.compiler.baremetal.exe.debug.base.var.arm_compiler_5-5">
+								<option id="com.arm.tool.c.compiler.option.targetcpu.1696518942" superClass="com.arm.tool.c.compiler.option.targetcpu" value="Cortex-M3" valueType="string"/>
+								<option id="com.arm.tool.c.compiler.option.optlevel.439868148" superClass="com.arm.tool.c.compiler.option.optlevel"/>
+							</tool>
+							<tool id="com.arm.tool.assembler.base.var.arm_compiler_5-5.957387018" name="Arm Assembler 5" superClass="com.arm.tool.assembler.base.var.arm_compiler_5-5">
+								<option id="com.arm.tool.assembler.option.cpu.1633994930" superClass="com.arm.tool.assembler.option.cpu" value="Cortex-M3" valueType="string"/>
+								<inputType id="com.arm.tool.assembler.input.280227355" superClass="com.arm.tool.assembler.input"/>
+							</tool>
+							<tool id="com.arm.tool.c.linker.base.var.arm_compiler_5-5.772506621" name="Arm Linker 5" superClass="com.arm.tool.c.linker.base.var.arm_compiler_5-5">
+								<option id="com.arm.tool.c.linker.option.cpu.1016746064" superClass="com.arm.tool.c.linker.option.cpu" value="Cortex-M3" valueType="string"/>
+								<option id="com.arm.tool.c.linker.option.scatter.1273601936" superClass="com.arm.tool.c.linker.option.scatter" value="../Target.scat" valueType="string"/>
+								<option id="com.arm.tool.c.linker.option.sizes.28214756" superClass="com.arm.tool.c.linker.option.sizes" value="false" valueType="boolean"/>
+								<option id="com.arm.tool.c.linker.option.totals.2071160145" superClass="com.arm.tool.c.linker.option.totals" value="true" valueType="boolean"/>
+								<option id="com.arm.tool.c.linker.option.elim.1020158595" superClass="com.arm.tool.c.linker.option.elim" value="true" valueType="boolean"/>
+								<option id="com.arm.tool.c.link.option.suppress.692754264" superClass="com.arm.tool.c.link.option.suppress" value="L6305" valueType="string"/>
+								<option id="com.arm.tool.c.linker.option.flags.640392079" superClass="com.arm.tool.c.linker.option.flags" valueType="stringList">
+									<listOptionValue builtIn="false" value="--strict"/>
+								</option>
+								<outputType id="com.arm.tool.c.linker.output.1379071418" outputPrefix="../" superClass="com.arm.tool.c.linker.output"/>
+							</tool>
+							<tool id="com.arm.tool.librarian.base.var.arm_compiler_5-5.208526700" name="Arm Librarian 5" superClass="com.arm.tool.librarian.base.var.arm_compiler_5-5"/>
+						</toolChain>
+					</folderInfo>
+				</configuration>
+			</storageModule>
+			<storageModule moduleId="org.eclipse.cdt.core.externalSettings"/>
+			<storageModule moduleId="org.eclipse.cdt.core.language.mapping"/>
+		</cconfiguration>
+		<cconfiguration id="com.arm.eclipse.build.config.baremetal.exe.debug.321420486.1313368445.685608412">
+			<storageModule buildSystemId="org.eclipse.cdt.managedbuilder.core.configurationDataProvider" id="com.arm.eclipse.build.config.baremetal.exe.debug.321420486.1313368445.685608412" moduleId="org.eclipse.cdt.core.settings" name="STM32F10x_16">
+				<externalSettings/>
+				<extensions>
+					<extension id="org.eclipse.cdt.core.GmakeErrorParser" point="org.eclipse.cdt.core.ErrorParser"/>
+					<extension id="org.eclipse.cdt.core.CWDLocator" point="org.eclipse.cdt.core.ErrorParser"/>
+					<extension id="com.arm.eclipse.builder.armcc.error" point="org.eclipse.cdt.core.ErrorParser"/>
+				</extensions>
+			</storageModule>
+			<storageModule moduleId="cdtBuildSystem" version="4.0.0">
+				<configuration artifactExtension="FLM" artifactName="STM32F10x_16" buildArtefactType="org.eclipse.cdt.build.core.buildArtefactType.exe" buildProperties="org.eclipse.cdt.build.core.buildArtefactType=org.eclipse.cdt.build.core.buildArtefactType.exe,org.eclipse.cdt.build.core.buildType=org.eclipse.cdt.build.core.buildType.debug" cleanCommand="clean" description="" errorParsers="org.eclipse.cdt.core.GmakeErrorParser;org.eclipse.cdt.core.CWDLocator;com.arm.eclipse.builder.armcc.error" id="com.arm.eclipse.build.config.baremetal.exe.debug.321420486.1313368445.685608412" name="STM32F10x_16" postannouncebuildStep="" postbuildStep="" preannouncebuildStep="" prebuildStep="">
+					<folderInfo id="com.arm.eclipse.build.config.baremetal.exe.debug.321420486.1313368445.685608412." name="/" resourcePath="">
+						<toolChain id="com.arm.toolchain.baremetal.exe.debug.base.var.arm_compiler_5-5.1966166915" name="Arm Compiler 5" superClass="com.arm.toolchain.baremetal.exe.debug.base.var.arm_compiler_5-5">
+							<targetPlatform id="com.arm.toolchain.baremetal.exe.debug.base.var.arm_compiler_5-5.1966166915.1119404599" name=""/>
+							<builder autoBuildTarget="all" buildPath="${workspace_loc:/flash_algo-STM32F10x}/STM32F10x_16" cleanBuildTarget="clean" enableAutoBuild="false" enableCleanBuild="true" enabledIncrementalBuild="true" id="com.arm.toolchain.baremetal.builder.1445273295" incrementalBuildTarget="all" keepEnvironmentInBuildfile="false" managedBuildOn="true" name="Gnu Make Builder.STM32F10x_16" parallelBuildOn="false" superClass="com.arm.toolchain.baremetal.builder"/>
+							<tool id="com.arm.tool.c.compiler.baremetal.exe.debug.base.var.arm_compiler_5-5.1917643717" name="Arm C Compiler 5" superClass="com.arm.tool.c.compiler.baremetal.exe.debug.base.var.arm_compiler_5-5">
+								<option id="com.arm.tool.c.compiler.option.targetcpu.1377782774" superClass="com.arm.tool.c.compiler.option.targetcpu" value="Cortex-M3" valueType="string"/>
+								<option id="com.arm.tool.c.compiler.option.inter.1194260925" superClass="com.arm.tool.c.compiler.option.inter" value="true" valueType="boolean"/>
+								<option id="com.arm.tool.c.compiler.option.defmac.978506056" superClass="com.arm.tool.c.compiler.option.defmac" valueType="definedSymbols">
+									<listOptionValue builtIn="false" value="FLASH_MEM"/>
+									<listOptionValue builtIn="false" value="STM32F10x_16"/>
+								</option>
+								<option id="com.arm.tool.c.compiler.option.optlevel.1238781476" superClass="com.arm.tool.c.compiler.option.optlevel"/>
+								<option id="com.arm.tool.c.compiler.option.flags.1043992592" superClass="com.arm.tool.c.compiler.option.flags" valueType="stringList">
+									<listOptionValue builtIn="false" value="--apcs /ropi/rwpi"/>
+								</option>
+								<inputType id="com.arm.tool.c.compiler.input.838606249" superClass="com.arm.tool.c.compiler.input"/>
+								<inputType id="com.arm.tool.cpp.compiler.input.1442053023" superClass="com.arm.tool.cpp.compiler.input"/>
+							</tool>
+							<tool id="com.arm.tool.cpp.compiler.baremetal.exe.debug.base.var.arm_compiler_5-5.467418578" name="Arm C++ Compiler 5" superClass="com.arm.tool.cpp.compiler.baremetal.exe.debug.base.var.arm_compiler_5-5">
+								<option id="com.arm.tool.c.compiler.option.targetcpu.1276301505" superClass="com.arm.tool.c.compiler.option.targetcpu" value="Cortex-M3" valueType="string"/>
+								<option id="com.arm.tool.c.compiler.option.optlevel.1243631306" superClass="com.arm.tool.c.compiler.option.optlevel"/>
+							</tool>
+							<tool id="com.arm.tool.assembler.base.var.arm_compiler_5-5.696993454" name="Arm Assembler 5" superClass="com.arm.tool.assembler.base.var.arm_compiler_5-5">
+								<option id="com.arm.tool.assembler.option.cpu.729339120" superClass="com.arm.tool.assembler.option.cpu" value="Cortex-M3" valueType="string"/>
+								<inputType id="com.arm.tool.assembler.input.1153184157" superClass="com.arm.tool.assembler.input"/>
+							</tool>
+							<tool id="com.arm.tool.c.linker.base.var.arm_compiler_5-5.1632617422" name="Arm Linker 5" superClass="com.arm.tool.c.linker.base.var.arm_compiler_5-5">
+								<option id="com.arm.tool.c.linker.option.cpu.1973032826" superClass="com.arm.tool.c.linker.option.cpu" value="Cortex-M3" valueType="string"/>
+								<option id="com.arm.tool.c.linker.option.scatter.1816076362" superClass="com.arm.tool.c.linker.option.scatter" value="../Target.scat" valueType="string"/>
+								<option id="com.arm.tool.c.linker.option.sizes.805844364" superClass="com.arm.tool.c.linker.option.sizes" value="false" valueType="boolean"/>
+								<option id="com.arm.tool.c.linker.option.totals.1800590799" superClass="com.arm.tool.c.linker.option.totals" value="true" valueType="boolean"/>
+								<option id="com.arm.tool.c.linker.option.elim.1646510183" superClass="com.arm.tool.c.linker.option.elim" value="true" valueType="boolean"/>
+								<option id="com.arm.tool.c.link.option.suppress.829829394" superClass="com.arm.tool.c.link.option.suppress" value="L6305" valueType="string"/>
+								<option id="com.arm.tool.c.linker.option.flags.1563667345" superClass="com.arm.tool.c.linker.option.flags" valueType="stringList">
+									<listOptionValue builtIn="false" value="--strict"/>
+								</option>
+								<outputType id="com.arm.tool.c.linker.output.812796115" outputPrefix="../" superClass="com.arm.tool.c.linker.output"/>
+							</tool>
+							<tool id="com.arm.tool.librarian.base.var.arm_compiler_5-5.1604132456" name="Arm Librarian 5" superClass="com.arm.tool.librarian.base.var.arm_compiler_5-5"/>
+						</toolChain>
+					</folderInfo>
+				</configuration>
+			</storageModule>
+			<storageModule moduleId="org.eclipse.cdt.core.externalSettings"/>
+			<storageModule moduleId="org.eclipse.cdt.core.language.mapping"/>
+		</cconfiguration>
+		<cconfiguration id="com.arm.eclipse.build.config.baremetal.exe.debug.321420486.1313368445.152743568">
+			<storageModule buildSystemId="org.eclipse.cdt.managedbuilder.core.configurationDataProvider" id="com.arm.eclipse.build.config.baremetal.exe.debug.321420486.1313368445.152743568" moduleId="org.eclipse.cdt.core.settings" name="STM32F10x_128">
+				<externalSettings/>
+				<extensions>
+					<extension id="org.eclipse.cdt.core.GmakeErrorParser" point="org.eclipse.cdt.core.ErrorParser"/>
+					<extension id="org.eclipse.cdt.core.CWDLocator" point="org.eclipse.cdt.core.ErrorParser"/>
+					<extension id="com.arm.eclipse.builder.armcc.error" point="org.eclipse.cdt.core.ErrorParser"/>
+				</extensions>
+			</storageModule>
+			<storageModule moduleId="cdtBuildSystem" version="4.0.0">
+				<configuration artifactExtension="FLM" artifactName="STM32F10x_128" buildArtefactType="org.eclipse.cdt.build.core.buildArtefactType.exe" buildProperties="org.eclipse.cdt.build.core.buildArtefactType=org.eclipse.cdt.build.core.buildArtefactType.exe,org.eclipse.cdt.build.core.buildType=org.eclipse.cdt.build.core.buildType.debug" cleanCommand="clean" description="" errorParsers="org.eclipse.cdt.core.GmakeErrorParser;org.eclipse.cdt.core.CWDLocator;com.arm.eclipse.builder.armcc.error" id="com.arm.eclipse.build.config.baremetal.exe.debug.321420486.1313368445.152743568" name="STM32F10x_128" postannouncebuildStep="" postbuildStep="" preannouncebuildStep="" prebuildStep="">
+					<folderInfo id="com.arm.eclipse.build.config.baremetal.exe.debug.321420486.1313368445.152743568." name="/" resourcePath="">
+						<toolChain id="com.arm.toolchain.baremetal.exe.debug.base.var.arm_compiler_5-5.1489841598" name="Arm Compiler 5" superClass="com.arm.toolchain.baremetal.exe.debug.base.var.arm_compiler_5-5">
+							<targetPlatform id="com.arm.toolchain.baremetal.exe.debug.base.var.arm_compiler_5-5.1489841598.1523664128" name=""/>
+							<builder autoBuildTarget="all" buildPath="${workspace_loc:/flash_algo-STM32F10x}/STM32F10x_128" cleanBuildTarget="clean" enableAutoBuild="false" enableCleanBuild="true" enabledIncrementalBuild="true" id="com.arm.toolchain.baremetal.builder.1918444899" incrementalBuildTarget="all" keepEnvironmentInBuildfile="false" managedBuildOn="true" name="Gnu Make Builder.STM32F10x_128" parallelBuildOn="false" superClass="com.arm.toolchain.baremetal.builder"/>
+							<tool id="com.arm.tool.c.compiler.baremetal.exe.debug.base.var.arm_compiler_5-5.1737461486" name="Arm C Compiler 5" superClass="com.arm.tool.c.compiler.baremetal.exe.debug.base.var.arm_compiler_5-5">
+								<option id="com.arm.tool.c.compiler.option.targetcpu.292793391" superClass="com.arm.tool.c.compiler.option.targetcpu" value="Cortex-M3" valueType="string"/>
+								<option id="com.arm.tool.c.compiler.option.inter.1408008943" superClass="com.arm.tool.c.compiler.option.inter" value="true" valueType="boolean"/>
+								<option id="com.arm.tool.c.compiler.option.defmac.1309078338" superClass="com.arm.tool.c.compiler.option.defmac" valueType="definedSymbols">
+									<listOptionValue builtIn="false" value="FLASH_MEM"/>
+									<listOptionValue builtIn="false" value="STM32F10x_128"/>
+								</option>
+								<option id="com.arm.tool.c.compiler.option.optlevel.844574390" superClass="com.arm.tool.c.compiler.option.optlevel"/>
+								<option id="com.arm.tool.c.compiler.option.flags.1272848409" superClass="com.arm.tool.c.compiler.option.flags" valueType="stringList">
+									<listOptionValue builtIn="false" value="--apcs /ropi/rwpi"/>
+								</option>
+								<inputType id="com.arm.tool.c.compiler.input.645958682" superClass="com.arm.tool.c.compiler.input"/>
+								<inputType id="com.arm.tool.cpp.compiler.input.1040332050" superClass="com.arm.tool.cpp.compiler.input"/>
+							</tool>
+							<tool id="com.arm.tool.cpp.compiler.baremetal.exe.debug.base.var.arm_compiler_5-5.618457552" name="Arm C++ Compiler 5" superClass="com.arm.tool.cpp.compiler.baremetal.exe.debug.base.var.arm_compiler_5-5">
+								<option id="com.arm.tool.c.compiler.option.targetcpu.999253962" superClass="com.arm.tool.c.compiler.option.targetcpu" value="Cortex-M3" valueType="string"/>
+								<option id="com.arm.tool.c.compiler.option.optlevel.727277999" superClass="com.arm.tool.c.compiler.option.optlevel"/>
+							</tool>
+							<tool id="com.arm.tool.assembler.base.var.arm_compiler_5-5.1776107371" name="Arm Assembler 5" superClass="com.arm.tool.assembler.base.var.arm_compiler_5-5">
+								<option id="com.arm.tool.assembler.option.cpu.985704594" superClass="com.arm.tool.assembler.option.cpu" value="Cortex-M3" valueType="string"/>
+								<inputType id="com.arm.tool.assembler.input.684233286" superClass="com.arm.tool.assembler.input"/>
+							</tool>
+							<tool id="com.arm.tool.c.linker.base.var.arm_compiler_5-5.2115480670" name="Arm Linker 5" superClass="com.arm.tool.c.linker.base.var.arm_compiler_5-5">
+								<option id="com.arm.tool.c.linker.option.cpu.1530302189" superClass="com.arm.tool.c.linker.option.cpu" value="Cortex-M3" valueType="string"/>
+								<option id="com.arm.tool.c.linker.option.scatter.1877800960" superClass="com.arm.tool.c.linker.option.scatter" value="../Target.scat" valueType="string"/>
+								<option id="com.arm.tool.c.linker.option.sizes.932227237" superClass="com.arm.tool.c.linker.option.sizes" value="false" valueType="boolean"/>
+								<option id="com.arm.tool.c.linker.option.totals.613137675" superClass="com.arm.tool.c.linker.option.totals" value="true" valueType="boolean"/>
+								<option id="com.arm.tool.c.linker.option.elim.1126366129" superClass="com.arm.tool.c.linker.option.elim" value="true" valueType="boolean"/>
+								<option id="com.arm.tool.c.link.option.suppress.306136525" superClass="com.arm.tool.c.link.option.suppress" value="L6305" valueType="string"/>
+								<option id="com.arm.tool.c.linker.option.flags.155286497" superClass="com.arm.tool.c.linker.option.flags" valueType="stringList">
+									<listOptionValue builtIn="false" value="--strict"/>
+								</option>
+								<outputType id="com.arm.tool.c.linker.output.1543126934" outputPrefix="../" superClass="com.arm.tool.c.linker.output"/>
+							</tool>
+							<tool id="com.arm.tool.librarian.base.var.arm_compiler_5-5.1695391883" name="Arm Librarian 5" superClass="com.arm.tool.librarian.base.var.arm_compiler_5-5"/>
+						</toolChain>
+					</folderInfo>
+				</configuration>
+			</storageModule>
+			<storageModule moduleId="org.eclipse.cdt.core.externalSettings"/>
+			<storageModule moduleId="org.eclipse.cdt.core.language.mapping"/>
+		</cconfiguration>
+		<cconfiguration id="com.arm.eclipse.build.config.baremetal.exe.debug.321420486.1313368445.1510785008">
+			<storageModule buildSystemId="org.eclipse.cdt.managedbuilder.core.configurationDataProvider" id="com.arm.eclipse.build.config.baremetal.exe.debug.321420486.1313368445.1510785008" moduleId="org.eclipse.cdt.core.settings" name="STM32F10x_1024">
+				<externalSettings/>
+				<extensions>
+					<extension id="org.eclipse.cdt.core.GmakeErrorParser" point="org.eclipse.cdt.core.ErrorParser"/>
+					<extension id="org.eclipse.cdt.core.CWDLocator" point="org.eclipse.cdt.core.ErrorParser"/>
+					<extension id="com.arm.eclipse.builder.armcc.error" point="org.eclipse.cdt.core.ErrorParser"/>
+				</extensions>
+			</storageModule>
+			<storageModule moduleId="cdtBuildSystem" version="4.0.0">
+				<configuration artifactExtension="FLM" artifactName="STM32F10x_1024" buildArtefactType="org.eclipse.cdt.build.core.buildArtefactType.exe" buildProperties="org.eclipse.cdt.build.core.buildArtefactType=org.eclipse.cdt.build.core.buildArtefactType.exe,org.eclipse.cdt.build.core.buildType=org.eclipse.cdt.build.core.buildType.debug" cleanCommand="clean" description="" errorParsers="org.eclipse.cdt.core.GmakeErrorParser;org.eclipse.cdt.core.CWDLocator;com.arm.eclipse.builder.armcc.error" id="com.arm.eclipse.build.config.baremetal.exe.debug.321420486.1313368445.1510785008" name="STM32F10x_1024" postannouncebuildStep="" postbuildStep="" preannouncebuildStep="" prebuildStep="">
+					<folderInfo id="com.arm.eclipse.build.config.baremetal.exe.debug.321420486.1313368445.1510785008." name="/" resourcePath="">
+						<toolChain id="com.arm.toolchain.baremetal.exe.debug.base.var.arm_compiler_5-5.1720720044" name="Arm Compiler 5" superClass="com.arm.toolchain.baremetal.exe.debug.base.var.arm_compiler_5-5">
+							<targetPlatform id="com.arm.toolchain.baremetal.exe.debug.base.var.arm_compiler_5-5.1720720044.195277417" name=""/>
+							<builder autoBuildTarget="all" buildPath="${workspace_loc:/flash_algo-STM32F10x}/STM32F10x_1024" cleanBuildTarget="clean" enableAutoBuild="false" enableCleanBuild="true" enabledIncrementalBuild="true" id="com.arm.toolchain.baremetal.builder.818241454" incrementalBuildTarget="all" keepEnvironmentInBuildfile="false" managedBuildOn="true" name="Gnu Make Builder.STM32F10x_1024" parallelBuildOn="false" superClass="com.arm.toolchain.baremetal.builder"/>
+							<tool id="com.arm.tool.c.compiler.baremetal.exe.debug.base.var.arm_compiler_5-5.107569101" name="Arm C Compiler 5" superClass="com.arm.tool.c.compiler.baremetal.exe.debug.base.var.arm_compiler_5-5">
+								<option id="com.arm.tool.c.compiler.option.targetcpu.1358703224" superClass="com.arm.tool.c.compiler.option.targetcpu" value="Cortex-M3" valueType="string"/>
+								<option id="com.arm.tool.c.compiler.option.inter.1089576256" superClass="com.arm.tool.c.compiler.option.inter" value="true" valueType="boolean"/>
+								<option id="com.arm.tool.c.compiler.option.defmac.2066638697" superClass="com.arm.tool.c.compiler.option.defmac" valueType="definedSymbols">
+									<listOptionValue builtIn="false" value="FLASH_MEM"/>
+									<listOptionValue builtIn="false" value="STM32F10x_1024"/>
+								</option>
+								<option id="com.arm.tool.c.compiler.option.optlevel.1679753615" superClass="com.arm.tool.c.compiler.option.optlevel"/>
+								<option id="com.arm.tool.c.compiler.option.flags.206648918" superClass="com.arm.tool.c.compiler.option.flags" valueType="stringList">
+									<listOptionValue builtIn="false" value="--apcs /ropi/rwpi"/>
+								</option>
+								<inputType id="com.arm.tool.c.compiler.input.454397766" superClass="com.arm.tool.c.compiler.input"/>
+								<inputType id="com.arm.tool.cpp.compiler.input.1455153767" superClass="com.arm.tool.cpp.compiler.input"/>
+							</tool>
+							<tool id="com.arm.tool.cpp.compiler.baremetal.exe.debug.base.var.arm_compiler_5-5.1924443660" name="Arm C++ Compiler 5" superClass="com.arm.tool.cpp.compiler.baremetal.exe.debug.base.var.arm_compiler_5-5">
+								<option id="com.arm.tool.c.compiler.option.targetcpu.21931901" superClass="com.arm.tool.c.compiler.option.targetcpu" value="Cortex-M3" valueType="string"/>
+								<option id="com.arm.tool.c.compiler.option.optlevel.344909856" superClass="com.arm.tool.c.compiler.option.optlevel"/>
+							</tool>
+							<tool id="com.arm.tool.assembler.base.var.arm_compiler_5-5.187628134" name="Arm Assembler 5" superClass="com.arm.tool.assembler.base.var.arm_compiler_5-5">
+								<option id="com.arm.tool.assembler.option.cpu.485837162" superClass="com.arm.tool.assembler.option.cpu" value="Cortex-M3" valueType="string"/>
+								<inputType id="com.arm.tool.assembler.input.1377848622" superClass="com.arm.tool.assembler.input"/>
+							</tool>
+							<tool id="com.arm.tool.c.linker.base.var.arm_compiler_5-5.3765196" name="Arm Linker 5" superClass="com.arm.tool.c.linker.base.var.arm_compiler_5-5">
+								<option id="com.arm.tool.c.linker.option.cpu.1457899186" superClass="com.arm.tool.c.linker.option.cpu" value="Cortex-M3" valueType="string"/>
+								<option id="com.arm.tool.c.linker.option.scatter.1182861373" superClass="com.arm.tool.c.linker.option.scatter" value="../Target.scat" valueType="string"/>
+								<option id="com.arm.tool.c.linker.option.sizes.517178388" superClass="com.arm.tool.c.linker.option.sizes" value="false" valueType="boolean"/>
+								<option id="com.arm.tool.c.linker.option.totals.1814720250" superClass="com.arm.tool.c.linker.option.totals" value="true" valueType="boolean"/>
+								<option id="com.arm.tool.c.linker.option.elim.1401170199" superClass="com.arm.tool.c.linker.option.elim" value="true" valueType="boolean"/>
+								<option id="com.arm.tool.c.link.option.suppress.425226365" superClass="com.arm.tool.c.link.option.suppress" value="L6305" valueType="string"/>
+								<option id="com.arm.tool.c.linker.option.flags.1622836318" superClass="com.arm.tool.c.linker.option.flags" valueType="stringList">
+									<listOptionValue builtIn="false" value="--strict"/>
+								</option>
+								<outputType id="com.arm.tool.c.linker.output.1331865585" outputPrefix="../" superClass="com.arm.tool.c.linker.output"/>
+							</tool>
+							<tool id="com.arm.tool.librarian.base.var.arm_compiler_5-5.161122485" name="Arm Librarian 5" superClass="com.arm.tool.librarian.base.var.arm_compiler_5-5"/>
+						</toolChain>
+					</folderInfo>
+				</configuration>
+			</storageModule>
+			<storageModule moduleId="org.eclipse.cdt.core.externalSettings"/>
+			<storageModule moduleId="org.eclipse.cdt.core.language.mapping"/>
+		</cconfiguration>
+		<cconfiguration id="com.arm.eclipse.build.config.baremetal.exe.debug.321420486.1313368445.2019410749">
+			<storageModule buildSystemId="org.eclipse.cdt.managedbuilder.core.configurationDataProvider" id="com.arm.eclipse.build.config.baremetal.exe.debug.321420486.1313368445.2019410749" moduleId="org.eclipse.cdt.core.settings" name="STM32F10x_CL">
+				<externalSettings/>
+				<extensions>
+					<extension id="org.eclipse.cdt.core.GmakeErrorParser" point="org.eclipse.cdt.core.ErrorParser"/>
+					<extension id="org.eclipse.cdt.core.CWDLocator" point="org.eclipse.cdt.core.ErrorParser"/>
+					<extension id="com.arm.eclipse.builder.armcc.error" point="org.eclipse.cdt.core.ErrorParser"/>
+				</extensions>
+			</storageModule>
+			<storageModule moduleId="cdtBuildSystem" version="4.0.0">
+				<configuration artifactExtension="FLM" artifactName="STM32F10x_CL" buildArtefactType="org.eclipse.cdt.build.core.buildArtefactType.exe" buildProperties="org.eclipse.cdt.build.core.buildArtefactType=org.eclipse.cdt.build.core.buildArtefactType.exe,org.eclipse.cdt.build.core.buildType=org.eclipse.cdt.build.core.buildType.debug" cleanCommand="clean" description="" errorParsers="org.eclipse.cdt.core.GmakeErrorParser;org.eclipse.cdt.core.CWDLocator;com.arm.eclipse.builder.armcc.error" id="com.arm.eclipse.build.config.baremetal.exe.debug.321420486.1313368445.2019410749" name="STM32F10x_CL" postannouncebuildStep="" postbuildStep="" preannouncebuildStep="" prebuildStep="">
+					<folderInfo id="com.arm.eclipse.build.config.baremetal.exe.debug.321420486.1313368445.2019410749." name="/" resourcePath="">
+						<toolChain id="com.arm.toolchain.baremetal.exe.debug.base.var.arm_compiler_5-5.1038309881" name="Arm Compiler 5" superClass="com.arm.toolchain.baremetal.exe.debug.base.var.arm_compiler_5-5">
+							<targetPlatform id="com.arm.toolchain.baremetal.exe.debug.base.var.arm_compiler_5-5.1038309881.686499333" name=""/>
+							<builder autoBuildTarget="all" buildPath="${workspace_loc:/flash_algo-STM32F10x}/STM32F10x_CL" cleanBuildTarget="clean" enableAutoBuild="false" enableCleanBuild="true" enabledIncrementalBuild="true" id="com.arm.toolchain.baremetal.builder.1905817054" incrementalBuildTarget="all" keepEnvironmentInBuildfile="false" managedBuildOn="true" name="Gnu Make Builder.STM32F10x_CL" parallelBuildOn="false" superClass="com.arm.toolchain.baremetal.builder"/>
+							<tool id="com.arm.tool.c.compiler.baremetal.exe.debug.base.var.arm_compiler_5-5.1226666434" name="Arm C Compiler 5" superClass="com.arm.tool.c.compiler.baremetal.exe.debug.base.var.arm_compiler_5-5">
+								<option id="com.arm.tool.c.compiler.option.targetcpu.1284112229" superClass="com.arm.tool.c.compiler.option.targetcpu" value="Cortex-M3" valueType="string"/>
+								<option id="com.arm.tool.c.compiler.option.inter.1418428086" superClass="com.arm.tool.c.compiler.option.inter" value="true" valueType="boolean"/>
+								<option id="com.arm.tool.c.compiler.option.defmac.1021242939" superClass="com.arm.tool.c.compiler.option.defmac" valueType="definedSymbols">
+									<listOptionValue builtIn="false" value="FLASH_MEM"/>
+									<listOptionValue builtIn="false" value="STM32F10x_CL"/>
+								</option>
+								<option id="com.arm.tool.c.compiler.option.optlevel.600627087" superClass="com.arm.tool.c.compiler.option.optlevel"/>
+								<option id="com.arm.tool.c.compiler.option.flags.2134798052" superClass="com.arm.tool.c.compiler.option.flags" valueType="stringList">
+									<listOptionValue builtIn="false" value="--apcs /ropi/rwpi"/>
+								</option>
+								<inputType id="com.arm.tool.c.compiler.input.910112551" superClass="com.arm.tool.c.compiler.input"/>
+								<inputType id="com.arm.tool.cpp.compiler.input.1922530994" superClass="com.arm.tool.cpp.compiler.input"/>
+							</tool>
+							<tool id="com.arm.tool.cpp.compiler.baremetal.exe.debug.base.var.arm_compiler_5-5.703207993" name="Arm C++ Compiler 5" superClass="com.arm.tool.cpp.compiler.baremetal.exe.debug.base.var.arm_compiler_5-5">
+								<option id="com.arm.tool.c.compiler.option.targetcpu.847945267" superClass="com.arm.tool.c.compiler.option.targetcpu" value="Cortex-M3" valueType="string"/>
+								<option id="com.arm.tool.c.compiler.option.optlevel.1751402416" superClass="com.arm.tool.c.compiler.option.optlevel"/>
+							</tool>
+							<tool id="com.arm.tool.assembler.base.var.arm_compiler_5-5.1823696285" name="Arm Assembler 5" superClass="com.arm.tool.assembler.base.var.arm_compiler_5-5">
+								<option id="com.arm.tool.assembler.option.cpu.1923465006" superClass="com.arm.tool.assembler.option.cpu" value="Cortex-M3" valueType="string"/>
+								<inputType id="com.arm.tool.assembler.input.178438236" superClass="com.arm.tool.assembler.input"/>
+							</tool>
+							<tool id="com.arm.tool.c.linker.base.var.arm_compiler_5-5.1743872581" name="Arm Linker 5" superClass="com.arm.tool.c.linker.base.var.arm_compiler_5-5">
+								<option id="com.arm.tool.c.linker.option.cpu.1767426422" superClass="com.arm.tool.c.linker.option.cpu" value="Cortex-M3" valueType="string"/>
+								<option id="com.arm.tool.c.linker.option.scatter.557040204" superClass="com.arm.tool.c.linker.option.scatter" value="../Target.scat" valueType="string"/>
+								<option id="com.arm.tool.c.linker.option.sizes.41803440" superClass="com.arm.tool.c.linker.option.sizes" value="false" valueType="boolean"/>
+								<option id="com.arm.tool.c.linker.option.totals.991010617" superClass="com.arm.tool.c.linker.option.totals" value="true" valueType="boolean"/>
+								<option id="com.arm.tool.c.linker.option.elim.662664216" superClass="com.arm.tool.c.linker.option.elim" value="true" valueType="boolean"/>
+								<option id="com.arm.tool.c.link.option.suppress.1693737291" superClass="com.arm.tool.c.link.option.suppress" value="L6305" valueType="string"/>
+								<option id="com.arm.tool.c.linker.option.flags.1651356882" superClass="com.arm.tool.c.linker.option.flags" valueType="stringList">
+									<listOptionValue builtIn="false" value="--strict"/>
+								</option>
+								<outputType id="com.arm.tool.c.linker.output.1035993292" outputPrefix="../" superClass="com.arm.tool.c.linker.output"/>
+							</tool>
+							<tool id="com.arm.tool.librarian.base.var.arm_compiler_5-5.1118015872" name="Arm Librarian 5" superClass="com.arm.tool.librarian.base.var.arm_compiler_5-5"/>
+						</toolChain>
+					</folderInfo>
+				</configuration>
+			</storageModule>
+			<storageModule moduleId="org.eclipse.cdt.core.externalSettings"/>
+			<storageModule moduleId="org.eclipse.cdt.core.language.mapping"/>
+		</cconfiguration>
+		<cconfiguration id="com.arm.eclipse.build.config.baremetal.exe.debug.321420486.1313368445.1831033806">
+			<storageModule buildSystemId="org.eclipse.cdt.managedbuilder.core.configurationDataProvider" id="com.arm.eclipse.build.config.baremetal.exe.debug.321420486.1313368445.1831033806" moduleId="org.eclipse.cdt.core.settings" name="STM32F10x_OPT">
+				<externalSettings/>
+				<extensions>
+					<extension id="org.eclipse.cdt.core.GmakeErrorParser" point="org.eclipse.cdt.core.ErrorParser"/>
+					<extension id="org.eclipse.cdt.core.CWDLocator" point="org.eclipse.cdt.core.ErrorParser"/>
+					<extension id="com.arm.eclipse.builder.armcc.error" point="org.eclipse.cdt.core.ErrorParser"/>
+				</extensions>
+			</storageModule>
+			<storageModule moduleId="cdtBuildSystem" version="4.0.0">
+				<configuration artifactExtension="FLM" artifactName="STM32F10x_OPT" buildArtefactType="org.eclipse.cdt.build.core.buildArtefactType.exe" buildProperties="org.eclipse.cdt.build.core.buildArtefactType=org.eclipse.cdt.build.core.buildArtefactType.exe,org.eclipse.cdt.build.core.buildType=org.eclipse.cdt.build.core.buildType.debug" cleanCommand="clean" description="" errorParsers="org.eclipse.cdt.core.GmakeErrorParser;org.eclipse.cdt.core.CWDLocator;com.arm.eclipse.builder.armcc.error" id="com.arm.eclipse.build.config.baremetal.exe.debug.321420486.1313368445.1831033806" name="STM32F10x_OPT" postannouncebuildStep="" postbuildStep="" preannouncebuildStep="" prebuildStep="">
+					<folderInfo id="com.arm.eclipse.build.config.baremetal.exe.debug.321420486.1313368445.1831033806." name="/" resourcePath="">
+						<toolChain id="com.arm.toolchain.baremetal.exe.debug.base.var.arm_compiler_5-5.1919890926" name="Arm Compiler 5" superClass="com.arm.toolchain.baremetal.exe.debug.base.var.arm_compiler_5-5">
+							<targetPlatform id="com.arm.toolchain.baremetal.exe.debug.base.var.arm_compiler_5-5.1919890926.2085937690" name=""/>
+							<builder autoBuildTarget="all" buildPath="${workspace_loc:/flash_algo-STM32F10x}/STM32F10x_OPT" cleanBuildTarget="clean" enableAutoBuild="false" enableCleanBuild="true" enabledIncrementalBuild="true" id="com.arm.toolchain.baremetal.builder.1244807684" incrementalBuildTarget="all" keepEnvironmentInBuildfile="false" managedBuildOn="true" name="Gnu Make Builder.STM32F10x_OPT" parallelBuildOn="false" superClass="com.arm.toolchain.baremetal.builder"/>
+							<tool id="com.arm.tool.c.compiler.baremetal.exe.debug.base.var.arm_compiler_5-5.71531077" name="Arm C Compiler 5" superClass="com.arm.tool.c.compiler.baremetal.exe.debug.base.var.arm_compiler_5-5">
+								<option id="com.arm.tool.c.compiler.option.targetcpu.1767768570" superClass="com.arm.tool.c.compiler.option.targetcpu" value="Cortex-M3" valueType="string"/>
+								<option id="com.arm.tool.c.compiler.option.inter.1474832102" superClass="com.arm.tool.c.compiler.option.inter" value="true" valueType="boolean"/>
+								<option id="com.arm.tool.c.compiler.option.defmac.403319096" superClass="com.arm.tool.c.compiler.option.defmac" valueType="definedSymbols">
+									<listOptionValue builtIn="false" value="FLASH_OPT"/>
+								</option>
+								<option id="com.arm.tool.c.compiler.option.optlevel.1169009866" superClass="com.arm.tool.c.compiler.option.optlevel"/>
+								<option id="com.arm.tool.c.compiler.option.flags.1908892925" superClass="com.arm.tool.c.compiler.option.flags" valueType="stringList">
+									<listOptionValue builtIn="false" value="--apcs /ropi/rwpi"/>
+								</option>
+								<inputType id="com.arm.tool.c.compiler.input.2079485222" superClass="com.arm.tool.c.compiler.input"/>
+								<inputType id="com.arm.tool.cpp.compiler.input.947040243" superClass="com.arm.tool.cpp.compiler.input"/>
+							</tool>
+							<tool id="com.arm.tool.cpp.compiler.baremetal.exe.debug.base.var.arm_compiler_5-5.1763005529" name="Arm C++ Compiler 5" superClass="com.arm.tool.cpp.compiler.baremetal.exe.debug.base.var.arm_compiler_5-5">
+								<option id="com.arm.tool.c.compiler.option.targetcpu.863227592" superClass="com.arm.tool.c.compiler.option.targetcpu" value="Cortex-M3" valueType="string"/>
+								<option id="com.arm.tool.c.compiler.option.optlevel.849866254" superClass="com.arm.tool.c.compiler.option.optlevel"/>
+							</tool>
+							<tool id="com.arm.tool.assembler.base.var.arm_compiler_5-5.877964529" name="Arm Assembler 5" superClass="com.arm.tool.assembler.base.var.arm_compiler_5-5">
+								<option id="com.arm.tool.assembler.option.cpu.872810505" superClass="com.arm.tool.assembler.option.cpu" value="Cortex-M3" valueType="string"/>
+								<inputType id="com.arm.tool.assembler.input.2008323649" superClass="com.arm.tool.assembler.input"/>
+							</tool>
+							<tool id="com.arm.tool.c.linker.base.var.arm_compiler_5-5.1523535468" name="Arm Linker 5" superClass="com.arm.tool.c.linker.base.var.arm_compiler_5-5">
+								<option id="com.arm.tool.c.linker.option.cpu.76914293" superClass="com.arm.tool.c.linker.option.cpu" value="Cortex-M3" valueType="string"/>
+								<option id="com.arm.tool.c.linker.option.scatter.143026071" superClass="com.arm.tool.c.linker.option.scatter" value="../Target.scat" valueType="string"/>
+								<option id="com.arm.tool.c.linker.option.sizes.1910820664" superClass="com.arm.tool.c.linker.option.sizes" value="false" valueType="boolean"/>
+								<option id="com.arm.tool.c.linker.option.totals.1153763259" superClass="com.arm.tool.c.linker.option.totals" value="true" valueType="boolean"/>
+								<option id="com.arm.tool.c.linker.option.elim.1263308019" superClass="com.arm.tool.c.linker.option.elim" value="true" valueType="boolean"/>
+								<option id="com.arm.tool.c.link.option.suppress.1666739172" superClass="com.arm.tool.c.link.option.suppress" value="L6305" valueType="string"/>
+								<option id="com.arm.tool.c.linker.option.flags.207871785" superClass="com.arm.tool.c.linker.option.flags" valueType="stringList">
+									<listOptionValue builtIn="false" value="--strict"/>
+								</option>
+								<outputType id="com.arm.tool.c.linker.output.1927322421" outputPrefix="../" superClass="com.arm.tool.c.linker.output"/>
+							</tool>
+							<tool id="com.arm.tool.librarian.base.var.arm_compiler_5-5.1837901563" name="Arm Librarian 5" superClass="com.arm.tool.librarian.base.var.arm_compiler_5-5"/>
+						</toolChain>
+					</folderInfo>
+				</configuration>
+			</storageModule>
+			<storageModule moduleId="org.eclipse.cdt.core.externalSettings"/>
+			<storageModule moduleId="org.eclipse.cdt.core.language.mapping"/>
+		</cconfiguration>
+	</storageModule>
+	<storageModule moduleId="cdtBuildSystem" version="4.0.0">
+		<project id="startup_Cortex-M3.com.arm.eclipse.build.project.baremetal.exe.1417980679" name="Bare-metal Executable"/>
+	</storageModule>
+	<storageModule moduleId="refreshScope" versionNumber="1"/>
+	<storageModule moduleId="org.eclipse.cdt.internal.ui.text.commentOwnerProjectMappings"/>
+	<storageModule moduleId="scannerConfiguration">
+		<autodiscovery enabled="true" problemReportingEnabled="true" selectedProfileId=""/>
+		<scannerConfigBuildInfo instanceId="com.arm.eclipse.build.config.baremetal.exe.debug.321420486.1313368445;com.arm.eclipse.build.config.baremetal.exe.debug.321420486.1313368445.;com.arm.tool.c.compiler.baremetal.exe.debug.1963423618;com.arm.tool.c.compiler.input.1626533019">
+			<autodiscovery enabled="true" problemReportingEnabled="true" selectedProfileId="com.arm.eclipse.builder.armcc.ARMCompilerDiscoveryProfile"/>
+		</scannerConfigBuildInfo>
+		<scannerConfigBuildInfo instanceId="com.arm.eclipse.build.config.baremetal.exe.release.165537229;com.arm.eclipse.build.config.baremetal.exe.release.165537229.;com.arm.tool.c.compiler.baremetal.exe.release.2002923150;com.arm.tool.c.compiler.input.1590575595">
+			<autodiscovery enabled="true" problemReportingEnabled="true" selectedProfileId="com.arm.eclipse.builder.armcc.ARMCompilerDiscoveryProfile"/>
+		</scannerConfigBuildInfo>
+		<scannerConfigBuildInfo instanceId="com.arm.eclipse.build.config.baremetal.exe.debug.321420486;com.arm.eclipse.build.config.baremetal.exe.debug.321420486.;com.arm.tool.c.compiler.baremetal.exe.debug.470944926;com.arm.tool.c.compiler.input.737241719">
+			<autodiscovery enabled="true" problemReportingEnabled="true" selectedProfileId="com.arm.eclipse.builder.armcc.ARMCompilerDiscoveryProfile"/>
+		</scannerConfigBuildInfo>
+		<scannerConfigBuildInfo instanceId="com.arm.eclipse.build.config.baremetal.exe.debug.321420486;com.arm.eclipse.build.config.baremetal.exe.debug.321420486.;com.arm.tool.c.compiler.baremetal.exe.debug.470944926;com.arm.tool.cpp.compiler.input.991706498">
+			<autodiscovery enabled="true" problemReportingEnabled="true" selectedProfileId="com.arm.eclipse.builder.armcc.ARMCompilerDiscoveryProfile"/>
+		</scannerConfigBuildInfo>
+		<scannerConfigBuildInfo instanceId="com.arm.eclipse.build.config.baremetal.exe.debug.321420486.1313368445;com.arm.eclipse.build.config.baremetal.exe.debug.321420486.1313368445.;com.arm.tool.c.compiler.baremetal.exe.debug.1963423618;com.arm.tool.cpp.compiler.input.497485559">
+			<autodiscovery enabled="true" problemReportingEnabled="true" selectedProfileId="com.arm.eclipse.builder.armcc.ARMCompilerDiscoveryProfile"/>
+		</scannerConfigBuildInfo>
+	</storageModule>
+	<storageModule moduleId="com.arm.projectSettings" version="6.0.0"/>
+	<storageModule moduleId="org.eclipse.cdt.core.LanguageSettingsProviders"/>
+</cproject>
