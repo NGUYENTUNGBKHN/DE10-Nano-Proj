@@ -1,0 +1,5 @@
+memory P:0xa041277c +4 wo
+newvar $region = $
+memory set P:0xa041277c 32 0x0000ffff
+delete memory $region
+set var $CP15_SCTLR.I = 0

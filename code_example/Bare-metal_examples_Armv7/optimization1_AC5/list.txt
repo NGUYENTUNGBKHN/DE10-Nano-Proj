@@ -1,0 +1,627 @@
+Component: ARM Compiler 5.06 (build 960) Tool: armlink [4d3601]
+
+==============================================================================
+
+/arm/warehouse/RVCT/TestableTools/5.06/960/standard/linux-x86_64-none-rel/lib/armlib/c_2.l
+/arm/warehouse/RVCT/TestableTools/5.06/960/standard/linux-x86_64-none-rel/lib/armlib/fz_2v.l
+/arm/warehouse/RVCT/TestableTools/5.06/960/standard/linux-x86_64-none-rel/lib/armlib/h_2.l
+/arm/warehouse/RVCT/TestableTools/5.06/960/standard/linux-x86_64-none-rel/lib/armlib/m_2v.l
+/arm/warehouse/RVCT/TestableTools/5.06/960/standard/linux-x86_64-none-rel/lib/armlib/vfpsupport.l
+
+==============================================================================
+
+Image Stack Usage Information.
+
+Maximum stack usage for Image.
+
+Maximum Stack Usage for __rt_entry_main 0x3c38 bytes.
+Call chain for maximum stack usage:
+__rt_entry_main => main => $Super$$main => qsort
+
+Maximum stack usage per global function.
+
+Maximum Stack Usage for main 0x3c38 bytes.
+Call chain for maximum stack usage:
+main => $Super$$main => qsort
+
+Maximum Stack Usage for qs_string_compare 0x4 bytes.
+Call chain for maximum stack usage:
+qs_string_compare => strcmp
+
+Maximum Stack Usage for $Super$$main 0x3c30 bytes.
+Call chain for maximum stack usage:
+$Super$$main => qsort
+
+Stack Usage for functions.
+
+Stack Usage for StartHere unknown bytes.
+Stack Usage for __main 0x0 bytes.
+Stack Usage for __scatterload unknown bytes.
+Stack Usage for __scatterload_rt2 unknown bytes.
+Stack Usage for __scatterload_rt2_thumb_only unknown bytes.
+Stack Usage for __scatterload_null unknown bytes.
+Stack Usage for __scatterload_zeroinit unknown bytes.
+Stack Usage for _printf_d unknown bytes.
+Stack Usage for _printf_percent unknown bytes.
+Stack Usage for _printf_u unknown bytes.
+Stack Usage for _printf_s unknown bytes.
+Stack Usage for _printf_percent_end unknown bytes.
+Stack Usage for __rt_lib_init unknown bytes.
+Stack Usage for __rt_lib_init_fp_1 unknown bytes.
+Stack Usage for __rt_lib_init_heap_2 unknown bytes.
+Stack Usage for __rt_lib_init_preinit_1 unknown bytes.
+Stack Usage for __rt_lib_init_heap_1 unknown bytes.
+Stack Usage for __rt_lib_init_rand_2 unknown bytes.
+Stack Usage for __rt_lib_init_user_alloc_1 unknown bytes.
+Stack Usage for __rt_lib_init_lc_common unknown bytes.
+Stack Usage for __rt_lib_init_rand_1 unknown bytes.
+Stack Usage for __rt_lib_init_lc_collate_1 unknown bytes.
+Stack Usage for __rt_lib_init_lc_ctype_2 unknown bytes.
+Stack Usage for __rt_lib_init_atexit_1 unknown bytes.
+Stack Usage for __rt_lib_init_clock_2 unknown bytes.
+Stack Usage for __rt_lib_init_fp_trap_1 unknown bytes.
+Stack Usage for __rt_lib_init_lc_ctype_1 unknown bytes.
+Stack Usage for __rt_lib_init_lc_monetary_1 unknown bytes.
+Stack Usage for __rt_lib_init_lc_numeric_1 unknown bytes.
+Stack Usage for __rt_lib_init_lc_time_1 unknown bytes.
+Stack Usage for __rt_lib_init_signal_1 unknown bytes.
+Stack Usage for __rt_lib_init_clock_1 unknown bytes.
+Stack Usage for __rt_lib_init_getenv_1 unknown bytes.
+Stack Usage for __rt_lib_init_stdio_2 unknown bytes.
+Stack Usage for __rt_lib_init_alloca_1 unknown bytes.
+Stack Usage for __rt_lib_init_argv_1 unknown bytes.
+Stack Usage for __rt_lib_init_cpp_1 unknown bytes.
+Stack Usage for __rt_lib_init_exceptions_1 unknown bytes.
+Stack Usage for __rt_lib_init_return unknown bytes.
+Stack Usage for __rt_lib_init_stdio_1 unknown bytes.
+Stack Usage for __rt_lib_shutdown unknown bytes.
+Stack Usage for __rt_lib_shutdown_cpp_1 unknown bytes.
+Stack Usage for __rt_lib_shutdown_fini_1 unknown bytes.
+Stack Usage for __rt_lib_shutdown_stdio_2 unknown bytes.
+Stack Usage for __rt_lib_shutdown_fp_trap_1 unknown bytes.
+Stack Usage for __rt_lib_shutdown_heap_1 unknown bytes.
+Stack Usage for __rt_lib_shutdown_return unknown bytes.
+Stack Usage for __rt_lib_shutdown_signal_1 unknown bytes.
+Stack Usage for __rt_lib_shutdown_stdio_1 unknown bytes.
+Stack Usage for __rt_lib_shutdown_user_alloc_1 unknown bytes.
+Stack Usage for __rt_entry unknown bytes.
+Stack Usage for __rt_entry_presh_1 unknown bytes.
+Stack Usage for __rt_entry_sh unknown bytes.
+Stack Usage for __rt_entry_li unknown bytes.
+Stack Usage for __rt_entry_postsh_1 unknown bytes.
+Stack Usage for __rt_entry_main unknown bytes.
+Stack Usage for __rt_entry_postli_1 unknown bytes.
+Stack Usage for __rt_exit unknown bytes.
+Stack Usage for __rt_exit_ls unknown bytes.
+Stack Usage for __rt_exit_prels_1 unknown bytes.
+Stack Usage for __rt_exit_exit unknown bytes.
+Stack Usage for rand 0x0 bytes.
+Stack Usage for C_interrupt_handler 0x0 bytes.
+Stack Usage for _maybe_terminate_alloc 0x0 bytes.
+Stack Usage for main 0x8 bytes.
+Stack Usage for qs_string_compare 0x0 bytes.
+Stack Usage for $Super$$main 0x3ae8 bytes.
+Stack Usage for clock 0x8 bytes.
+Stack Usage for _clock_init 0x8 bytes.
+Stack Usage for __2printf 0x18 bytes.
+Stack Usage for __2fprintf 0x18 bytes.
+Stack Usage for __2sprintf 0x20 bytes.
+Stack Usage for _printf_pre_padding 0x10 bytes.
+Stack Usage for _printf_post_padding 0x10 bytes.
+Stack Usage for _printf_str 0x10 bytes.
+Stack Usage for _printf_int_dec 0x18 bytes.
+Stack Usage for __printf 0x28 bytes.
+Stack Usage for atoi 0x10 bytes.
+Stack Usage for srand 0x8 bytes.
+Stack Usage for _rand_init 0x0 bytes.
+Stack Usage for exit 0x8 bytes.
+Stack Usage for qsort 0x20 bytes.
+Stack Usage for __aeabi_memcpy4 0x40 bytes.
+Stack Usage for __aeabi_memcpy8 0x40 bytes.
+Stack Usage for __rt_memcpy_w 0x40 bytes.
+Stack Usage for _memcpy_lastbytes_aligned unknown bytes.
+Stack Usage for strcmp 0x4 bytes.
+Stack Usage for __aeabi_idiv 0x8 bytes.
+Stack Usage for __aeabi_idivmod 0x8 bytes.
+Stack Usage for __I$use$semihosting 0x0 bytes.
+Stack Usage for __use_no_semihosting_swi 0x0 bytes.
+Stack Usage for __semihosting_library_function unknown bytes.
+Stack Usage for __aeabi_errno_addr 0x0 bytes.
+Stack Usage for __errno$intlibspace 0x0 bytes.
+Stack Usage for __rt_errno_addr$intlibspace 0x0 bytes.
+Stack Usage for _printf_int_common 0x20 bytes.
+Stack Usage for _printf_char_common 0x40 bytes.
+Stack Usage for _sputc 0x0 bytes.
+Stack Usage for _printf_cs_common 0x8 bytes.
+Stack Usage for _printf_char 0x0 bytes.
+Stack Usage for _printf_string 0x0 bytes.
+Stack Usage for _printf_char_file 0x10 bytes.
+Stack Usage for strtol 0x20 bytes.
+Stack Usage for _initio 0x8 bytes.
+Stack Usage for _terminateio 0x10 bytes.
+Stack Usage for __rt_udiv10 0x0 bytes.
+Stack Usage for _sys_open 0x10 bytes.
+Stack Usage for _sys_close 0x8 bytes.
+Stack Usage for _sys_write 0x18 bytes.
+Stack Usage for _sys_read 0x18 bytes.
+Stack Usage for _sys_istty 0x8 bytes.
+Stack Usage for _sys_seek 0x10 bytes.
+Stack Usage for _sys_ensure 0x0 bytes.
+Stack Usage for _sys_flen 0x8 bytes.
+Stack Usage for __rt_ctype_table 0x8 bytes.
+Stack Usage for free 0x10 bytes.
+Stack Usage for _strtoul 0x28 bytes.
+Stack Usage for ferror 0x0 bytes.
+Stack Usage for setvbuf 0x10 bytes.
+Stack Usage for freopen 0x18 bytes.
+Stack Usage for fopen 0x18 bytes.
+Stack Usage for _fclose_internal 0x20 bytes.
+Stack Usage for fclose 0x20 bytes.
+Stack Usage for __rt_SIGRTRED 0x8 bytes.
+Stack Usage for __aeabi_memclr4 0x20 bytes.
+Stack Usage for __aeabi_memclr8 0x20 bytes.
+Stack Usage for __rt_memclr_w 0x20 bytes.
+Stack Usage for _memset_w unknown bytes.
+Stack Usage for _sys_exit 0x0 bytes.
+Stack Usage for __rt_heap_descriptor 0x0 bytes.
+Stack Usage for __rt_locale 0x0 bytes.
+Stack Usage for __use_no_heap 0x0 bytes.
+Stack Usage for __heap$guard 0x0 bytes.
+Stack Usage for _terminate_user_alloc 0x0 bytes.
+Stack Usage for _init_user_alloc 0x0 bytes.
+Stack Usage for __Heap_Full 0x10 bytes.
+Stack Usage for __Heap_Broken 0x0 bytes.
+Stack Usage for _init_alloc 0x18 bytes.
+Stack Usage for malloc 0x10 bytes.
+Stack Usage for _chval 0x0 bytes.
+Stack Usage for __flsbuf 0x20 bytes.
+Stack Usage for __flsbuf_byte 0x20 bytes.
+Stack Usage for __flsbuf_wide 0x20 bytes.
+Stack Usage for _fseek 0x18 bytes.
+Stack Usage for fseek 0x18 bytes.
+Stack Usage for _seterr 0x0 bytes.
+Stack Usage for _writebuf 0x20 bytes.
+Stack Usage for _fflush 0x10 bytes.
+Stack Usage for _deferredlazyseek 0x8 bytes.
+Stack Usage for __sig_exit 0x0 bytes.
+Stack Usage for __rt_SIGRTRED_inner 0x8 bytes.
+Stack Usage for strlen 0x0 bytes.
+Stack Usage for __Heap_Initialize 0x0 bytes.
+Stack Usage for __Heap_DescSize 0x0 bytes.
+Stack Usage for __Heap_ProvideMemory 0x0 bytes.
+Stack Usage for _ftell_internal 0x8 bytes.
+Stack Usage for ftell 0x8 bytes.
+Stack Usage for __default_signal_display 0x10 bytes.
+Stack Usage for __rt_SIGRTMEM 0x8 bytes.
+Stack Usage for __rt_heap_escrow 0x0 bytes.
+Stack Usage for __rt_heap_expand 0xc bytes.
+Stack Usage for _ttywrch 0x8 bytes.
+Stack Usage for __rt_SIGRTMEM_inner 0x8 bytes.
+Stack Usage for __aeabi_uidiv 0x0 bytes.
+Stack Usage for __aeabi_uidivmod 0x0 bytes.
+Stack Usage for enable_caches 0x0 bytes.
+Stack Usage for disable_caches 0x0 bytes.
+Stack Usage for _is_digit 0x0 bytes.
+Stack Usage for fputc 0x0 bytes.
+Stack Usage for _get_lc_ctype 0x8 bytes.
+Stack Usage for getPMN 0x0 bytes.
+Stack Usage for pmn_config 0x0 bytes.
+Stack Usage for ccnt_divider 0x0 bytes.
+Stack Usage for enable_pmu 0x0 bytes.
+Stack Usage for disable_pmu 0x0 bytes.
+Stack Usage for enable_ccnt 0x0 bytes.
+Stack Usage for disable_ccnt 0x0 bytes.
+Stack Usage for enable_pmn 0x0 bytes.
+Stack Usage for disable_pmn 0x0 bytes.
+Stack Usage for enable_pmu_user_access 0x0 bytes.
+Stack Usage for disable_pmu_user_access 0x0 bytes.
+Stack Usage for read_ccnt 0x0 bytes.
+Stack Usage for read_pmn 0x0 bytes.
+Stack Usage for pmu_software_increment 0x0 bytes.
+Stack Usage for read_flags 0x0 bytes.
+Stack Usage for write_flags 0x0 bytes.
+Stack Usage for enable_ccnt_irq 0x0 bytes.
+Stack Usage for disable_ccnt_irq 0x0 bytes.
+Stack Usage for enable_pmn_irq 0x0 bytes.
+Stack Usage for disable_pmn_irq 0x0 bytes.
+Stack Usage for reset_pmn 0x0 bytes.
+Stack Usage for reset_ccnt 0x0 bytes.
+Stack Usage for _fp_init 0x0 bytes.
+Stack Usage for __fplib_config_fpu_vfp unknown bytes.
+Stack Usage for __fplib_config_pureend_doubles unknown bytes.
+Stack Usage for Vectors unknown bytes.
+Stack Usage for Undefined_Handler unknown bytes.
+Stack Usage for SVC_Handler unknown bytes.
+Stack Usage for Prefetch_Handler unknown bytes.
+Stack Usage for Abort_Handler unknown bytes.
+Stack Usage for FIQ_Handler unknown bytes.
+Stack Usage for IRQ_Handler 0x0 bytes.
+Stack Usage for Reset_Handler 0x0 bytes.
+Stack Usage for _partition_sort 0x128 bytes.
+Stack Usage for __arm_div_large_positive unknown bytes.
+Stack Usage for __arm_div16 unknown bytes.
+Stack Usage for __arm_div12 unknown bytes.
+Stack Usage for __arm_div8 unknown bytes.
+Stack Usage for __arm_div5 unknown bytes.
+Stack Usage for __arm_div2 unknown bytes.
+Stack Usage for _printf_input_char 0x0 bytes.
+Stack Usage for _freopen_locked unknown bytes.
+
+Potential Stack Usage Inaccuracies.
+
+Functions with no stack size information.
+
+ * StartHere
+ * Vectors
+ * Undefined_Handler
+ * SVC_Handler
+ * Prefetch_Handler
+ * Abort_Handler
+ * FIQ_Handler
+
+Mutually recursive functions.
+
+ * Undefined_Handler => Undefined_Handler
+ * SVC_Handler => SVC_Handler
+ * Prefetch_Handler => Prefetch_Handler
+ * Abort_Handler => Abort_Handler
+ * FIQ_Handler => FIQ_Handler
+
+Untraceable function pointers.
+
+ * Abort_Handler from startup.o(VECTORS) referenced from startup.o(VECTORS)
+ * FIQ_Handler from startup.o(VECTORS) referenced from startup.o(VECTORS)
+ * IRQ_Handler from startup.o(VECTORS) referenced from startup.o(VECTORS)
+ * Prefetch_Handler from startup.o(VECTORS) referenced from startup.o(VECTORS)
+ * Reset_Handler from startup.o(VECTORS) referenced from startup.o(VECTORS)
+ * SVC_Handler from startup.o(VECTORS) referenced from startup.o(VECTORS)
+ * Undefined_Handler from startup.o(VECTORS) referenced from startup.o(VECTORS)
+ * Vectors from startup.o(VECTORS) referenced from startup.o(VECTORS)
+ * __main from __main.o(!!!main) referenced from startup.o(VECTORS)
+ * _get_lc_ctype from lc_ctype_c.o(locale$$code) referenced from rt_ctype_table.o(.text)
+ * _printf_input_char from _printf_char_common.o(.text) referenced from _printf_char_common.o(.text)
+ * _sputc from _sputc.o(.text) referenced from noretval__2sprintf.o(.text)
+ * fputc from fputc.o(i.fputc) referenced from _printf_char_file.o(.text)
+ * qs_string_compare from sorts.o(.text) referenced from sorts.o(.text)
+
+==============================================================================
+
+Memory Map of the image
+
+  Image Entry point : 0x80000000
+
+  Load Region SDRAM (Base: 0x80000000, Size: 0x00004000, Max: 0x10000000, ABSOLUTE)
+
+    Execution Region APP_CODE (Base: 0x80000000, Size: 0x000023a4, Max: 0xffffffff, ABSOLUTE)
+
+    Base Addr    Size         Type   Attr      Idx    E Section Name        Object
+
+    0x80000000   0x000001d8   Code   RO            4  * VECTORS             startup.o
+    0x800001d8   0x00000008   Code   RO          146  * !!!main             c_2.l(__main.o)
+    0x800001e0   0x00000034   Code   RO          534    !!!scatter          c_2.l(__scatter.o)
+    0x80000214   0x0000001c   Code   RO          536    !!handler_zi        c_2.l(__scatter_zi.o)
+    0x80000230   0x00000000   Code   RO          108    .ARM.Collect$$_printf_percent$$00000000  c_2.l(_printf_percent.o)
+    0x80000230   0x00000006   Code   RO          106    .ARM.Collect$$_printf_percent$$00000009  c_2.l(_printf_d.o)
+    0x80000236   0x00000006   Code   RO          107    .ARM.Collect$$_printf_percent$$0000000A  c_2.l(_printf_u.o)
+    0x8000023c   0x00000006   Code   RO          105    .ARM.Collect$$_printf_percent$$00000014  c_2.l(_printf_s.o)
+    0x80000242   0x00000004   Code   RO          173    .ARM.Collect$$_printf_percent$$00000017  c_2.l(_printf_percent_end.o)
+    0x80000246   0x00000002   Code   RO          447    .ARM.Collect$$libinit$$00000000  c_2.l(libinit.o)
+    0x80000248   0x00000004   Code   RO          182    .ARM.Collect$$libinit$$00000001  c_2.l(libinit2.o)
+    0x8000024c   0x00000000   Code   RO          185    .ARM.Collect$$libinit$$00000004  c_2.l(libinit2.o)
+    0x8000024c   0x00000008   Code   RO          494    .ARM.Collect$$libinit$$00000007  c_2.l(libinit4.o)
+    0x80000254   0x00000000   Code   RO          188    .ARM.Collect$$libinit$$0000000A  c_2.l(libinit2.o)
+    0x80000254   0x00000000   Code   RO          190    .ARM.Collect$$libinit$$0000000C  c_2.l(libinit2.o)
+    0x80000254   0x00000004   Code   RO          191    .ARM.Collect$$libinit$$0000000D  c_2.l(libinit2.o)
+    0x80000258   0x00000000   Code   RO          192    .ARM.Collect$$libinit$$0000000E  c_2.l(libinit2.o)
+    0x80000258   0x00000006   Code   RO          193    .ARM.Collect$$libinit$$0000000F  c_2.l(libinit2.o)
+    0x8000025e   0x00000000   Code   RO          195    .ARM.Collect$$libinit$$00000011  c_2.l(libinit2.o)
+    0x8000025e   0x0000000c   Code   RO          196    .ARM.Collect$$libinit$$00000012  c_2.l(libinit2.o)
+    0x8000026a   0x00000000   Code   RO          197    .ARM.Collect$$libinit$$00000013  c_2.l(libinit2.o)
+    0x8000026a   0x00000000   Code   RO          199    .ARM.Collect$$libinit$$00000015  c_2.l(libinit2.o)
+    0x8000026a   0x00000000   Code   RO          201    .ARM.Collect$$libinit$$00000017  c_2.l(libinit2.o)
+    0x8000026a   0x00000000   Code   RO          203    .ARM.Collect$$libinit$$00000019  c_2.l(libinit2.o)
+    0x8000026a   0x00000000   Code   RO          205    .ARM.Collect$$libinit$$0000001B  c_2.l(libinit2.o)
+    0x8000026a   0x00000000   Code   RO          207    .ARM.Collect$$libinit$$0000001D  c_2.l(libinit2.o)
+    0x8000026a   0x00000000   Code   RO          209    .ARM.Collect$$libinit$$0000001F  c_2.l(libinit2.o)
+    0x8000026a   0x00000004   Code   RO          210    .ARM.Collect$$libinit$$00000020  c_2.l(libinit2.o)
+    0x8000026e   0x00000000   Code   RO          211    .ARM.Collect$$libinit$$00000021  c_2.l(libinit2.o)
+    0x8000026e   0x00000000   Code   RO          213    .ARM.Collect$$libinit$$00000023  c_2.l(libinit2.o)
+    0x8000026e   0x00000004   Code   RO          214    .ARM.Collect$$libinit$$00000024  c_2.l(libinit2.o)
+    0x80000272   0x00000000   Code   RO          215    .ARM.Collect$$libinit$$00000025  c_2.l(libinit2.o)
+    0x80000272   0x00000000   Code   RO          219    .ARM.Collect$$libinit$$0000002C  c_2.l(libinit2.o)
+    0x80000272   0x00000000   Code   RO          221    .ARM.Collect$$libinit$$0000002E  c_2.l(libinit2.o)
+    0x80000272   0x00000000   Code   RO          223    .ARM.Collect$$libinit$$00000030  c_2.l(libinit2.o)
+    0x80000272   0x00000000   Code   RO          225    .ARM.Collect$$libinit$$00000032  c_2.l(libinit2.o)
+    0x80000272   0x00000002   Code   RO          226    .ARM.Collect$$libinit$$00000033  c_2.l(libinit2.o)
+    0x80000274   0x00000008   Code   RO          495    .ARM.Collect$$libinit$$00002718  c_2.l(libinit4.o)
+    0x8000027c   0x00000002   Code   RO          448    .ARM.Collect$$libshutdown$$00000000  c_2.l(libshutdown.o)
+    0x8000027e   0x00000000   Code   RO          358    .ARM.Collect$$libshutdown$$00000002  c_2.l(libshutdown2.o)
+    0x8000027e   0x00000000   Code   RO          360    .ARM.Collect$$libshutdown$$00000004  c_2.l(libshutdown2.o)
+    0x8000027e   0x00000004   Code   RO          361    .ARM.Collect$$libshutdown$$00000005  c_2.l(libshutdown2.o)
+    0x80000282   0x00000000   Code   RO          362    .ARM.Collect$$libshutdown$$00000006  c_2.l(libshutdown2.o)
+    0x80000282   0x00000000   Code   RO          365    .ARM.Collect$$libshutdown$$00000009  c_2.l(libshutdown2.o)
+    0x80000282   0x00000000   Code   RO          368    .ARM.Collect$$libshutdown$$0000000C  c_2.l(libshutdown2.o)
+    0x80000282   0x00000000   Code   RO          370    .ARM.Collect$$libshutdown$$0000000E  c_2.l(libshutdown2.o)
+    0x80000282   0x00000000   Code   RO          373    .ARM.Collect$$libshutdown$$00000011  c_2.l(libshutdown2.o)
+    0x80000282   0x00000002   Code   RO          374    .ARM.Collect$$libshutdown$$00000012  c_2.l(libshutdown2.o)
+    0x80000284   0x00000000   Code   RO          151    .ARM.Collect$$rtentry$$00000000  c_2.l(__rtentry.o)
+    0x80000284   0x00000000   Code   RO          238    .ARM.Collect$$rtentry$$00000002  c_2.l(__rtentry2.o)
+    0x80000284   0x00000004   Code   RO          252    .ARM.Collect$$rtentry$$00000006  c_2.l(__rtentry6.o)
+    0x80000288   0x00000000   Code   RO          240    .ARM.Collect$$rtentry$$00000009  c_2.l(__rtentry2.o)
+    0x80000288   0x00000004   Code   RO          241    .ARM.Collect$$rtentry$$0000000A  c_2.l(__rtentry2.o)
+    0x8000028c   0x00000000   Code   RO          243    .ARM.Collect$$rtentry$$0000000C  c_2.l(__rtentry2.o)
+    0x8000028c   0x00000008   Code   RO          244    .ARM.Collect$$rtentry$$0000000D  c_2.l(__rtentry2.o)
+    0x80000294   0x00000004   Code   RO          253    .ARM.Collect$$rtentry$$00002717  c_2.l(__rtentry6.o)
+    0x80000298   0x00000002   Code   RO          152    .ARM.Collect$$rtexit$$00000000  c_2.l(rtexit.o)
+    0x8000029a   0x00000000   Code   RO          258    .ARM.Collect$$rtexit$$00000002  c_2.l(rtexit2.o)
+    0x8000029a   0x00000004   Code   RO          259    .ARM.Collect$$rtexit$$00000003  c_2.l(rtexit2.o)
+    0x8000029e   0x00000006   Code   RO          260    .ARM.Collect$$rtexit$$00000004  c_2.l(rtexit2.o)
+    0x800002a4   0x00000034   Code   RO          117    .emb_text           c_2.l(rand.o)
+    0x800002d8   0x00000000   Code   RO          457    .emb_text           c_2.l(maybetermalloc1.o)
+    0x800002d8   0x000001e4   Code   RO           18    .text               perf.o
+    0x800004bc   0x000003f0   Code   RO           39    .text               sorts.o
+    0x800008ac   0x00000024   Code   RO           62    .text               c_2.l(sys_clock.o)
+    0x800008d0   0x00000018   Code   RO           71    .text               c_2.l(noretval__2printf.o)
+    0x800008e8   0x00000014   Code   RO           73    .text               c_2.l(noretval__2fprintf.o)
+    0x800008fc   0x00000028   Code   RO           75    .text               c_2.l(noretval__2sprintf.o)
+    0x80000924   0x0000004e   Code   RO           79    .text               c_2.l(_printf_pad.o)
+    0x80000972   0x00000052   Code   RO           81    .text               c_2.l(_printf_str.o)
+    0x800009c4   0x00000070   Code   RO           83    .text               c_2.l(_printf_dec.o)
+    0x80000a34   0x00000138   Code   RO           97    .text               c_2.l(__printf_flags_wp.o)
+    0x80000b6c   0x0000001a   Code   RO          109    .text               c_2.l(atoi.o)
+    0x80000b86   0x00000002   PAD
+    0x80000b88   0x0000003c   Code   RO          118    .text               c_2.l(rand.o)
+    0x80000bc4   0x00000012   Code   RO          122    .text               c_2.l(exit.o)
+    0x80000bd6   0x00000266   Code   RO          124    .text               c_2.l(qsortnoex.o)
+    0x80000e3c   0x000000f4   Code   RO          126    .text               c_2.l(rt_neon_memcpy_w.o)
+    0x80000f30   0x0000011c   Code   RO          128    .text               c_2.l(strcmpv7.o)
+    0x8000104c   0x0000022c   Code   RO          130    .text               c_2.l(aeabi_sdivfast_rs.o)
+    0x80001278   0x00000002   Code   RO          148    .text               c_2.l(use_no_semi.o)
+    0x8000127a   0x00000000   Code   RO          150    .text               c_2.l(indicate_semi.o)
+    0x8000127a   0x00000002   PAD
+    0x8000127c   0x00000008   Code   RO          161    .text               c_2.l(rt_errno_addr_intlibspace.o)
+    0x80001284   0x000000b2   Code   RO          163    .text               c_2.l(_printf_intcommon.o)
+    0x80001336   0x00000002   PAD
+    0x80001338   0x00000030   Code   RO          165    .text               c_2.l(_printf_char_common.o)
+    0x80001368   0x0000000a   Code   RO          167    .text               c_2.l(_sputc.o)
+    0x80001372   0x0000002c   Code   RO          169    .text               c_2.l(_printf_char.o)
+    0x8000139e   0x00000002   PAD
+    0x800013a0   0x00000024   Code   RO          171    .text               c_2.l(_printf_char_file.o)
+    0x800013c4   0x00000070   Code   RO          174    .text               c_2.l(strtol.o)
+    0x80001434   0x00000138   Code   RO          176    .text               c_2.l(initio.o)
+    0x8000156c   0x0000002c   Code   RO          180    .text               c_2.l(rtudiv10.o)
+    0x80001598   0x00000066   Code   RO          227    .text               c_2.l(sys_io.o)
+    0x800015fe   0x00000002   PAD
+    0x80001600   0x00000010   Code   RO          264    .text               c_2.l(rt_ctype_table.o)
+    0x80001610   0x0000004e   Code   RO          270    .text               c_2.l(h1_free.o)
+    0x8000165e   0x0000009e   Code   RO          326    .text               c_2.l(_strtoul.o)
+    0x800016fc   0x00000008   Code   RO          328    .text               c_2.l(ferror.o)
+    0x80001704   0x00000046   Code   RO          334    .text               c_2.l(setvbuf.o)
+    0x8000174a   0x00000002   PAD
+    0x8000174c   0x000000ec   Code   RO          337    .text               c_2.l(fopen.o)
+    0x80001838   0x0000004c   Code   RO          339    .text               c_2.l(fclose.o)
+    0x80001884   0x0000000e   Code   RO          349    .text               c_2.l(defsig_rtred_outer.o)
+    0x80001892   0x00000002   PAD
+    0x80001894   0x00000050   Code   RO          353    .text               c_2.l(rt_neon_memclr_w.o)
+    0x800018e4   0x0000000c   Code   RO          377    .text               c_2.l(sys_exit.o)
+    0x800018f0   0x00000008   Code   RO          386    .text               c_2.l(rt_heap_descriptor_intlibspace.o)
+    0x800018f8   0x00000008   Code   RO          391    .text               c_2.l(rt_locale_intlibspace.o)
+    0x80001900   0x00000004   Code   RO          393    .text               c_2.l(hguard.o)
+    0x80001904   0x00000088   Code   RO          395    .text               c_2.l(init_alloc.o)
+    0x8000198c   0x0000005e   Code   RO          401    .text               c_2.l(h1_alloc.o)
+    0x800019ea   0x0000001c   Code   RO          415    .text               c_2.l(_chval.o)
+    0x80001a06   0x000001d6   Code   RO          417    .text               c_2.l(flsbuf.o)
+    0x80001bdc   0x000000f8   Code   RO          419    .text               c_2.l(fseek.o)
+    0x80001cd4   0x000000f0   Code   RO          421    .text               c_2.l(stdio.o)
+    0x80001dc4   0x0000000a   Code   RO          426    .text               c_2.l(defsig_exit.o)
+    0x80001dce   0x00000002   PAD
+    0x80001dd0   0x00000034   Code   RO          432    .text               c_2.l(defsig_rtred_inner.o)
+    0x80001e04   0x0000003a   Code   RO          434    .text               c_2.l(strlen.o)
+    0x80001e3e   0x0000000e   Code   RO          459    .text               c_2.l(h1_init.o)
+    0x80001e4c   0x00000030   Code   RO          461    .text               c_2.l(h1_extend.o)
+    0x80001e7c   0x00000042   Code   RO          469    .text               c_2.l(ftell.o)
+    0x80001ebe   0x00000032   Code   RO          477    .text               c_2.l(defsig_general.o)
+    0x80001ef0   0x0000000e   Code   RO          481    .text               c_2.l(defsig_rtmem_outer.o)
+    0x80001efe   0x00000002   PAD
+    0x80001f00   0x00000050   Code   RO          487    .text               c_2.l(heapauxa.o)
+    0x80001f50   0x0000000e   Code   RO          498    .text               c_2.l(sys_wrch.o)
+    0x80001f5e   0x00000002   PAD
+    0x80001f60   0x00000050   Code   RO          510    .text               c_2.l(defsig_rtmem_inner.o)
+    0x80001fb0   0x00000030   Code   RO          131    .text_udiv          c_2.l(aeabi_sdivfast_rs.o)
+    0x80001fe0   0x00000044   Code   RO            5    ENABLECACHES        startup.o
+    0x80002024   0x0000000e   Code   RO           95    i._is_digit         c_2.l(__printf_wp.o)
+    0x80002032   0x0000001a   Code   RO          331    i.fputc             c_2.l(fputc.o)
+    0x8000204c   0x0000002c   Code   RO          424    locale$$code        c_2.l(lc_ctype_c.o)
+    0x80002078   0x00000154   Code   RO           14    v7PMU               v7_pmu.o
+    0x800021cc   0x0000000a   Code   RO          375    x$fpl$fpinit        fz_2v.l(fpinit.o)
+    0x800021d6   0x00000011   Data   RO           98    .constdata          c_2.l(__printf_flags_wp.o)
+    0x800021e7   0x00000004   Data   RO          228    .constdata          c_2.l(sys_io.o)
+    0x800021eb   0x00000004   Data   RO          229    .constdata          c_2.l(sys_io.o)
+    0x800021ef   0x00000004   Data   RO          230    .constdata          c_2.l(sys_io.o)
+    0x800021f3   0x00000001   PAD
+    0x800021f4   0x0000008d   Data   RO           19    .conststring        perf.o
+    0x80002281   0x00000003   PAD
+    0x80002284   0x00000010   Data   RO          532    Region$$Table       anon$$obj.o
+    0x80002294   0x00000110   Data   RO          423    locale$$data        c_2.l(lc_ctype_c.o)
+
+
+    Execution Region RW_DATA (Base: 0x800023a4, Size: 0x00000014, Max: 0xffffffff, ABSOLUTE)
+
+    Base Addr    Size         Type   Attr      Idx    E Section Name        Object
+
+    0x800023a4   0x00000004   Data   RW           63    .data               c_2.l(sys_clock.o)
+    0x800023a8   0x00000004   Data   RW          114    .data               c_2.l(stdio_streams.o)
+    0x800023ac   0x00000004   Data   RW          115    .data               c_2.l(stdio_streams.o)
+    0x800023b0   0x00000004   Data   RW          116    .data               c_2.l(stdio_streams.o)
+    0x800023b4   0x00000004   Data   RW          488    .data               c_2.l(heapauxa.o)
+
+
+    Execution Region ZI_DATA (Base: 0x800023b8, Size: 0x00000240, Max: 0xffffffff, ABSOLUTE)
+
+    Base Addr    Size         Type   Attr      Idx    E Section Name        Object
+
+    0x800023b8   0x00000054   Zero   RW          111    .bss                c_2.l(stdio_streams.o)
+    0x8000240c   0x00000054   Zero   RW          112    .bss                c_2.l(stdio_streams.o)
+    0x80002460   0x00000054   Zero   RW          113    .bss                c_2.l(stdio_streams.o)
+    0x800024b4   0x000000e4   Zero   RW          119    .bss                c_2.l(rand.o)
+    0x80002598   0x00000060   Zero   RW          233    .bss                c_2.l(libspace.o)
+
+
+    Execution Region ARM_LIB_STACKHEAP (Base: 0x800025f8, Size: 0x00004000, Max: 0x00004000, ABSOLUTE)
+
+    Base Addr    Size         Type   Attr      Idx    E Section Name        Object
+
+    0x800025f8   0x00004000   Zero   RW            1    ARM_LIB_STACKHEAP.bss  anon$$obj.o
+
+
+    Execution Region IRQ_STACK (Base: 0x800065f8, Size: 0x00001000, Max: 0x00001000, ABSOLUTE)
+
+    Base Addr    Size         Type   Attr      Idx    E Section Name        Object
+
+    0x800065f8   0x00001000   Zero   RW            2    IRQ_STACK.bss       anon$$obj.o
+
+
+    Execution Region TTB (Base: 0x80008000, Size: 0x00004000, Max: 0x00004000, ABSOLUTE)
+
+    Base Addr    Size         Type   Attr      Idx    E Section Name        Object
+
+    0x80008000   0x00004000   Zero   RW            3    TTB.bss             anon$$obj.o
+
+
+==============================================================================
+
+Image component sizes
+
+
+      Code (inc. data)   RO Data    RW Data    ZI Data      Debug   Object Name
+
+       484        196        141          0          0       2289   perf.o
+      1008        196          0          0          0       4321   sorts.o
+       540         56          0          0          0       1360   startup.o
+       340          0          0          0          0       1396   v7_pmu.o
+
+    ----------------------------------------------------------------------
+      2372        448        160          0      36864       9366   Object Totals
+         0          0         16          0      36864          0   (incl. Generated)
+         0          0          3          0          0          0   (incl. Padding)
+
+    ----------------------------------------------------------------------
+
+      Code (inc. data)   RO Data    RW Data    ZI Data      Debug   Library Member Name
+
+         8          0          0          0          0         68   __main.o
+       312          4         17          0          0         92   __printf_flags_wp.o
+        14          0          0          0          0         68   __printf_wp.o
+         0          0          0          0          0          0   __rtentry.o
+        12          0          0          0          0          0   __rtentry2.o
+         8          4          0          0          0          0   __rtentry6.o
+        52          8          0          0          0          0   __scatter.o
+        28          0          0          0          0          0   __scatter_zi.o
+        28          0          0          0          0         68   _chval.o
+        44          0          0          0          0        108   _printf_char.o
+        48          6          0          0          0         96   _printf_char_common.o
+        36          4          0          0          0         80   _printf_char_file.o
+         6          0          0          0          0          0   _printf_d.o
+       112         16          0          0          0         92   _printf_dec.o
+       178          0          0          0          0         88   _printf_intcommon.o
+        78          0          0          0          0        108   _printf_pad.o
+         0          0          0          0          0          0   _printf_percent.o
+         4          0          0          0          0          0   _printf_percent_end.o
+         6          0          0          0          0          0   _printf_s.o
+        82          0          0          0          0         80   _printf_str.o
+         6          0          0          0          0          0   _printf_u.o
+        10          0          0          0          0         68   _sputc.o
+       158          0          0          0          0         92   _strtoul.o
+       604          0          0          0          0        144   aeabi_sdivfast_rs.o
+        26          0          0          0          0         80   atoi.o
+        10          0          0          0          0         68   defsig_exit.o
+        50          0          0          0          0         88   defsig_general.o
+        80         58          0          0          0         76   defsig_rtmem_inner.o
+        14          0          0          0          0         80   defsig_rtmem_outer.o
+        52         38          0          0          0         76   defsig_rtred_inner.o
+        14          0          0          0          0         80   defsig_rtred_outer.o
+        18          0          0          0          0         80   exit.o
+        76          0          0          0          0         88   fclose.o
+         8          0          0          0          0         68   ferror.o
+       470          0          0          0          0         88   flsbuf.o
+       236          4          0          0          0        128   fopen.o
+        26          0          0          0          0         68   fputc.o
+       248          6          0          0          0         84   fseek.o
+        66          0          0          0          0         76   ftell.o
+        94          0          0          0          0         80   h1_alloc.o
+        48          0          0          0          0         68   h1_extend.o
+        78          0          0          0          0         80   h1_free.o
+        14          0          0          0          0         84   h1_init.o
+        80          6          0          4          0         96   heapauxa.o
+         4          0          0          0          0        136   hguard.o
+         0          0          0          0          0          0   indicate_semi.o
+       136          0          0          0          0        168   init_alloc.o
+       312         46          0          0          0        112   initio.o
+        44         10        272          0          0         76   lc_ctype_c.o
+         2          0          0          0          0          0   libinit.o
+        36          0          0          0          0          0   libinit2.o
+        16          8          0          0          0          0   libinit4.o
+         2          0          0          0          0          0   libshutdown.o
+         6          0          0          0          0          0   libshutdown2.o
+         0          0          0          0         96          0   libspace.o
+         0          0          0          0          0          0   maybetermalloc1.o
+        20          0          0          0          0         84   noretval__2fprintf.o
+        24          4          0          0          0         84   noretval__2printf.o
+        40          6          0          0          0         84   noretval__2sprintf.o
+       614          0          0          0          0        136   qsortnoex.o
+       112         18          0          0        228        160   rand.o
+        16          4          0          0          0         76   rt_ctype_table.o
+         8          4          0          0          0         68   rt_errno_addr_intlibspace.o
+         8          4          0          0          0         68   rt_heap_descriptor_intlibspace.o
+         8          4          0          0          0         68   rt_locale_intlibspace.o
+        80          0          0          0          0        172   rt_neon_memclr_w.o
+       244          0          0          0          0        196   rt_neon_memcpy_w.o
+         2          0          0          0          0          0   rtexit.o
+        10          0          0          0          0          0   rtexit2.o
+        44          0          0          0          0         68   rtudiv10.o
+        70          0          0          0          0         80   setvbuf.o
+       240          6          0          0          0        156   stdio.o
+         0          0          0         12        252          0   stdio_streams.o
+       284          4          0          0          0         76   strcmpv7.o
+        58          0          0          0          0         68   strlen.o
+       112          0          0          0          0         88   strtol.o
+        36          6          0          4          0        100   sys_clock.o
+        12          4          0          0          0         68   sys_exit.o
+       102          0         12          0          0        240   sys_io.o
+        14          0          0          0          0         76   sys_wrch.o
+         2          0          0          0          0         68   use_no_semi.o
+        10          0          0          0          0        116   fpinit.o
+
+    ----------------------------------------------------------------------
+      6290        282        302         20        576       5780   Library Totals
+        20          0          1          0          0          0   (incl. Padding)
+
+    ----------------------------------------------------------------------
+
+      Code (inc. data)   RO Data    RW Data    ZI Data      Debug   Library Name
+
+      6260        282        301         20        576       5664   c_2.l
+        10          0          0          0          0        116   fz_2v.l
+
+    ----------------------------------------------------------------------
+      6290        282        302         20        576       5780   Library Totals
+
+    ----------------------------------------------------------------------
+
+==============================================================================
+
+
+      Code (inc. data)   RO Data    RW Data    ZI Data      Debug   
+
+      8662        730        462         20      37440      11722   Grand Totals
+      8662        730        462         20      37440      11722   ELF Image Totals
+      8662        730        462         20          0          0   ROM Totals
+
+==============================================================================
+
+    Total RO  Size (Code + RO Data)                 9124 (   8.91kB)
+    Total RW  Size (RW Data + ZI Data)             37460 (  36.58kB)
+    Total ROM Size (Code + RO Data + RW Data)       9144 (   8.93kB)
+
+==============================================================================
+

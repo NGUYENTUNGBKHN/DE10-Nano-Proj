@@ -1,0 +1,109 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<?fileVersion 4.0.0?><cproject storage_type_id="org.eclipse.cdt.core.XmlProjectDescriptionStorage">
+	<storageModule moduleId="org.eclipse.cdt.core.settings">
+		<cconfiguration id="com.arm.eclipse.build.config.baremetal.exe.debug.base.1621835790">
+			<storageModule buildSystemId="org.eclipse.cdt.managedbuilder.core.configurationDataProvider" id="com.arm.eclipse.build.config.baremetal.exe.debug.base.1621835790" moduleId="org.eclipse.cdt.core.settings" name="Debug">
+				<externalSettings/>
+				<extensions>
+					<extension id="org.eclipse.cdt.core.GmakeErrorParser" point="org.eclipse.cdt.core.ErrorParser"/>
+					<extension id="com.arm.eclipse.builder.armcc.error" point="org.eclipse.cdt.core.ErrorParser"/>
+					<extension id="org.eclipse.cdt.core.CWDLocator" point="org.eclipse.cdt.core.ErrorParser"/>
+				</extensions>
+			</storageModule>
+			<storageModule moduleId="cdtBuildSystem" version="4.0.0">
+				<configuration artifactExtension="axf" artifactName="${ProjName}" buildArtefactType="org.eclipse.cdt.build.core.buildArtefactType.exe" buildProperties="org.eclipse.cdt.build.core.buildArtefactType=org.eclipse.cdt.build.core.buildArtefactType.exe,org.eclipse.cdt.build.core.buildType=org.eclipse.cdt.build.core.buildType.debug" cleanCommand="$(if $(findstring Windows_NT,$(OS)),clean,/bin/rm -f)" description="" id="com.arm.eclipse.build.config.baremetal.exe.debug.base.1621835790" name="Debug" parent="com.arm.eclipse.build.config.baremetal.exe.debug.base">
+					<folderInfo id="com.arm.eclipse.build.config.baremetal.exe.debug.base.1621835790." name="/" resourcePath="">
+						<toolChain id="com.arm.toolchain.baremetal.exe.debug.base.var.arm_compiler_5-5.1448419543" name="Arm Compiler 5" superClass="com.arm.toolchain.baremetal.exe.debug.base.var.arm_compiler_5-5">
+							<targetPlatform id="com.arm.toolchain.baremetal.exe.debug.base.var.arm_compiler_5-5.1448419543.2128861148" name=""/>
+							<builder autoBuildTarget="all" buildPath="${workspace_loc:/startup_Cortex-A15MPCore}/Debug" cleanBuildTarget="clean" enableAutoBuild="false" enableCleanBuild="true" enabledIncrementalBuild="true" id="com.arm.toolchain.baremetal.builder.1741971229" incrementalBuildTarget="all" keepEnvironmentInBuildfile="false" managedBuildOn="true" name="Gnu Make Builder.Debug" parallelBuildOn="false" superClass="com.arm.toolchain.baremetal.builder"/>
+							<tool id="com.arm.tool.c.compiler.baremetal.exe.debug.base.var.arm_compiler_5-5.339258270" name="Arm C Compiler 5" superClass="com.arm.tool.c.compiler.baremetal.exe.debug.base.var.arm_compiler_5-5">
+								<option id="com.arm.tool.c.compiler.option.targetcpu.50207375" superClass="com.arm.tool.c.compiler.option.targetcpu" useByScannerDiscovery="true" value="Cortex-A15" valueType="string"/>
+								<option id="com.arm.tool.c.compiler.option.optlevel.1547213148" superClass="com.arm.tool.c.compiler.option.optlevel" useByScannerDiscovery="true"/>
+								<inputType id="com.arm.tool.c.compiler.input.769676179" superClass="com.arm.tool.c.compiler.input"/>
+								<inputType id="com.arm.tool.cpp.compiler.input.1517246805" superClass="com.arm.tool.cpp.compiler.input"/>
+							</tool>
+							<tool id="com.arm.tool.cpp.compiler.baremetal.exe.debug.base.var.arm_compiler_5-5.1176166698" name="Arm C++ Compiler 5" superClass="com.arm.tool.cpp.compiler.baremetal.exe.debug.base.var.arm_compiler_5-5">
+								<option id="com.arm.tool.c.compiler.option.optlevel.668995627" superClass="com.arm.tool.c.compiler.option.optlevel" useByScannerDiscovery="true"/>
+							</tool>
+							<tool id="com.arm.tool.assembler.base.var.arm_compiler_5-5.102827499" name="Arm Assembler 5" superClass="com.arm.tool.assembler.base.var.arm_compiler_5-5">
+								<option id="com.arm.tool.assembler.option.cpu.965624460" superClass="com.arm.tool.assembler.option.cpu" useByScannerDiscovery="true" value="Cortex-A15" valueType="string"/>
+								<inputType id="com.arm.tool.assembler.input.1310262157" superClass="com.arm.tool.assembler.input"/>
+							</tool>
+							<tool id="com.arm.tool.c.linker.base.var.arm_compiler_5-5.712529707" name="Arm Linker 5" superClass="com.arm.tool.c.linker.base.var.arm_compiler_5-5">
+								<option id="com.arm.tool.c.linker.option.cpu.2046326762" superClass="com.arm.tool.c.linker.option.cpu" useByScannerDiscovery="true" value="Cortex-A15" valueType="string"/>
+								<option id="com.arm.tool.c.linker.option.entry.68813126" superClass="com.arm.tool.c.linker.option.entry" useByScannerDiscovery="false" value="Vectors" valueType="string"/>
+								<option id="com.arm.tool.c.linker.option.scatter.1169646581" superClass="com.arm.tool.c.linker.option.scatter" useByScannerDiscovery="false" value="../scatter.scat" valueType="string"/>
+								<outputType id="com.arm.tool.c.linker.output.2111883459" outputPrefix="../" superClass="com.arm.tool.c.linker.output"/>
+							</tool>
+							<tool id="com.arm.tool.librarian.base.var.arm_compiler_5-5.1496021067" name="Arm Librarian 5" superClass="com.arm.tool.librarian.base.var.arm_compiler_5-5"/>
+						</toolChain>
+					</folderInfo>
+					<sourceEntries>
+						<entry excluding="Copy of startup.s" flags="VALUE_WORKSPACE_PATH|RESOLVED" kind="sourcePath" name=""/>
+					</sourceEntries>
+				</configuration>
+			</storageModule>
+			<storageModule moduleId="org.eclipse.cdt.core.externalSettings"/>
+		</cconfiguration>
+		<cconfiguration id="com.arm.eclipse.build.config.baremetal.exe.release.base.1302248174">
+			<storageModule buildSystemId="org.eclipse.cdt.managedbuilder.core.configurationDataProvider" id="com.arm.eclipse.build.config.baremetal.exe.release.base.1302248174" moduleId="org.eclipse.cdt.core.settings" name="Release">
+				<externalSettings/>
+				<extensions>
+					<extension id="org.eclipse.cdt.core.GmakeErrorParser" point="org.eclipse.cdt.core.ErrorParser"/>
+					<extension id="com.arm.eclipse.builder.armcc.error" point="org.eclipse.cdt.core.ErrorParser"/>
+					<extension id="org.eclipse.cdt.core.CWDLocator" point="org.eclipse.cdt.core.ErrorParser"/>
+				</extensions>
+			</storageModule>
+			<storageModule moduleId="cdtBuildSystem" version="4.0.0">
+				<configuration artifactExtension="axf" artifactName="${ProjName}" buildArtefactType="org.eclipse.cdt.build.core.buildArtefactType.exe" buildProperties="org.eclipse.cdt.build.core.buildArtefactType=org.eclipse.cdt.build.core.buildArtefactType.exe,org.eclipse.cdt.build.core.buildType=org.eclipse.cdt.build.core.buildType.release" cleanCommand="$(if $(findstring Windows_NT,$(OS)),clean,/bin/rm -f)" description="" id="com.arm.eclipse.build.config.baremetal.exe.release.base.1302248174" name="Release" parent="com.arm.eclipse.build.config.baremetal.exe.release.base">
+					<folderInfo id="com.arm.eclipse.build.config.baremetal.exe.release.base.1302248174." name="/" resourcePath="">
+						<toolChain id="com.arm.toolchain.baremetal.exe.release.base.var.arm_compiler_5-5.1339125382" name="Arm Compiler 5" superClass="com.arm.toolchain.baremetal.exe.release.base.var.arm_compiler_5-5">
+							<targetPlatform id="com.arm.toolchain.baremetal.exe.release.base.var.arm_compiler_5-5.1339125382.1032578765" name=""/>
+							<builder autoBuildTarget="all" buildPath="${workspace_loc:/startup_Cortex-A15MPCore}/Release" cleanBuildTarget="clean" enableAutoBuild="false" enableCleanBuild="true" enabledIncrementalBuild="true" id="com.arm.toolchain.baremetal.builder.732148519" incrementalBuildTarget="all" keepEnvironmentInBuildfile="false" managedBuildOn="true" name="Gnu Make Builder.Release" parallelBuildOn="false" superClass="com.arm.toolchain.baremetal.builder"/>
+							<tool id="com.arm.tool.c.compiler.baremetal.exe.release.base.var.arm_compiler_5-5.1001417210" name="Arm C Compiler 5" superClass="com.arm.tool.c.compiler.baremetal.exe.release.base.var.arm_compiler_5-5">
+								<option id="com.arm.tool.c.compiler.option.targetcpu.1998690716" superClass="com.arm.tool.c.compiler.option.targetcpu" useByScannerDiscovery="true" value="Cortex-A15" valueType="string"/>
+								<option id="com.arm.tool.c.compiler.option.optlevel.867409348" superClass="com.arm.tool.c.compiler.option.optlevel" useByScannerDiscovery="true" value="com.arm.tool.c.compiler.option.optlevel.high" valueType="enumerated"/>
+								<inputType id="com.arm.tool.c.compiler.input.1937864447" superClass="com.arm.tool.c.compiler.input"/>
+								<inputType id="com.arm.tool.cpp.compiler.input.674891088" superClass="com.arm.tool.cpp.compiler.input"/>
+							</tool>
+							<tool id="com.arm.tool.cpp.compiler.baremetal.exe.release.base.var.arm_compiler_5-5.2007235883" name="Arm C++ Compiler 5" superClass="com.arm.tool.cpp.compiler.baremetal.exe.release.base.var.arm_compiler_5-5">
+								<option id="com.arm.tool.c.compiler.option.optlevel.360303899" superClass="com.arm.tool.c.compiler.option.optlevel" useByScannerDiscovery="true" value="com.arm.tool.c.compiler.option.optlevel.high" valueType="enumerated"/>
+							</tool>
+							<tool id="com.arm.tool.assembler.base.var.arm_compiler_5-5.1795596609" name="Arm Assembler 5" superClass="com.arm.tool.assembler.base.var.arm_compiler_5-5">
+								<option id="com.arm.tool.assembler.option.cpu.610944276" superClass="com.arm.tool.assembler.option.cpu" useByScannerDiscovery="true" value="Cortex-A15" valueType="string"/>
+								<inputType id="com.arm.tool.assembler.input.1440293221" superClass="com.arm.tool.assembler.input"/>
+							</tool>
+							<tool id="com.arm.tool.c.linker.base.var.arm_compiler_5-5.1643677888" name="Arm Linker 5" superClass="com.arm.tool.c.linker.base.var.arm_compiler_5-5">
+								<option id="com.arm.tool.c.linker.option.cpu.354016979" superClass="com.arm.tool.c.linker.option.cpu" useByScannerDiscovery="true" value="Cortex-A15" valueType="string"/>
+								<option id="com.arm.tool.c.linker.option.entry.1810952752" superClass="com.arm.tool.c.linker.option.entry" useByScannerDiscovery="false" value="Vectors" valueType="string"/>
+								<option id="com.arm.tool.c.linker.option.scatter.1165771793" superClass="com.arm.tool.c.linker.option.scatter" useByScannerDiscovery="false" value="../scatter.scat" valueType="string"/>
+								<outputType id="com.arm.tool.c.linker.output.690908147" outputPrefix="../" superClass="com.arm.tool.c.linker.output"/>
+							</tool>
+							<tool id="com.arm.tool.librarian.base.var.arm_compiler_5-5.1022961614" name="Arm Librarian 5" superClass="com.arm.tool.librarian.base.var.arm_compiler_5-5"/>
+						</toolChain>
+					</folderInfo>
+					<sourceEntries>
+						<entry excluding="Copy of startup.s" flags="VALUE_WORKSPACE_PATH|RESOLVED" kind="sourcePath" name=""/>
+					</sourceEntries>
+				</configuration>
+			</storageModule>
+			<storageModule moduleId="org.eclipse.cdt.core.externalSettings"/>
+		</cconfiguration>
+	</storageModule>
+	<storageModule moduleId="cdtBuildSystem" version="4.0.0">
+		<project id="A15MP.com.arm.eclipse.build.project.baremetal.exe.207481687" name="Bare-metal Executable"/>
+	</storageModule>
+	<storageModule moduleId="refreshScope" versionNumber="1">
+		<resource resourceType="PROJECT" workspacePath="/startup_Cortex-A15MPCore"/>
+	</storageModule>
+	<storageModule moduleId="scannerConfiguration">
+		<autodiscovery enabled="true" problemReportingEnabled="true" selectedProfileId=""/>
+		<scannerConfigBuildInfo instanceId="com.arm.eclipse.build.config.baremetal.exe.debug.766393403;com.arm.eclipse.build.config.baremetal.exe.debug.766393403.;com.arm.tool.c.compiler.baremetal.exe.debug.1893892654;com.arm.tool.c.compiler.input.77747228">
+			<autodiscovery enabled="true" problemReportingEnabled="true" selectedProfileId="com.arm.eclipse.builder.armcc.ARMCompilerDiscoveryProfile"/>
+		</scannerConfigBuildInfo>
+		<scannerConfigBuildInfo instanceId="com.arm.eclipse.build.config.baremetal.exe.release.1943998114;com.arm.eclipse.build.config.baremetal.exe.release.1943998114.;com.arm.tool.c.compiler.baremetal.exe.release.2095145554;com.arm.tool.c.compiler.input.1058794168">
+			<autodiscovery enabled="true" problemReportingEnabled="true" selectedProfileId="com.arm.eclipse.builder.armcc.ARMCompilerDiscoveryProfile"/>
+		</scannerConfigBuildInfo>
+	</storageModule>
+	<storageModule moduleId="org.eclipse.cdt.core.LanguageSettingsProviders"/>
+</cproject>

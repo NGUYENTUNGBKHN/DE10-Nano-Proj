@@ -2,53 +2,55 @@
 <launchConfiguration type="com.arm.debugger.launcher2">
     <booleanAttribute key="ADAPTIVE_CLOCK" value="false"/>
     <mapAttribute key="AverageDurationTracker">
-        <mapEntry key="*Fetching Data Model" value="169660"/>
+        <mapEntry key="*Fetching Data Model" value="184087"/>
         <mapEntry key="*FunctionLoader" value="574061200"/>
-        <mapEntry key="*list global low level symbols" value="646229"/>
+        <mapEntry key="*list global low level symbols" value="385566"/>
         <mapEntry key="*loading memory from target" value="4015107"/>
-        <mapEntry key="*loading values from target" value="8122534"/>
-        <mapEntry key="*updating local_variables" value="1892365"/>
-        <mapEntry key="*updating registers" value="47815924"/>
-        <mapEntry key="*updating variables" value="648757"/>
-        <mapEntry key="AddEventObserver" value="2825024"/>
-        <mapEntry key="Evaluate" value="1123594"/>
+        <mapEntry key="*loading values from target" value="1481020"/>
+        <mapEntry key="*updating expressions" value="3153237"/>
+        <mapEntry key="*updating local_variables" value="637129"/>
+        <mapEntry key="*updating registers" value="60655770"/>
+        <mapEntry key="*updating variables" value="624221"/>
+        <mapEntry key="AddEventObserver" value="6409374"/>
+        <mapEntry key="Evaluate" value="1518188"/>
         <mapEntry key="Retrieving globals list" value="8050875"/>
         <mapEntry key="areCachesAvailable" value="409217"/>
-        <mapEntry key="backtrace" value="8787226"/>
-        <mapEntry key="break" value="1866890"/>
-        <mapEntry key="compute execution mode" value="5511938"/>
-        <mapEntry key="continue" value="14097070"/>
+        <mapEntry key="backtrace" value="21989953"/>
+        <mapEntry key="break" value="13604091"/>
+        <mapEntry key="compute execution mode" value="5166761"/>
+        <mapEntry key="continue" value="33090546"/>
         <mapEntry key="core" value="279898199"/>
         <mapEntry key="disassemble" value="27984583"/>
-        <mapEntry key="evaluate address" value="555422"/>
-        <mapEntry key="file" value="20043509"/>
+        <mapEntry key="evaluate address" value="2316265"/>
+        <mapEntry key="file" value="14769340"/>
         <mapEntry key="get byte order" value="294536"/>
-        <mapEntry key="get capabilities" value="96808"/>
-        <mapEntry key="get execution addresss" value="245529"/>
-        <mapEntry key="get source lines" value="406325"/>
+        <mapEntry key="get capabilities" value="279555"/>
+        <mapEntry key="get execution addresss" value="1074418"/>
+        <mapEntry key="get source lines" value="896156"/>
         <mapEntry key="getValidEncodings" value="476992"/>
-        <mapEntry key="initialize command help" value="31616071"/>
-        <mapEntry key="interrupt" value="20363668"/>
-        <mapEntry key="list breakpoint options" value="63560"/>
-        <mapEntry key="list breakpoints" value="149815"/>
-        <mapEntry key="list instruction sets" value="102098"/>
-        <mapEntry key="list signals" value="10189907"/>
-        <mapEntry key="list watchpoint options" value="228370"/>
-        <mapEntry key="list watchpoints" value="147014"/>
+        <mapEntry key="initialize command help" value="70405803"/>
+        <mapEntry key="interrupt" value="26430089"/>
+        <mapEntry key="list breakpoint options" value="74708"/>
+        <mapEntry key="list breakpoints" value="321602"/>
+        <mapEntry key="list instruction sets" value="159697"/>
+        <mapEntry key="list signals" value="370534"/>
+        <mapEntry key="list watchpoint options" value="106645"/>
+        <mapEntry key="list watchpoints" value="142658"/>
         <mapEntry key="loadfile" value="44058468"/>
         <mapEntry key="next" value="33025304"/>
-        <mapEntry key="remove" value="9948438"/>
-        <mapEntry key="select-frame" value="658001"/>
-        <mapEntry key="set CWD" value="1363559"/>
-        <mapEntry key="set breakpoint properties" value="3326686"/>
-        <mapEntry key="set debug-from" value="679023"/>
-        <mapEntry key="source altera_target_check.py" value="751072499"/>
-        <mapEntry key="source preloader.ds" value="8386254807"/>
+        <mapEntry key="remove" value="5870569"/>
+        <mapEntry key="select-frame" value="1092400"/>
+        <mapEntry key="set CWD" value="10504455"/>
+        <mapEntry key="set breakpoint properties" value="29691409"/>
+        <mapEntry key="set debug-from" value="792252"/>
+        <mapEntry key="source altera_target_check.py" value="2204899395"/>
+        <mapEntry key="source preloader.ds" value="7898582562"/>
         <mapEntry key="source uboot.ds" value="6719549"/>
-        <mapEntry key="start" value="43659342"/>
-        <mapEntry key="step" value="32809502"/>
+        <mapEntry key="start" value="41689863"/>
+        <mapEntry key="step" value="46426448"/>
         <mapEntry key="toggleBreakpoint" value="10550983"/>
-        <mapEntry key="waitForTargetToStop" value="170976741"/>
+        <mapEntry key="waitForTargetToStop" value="9727325"/>
+        <mapEntry key="グローバルリストの取得" value="5307300"/>
     </mapAttribute>
     <stringAttribute key="CLOCK_SPEED" value="1MHz"/>
     <intAttribute key="DEBUG_TAB..RESOURCES.COUNT" value="0"/>
@@ -59,9 +61,9 @@
     <stringAttribute key="FILES.DEBUG_RESIDENT_ANDROID.RESOURCES.0.VALUE" value=""/>
     <intAttribute key="FILES.DEBUG_RESIDENT_ANDROID.RESOURCES.COUNT" value="1"/>
     <listAttribute key="FILES.DEBUG_RESIDENT_APP"/>
-    <stringAttribute key="FILES.DEBUG_RESIDENT_APP.RESOURCES.0.TYPE" value="TARGET_WORKING_DIR"/>
+    <stringAttribute key="FILES.DEBUG_RESIDENT_APP.RESOURCES.0.TYPE" value="APPLICATION_ON_TARGET"/>
     <stringAttribute key="FILES.DEBUG_RESIDENT_APP.RESOURCES.0.VALUE" value=""/>
-    <stringAttribute key="FILES.DEBUG_RESIDENT_APP.RESOURCES.1.TYPE" value="APPLICATION_ON_TARGET"/>
+    <stringAttribute key="FILES.DEBUG_RESIDENT_APP.RESOURCES.1.TYPE" value="TARGET_WORKING_DIR"/>
     <stringAttribute key="FILES.DEBUG_RESIDENT_APP.RESOURCES.1.VALUE" value=""/>
     <intAttribute key="FILES.DEBUG_RESIDENT_APP.RESOURCES.COUNT" value="2"/>
     <listAttribute key="FILES.DOWNLOAD_AND_DEBUG"/>
@@ -136,13 +138,15 @@
     <booleanAttribute key="VFS_ENABLED" value="true"/>
     <stringAttribute key="VFS_LOCAL_DIR" value="${workspace_loc}"/>
     <stringAttribute key="VFS_REMOTE_MOUNT" value="/writeable"/>
-    <stringAttribute key="breakpoints" value="&lt;?xml version=&quot;1.0&quot; encoding=&quot;UTF-8&quot;?&gt;&#10;&lt;breakpoints order=&quot;ALPHA&quot;&gt;&#10;&#9;&lt;breakpoint ignorecount=&quot;0&quot; threadenabled=&quot;no&quot; core_list=&quot;&quot; continue=&quot;no&quot; verboseBreakpoints=&quot;yes&quot; kind=&quot;SOURCEPOSITION&quot;&gt;&#10;&#9;&#9;&lt;master_location index=&quot;0&quot; enabled=&quot;true&quot; version=&quot;2&quot; debugFile=&quot;E:/intelFPGA/DE10-Nano-Proj/HPS/learn/lab0/src/MP_Mutexes.s&quot; hostFile=&quot;E:\intelFPGA\DE10-Nano-Proj\HPS\learn\lab0\src\MP_Mutexes.s&quot; line=&quot;61&quot;/&gt;&#10;&#9;&#9;&lt;location index=&quot;0&quot; enabled=&quot;true&quot; version=&quot;2&quot; debugFile=&quot;E:/intelFPGA/DE10-Nano-Proj/HPS/learn/lab0/src/MP_Mutexes.s&quot; hostFile=&quot;E:\intelFPGA\DE10-Nano-Proj\HPS\learn\lab0\src\MP_Mutexes.s&quot; line=&quot;61&quot;/&gt;&#10;&#9;&lt;/breakpoint&gt;&#10;&lt;/breakpoints&gt;&#10;"/>
+    <stringAttribute key="breakpoints" value="&lt;?xml version=&quot;1.0&quot; encoding=&quot;UTF-8&quot;?&gt;&#10;&lt;breakpoints order=&quot;ALPHA&quot;&gt;&#10;&#9;&lt;breakpoint ignorecount=&quot;0&quot; threadenabled=&quot;no&quot; core_list=&quot;&quot; continue=&quot;no&quot; verboseBreakpoints=&quot;yes&quot; kind=&quot;SOURCEPOSITION&quot;&gt;&#10;&#9;&#9;&lt;master_location index=&quot;0&quot; enabled=&quot;true&quot; version=&quot;2&quot; hostFile=&quot;E:\Project\Embedded\intelFPGA\DE10-Nano-Proj\HPS\learn\lab0\src\main.c&quot; line=&quot;34&quot;/&gt;&#10;&#9;&#9;&lt;location index=&quot;0&quot; enabled=&quot;true&quot; version=&quot;2&quot; hostFile=&quot;E:\Project\Embedded\intelFPGA\DE10-Nano-Proj\HPS\learn\lab0\src\main.c&quot; line=&quot;34&quot;/&gt;&#10;&#9;&lt;/breakpoint&gt;&#10;&#9;&lt;breakpoint ignorecount=&quot;0&quot; threadenabled=&quot;no&quot; core_list=&quot;&quot; continue=&quot;no&quot; verboseBreakpoints=&quot;yes&quot; kind=&quot;SOURCEPOSITION&quot;&gt;&#10;&#9;&#9;&lt;master_location index=&quot;0&quot; enabled=&quot;true&quot; version=&quot;2&quot; hostFile=&quot;E:\Project\Embedded\intelFPGA\DE10-Nano-Proj\HPS\learn\lab0\src\main.c&quot; line=&quot;46&quot;/&gt;&#10;&#9;&#9;&lt;location index=&quot;0&quot; enabled=&quot;true&quot; version=&quot;2&quot; hostFile=&quot;E:\Project\Embedded\intelFPGA\DE10-Nano-Proj\HPS\learn\lab0\src\main.c&quot; line=&quot;46&quot;/&gt;&#10;&#9;&lt;/breakpoint&gt;&#10;&lt;/breakpoints&gt;&#10;"/>
     <listAttribute key="com.arm.debug.views.common.AddressTracker.debugger.view.DisassemblyView.addresses">
         <listEntry value=""/>
         <listEntry value="&lt;Next Instruction&gt;"/>
+        <listEntry value="&lt;次の命令&gt;"/>
     </listAttribute>
     <listAttribute key="com.arm.debug.views.common.AddressTracker.debugger.view.DisassemblyView.ranges">
         <listEntry value=""/>
+        <listEntry value="100"/>
         <listEntry value="100"/>
     </listAttribute>
     <listAttribute key="com.arm.debug.views.common.AddressTracker.debugger.view.MemoryView.addresses">
@@ -160,7 +164,7 @@
         <listEntry value="1024"/>
     </listAttribute>
     <stringAttribute key="config_db_activity_name" value="Debug Cortex-A9x2 SMP"/>
-    <stringAttribute key="config_db_connection_keys" value="rvi_address target_initialization_script dtsl_config dtsl_tracecapture_option dtsl_config_script config_file TCP_KILL_ON_EXIT TCP_DISABLE_EXTENDED_MODE"/>
+    <stringAttribute key="config_db_connection_keys" value="rvi_address target_initialization_script dtsl_config dtsl_tracecapture_option dtsl_config_script config_file setup TCP_KILL_ON_EXIT TCP_DISABLE_EXTENDED_MODE"/>
     <stringAttribute key="config_db_connection_type" value="Bare Metal Debug"/>
     <stringAttribute key="config_db_platform_name" value="Intel SoC FPGA - Cyclone V SoC (Dual Core)"/>
     <stringAttribute key="config_db_project_type" value="Bare Metal Debug"/>
@@ -168,29 +172,41 @@
     <stringAttribute key="config_db_taxonomy_id" value="/platform/intelsocfpga/cyclonevsoc_dualcore_"/>
     <stringAttribute key="config_file" value="CDB://../Arria V SoC/Altera_DEV5XS1.rvc"/>
     <booleanAttribute key="connectOnly" value="false"/>
-    <stringAttribute key="connection_type" value="DSTREAM"/>
+    <stringAttribute key="connection_type" value="USB-Blaster"/>
     <stringAttribute key="dapLogfileLocation" value="${workspace_loc}\lab0"/>
     <stringAttribute key="dapLoggingEnabled" value="false"/>
     <listAttribute key="debugger.view.DisassemblyView:current">
         <listEntry value="&lt;Next Instruction&gt;"/>
         <listEntry value="100"/>
     </listAttribute>
+    <listAttribute key="debugger.view.ExpressionsView">
+        <listEntry value="sync_1"/>
+        <listEntry value="sync_2"/>
+        <listEntry value="sync_3"/>
+    </listAttribute>
+    <mapAttribute key="debugger.view.ExpressionsView.ExpressionsData">
+        <mapEntry key="0" value="NODE_TRANSFER_ELEMENT_COUNT,0;NODE_TRANSFER_ELEMENT_SIZE_IN_BYTES,4;NODE_TYPE,VALUE;FORMATTER,符号無し10進表示"/>
+        <mapEntry key="1" value="NODE_TRANSFER_ELEMENT_COUNT,0;NODE_TRANSFER_ELEMENT_SIZE_IN_BYTES,4;NODE_TYPE,VALUE;FORMATTER,符号無し10進表示"/>
+        <mapEntry key="2" value="NODE_TRANSFER_ELEMENT_COUNT,0;NODE_TRANSFER_ELEMENT_SIZE_IN_BYTES,4;NODE_TYPE,VALUE;FORMATTER,符号無し10進表示"/>
+    </mapAttribute>
+    <stringAttribute key="debugger.view.ExpressionsView:DebugOutlineColumnState" value="OutlineConfig1&#9;8&#9;0&#9;true&#9;true&#9;200&#9;-1&#9;true&#9;1&#9;false&#9;true&#9;52&#9;-1&#9;true&#9;2&#9;true&#9;true&#9;28&#9;-1&#9;true&#9;3&#9;true&#9;true&#9;28&#9;-1&#9;true&#9;4&#9;true&#9;true&#9;52&#9;-1&#9;true&#9;5&#9;true&#9;true&#9;40&#9;-1&#9;true&#9;6&#9;true&#9;true&#9;40&#9;-1&#9;true&#9;7&#9;true&#9;true&#9;54&#9;-1&#9;true"/>
     <stringAttribute key="debugger.view.MemoryView" value="&lt;?xml version=&quot;1.0&quot; encoding=&quot;UTF-8&quot;?&gt;&#10;&lt;page&gt;&#10;&#9;&lt;memoryView/&gt;&#10;&lt;/page&gt;&#10;"/>
     <listAttribute key="debugger.view.MemoryView:current">
         <listEntry value=""/>
         <listEntry value=""/>
     </listAttribute>
-    <stringAttribute key="debugger.view.NewRegisterView:DebugOutlineColumnState" value="OutlineConfig1&#9;8&#9;0&#9;true&#9;true&#9;40&#9;-1&#9;true&#9;1&#9;false&#9;true&#9;90&#9;-1&#9;true&#9;2&#9;true&#9;true&#9;28&#9;-1&#9;true&#9;3&#9;false&#9;true&#9;42&#9;-1&#9;true&#9;4&#9;false&#9;true&#9;52&#9;-1&#9;true&#9;5&#9;true&#9;true&#9;40&#9;-1&#9;true&#9;6&#9;false&#9;true&#9;62&#9;-1&#9;true&#9;7&#9;true&#9;true&#9;54&#9;-1&#9;true"/>
+    <stringAttribute key="debugger.view.NewRegisterView:DebugOutlineColumnState" value="OutlineConfig1&#9;8&#9;0&#9;true&#9;true&#9;108&#9;-1&#9;true&#9;1&#9;false&#9;true&#9;90&#9;-1&#9;true&#9;2&#9;true&#9;true&#9;120&#9;-1&#9;true&#9;3&#9;false&#9;true&#9;42&#9;-1&#9;true&#9;4&#9;false&#9;true&#9;52&#9;-1&#9;true&#9;5&#9;true&#9;true&#9;40&#9;-1&#9;true&#9;6&#9;false&#9;true&#9;62&#9;-1&#9;true&#9;7&#9;true&#9;true&#9;54&#9;-1&#9;true"/>
     <stringAttribute key="debugger.view.NewRegisterView:_selectedRegisterSet" value="すべてのレジスター"/>
     <mapAttribute key="debugger.view.NewRegisterView_registerSets"/>
-    <stringAttribute key="debugger.view.StackView:DebugOutlineColumnState" value="OutlineConfig1&#9;8&#9;0&#9;true&#9;true&#9;49&#9;-1&#9;true&#9;1&#9;false&#9;true&#9;90&#9;-1&#9;true&#9;2&#9;true&#9;true&#9;45&#9;-1&#9;true&#9;3&#9;true&#9;true&#9;42&#9;-1&#9;true&#9;4&#9;true&#9;true&#9;50&#9;-1&#9;true&#9;5&#9;true&#9;true&#9;37&#9;-1&#9;true&#9;6&#9;true&#9;true&#9;62&#9;-1&#9;true&#9;7&#9;true&#9;true&#9;53&#9;-1&#9;true"/>
-    <stringAttribute key="debugger.view.VariableTreeView:DebugOutlineColumnState" value="OutlineConfig1&#9;8&#9;0&#9;true&#9;false&#9;149&#9;-1&#9;true&#9;1&#9;false&#9;true&#9;90&#9;-1&#9;true&#9;2&#9;true&#9;true&#9;95&#9;-1&#9;true&#9;3&#9;true&#9;true&#9;42&#9;-1&#9;true&#9;4&#9;true&#9;true&#9;50&#9;-1&#9;true&#9;5&#9;true&#9;true&#9;37&#9;-1&#9;true&#9;6&#9;true&#9;true&#9;62&#9;-1&#9;true&#9;7&#9;true&#9;true&#9;53&#9;-1&#9;true"/>
+    <stringAttribute key="debugger.view.StackView:DebugOutlineColumnState" value="OutlineConfig1&#9;8&#9;0&#9;true&#9;true&#9;40&#9;-1&#9;true&#9;1&#9;false&#9;true&#9;90&#9;-1&#9;true&#9;2&#9;true&#9;true&#9;28&#9;-1&#9;true&#9;3&#9;true&#9;true&#9;28&#9;-1&#9;true&#9;4&#9;true&#9;true&#9;52&#9;-1&#9;true&#9;5&#9;true&#9;true&#9;40&#9;-1&#9;true&#9;6&#9;true&#9;true&#9;40&#9;-1&#9;true&#9;7&#9;true&#9;true&#9;54&#9;-1&#9;true"/>
+    <stringAttribute key="debugger.view.VariableTreeView:DebugOutlineColumnState" value="OutlineConfig1&#9;8&#9;0&#9;true&#9;false&#9;149&#9;-1&#9;true&#9;1&#9;false&#9;true&#9;90&#9;-1&#9;true&#9;2&#9;true&#9;true&#9;64&#9;-1&#9;true&#9;3&#9;true&#9;true&#9;28&#9;-1&#9;true&#9;4&#9;true&#9;true&#9;52&#9;-1&#9;true&#9;5&#9;true&#9;true&#9;40&#9;-1&#9;true&#9;6&#9;true&#9;true&#9;40&#9;-1&#9;true&#9;7&#9;true&#9;true&#9;54&#9;-1&#9;true"/>
     <listAttribute key="debugger.view.VariableTreeView:USER_ADDED_FILE_STATICS"/>
     <listAttribute key="debugger.view.VariableTreeView:USER_ADDED_GLOBALS"/>
     <booleanAttribute key="debugger.view.register.DrawAsHex" value="false"/>
     <stringAttribute key="debugger.view.symbols.FunctionsView:DebugOutlineColumnState" value="OutlineConfig1&#9;8&#9;0&#9;true&#9;true&#9;53&#9;1&#9;true&#9;1&#9;false&#9;true&#9;103&#9;-1&#9;true&#9;2&#9;false&#9;true&#9;90&#9;-1&#9;true&#9;3&#9;true&#9;true&#9;90&#9;0&#9;true&#9;4&#9;true&#9;true&#9;86&#9;-1&#9;true&#9;5&#9;false&#9;true&#9;41&#9;-1&#9;true&#9;6&#9;true&#9;true&#9;112&#9;-1&#9;true&#9;7&#9;true&#9;true&#9;54&#9;-1&#9;true"/>
     <booleanAttribute key="debugger.view.variable.DrawAsHex" value="false"/>
     <booleanAttribute key="debugger.view.レジスタ.DrawAsHex" value="false"/>
+    <booleanAttribute key="debugger.view.式.DrawAsHex" value="false"/>
     <stringAttribute key="dtsl_config" value="USBBlaster_DtslScript"/>
     <stringAttribute key="dtsl_config_script" value="CDB://../Arria V SoC/dtsl_config_script.py"/>
     <stringAttribute key="dtsl_options_file" value="default"/>
@@ -208,6 +224,10 @@
         <mapEntry key="E:\intelFPGA\DE10-Nano-Proj\HPS\learn\lab0\uboot.ds" value=""/>
         <mapEntry key="H:\Arm\Development Studio 2021.0\sw\debugger\configdb\Scripts\altera_target_check.py" value=""/>
     </mapAttribute>
+    <listAttribute key="setup">
+        <listEntry value="CDB://../../../Scripts/altera_debug_server.py"/>
+        <listEntry value="CDB://rddi-dap_cfg-altera.txt rddi-dap_altera"/>
+    </listAttribute>
     <booleanAttribute key="single_platform" value="true"/>
     <stringAttribute key="stopAtExpression" value="*$ENTRYPOINT"/>
     <stringAttribute key="target_initialization_script" value="CDB://../../../Scripts/altera_target_check.py"/>

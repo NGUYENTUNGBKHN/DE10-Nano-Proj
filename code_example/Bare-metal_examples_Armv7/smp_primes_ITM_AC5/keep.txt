@@ -1,0 +1,2 @@
+# Ensure _mutex_* functions are not removed if compiling with --split_sections
+--keep="main.o(i._mutex_acquire)" --keep="main.o(i._mutex_release)" --diag_suppress=6319

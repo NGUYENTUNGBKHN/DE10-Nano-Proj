@@ -17,31 +17,28 @@ wait 5s
 #
 # load the preloader (a.k.a the spl from our uboot dist)
 #
+
+loadfile "$sdir/boot_es/u-boot-spl(semi).axf"
 # loadfile "$sdir/uboot-socfpga/spl/u-boot-spl" 0x0
-loadfile "$sdir/uboot/u-boot-spl" 0x0
+#loadfile "$sdir/uboot_2/u-boot-spl" 0x0
+#restore "$sdir/uboot_2/u-boot-spl.dtb" binary 0xFFFFE2FC
 
 #
-# set pc to entry point
+# Enable semihosting.
 #
-set debug-from *$entrypoint     # Set start-at setting to address of $entrypoint
-start 
+set semihosting enabled true
 
 #
-# delete any breakpoints
+# Delete any existing breakpoints.
 #
 delete
 
 #
-# set hw breakpoint in spl in function, spl_boot_device,
-# The function, spl_boot_device, is called right before the spl tries
-# to load.  We stop here so we don't have to change any spl.
+# Set a breakpoint in the SPL function spl_boot_device(). This function is
+# called right before the SPL tries to load the next stage in the preloader.
 #
 tbreak spl_boot_device
 
-# tell target to continue executing spl
-cont
+run
 
-# wait for breakpoint
-wait
-
-
+wait 

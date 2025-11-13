@@ -15,13 +15,11 @@ FPU=-mfloat-abi=hard -mfpu=vfpv3-fp16
 OPT=-O0 -g
 CCFLAGS+= $(CPU) $(FPU) $(FLOAT) $(OPT)
 CCFLAGS+= -mno-unaligned-access -std=c99 -MD -MMD
-CCFLAGS+= -Dsoc_cv_av -D_USE_STDLIB
+CCFLAGS+= -DLIB_JSL -DPRJ_OS_THREADX_UITRON -DPRJ_IVIZION2 -D_DEBUG_FRAM_MEASURE_POST_DELAY
 
 ASMFLAG=$(CCFLAGS)
 
-SRC_EXCLUDE+=$(wildcard $(ROOT_PROJ)/src/hwmgr/soc_a10/*.c)
-SRC_EXCLUDE+=$(wildcard $(ROOT_PROJ)/src/utils/alt_base.c)
-SRC_EXCLUDE+=$(wildcard $(ROOT_PROJ)/src/utils/alt_retarget_gnu.c)
+SRC_EXCLUDE+=\
 
 
 SRC_INCLUDE+=$(wildcard $(ROOT_PROJ)/src/*/*.c)
@@ -31,11 +29,9 @@ SRC_INCLUDE+=$(wildcard $(ROOT_PROJ)/src/*/*/*.c)
 SRC_FILES:=$(filter-out $(SRC_EXCLUDE), $(SRC_INCLUDE))
 
 INC_FOLDERS=\
-	$(ROOT_PROJ)/include\
-	$(ROOT_PROJ)/include/safeclib\
-	$(ROOT_PROJ)/include/soc_cv_av\
-	$(ROOT_PROJ)/src/safeclib\
-	
+	$(ROOT_PROJ)/inc\
+	$(ROOT_PROJ)/src\
+	$(ROOT_PROJ)/src/gpio\
 
 
 .PHONY:	default help

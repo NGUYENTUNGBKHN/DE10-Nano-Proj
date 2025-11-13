@@ -1,0 +1,33 @@
+;**************************************************
+; Copyright (c) 2012 Arm Limited (or its affiliates). All rights reserved.
+; Use, modification and redistribution of this file is subject to your possession of a
+; valid End User License Agreement for the Arm Product of which these examples are part of 
+; and your compliance with all applicable terms and conditions of such licence agreement.
+;**************************************************
+
+; Scatter-file for Fireworks SMP example on Snowball.
+
+LOAD 0x00000000  0x00100000
+{
+  EXEC 0x00000000
+  {
+    startup.o (StartUp, +FIRST)
+    * (+RO)
+    * (+RW,+ZI)
+  }
+
+  ; App heap for all CPUs
+  ARM_LIB_HEAP  +0 ALIGN 8 EMPTY 0xA0000 {}
+
+  ; App stacks for all CPUs - see startup.s
+  ARM_LIB_STACK +0 ALIGN 8 EMPTY 2*0x1000 {}
+
+  ; IRQ stacks for all CPUs - see startup.s
+  IRQ_STACKS    +0 ALIGN 8 EMPTY 2*256 {}
+  
+  ; 1MB of Pagetables
+  PAGETABLES 0x00500000 EMPTY 0x00100000 {}
+  
+  ; 1MB Frame Buffer 
+  FRAMEBUFFER 0x00600000 EMPTY 0x00100000 {}
+}

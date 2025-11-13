@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<?fileVersion 4.0.0?><cproject storage_type_id="org.eclipse.cdt.core.XmlProjectDescriptionStorage">
+	<storageModule moduleId="org.eclipse.cdt.core.settings">
+		<cconfiguration id="com.arm.toolchain.baremetal.1095228267">
+			<storageModule buildSystemId="org.eclipse.cdt.managedbuilder.core.configurationDataProvider" id="com.arm.toolchain.baremetal.1095228267" moduleId="org.eclipse.cdt.core.settings" name="Default">
+				<externalSettings/>
+				<extensions>
+					<extension id="org.eclipse.cdt.core.GmakeErrorParser" point="org.eclipse.cdt.core.ErrorParser"/>
+					<extension id="com.arm.eclipse.builder.armcc.error" point="org.eclipse.cdt.core.ErrorParser"/>
+					<extension id="org.eclipse.cdt.core.CWDLocator" point="org.eclipse.cdt.core.ErrorParser"/>
+				</extensions>
+			</storageModule>
+			<storageModule moduleId="cdtBuildSystem" version="4.0.0">
+				<configuration buildProperties="" description="" id="com.arm.toolchain.baremetal.1095228267" name="Default" parent="org.eclipse.cdt.build.core.emptycfg">
+					<folderInfo id="com.arm.toolchain.baremetal.1095228267.1571085022" name="/" resourcePath="">
+						<toolChain id="com.arm.toolchain.baremetal.base.var.arm_compiler_5-5.562068607" name="Arm Compiler 5" superClass="com.arm.toolchain.baremetal.base.var.arm_compiler_5-5">
+							<targetPlatform id="com.arm.toolchain.baremetal.base.var.arm_compiler_5-5.562068607.1408291749" name=""/>
+							<builder autoBuildTarget="all" buildPath="${workspace_loc:/calendar_Armv7-A_AC5}/" cleanBuildTarget="clean" enableAutoBuild="false" enableCleanBuild="true" enabledIncrementalBuild="true" id="com.arm.toolchain.baremetal.builder.2011817018" incrementalBuildTarget="all" keepEnvironmentInBuildfile="false" managedBuildOn="false" name="Gnu Make Builder.Default" parallelBuildOn="false" superClass="com.arm.toolchain.baremetal.builder"/>
+							<tool id="com.arm.tool.c.compiler.base.var.arm_compiler_5-5.1817905412" name="Arm C Compiler 5" superClass="com.arm.tool.c.compiler.base.var.arm_compiler_5-5"/>
+							<tool id="com.arm.tool.cpp.compiler.base.var.arm_compiler_5-5.191655743" name="Arm C++ Compiler 5" superClass="com.arm.tool.cpp.compiler.base.var.arm_compiler_5-5">
+								<inputType id="com.arm.tool.c.compiler.input.1464123148" superClass="com.arm.tool.c.compiler.input"/>
+								<inputType id="com.arm.tool.cpp.compiler.input.448322637" superClass="com.arm.tool.cpp.compiler.input"/>
+							</tool>
+							<tool id="com.arm.tool.assembler.base.var.arm_compiler_5-5.1447375917" name="Arm Assembler 5" superClass="com.arm.tool.assembler.base.var.arm_compiler_5-5">
+								<inputType id="com.arm.tool.assembler.input.2026205710" superClass="com.arm.tool.assembler.input"/>
+							</tool>
+							<tool id="com.arm.tool.c.linker.base.var.arm_compiler_5-5.359512960" name="Arm Linker 5" superClass="com.arm.tool.c.linker.base.var.arm_compiler_5-5"/>
+							<tool id="com.arm.tool.librarian.base.var.arm_compiler_5-5.1619091214" name="Arm Librarian 5" superClass="com.arm.tool.librarian.base.var.arm_compiler_5-5"/>
+						</toolChain>
+					</folderInfo>
+				</configuration>
+			</storageModule>
+			<storageModule moduleId="org.eclipse.cdt.core.externalSettings"/>
+		</cconfiguration>
+	</storageModule>
+	<storageModule moduleId="cdtBuildSystem" version="4.0.0">
+		<project id="calendar_Armv7-A_AC5.null.1484067867" name="calendar_Armv7-A_AC5"/>
+	</storageModule>
+	<storageModule moduleId="scannerConfiguration">
+		<autodiscovery enabled="true" problemReportingEnabled="true" selectedProfileId=""/>
+	</storageModule>
+	<storageModule moduleId="org.eclipse.cdt.core.LanguageSettingsProviders"/>
+	<storageModule moduleId="com.arm.projectSettings" version="6.0.0"/>
+</cproject>
