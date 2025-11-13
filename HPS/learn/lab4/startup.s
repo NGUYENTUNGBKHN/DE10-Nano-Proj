@@ -83,6 +83,8 @@ FIQ_Handler
   IMPORT disableHighVecs
   IMPORT __main
   IMPORT main_app
+  IMPORT init_page_table
+  IMPORT L1_page_table
 
   IMPORT __use_two_region_memory
   IMPORT ||Image$$ARM_LIB_STACK$$ZI$$Limit||
@@ -329,7 +331,12 @@ ttb_zero_loop
 
   DSB
 
+  BL init_page_table
 
+  LDR r0, =L1_page_table          ; r0 = &L1_page_table
+  MCR p15, 0, r0, c2, c0, 0       ; TTBR0 = r0
+  LDR r1, =0x1                    ; domain 0 manager
+  MCR p15, 0, r1, c3, c0, 0
   ; Enable MMU
   ; -----------
   ; Leave the caches disabled until after scatter loading.

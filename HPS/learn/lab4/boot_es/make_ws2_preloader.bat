@@ -1,0 +1,1 @@
+mkpimage --header-version 0 -o ws2/preloader-mkpimage.bin ws2/u-boot-spl.bin ws2/u-boot-spl.bin ws2/u-boot-spl.bin ws2/u-boot-spl.bin

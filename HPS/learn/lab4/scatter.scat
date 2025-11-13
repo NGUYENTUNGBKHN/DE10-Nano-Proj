@@ -1,3 +1,4 @@
+#! armcc -E --cpu Cortex-A9
 ;*******************************************************
 ; Copyright (c) 2012-2014 Arm Limited (or its affiliates). All rights reserved.
 ; Use, modification and redistribution of this file is subject to your possession of a
@@ -11,23 +12,36 @@
 
 ; CoreTile Express A9x4 has 1GB SDRAM at 0x60000000 to 0x9FFFFFFF, which this scatter-file uses.
 
-LOAD 0x00100000  0x00010000
+#define OC_RAM_BASE (0xFFFF0000)
+#define OC_RAM_SIZE (0x10000)
+
+#define SDRAM_BASE (0x100000)
+#define SDRAM_SIZE (0x80000000 - 0x100000)
+#define PROGRAM_BASE SDRAM_BASE
+#define PROGRAM_SIZE (0x02000000)
+
+LR_SDRAM SDRAM_BASE
 {
-  EXEC +0
-  {
-    startup.o (StartUp, +FIRST)
-    * (+RO)
-    * (+RW,+ZI)
-  }
+  	PROGRAM PROGRAM_BASE PROGRAM_SIZE
+  	{
+		startup.o (StartUp, +FIRST)
+	    * (+RO)
+	    * (+RW,+ZI)										;
+	}
+	; App heap for all CPUs
+	ARM_LIB_HEAP  +0 ALIGN 8 EMPTY 0x8000 {}
 
-  ; App heap for all CPUs
-  ARM_LIB_HEAP  +0 ALIGN 8 EMPTY 0x8000 {}
+	; App stacks for all CPUs - see startup.s
+	ARM_LIB_STACK +0 ALIGN 8 EMPTY 4*0x4000 {}
 
-  ; App stacks for all CPUs - see startup.s
-  ARM_LIB_STACK +0 ALIGN 8 EMPTY 4*0x4000 {}
+	; IRQ stacks for all CPUs - see startup.s
+	IRQ_STACKS    +0 ALIGN 8 EMPTY 4*256 {}
 
-  ; IRQ stacks for all CPUs - see startup.s
-  IRQ_STACKS    +0 ALIGN 8 EMPTY 4*256 {}
-
-  PAGETABLES 0x00600000 EMPTY 0x00100000 {}
+	PAGETABLES 0x00500000 EMPTY 0x00100000 {}
+	
+  	OC_RAM OC_RAM_BASE NOCOMPRESS OC_RAM_SIZE
+	{
+		* (.bss.oc_ram)
+	}
 }
+
