@@ -82,15 +82,16 @@ FIQ_Handler
   IMPORT invalidateCaches
   IMPORT disableHighVecs
   IMPORT __main
+  IMPORT main
   IMPORT main_app
-  IMPORT init_page_table
-  IMPORT L1_page_table
+  IMPORT tx_alt_ttb
+  IMPORT alt_setup_mmu_table
 
   IMPORT __use_two_region_memory
   IMPORT ||Image$$ARM_LIB_STACK$$ZI$$Limit||
   IMPORT ||Image$$IRQ_STACKS$$ZI$$Limit||
   IMPORT ||Image$$PAGETABLES$$ZI$$Base||
-  IMPORT ||Image$$EXEC$$Base||
+  IMPORT ||Image$$PROGRAM$$Base||
 
 ; ------------------------------------------------------------
 ; Interrupt Handler
@@ -233,6 +234,7 @@ Reset_Handler PROC {}
   MSR     TTBR0, r0
 
 
+
   ;
   ; Activate VFP/NEON, if required
   ;-------------------------------
@@ -297,7 +299,7 @@ ttb_zero_loop
   ;
 
   ; Region covering program code and data
-  LDR     r1,=||Image$$EXEC$$Base|| ; Base physical address of program code and data
+  LDR     r1,=||Image$$PROGRAM$$Base|| ; Base physical address of program code and data
   LSR     r1,#20                    ; Shift right to align to 1MB boundaries
   LDR     r3, =L1_COHERENT          ; Descriptor template
   ORR     r3, r1, LSL#20            ; Combine address and template
@@ -331,19 +333,17 @@ ttb_zero_loop
 
   DSB
 
-  BL init_page_table
+;  MRC     p15, 0, r0, c0, c0, 5     ; Read CPU ID register
+;  ANDS    r0, r0, #0x03             ; Mask off, leaving the CPU ID field
+;  BL tx_alt_setup_mmu_table
 
-  LDR r0, =L1_page_table          ; r0 = &L1_page_table
-  MCR p15, 0, r0, c2, c0, 0       ; TTBR0 = r0
-  LDR r1, =0x1                    ; domain 0 manager
-  MCR p15, 0, r1, c3, c0, 0
   ; Enable MMU
   ; -----------
   ; Leave the caches disabled until after scatter loading.
-  MRC     p15, 0, r0, c1, c0, 0       ; Read System Control Register
-  ORR     r0, r0, #0x1                ; Set M bit 0 to enable MMU before scatter loading
-  MCR     p15, 0, r0, c1, c0, 0       ; Write System Control Register
-  ISB
+;  MRC     p15, 0, r0, c1, c0, 0       ; Read System Control Register
+;  ORR     r0, r0, #0x1                ; Set M bit 0 to enable MMU before scatter loading
+;  MCR     p15, 0, r0, c1, c0, 0       ; Write System Control Register
+;  ISB
 
   IF :DEF: USE_L2CC
 ; ------------------------------------------------------------
@@ -476,14 +476,16 @@ holding_pen
   ; they are released from the holding-pen
   ;
 
-  ; Enable MMU
-  ; -----------
-  ; Leave the caches disabled until after scatter loading.
-  MRC     p15, 0, r0, c1, c0, 0       ; Read System Control Register
-  ORR     r0, r0, #0x1                ; Set M bit 0 to enable MMU before scatter loading
-  MCR     p15, 0, r0, c1, c0, 0       ; Write System Control Register
-  ISB
-
+;  ; Enable MMU
+;  ; -----------
+;  ; Leave the caches disabled until after scatter loading.
+;  MRC     p15, 0, r0, c1, c0, 0       ; Read System Control Register
+;  ORR     r0, r0, #0x1                ; Set M bit 0 to enable MMU before scatter loading
+;  MCR     p15, 0, r0, c1, c0, 0       ; Write System Control Register
+;  ISB
+  MRC     p15, 0, r0, c0, c0, 5     ; Read CPU ID register
+  ANDS    r0, r0, #0x03             ; Mask off, leaving the CPU ID field
+  BL 		alt_setup_mmu_table
 
   ;
   ; Branch to application

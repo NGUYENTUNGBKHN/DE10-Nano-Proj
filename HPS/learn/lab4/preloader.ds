@@ -31,14 +31,14 @@ set semihosting enabled false
 #
 # Load the SPL preloader into memory.
 #
-loadfile "$sdir/boot_es/u-boot-spl(semi).axf"
+#loadfile "$sdir/boot_es/u-boot-spl(semi).axf"
 #loadfile "$sdir/boot_es/bk/u-boot-spl" 0x0
 #loadfile "$sdir/u-boot-spl.axf" 0x0
 #loadfile "$sdir/uboot_2/u-boot-spl" 0x0
 #restore "$sdir/uboot_2/u-boot-spl.dtb" binary 0xFFFFE2FC
 
-#loadfile "$sdir/uboot_3/u-boot-spl" 0x0
-#restore "$sdir/uboot_3/u-boot-spl.dtb" binary 0xFFFFBF44
+loadfile "$sdir/uboot_3/u-boot-spl" 0x0
+restore "$sdir/uboot_3/u-boot-spl.dtb" binary 0xFFFFBF44
 
 #
 # Enable semihosting.
