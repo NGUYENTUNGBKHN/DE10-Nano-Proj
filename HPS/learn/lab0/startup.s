@@ -88,7 +88,7 @@ FIQ_Handler
   IMPORT ||Image$$ARM_LIB_STACK$$ZI$$Limit||
   IMPORT ||Image$$IRQ_STACKS$$ZI$$Limit||
   IMPORT ||Image$$PAGETABLES$$ZI$$Base||
-  IMPORT ||Image$$CODE$$Base||
+  IMPORT ||Image$$EXEC$$Base||
 
 ; ------------------------------------------------------------
 ; Interrupt Handler
@@ -295,7 +295,7 @@ ttb_zero_loop
   ;
 
   ; Region covering program code and data
-  LDR     r1,=||Image$$CODE$$Base|| ; Base physical address of program code and data
+  LDR     r1,=||Image$$EXEC$$Base|| ; Base physical address of program code and data
   LSR     r1,#20                    ; Shift right to align to 1MB boundaries
   LDR     r3, =L1_COHERENT          ; Descriptor template
   ORR     r3, r1, LSL#20            ; Combine address and template

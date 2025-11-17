@@ -29,28 +29,28 @@
 							<targetPlatform id="com.arm.toolchain.baremetal.exe.debug.base.var.arm_compiler_5-5.6.7.969017441.1136117477" name=""/>
 							<builder autoBuildTarget="all" buildPath="${workspace_loc:/hwlib}/Debug" cleanBuildTarget="clean" enableAutoBuild="false" enableCleanBuild="true" enabledIncrementalBuild="true" id="com.arm.toolchain.baremetal.builder.1837646329" incrementalBuildTarget="all" keepEnvironmentInBuildfile="false" managedBuildOn="true" name="Gnu Make Builder" parallelBuildOn="false" superClass="com.arm.toolchain.baremetal.builder"/>
 							<tool id="com.arm.tool.c.compiler.baremetal.exe.debug.base.var.arm_compiler_5-5.6.7.20400063" name="Arm C Compiler for Embedded 5.6.7" superClass="com.arm.tool.c.compiler.baremetal.exe.debug.base.var.arm_compiler_5-5.6.7">
-								<option id="com.arm.tool.c.compiler.option.targetcpu.1194169964" name="ターゲット CPU (--cpu)" superClass="com.arm.tool.c.compiler.option.targetcpu" value="Cortex-A9" valueType="string"/>
-								<option id="com.arm.tool.c.compiler.option.fppcs.778105964" name="浮動小数点 PCS (--apcs)" superClass="com.arm.tool.c.compiler.option.fppcs" value="com.arm.tool.c.compiler.option.fppcs.hard" valueType="enumerated"/>
-								<option id="com.arm.tool.c.compiler.option.fpmode.178235235" name="浮動小数点モデル (--fpmode)" superClass="com.arm.tool.c.compiler.option.fpmode" value="com.arm.tool.c.compiler.option.fpmode.fast" valueType="enumerated"/>
-								<option id="com.arm.tool.c.compiler.option.inst.295320156" name="命令セット" superClass="com.arm.tool.c.compiler.option.inst" value="com.arm.tool.c.compiler.option.inst.arm" valueType="enumerated"/>
-								<option id="com.arm.tool.c.compiler.option.unalign.1642235783" name="非境界整列アクセスを無効にする (--no_unaligned_access)" superClass="com.arm.tool.c.compiler.option.unalign" value="true" valueType="boolean"/>
-								<option id="com.arm.tool.c.compiler.option.enum.1998391444" name="列挙を整数として生成 (--enum_is_int)" superClass="com.arm.tool.c.compiler.option.enum" value="true" valueType="boolean"/>
-								<option IS_BUILTIN_EMPTY="false" IS_VALUE_EMPTY="false" id="com.arm.tool.c.compiler.option.defmac.1680940414" name="マクロの定義 (-D)" superClass="com.arm.tool.c.compiler.option.defmac" valueType="definedSymbols">
+								<option id="com.arm.tool.c.compiler.option.targetcpu.1194169964" name="ターゲット CPU (--cpu)" superClass="com.arm.tool.c.compiler.option.targetcpu" useByScannerDiscovery="true" value="Cortex-A9" valueType="string"/>
+								<option id="com.arm.tool.c.compiler.option.fppcs.778105964" name="浮動小数点 PCS (--apcs)" superClass="com.arm.tool.c.compiler.option.fppcs" useByScannerDiscovery="true" value="com.arm.tool.c.compiler.option.fppcs.hard" valueType="enumerated"/>
+								<option id="com.arm.tool.c.compiler.option.fpmode.178235235" name="浮動小数点モデル (--fpmode)" superClass="com.arm.tool.c.compiler.option.fpmode" useByScannerDiscovery="true" value="com.arm.tool.c.compiler.option.fpmode.fast" valueType="enumerated"/>
+								<option id="com.arm.tool.c.compiler.option.inst.295320156" name="命令セット" superClass="com.arm.tool.c.compiler.option.inst" useByScannerDiscovery="true" value="com.arm.tool.c.compiler.option.inst.arm" valueType="enumerated"/>
+								<option id="com.arm.tool.c.compiler.option.unalign.1642235783" name="非境界整列アクセスを無効にする (--no_unaligned_access)" superClass="com.arm.tool.c.compiler.option.unalign" useByScannerDiscovery="false" value="true" valueType="boolean"/>
+								<option id="com.arm.tool.c.compiler.option.enum.1998391444" name="列挙を整数として生成 (--enum_is_int)" superClass="com.arm.tool.c.compiler.option.enum" useByScannerDiscovery="false" value="true" valueType="boolean"/>
+								<option IS_BUILTIN_EMPTY="false" IS_VALUE_EMPTY="false" id="com.arm.tool.c.compiler.option.defmac.1680940414" name="マクロの定義 (-D)" superClass="com.arm.tool.c.compiler.option.defmac" useByScannerDiscovery="false" valueType="definedSymbols">
 									<listOptionValue builtIn="false" value="soc_cv_av"/>
 									<listOptionValue builtIn="false" value="_USE_STDLIB"/>
 								</option>
-								<option IS_BUILTIN_EMPTY="false" IS_VALUE_EMPTY="false" id="com.arm.tool.c.compiler.option.incpath.1077127989" name="インクルードパス (-I)" superClass="com.arm.tool.c.compiler.option.incpath" valueType="includePath">
+								<option IS_BUILTIN_EMPTY="false" IS_VALUE_EMPTY="false" id="com.arm.tool.c.compiler.option.incpath.1077127989" name="インクルードパス (-I)" superClass="com.arm.tool.c.compiler.option.incpath" useByScannerDiscovery="false" valueType="includePath">
 									<listOptionValue builtIn="false" value="&quot;${workspace_loc:/${ProjName}/include}&quot;"/>
 									<listOptionValue builtIn="false" value="&quot;${workspace_loc:/${ProjName}/include/safeclib}&quot;"/>
 									<listOptionValue builtIn="false" value="&quot;${workspace_loc:/${ProjName}/include/soc_cv_av}&quot;"/>
 								</option>
-								<option id="com.arm.tool.c.compile.option.lang.2053703706" name="ソース言語モード" superClass="com.arm.tool.c.compile.option.lang" value="com.arm.tool.c.compile.option.lang.c99" valueType="enumerated"/>
-								<option id="com.arm.tool.c.compiler.option.strict.1984244022" name="言語への厳密な準拠" superClass="com.arm.tool.c.compiler.option.strict" value="com.arm.tool.c.compiler.option.strict.none" valueType="enumerated"/>
-								<option id="com.arm.tool.c.compiler.option.optlevel.210677786" name="最適化レベル" superClass="com.arm.tool.c.compiler.option.optlevel"/>
+								<option id="com.arm.tool.c.compile.option.lang.2053703706" name="ソース言語モード" superClass="com.arm.tool.c.compile.option.lang" useByScannerDiscovery="true" value="com.arm.tool.c.compile.option.lang.c99" valueType="enumerated"/>
+								<option id="com.arm.tool.c.compiler.option.strict.1984244022" name="言語への厳密な準拠" superClass="com.arm.tool.c.compiler.option.strict" useByScannerDiscovery="true" value="com.arm.tool.c.compiler.option.strict.none" valueType="enumerated"/>
+								<option id="com.arm.tool.c.compiler.option.optlevel.210677786" name="最適化レベル" superClass="com.arm.tool.c.compiler.option.optlevel" useByScannerDiscovery="true"/>
 								<inputType id="com.arm.tool.c.compiler.input.1176130255" superClass="com.arm.tool.c.compiler.input"/>
 							</tool>
 							<tool id="com.arm.tool.cpp.compiler.baremetal.exe.debug.base.var.arm_compiler_5-5.6.7.885092017" name="Arm C++ Compiler for Embedded 5.6.7" superClass="com.arm.tool.cpp.compiler.baremetal.exe.debug.base.var.arm_compiler_5-5.6.7">
-								<option id="com.arm.tool.c.compiler.option.optlevel.96478107" name="最適化レベル" superClass="com.arm.tool.c.compiler.option.optlevel"/>
+								<option id="com.arm.tool.c.compiler.option.optlevel.96478107" name="最適化レベル" superClass="com.arm.tool.c.compiler.option.optlevel" useByScannerDiscovery="true"/>
 							</tool>
 							<tool id="com.arm.tool.assembler.base.var.arm_compiler_5-5.6.7.293307155" name="ARM アセンブラ 5.6.7" superClass="com.arm.tool.assembler.base.var.arm_compiler_5-5.6.7">
 								<option id="com.arm.tool.assembler.option.cpu.543686180" name="ターゲット CPU (--cpu)" superClass="com.arm.tool.assembler.option.cpu" value="Cortex-A9" valueType="string"/>
