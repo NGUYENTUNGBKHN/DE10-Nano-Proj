@@ -2,56 +2,69 @@
 // v7-A Cache, TLB and Branch Prediction Maintenance Operations
 // Header File
 //
-// Copyright ARM Ltd 2009. All rights reserved.
+// Copyright (c) 2011-2016 Arm Limited (or its affiliates). All rights reserved.
+// Use, modification and redistribution of this file is subject to your possession of a
+// valid End User License Agreement for the Arm Product of which these examples are part of 
+// and your compliance with all applicable terms and conditions of such licence agreement.
 // ------------------------------------------------------------
 
-#ifndef _SEE_V7_h
-#define _SEE_V7_h
+#ifndef _ARMV7A_GENERIC_H
+#define _ARMV7A_GENERIC_H
 
-#include "kernel.h"
+// ------------------------------------------------------------
+// Memory barrier mnemonics
+enum MemBarOpt {
+  RESERVED_0  = 0,  RESERVED_1 = 1, OSHST = 2, OSH = 3,
+  RESERVED_4  = 4,  RESERVED_5 = 5, NSHST = 6, NSH = 7,
+  RESERVED_8  = 8,  RESERVED_9 = 9, ISHST = 10, ISH = 11,
+  RESERVED_12 = 12, RESERVED_13 = 13, ST = 14, SY = 15
+};
 
 //
 // Note:
-// *_is() stands for "inner shareable"
+// *_IS() stands for "inner shareable"
+// DO NOT USE THESE FUNCTIONS ON A CORTEX-A8
 //
+
+// ------------------------------------------------------------
+// Interrupts
+// Enable/disables IRQs (not FIQs)
+void enableInterrupts(void);
+void disableInterrupts(void);
 
 // ------------------------------------------------------------
 // Caches
 
-void enable_caches(void);
-void disable_caches(void);
-
-void clean_dcache(void);
-void clean_invalidate_dcache(void);
-
-void invalidate_caches(void);
-void invalidate_caches_is(void);
+void invalidateCaches_IS(void);
+void cleanInvalidateDCache(void);
+void invalidateCaches_IS(void);
+void enableCaches(void);
+void disableCaches(void);
+void invalidateCaches(void);
+void cleanDCache(void);
 
 // ------------------------------------------------------------
 // TLBs
 
-void invalidate_unified_tlb(void);
-void invalidate_unified_tlb_is(void);
+void invalidateUnifiedTLB(void);
+void invalidateUnifiedTLB_IS(void);
 
 // ------------------------------------------------------------
 // Branch prediction
 
-void enable_branch_prediction(void);
-void disable_branch_prediction(void);
-
-void invalidate_branch_target_cache(void);
-void invalidate_branch_target_cache_is(void);
+void flushBranchTargetCache(void);
+void flushBranchTargetCache_IS(void);
 
 // ------------------------------------------------------------
 // High Vecs
 
-void enable_highvecs(void);
-void disable_highvecs(void);
+void enableHighVecs(void);
+void disableHighVecs(void);
 
 // ------------------------------------------------------------
 // ID Registers
 
-uint32_t get_MIDR(void);
+unsigned int getMIDR(void);
 
 #define MIDR_IMPL_SHIFT  24
 #define MIDR_IMPL_MASK   0xFF
@@ -75,7 +88,7 @@ uint32_t get_MIDR(void);
 #define MIDR_PART_CA8    0xC08
 #define MIDR_PART_CA9    0xC09
 
-uint32_t get_MPIDR(void);
+unsigned int getMPIDR(void);
 
 #define MPIDR_FORMAT_SHIFT  31
 #define MPIDR_FORMAT_MASK   0x1
@@ -98,17 +111,42 @@ uint32_t get_MPIDR(void);
 // ------------------------------------------------------------
 // Context ID
 
-uint32_t get_context_id(void);
-void set_context_id(uint32_t);
+unsigned int getContextID(void);
+
+void setContextID(unsigned int);
 
 #define CONTEXTID_ASID_SHIFT   0
 #define CONTEXTID_ASID_MASK    0xFF
 #define CONTEXTID_PROCID_SHIFT 8
 #define CONTEXTID_PROCID_MASK  0x00FFFFFF
 
-// tmp    = get_context_id();
+// tmp    = getContextID();
 // ASID   = tmp & CONTEXTID_ASID_MASK;
 // PROCID = (tmp >> CONTEXTID_PROCID_SHIFT) & CONTEXTID_PROCID_MASK;
+
+// ------------------------------------------------------------
+// SMP related for Armv7-A MPCore processors
+//
+// DO NOT CALL THESE FUNCTIONS ON A CORTEX-A8
+
+// Returns the base address of the private peripheral memory space
+unsigned int getBaseAddr(void);
+
+// Returns the CPU ID (0 to 3) of the CPU executed on
+#define MP_CPU0   (0)
+#define MP_CPU1   (1)
+#define MP_CPU2   (2)
+#define MP_CPU3   (3)
+unsigned int getCPUID(void);
+
+// Set this core as participating in SMP
+void joinSMP(void);
+
+// Set this core as NOT participating in SMP
+void leaveSMP(void);
+
+// Go to sleep, never returns
+void goToSleep(void);
 
 #endif
 

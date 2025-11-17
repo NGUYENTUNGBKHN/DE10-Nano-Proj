@@ -5,6 +5,7 @@ MAKE_COMMON:=../common
 LIB_OUTPUT_PATH = $(BUILD_DIR)/$(TARGET_NAME).a
 # This is the root project directory and the core directory
 ROOT_PROJ:=./
+THREADX_IDR:=./../threadx
 # Core directory for the project
 
 
@@ -15,26 +16,21 @@ FPU=-mfloat-abi=hard -mfpu=vfpv3-fp16
 OPT=-O0 -g
 CCFLAGS+= $(CPU) $(FPU) $(FLOAT) $(OPT)
 CCFLAGS+= -mno-unaligned-access -std=c99 -MD -MMD
-CCFLAGS+= -Dsoc_cv_av -D_USE_STDLIB
+CCFLAGS+= -DTX_THREAD_UITRON_ENABLE_OBJECT_NAME
 
 ASMFLAG=$(CCFLAGS)
 
-SRC_EXCLUDE+=$(wildcard $(ROOT_PROJ)/src/hwmgr/soc_a10/*.c)
-SRC_EXCLUDE+=$(wildcard $(ROOT_PROJ)/src/utils/alt_base.c)
-SRC_EXCLUDE+=$(wildcard $(ROOT_PROJ)/src/utils/alt_retarget_gnu.c)
+SRC_EXCLUDE+=\
 
 
-SRC_INCLUDE+=$(wildcard $(ROOT_PROJ)/src/*/*.c)
-SRC_INCLUDE+=$(wildcard $(ROOT_PROJ)/src/*/*/*.c)
+SRC_INCLUDE+=$(wildcard $(ROOT_PROJ)/src/*.c)
 
 
 SRC_FILES:=$(filter-out $(SRC_EXCLUDE), $(SRC_INCLUDE))
 
 INC_FOLDERS=\
-	$(ROOT_PROJ)/include\
-	$(ROOT_PROJ)/include/safeclib\
-	$(ROOT_PROJ)/include/soc_cv_av\
-	$(ROOT_PROJ)/src/safeclib\
+	$(ROOT_PROJ)/inc\
+	$(THREADX_IDR)/inc\
 	
 
 

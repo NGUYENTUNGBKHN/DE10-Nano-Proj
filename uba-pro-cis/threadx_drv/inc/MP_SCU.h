@@ -1,64 +1,62 @@
 // ------------------------------------------------------------
-// Cortex-A MPCore - Snoop Control Unit
-// Header File
+// Cortex-A MPCore - Snoop Control Unit (SCU)
+// Suitable for Cortex-A5 MPCore and Cortex-A9 MPCore
 //
-// Copyright ARM Ltd 2009. All rights reserved.
+// Copyright (c) 2011-2018 Arm Limited (or its affiliates). All rights reserved.
+// Use, modification and redistribution of this file is subject to your possession of a
+// valid End User License Agreement for the Arm Product of which these examples are part of 
+// and your compliance with all applicable terms and conditions of such licence agreement.
 // ------------------------------------------------------------
 
-#ifndef _CORTEXA_SCU_
-#define _CORTEXA_SCU_
+#ifndef _CORTEXA_SCU_H
+#define _CORTEXA_SCU_H
 
 // ------------------------------------------------------------
 // SCU
 // ------------------------------------------------------------
 
-// Returns the base address of the private peripheral memory space
-unsigned int get_base_addr(void);
-
-// Returns the CPU ID (0 to 3) of the CPU executed on
-unsigned int get_cpu_id(void);
-
-// Returns the number of cores in the A9 Cluster
-// NOTE:
-// returns 0 = 1 core
-//         1 = 2 cores etc...
-// This is the format of the register, decided to leave it unchanged.
-unsigned int get_num_cpus(void);
-
-// Go to sleep, never returns
-void go_to_sleep(void);
+// Returns the number of cores in the cluster
+unsigned int getNumCPUs(void);
 
 // ------------------------------------------------------------
 // SCU
 // ------------------------------------------------------------
 
 // Enables the SCU
-void enable_scu(void);
-
-// Set this core as participating in SMP
-void join_smp(void);
-
-// Set this core as NOT participating in SMP
-void leave_smp(void);
+void enableSCU(void);
 
 // The return value is 1 bit per core:
-// bit 0 - CPU 0
-// bit 1 - CPU 1
-// etc...
-unsigned int get_cpus_in_smp(void);
+// bit 0 (0x1) - CPU 0
+// bit 1 (0x2) - CPU 1
+// bit 2 (0x4) - CPU 2
+// bit 3 (0x8) - CPU 3
+unsigned int getCPUsInSMP(void);
 
  //Enable the broadcasting of cache & TLB maintenance operations
 // When enabled AND in SMP, broadcast all "inner sharable"
 // cache and TLM maintenance operations to other SMP cores
-void enable_maintenance_broadcast(void);
+void enableMaintenanceBroadcast(void);
 
 // Disable the broadcasting of cache & TLB maintenance operations
-void disable_maintenance_broadcast(void);
+void disableMaintenanceBroadcast(void);
 
 // cpu: 0x0=CPU 0 0x1=CPU 1 etc...
 // This function invalidates the SCU copy of the tag rams
 // for the specified core.
-void secure_SCU_invalidate(unsigned int cpu, unsigned int ways);
+void secureSCUInvalidate(unsigned int cpu, unsigned int ways);
+
+// ------------------------------------------------------------
+// TrustZone
+// ------------------------------------------------------------
+
+// Sets whether the Private Timer & Watchdog can be accessed in NS world
+// secure -  IF 0 (secure access only) ELSE (ns access allowed)
+void setPrivateTimersNonSecureAccess(unsigned int secure, unsigned int cpu);
+
+
+// Sets whether the Global Timer can be accessed in NS world
+// secure -  IF 0 (secure access only) ELSE (ns access allowed)
+void setGlobalTimersNonSecureAccess(unsigned int secure, unsigned int cpu);
 
 #endif
 

@@ -19,7 +19,7 @@ CCFLAGS+= -DLIB_JSL -DPRJ_OS_THREADX_UITRON -DPRJ_IVIZION2 -D_DEBUG_FRAM_MEASURE
 
 ASMFLAG=$(CCFLAGS)
 
-SRC_EXCLUDE+=\
+SRC_EXCLUDE+=$(wildcard $(ROOT_PROJ)/src/cortex_a9/cpu_api_ds5.asm)
 
 
 SRC_INCLUDE+=$(wildcard $(ROOT_PROJ)/src/*/*.c)

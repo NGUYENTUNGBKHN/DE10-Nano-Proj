@@ -19,22 +19,16 @@ CCFLAGS+= -Dsoc_cv_av -D_USE_STDLIB
 
 ASMFLAG=$(CCFLAGS)
 
-SRC_EXCLUDE+=$(wildcard $(ROOT_PROJ)/src/hwmgr/soc_a10/*.c)
-SRC_EXCLUDE+=$(wildcard $(ROOT_PROJ)/src/utils/alt_base.c)
-SRC_EXCLUDE+=$(wildcard $(ROOT_PROJ)/src/utils/alt_retarget_gnu.c)
+SRC_EXCLUDE+=\
 
 
-SRC_INCLUDE+=$(wildcard $(ROOT_PROJ)/src/*/*.c)
-SRC_INCLUDE+=$(wildcard $(ROOT_PROJ)/src/*/*/*.c)
+SRC_INCLUDE+=$(wildcard $(ROOT_PROJ)/src/*.S)
 
 
 SRC_FILES:=$(filter-out $(SRC_EXCLUDE), $(SRC_INCLUDE))
 
 INC_FOLDERS=\
-	$(ROOT_PROJ)/include\
-	$(ROOT_PROJ)/include/safeclib\
-	$(ROOT_PROJ)/include/soc_cv_av\
-	$(ROOT_PROJ)/src/safeclib\
+	$(ROOT_PROJ)/inc\
 	
 
 

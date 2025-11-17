@@ -147,7 +147,7 @@ $(eval $(2) : $(call get_object_file, $(1),\
 $(eval -include $(DEPENDENCIES))\
 $(eval INC_PATHS_$(strip $(1)) := \
 	$(call get_inc_paths, \
-    	$(INC_FOLDERS) $(call target_specific, INC_FOLDERS, $(1))))
+    	$(INC_FOLDERS) $(call target_specifies, INC_FOLDERS, $(1))))
 endef
 
 # This is the main target

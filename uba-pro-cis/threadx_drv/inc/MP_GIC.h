@@ -2,92 +2,133 @@
 // Cortex-A MPCore - Interrupt Controller functions
 // Header File
 //
-// Copyright ARM Ltd 2009. All rights reserved.
+// Copyright (c) 2011-2018 Arm Limited (or its affiliates). All rights reserved.
+// Use, modification and redistribution of this file is subject to your possession of a
+// valid End User License Agreement for the Arm Product of which these examples are part of 
+// and your compliance with all applicable terms and conditions of such licence agreement.
 // ------------------------------------------------------------
 
-#ifndef _CORTEXA_GIC_
-#define _CORTEXA_GIC_
+#ifndef _CORTEXA_GIC_H
+#define _CORTEXA_GIC_H
+
+#define SPURIOUS                   (255)
+
+// PPI IDs:
+#define   MPCORE_PPI_PRIVATE_TIMER (29)
+#define   MPCORE_PPI_PRIVATE_WD    (30)
+#define   MPCORE_PPI_GLOBAL_TIMER  (27)
+#define   MPCORE_PPI_LEGACY_IRQ    (31)
+#define   MPCORE_PPI_LEGACY_FIQ    (28)
 
 // ------------------------------------------------------------
 // GIC
 // ------------------------------------------------------------
 
 // Typical calls to enable interrupt ID X:
-// enable_irq_id(X)                 <-- Enable that ID
-// set_irq_priority(X, 0)           <-- Set the priority of X to 0 (the max priority)
-// set_priority_mask(0x1F)          <-- Set Core's priority mask to 0x1F (the lowest priority)
-// enable_GIC()                     <-- Enable the GIC (global)
-// enable_gic_processor_interface() <-- Enable the CPU interface (local to the core)
+// enableIntID(X)                <-- Enable that ID
+// setIntPriority(X, 0)          <-- Set the priority of X to 0 (the max priority)
+// setPriorityMask(0x1F)         <-- Set Core's priority mask to 0x1F (the lowest priority)
+// enableGIC()                   <-- Enable the GIC (global)
+// enableGICProcessorInterface() <-- Enable the CPU interface (local to the core)
 //
-// OR
-//
-// Use init_GIC() which is a simple switch everything on function! :-)
-//
+
 
 //  Global enable of the Interrupt Distributor
-void enable_GIC(void);
+void enableGIC(void);
 
 // Global disable of the Interrupt Distributor
-void disable_GIC(void);
+void disableGIC(void);
 
 // Enables the interrupt source number ID
-void enable_irq_id(unsigned int ID);
+void enableIntID(unsigned int ID);
 
 // Disables the interrupt source number ID
-void disable_irq_id(unsigned int ID);
-
-// Sets the priority of the specifed ID
-void set_irq_priority(unsigned int ID, unsigned int priority);
+void disableIntID(unsigned int ID);
 
 // Enables the processor interface
-// Must been done one each core seperately
-void enable_gic_processor_interface(void);  
+// Must be done on each core separately
+void enableGICProcessorInterface(void);
 
 // Disables the processor interface
-void disable_gic_processor_interface(void);
+// Must be done on each core separately
+void disableGICProcessorInterface(void);
 
 // Sets the Priority mask register for the core run on
 // The reset value masks ALL interrupts!
-void set_priority_mask(unsigned int priority);
+//
+// NOTE: Bits 2:0 of this register are SBZ, the function does perform any shifting!
+void setPriorityMask(unsigned int priority);
 
 // Sets the Binary Point Register for the core run on
-void set_binary_port(unsigned int priority);
+void setBinaryPoint(unsigned int priority);
 
-//  Returns the value of the Interrupt Acknowledge Register
-unsigned int read_irq_ack(void);
+// Sets the priority of the specified ID
+void setIntPriority(unsigned int ID, unsigned int priority);
+
+// Returns the priority of the specified ID
+unsigned int getIntPriority(unsigned int ID, unsigned int priority);
+
+#define MPCORE_IC_TARGET_NONE      (0x0)
+#define MPCORE_IC_TARGET_CPU0      (0x1)
+#define MPCORE_IC_TARGET_CPU1      (0x2)
+#define MPCORE_IC_TARGET_CPU2      (0x4)
+#define MPCORE_IC_TARGET_CPU3      (0x8)
+
+// Sets the target CPUs of the specified ID
+// For 'target' use one of the above defines
+void setIntTarget(unsigned int ID, unsigned int target);
+
+// Returns the target CPUs of the specified ID
+unsigned int getIntTarget(unsigned int ID);
+
+// Returns the value of the Interrupt Acknowledge Register
+unsigned int readIntAck(void);
 
 // Writes ID to the End Of Interrupt register
-void write_end_of_irq(unsigned int ID);
-
-// Lazy Init function, a quick way of enabling interrupts
-// * Enables the GIC (global) and CPU Interface (just for this core)
-// * Enables interrupt sources 0->31, and sets their priority to 0x0
-// * Sets the CPU's Priority mask to 0x1F
-// * Clears the CPSR I bit
-void init_GIC(void);
+void writeEOI(unsigned int ID);
 
 // ------------------------------------------------------------
 // SGI
 // ------------------------------------------------------------
 
 // Send a software generate interrupt
-void send_sgi(unsigned int ID, unsigned int core_list, unsigned int filter_list);
+void sendSGI(unsigned int ID, unsigned int core_list, unsigned int filter_list);
 
-// Š„‚İƒŒƒxƒ‹İ’è, 18/11/06
-#define IPL_KERNEL_HIGHEST (0x20)		// ƒJ[ƒlƒ‹Š„‚İ—Dæ“xÅ‚ƒŒƒxƒ‹
+// ------------------------------------------------------------
+// TrustZone
+// ------------------------------------------------------------
+
+// Enables the sending of secure interrupts as FIQs
+void enableSecureFIQs(void);
+
+// Disables the sending of secure interrupts as FIQs
+void disableSecureFIQs(void);
+
+// Sets the specified ID as secure
+void makeIntSecure(unsigned int ID);
+
+// Set the specified ID as non-secure
+void makeIntNonSecure(unsigned int ID);
+
+// Returns the security of the specified ID
+unsigned int getIntSecurity(unsigned int ID);
+
+// å‰²è¾¼ã¿ãƒ¬ãƒ™ãƒ«è¨­å®š, 18/11/06
+#define IPL_KERNEL_HIGHEST (0x20)		// ã‚«ãƒ¼ãƒãƒ«å‰²è¾¼ã¿å„ªå…ˆåº¦æœ€é«˜ãƒ¬ãƒ™ãƒ«
 #define IPL_KERNEL_HIGHER (0x30)
 #define IPL_KERNEL_HIGH (0x40)
-#define IPL_KERNEL_NORMAL	(0x50)		// ƒJ[ƒlƒ‹Š„‚İ—Dæ“x•W€ƒŒƒxƒ‹
+#define IPL_KERNEL_NORMAL	(0x50)		// ã‚«ãƒ¼ãƒãƒ«å‰²è¾¼ã¿å„ªå…ˆåº¦æ¨™æº–ãƒ¬ãƒ™ãƒ«
 #define IPL_KERNEL_LOW (0x60)
 #define IPL_KERNEL_LOWER (0x70)
 #define IPL_KERNEL_LOWEST (0x80)
-#define IPL_USER_HIGHEST (0x90)		// ƒ†[ƒUŠ„‚İ—Dæ“xÅ‚ƒŒƒxƒ‹
+#define IPL_USER_HIGHEST (0x90)		// ãƒ¦ãƒ¼ã‚¶å‰²è¾¼ã¿å„ªå…ˆåº¦æœ€é«˜ãƒ¬ãƒ™ãƒ«
 #define IPL_USER_HIGHER (0xa0)
 #define IPL_USER_HIGH (0xb0)
-#define IPL_USER_NORMAL	(0xc0)		// ƒ†[ƒUŠ„‚İ—Dæ“x•W€ƒŒƒxƒ‹
+#define IPL_USER_NORMAL	(0xc0)		// ãƒ¦ãƒ¼ã‚¶å‰²è¾¼ã¿å„ªå…ˆåº¦æ¨™æº–ãƒ¬ãƒ™ãƒ«
 #define IPL_USER_LOW (0xd0)
 #define IPL_USER_LOWER (0xe0)
 #define IPL_USER_LOWEST (0xf0)
+
 #endif
 
 // ------------------------------------------------------------

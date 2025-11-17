@@ -5,6 +5,7 @@ MAKE_COMMON:=../common
 LIB_OUTPUT_PATH = $(BUILD_DIR)/$(TARGET_NAME).a
 # This is the root project directory and the core directory
 ROOT_PROJ:=./
+JSLWare_DIR:=./../JSLWare
 # Core directory for the project
 
 
@@ -15,13 +16,11 @@ FPU=-mfloat-abi=hard -mfpu=vfpv3-fp16
 OPT=-O0 -g
 CCFLAGS+= $(CPU) $(FPU) $(FLOAT) $(OPT)
 CCFLAGS+= -mno-unaligned-access -std=c99 -MD -MMD
-CCFLAGS+= -Dsoc_cv_av -D_USE_STDLIB
+CCFLAGS+= -DPRJ_OS_THREADX_UITRON -DPRJ_IVIZION2
 
 ASMFLAG=$(CCFLAGS)
 
-SRC_EXCLUDE+=$(wildcard $(ROOT_PROJ)/src/hwmgr/soc_a10/*.c)
-SRC_EXCLUDE+=$(wildcard $(ROOT_PROJ)/src/utils/alt_base.c)
-SRC_EXCLUDE+=$(wildcard $(ROOT_PROJ)/src/utils/alt_retarget_gnu.c)
+SRC_EXCLUDE+=$(wildcard $(ROOT_PROJ)/src/cortex_a9/cpu_api_ds5.asm)
 
 
 SRC_INCLUDE+=$(wildcard $(ROOT_PROJ)/src/*/*.c)
@@ -31,10 +30,9 @@ SRC_INCLUDE+=$(wildcard $(ROOT_PROJ)/src/*/*/*.c)
 SRC_FILES:=$(filter-out $(SRC_EXCLUDE), $(SRC_INCLUDE))
 
 INC_FOLDERS=\
-	$(ROOT_PROJ)/include\
-	$(ROOT_PROJ)/include/safeclib\
-	$(ROOT_PROJ)/include/soc_cv_av\
-	$(ROOT_PROJ)/src/safeclib\
+	$(JSLWare_DIR)/inc\
+	$(JSLWare_DIR)/src\
+	$(ROOT_PROJ)/src/gpio\
 	
 
 
